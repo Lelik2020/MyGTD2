@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="1sp"
+    android:id="@+id/cwlstmeeting"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp"
+    android:layout_height="100dp">
+
+    <RelativeLayout
+        android:id="@+id/listmeeting"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/titlemeeting"
+            android:padding="2dp"
+            android:textColor="@color/colorPrimary"
+
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lldatemeeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/titlemeeting"
+            android:orientation="horizontal"
+            android:padding="2dip" >
+
+            <TextView
+                style="@style/textListSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/datemeeting"
+
+                />
+
+            <TextView
+                android:id="@+id/date_meeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="5dp"
+
+                android:hint="dd.mm.yyyy"
+                android:textSize="12sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltimebeginmeeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/lldatemeeting"
+            android:orientation="horizontal"
+            android:padding="2dip" >
+            <TextView
+                style="@style/textListSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/timebegin"/>
+
+            <TextView
+                android:id="@+id/timebeginmeeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="5dp"
+
+                android:hint="hh:mm"
+                android:textSize="12sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/lltimebeginmeeting"
+            android:orientation="horizontal"
+            android:padding="2dip" >
+            <TextView
+                style="@style/textListSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/timeend"/>
+
+            <TextView
+                android:id="@+id/timeendmeeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+
+                android:hint="hh:mm"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/itemMenu"
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="@dimen/wh_button_small"
+                android:layout_weight="0"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="6dip"
+                android:src="@drawable/glyphicons_518_option_vertical"
+                android:tint="@color/colorPrimary" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

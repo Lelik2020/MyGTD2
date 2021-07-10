@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/every"
+            />
+
+        <EditText
+            android:id="@+id/numberweek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/week2"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day1"
+                android:theme="@style/MyCheckBox"/>
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day2"
+                android:theme="@style/MyCheckBox"/>
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day3"
+                android:theme="@style/MyCheckBox"/>
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day4"
+                android:theme="@style/MyCheckBox"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day5"
+                android:theme="@style/MyCheckBox"/>
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day6"
+                android:theme="@style/MyCheckBox"/>
+
+            <CheckBox
+                android:button="@drawable/toggle"
+                style="@style/textSection"
+                android:layout_marginTop="10dip"
+                android:id="@+id/cbday7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/day7"
+                android:theme="@style/MyCheckBox"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="С: "
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/datebegin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:hint="@string/dateformat"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/datebeginchoise"
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="fill_parent"
+
+
+                android:src="@drawable/glyphicons_602_chevron_down" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text=" по: "
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/dateend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:hint="@string/dateformat"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/dateendchoise"
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="fill_parent"
+
+
+                android:src="@drawable/glyphicons_602_chevron_down" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

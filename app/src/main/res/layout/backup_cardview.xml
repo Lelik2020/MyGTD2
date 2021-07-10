@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+
+
+
+    style="@style/MyCardView"
+
+    >
+
+
+    <!--style="@style/MyCardView"-->
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/rlmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/main"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Name"
+                android:id="@+id/title"
+                android:padding="2sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+
+                android:id="@+id/lnrLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2sp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                >
+
+
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+
+                    style="@style/rtv1"
+
+                    android:textColor="@color/text_black_100"
+                    app:bgColor="@color/active_meeting"
+                    app:topLeftCorner="2sp"
+                    app:bottomLeftCorner="2sp"
+                    app:topRightCorner="0sp"
+                    app:bottomRightCorner="0sp"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ImageView
+                android:id="@+id/expandedIcon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical"
+
+                android:background="?android:attr/selectableItemBackground"
+
+                android:src="@drawable/cr3_toc_item_collapsed"
+                />
+
+            <stream.custombutton.CustomButton
+                android:id="@+id/btncreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/create"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="none"
+                android:layout_margin="5sp"
+                app:btn_cornerRadius="15sp"
+                app:btn_strokeWidth="1dp"
+                app:btn_strokeColor="@color/colorPrimary"
+                app:btn_buttonColor="@color/transparent"
+                app:btn_buttonSelectColor="@color/colorPrimary"
+                app:btn_textColor="@color/colorPrimary"
+                app:btn_textSelectColor="@color/white"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:id="@+id/legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/main"
+
+            android:padding="2dp">
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+
+                android:background="@color/text_black_100" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10sp"
+                android:orientation="vertical" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/first"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/square1"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/MyLegend"
+
+
+                        android:text="Name1"
+                        android:id="@+id/txt1"
+
+
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/square2"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        card_view:tint="@color/active_meeting" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name2"
+                        android:id="@+id/txt2"
+                        style="@style/MyLegend"
+
+                        />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/two"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/square3"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:layout_below="@+id/square1"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name3"
+                        android:id="@+id/txt3"
+                        style="@style/MyLegend"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/square4"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        card_view:tint="@color/active_meeting" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name4"
+                        android:id="@+id/txt4"
+                        style="@style/MyLegend"
+
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/three"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/square5"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:layout_below="@+id/square1"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name3"
+                        android:id="@+id/txt5"
+                        style="@style/MyLegend"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/square6"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:src="@drawable/square"
+                        card_view:tint="@color/active_meeting" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name4"
+                        android:id="@+id/txt6"
+                        style="@style/MyLegend"
+
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

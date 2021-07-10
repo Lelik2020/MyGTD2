@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ввод комментария"/>
+
+    <EditText
+        android:id="@+id/editComment"
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+
+        android:textCursorDrawable="@drawable/color_cursor"
+
+        android:lines="5"
+        android:minLines="5"
+        android:padding="10dp"
+        android:background="@color/lt_grey_dima"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+
+        android:ems="10"
+        />
+
+    <requestFocus />
+
+        />
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

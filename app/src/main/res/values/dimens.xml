@@ -1,0 +1,47 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="wh_button_verysmall">18sp</dimen>
+    <dimen name="wh_button_small2">20sp</dimen>
+    <dimen name="wh_button_small">25sp</dimen>
+    <dimen name="wh_button_middle">30sp</dimen>
+    <dimen name="wh_button_small3">16sp</dimen>
+    <dimen name="wh_button">18dp</dimen>
+    <dimen name="wh_btn_small">18sp</dimen>
+    <dimen name="wh_button_big2">30sp</dimen>
+    <dimen name="wh_layout_big2">30sp</dimen>
+
+    <dimen name="wh_toolbar">36sp</dimen>
+
+    <dimen name="wh_cb_small">18sp</dimen>
+
+    <dimen name="wh_cardviewwithtoolbar">38sp</dimen>
+    <dimen name="wh_tasks_description_text">2sp</dimen>
+
+    <dimen name="corner">16sp</dimen>
+
+    <dimen name="text_subtitle">10sp</dimen>
+
+    <dimen name="wh_button_big">38dp</dimen>
+
+    <dimen name="button_corner_radius">10sp</dimen>
+    <dimen name="dialog_button_corner_radius">15sp</dimen>
+
+    <dimen name="alertdialog_button_width">150sp</dimen>
+    <dimen name="alertdialog_button_height">15sp</dimen>
+
+    <dimen name="dialog_line_spacing">2sp</dimen>
+    <dimen name="dialog_title_size">25sp</dimen>
+    <dimen name="dialog_text_size">16sp</dimen>
+    <dimen name="dialog_buttons_size">14sp</dimen>
+
+    <dimen name="paggingLeft">5sp</dimen>
+
+    <dimen name="card_corner">20sp</dimen>
+
+</resources>

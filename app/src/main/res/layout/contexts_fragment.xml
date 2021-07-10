@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lvCommon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1px">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lvContexts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1px">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:id="@+id/rltlegend3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+
+
+        android:padding="2dp"
+
+        >
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+
+            android:background="@color/text_black_100" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10sp"
+            android:orientation="vertical" >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/first2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/square4"
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:tint="@color/red"
+                    android:src="@drawable/square"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyLegend"
+
+
+                    android:text="@string/outstanding"
+                    android:id="@+id/txt4"
+
+
+
+                    />
+
+                <ImageView
+                    android:id="@+id/square5"
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:tint="@color/active_meeting"
+
+
+                    android:src="@drawable/square"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/dotoday"
+                    android:id="@+id/txt5"
+                    style="@style/MyLegend"
+
+                    />
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/two2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/square6"
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:layout_below="@+id/square1"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:tint="@color/tint_selector"
+                    android:src="@drawable/square"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/allactivetasks"
+                    android:id="@+id/txt6"
+                    style="@style/MyLegend"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/square7"
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:tint="@color/half_black"
+
+
+                    android:src="@drawable/square"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/alltasks"
+                    android:id="@+id/txt7"
+                    style="@style/MyLegend"
+
+                    />
+
+
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

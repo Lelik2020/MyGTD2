@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="app" target="1.8" />
+      <module name="bottom-navigation-bar" target="1.7" />
+      <module name="colorpickerview" target="1.7" />
+      <module name="mydynamiccalendar" target="1.7" />
+      <module name="MyGTD-MultilevelTreeLibrary" target="1.7" />
+      <module name="MyGTD.app" target="1.8" />
+      <module name="MyGTD.bottom-navigation-bar" target="1.8" />
+      <module name="MyGTD.cblibrary" target="1.8" />
+      <module name="MyGTD.colorpickerview" target="1.8" />
+      <module name="MyGTD.MaterialDialogLibrary" target="1.8" />
+      <module name="MyGTD.MultilevelTreeLibrary" target="1.8" />
+      <module name="MyGTD.mydynamiccalendar" target="1.8" />
+      <module name="MyGTD.roundtextview" target="1.8" />
+      <module name="MyGTD.sadlibrary" target="1.7" />
+      <module name="MyGTD.smartmaterialspinner" target="1.8" />
+      <module name="MyGTD.toasty" target="1.8" />
+      <module name="MyGTD2.app" target="11" />
+      <module name="MyGTD2.bottom-navigation-bar" target="11" />
+      <module name="MyGTD2.cblibrary" target="11" />
+      <module name="MyGTD2.colorpickerview" target="11" />
+      <module name="MyGTD2.custombutton" target="11" />
+      <module name="MyGTD2.MaterialDialogLibrary" target="11" />
+      <module name="MyGTD2.MPChartLib" target="11" />
+      <module name="MyGTD2.MultilevelTreeLibrary" target="11" />
+      <module name="MyGTD2.mydynamiccalendar" target="11" />
+      <module name="MyGTD2.progresslibrary" target="11" />
+      <module name="MyGTD2.roundtextview" target="11" />
+      <module name="MyGTD2.smartmaterialspinner" target="11" />
+      <module name="MyGTD2.toasty" target="11" />
+      <module name="roundtextview" target="1.7" />
+      <module name="smartmaterialspinner" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

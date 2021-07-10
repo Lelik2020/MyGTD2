@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    style="@style/TaskCardViewStyle"
+
+
+
+    android:animateLayoutChanges="true"
+
+
+
+
+    >
+
+
+    <!--
+    <FrameLayout
+
+        android:layout_width="1sp"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_edge"/>
+    -->
+
+    <RelativeLayout
+        android:id="@+id/taskinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/taskcardview_border"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltasktitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                >
+
+                <ImageView
+                    android:id="@+id/statusTask"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="@dimen/wh_button_small"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="4dip"
+                    android:src="@drawable/ok_lightgray"
+                    />
+
+                <cn.refactor.library.SmoothCheckBox
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:paddingBottom="10dp"
+                    app:color_checked="#149A45" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:id="@+id/tasktitle"
+
+                    style="@style/txtTaskTitle"
+                    />
+
+
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="12sp"
+                    android:text="РќРѕРІР°СЏ"
+                    android:textColor="#fff"
+                    app:allCorner="8dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/editTask"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="@dimen/wh_button_small"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="4dip"
+                    android:src="@drawable/glyphicons_151_edit"
+                    android:tint="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/starIcon"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="@dimen/wh_button_small"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="4dip"
+                    android:src="@drawable/star_2"
+                    android:tint="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/multitaskIcon"
+                    android:layout_width="@dimen/wh_button"
+                    android:layout_height="@dimen/wh_button"
+
+                    android:layout_gravity="center_vertical"
+
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:src="@drawable/onetask"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llcoountsubtask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                <ImageView
+                    android:id="@+id/expandedIcon"
+                    android:layout_width="@dimen/wh_button"
+                    android:layout_height="@dimen/wh_button"
+                    android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:src="@drawable/cr3_toc_item_collapsed"
+                    />
+
+                <ImageView
+                    android:id="@+id/itemTaskMenu"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="@dimen/wh_button_small"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="6dip"
+                    android:src="@drawable/glyphicons_518_option_vertical"
+                    android:tint="@color/colorPrimary" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltaskproject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktarget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltaskcontexts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <RelativeLayout
+            android:id="@+id/taskdetailinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/lltasktitle"
+
+            android:padding="2dp">
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+
+                android:background="@color/text_black_100" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/taskdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/taskdetail"
+
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Description"
+                    android:id="@+id/taskinfotitle"
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/taskcreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/taskdetail"
+                android:orientation="horizontal" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/date_create"
+                    android:id="@+id/datecreate"
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:id="@+id/datecreatevalue"
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/taskdone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/taskcreate"
+                android:orientation="horizontal" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/date_done"
+                    android:id="@+id/datedone"
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:id="@+id/datedonevalue"
+
+
+                    android:textColor="@color/text_black_100"
+
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

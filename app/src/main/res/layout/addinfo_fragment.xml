@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/textSection"
+                android:hint="@string/taskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/infoShortTitle"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/inputInfoShort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+
+            <TextView
+                style="@style/textSection"
+                android:hint="@string/infoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/infoFullTitle"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/inputInfoFull"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+
+                android:maxLines="10" />
+
+            <TextView
+                style="@style/textSection"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/typeofinfo"
+                android:textStyle="bold"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linfotype"
+                    android:layout_width="1sp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+
+                    >
+                    <TextView
+                        style="@style/textSection"
+                        android:id="@+id/typeOfInfoTitle"
+                        android:layout_width="1sp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:textStyle="bold"
+
+
+                        />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/addinfotype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--<TextView
+
+                    android:id="@+id/infoTypeTitle"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="5sp"
+
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                    />-->
+
+
+                <ImageView
+                    android:id="@+id/typesofinfochoise"
+                    android:layout_width="@dimen/wh_button_verysmall"
+                    android:layout_height="fill_parent"
+
+
+
+                    android:src="@drawable/choice2" />
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                style="@style/textSection"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/statusofinfo"
+                android:textStyle="bold"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linfostatus"
+                    android:layout_width="1sp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+
+                    >
+                    <TextView
+                        style="@style/textSection"
+                        android:id="@+id/statusOfInfoTitle"
+                        android:layout_width="1sp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:textStyle="bold"
+
+
+                        />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/addinfostatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+
+                    >
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.apg.mobile.roundtextview.RoundTextView
+
+                    android:id="@+id/infostatusTitle"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <ImageView
+                    android:id="@+id/statusofinfochoise"
+                    android:layout_width="@dimen/wh_button_verysmall"
+                    android:layout_height="fill_parent"
+
+
+
+                    android:src="@drawable/choice2" />
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </ScrollView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        >
+
+
+        <Button
+            android:id="@+id/btnsaveinfo"
+
+            style="@style/MyButton2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="@string/save"
+            android:layout_weight="1"
+
+            >
+
+        </Button>
+
+
+
+        <Button
+            android:id="@+id/btncancelinfo"
+            style="@style/MyButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+            android:text="@string/cancel"
+            android:layout_weight="1"
+
+            >
+
+        </Button>
+
+
+        <!--
+        <Button
+            android:id="@+id/onSave"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Сохранить" />
+
+        <Button
+            android:id="@+id/onCancel"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="Отмена" />
+        -->
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+
+
+
+    style="@style/MyCardView"
+
+
+
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlmain2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/main2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Name"
+                android:id="@+id/title2"
+                android:padding="2sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+
+                android:id="@+id/lnrLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2sp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                >
+
+
+
+
+
+
+
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    style="@style/rtv1"
+                    android:visibility="invisible"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

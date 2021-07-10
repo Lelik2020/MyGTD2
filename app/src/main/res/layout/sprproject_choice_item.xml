@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rlmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lnlmain"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/sprproject_tree_icon"
+                android:layout_width="@dimen/wh_button_verysmall"
+                android:layout_height="@dimen/wh_button_verysmall"
+                android:layout_weight="0"
+                android:src="@drawable/plus"
+                android:tint="@color/colorPrimary"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/sprproject_tree_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingLeft="5sp"
+                android:textColor="@color/text_black_100"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+
+                android:id="@+id/lnrLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:layout_weight="0"
+                >
+
+
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_button_verysmall"
+
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="14sp"
+
+                    android:textColor="@color/text_black_100"
+                    app:bgColor="@color/active_meeting"
+                    app:topLeftCorner="8sp"
+                    app:bottomLeftCorner="8sp"
+                    app:topRightCorner="0sp"
+                    app:bottomRightCorner="0sp"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_button_verysmall"
+
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_button_verysmall"
+
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    />
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/rtv_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_button_verysmall"
+
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ImageView
+                android:id="@+id/editProject"
+                android:layout_width="@dimen/wh_button_verysmall"
+                android:layout_height="@dimen/wh_button_verysmall"
+
+                android:paddingLeft="@dimen/paggingLeft"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/edit"
+                android:tint="@color/colorPrimary"
+                android:visibility="visible" />
+
+
+
+            <ImageView
+                android:id="@+id/itemProjectMenu"
+                android:layout_width="@dimen/wh_button_verysmall"
+                android:layout_height="@dimen/wh_button_verysmall"
+                android:layout_weight="0"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="5sp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/glyphicons_518_option_vertical"
+                android:tint="@color/colorPrimary" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:id="@+id/rltlegend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/lnlmain"
+
+
+            android:padding="2dp"
+            android:visibility="invisible"
+            >
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+
+                android:background="@color/text_black_100" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10sp"
+                android:orientation="vertical" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/first"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/square1"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:tint="#FF0000"
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/MyLegend"
+
+
+                        android:text="Name1"
+                        android:id="@+id/txt1"
+
+
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/square2"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:tint="#33FF99"
+
+
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name2"
+                        android:id="@+id/txt2"
+                        style="@style/MyLegend"
+
+                        />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/two"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/square3"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:layout_below="@+id/square1"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:tint="#aa03A9F4"
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name3"
+                        android:id="@+id/txt3"
+                        style="@style/MyLegend"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/square4"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:layout_below="@+id/square2"
+                        android:background="?android:attr/selectableItemBackground"
+
+                        android:tint="#808080"
+                        android:src="@drawable/square"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Name3"
+                        android:id="@+id/txt4"
+                        style="@style/MyLegend"
+
+                        />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

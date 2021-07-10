@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    style="@style/TaskCardViewStyle"
+
+
+
+    android:animateLayoutChanges="true"
+    android:layout_margin="10sp"
+
+
+
+    >
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/taskinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+
+
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltasktitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                tools:ignore="MissingConstraints">
+
+
+
+
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/txtTaskTitleTaskCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title2"
+                    style="@style/txtTaskTitleTaskCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="10sp"
+                    android:text="1/1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title3"
+                    style="@style/txtTaskTitleTaskCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="10sp"
+                    android:text="0%"
+                    android:textStyle="bold" />
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/taskinformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ltasktitle"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+
+
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+
+
+
+
+
+
+
+
+
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/taskInfo3"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10sp"
+                        android:paddingLeft="2sp">
+
+                        <ProgressBar
+                            android:id="@+id/progressView_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="20sp"
+                            android:layout_marginBottom="5sp"
+                            android:layout_marginTop="5sp"
+
+
+                            android:paddingTop="10sp"
+                            />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <!--<cn.refactor.library.SmoothCheckBox
+                    android:id="@+id/statusTask2"
+                    android:layout_width="0sp"
+                    android:layout_height="0sp"
+                    android:layout_weight="0"
+                    android:padding="4sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:color_checked="@color/tint_gray" />-->
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

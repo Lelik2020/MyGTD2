@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/pathContainer"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:layout_weight="1"
+        android:layout_margin="1sp"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_search_second"
+        android:orientation="horizontal"
+        >
+
+        <HorizontalScrollView
+            android:id="@+id/scroller"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_weight="1"
+            android:scrollbars="none" >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/find"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/onSorting"
+
+            android:layout_width="36sp"
+            android:layout_height="1sp"
+            android:layout_weight="0"
+            android:clickable="true"
+
+            android:src="@drawable/ic_launcher_background" />
+
+        <ImageView
+            android:id="@+id/onSorting22"
+            style="@style/buttonWhite"
+            android:layout_width="@dimen/wh_toolbar"
+            android:layout_height="1sp"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:contentDescription="@string/cd_sort_order"
+            android:onClick="onSortClick"
+            android:src="@drawable/choice" />
+
+        <ImageView
+            android:id="@+id/onSort"
+            style="@style/buttonWhite"
+            android:layout_width="@dimen/wh_toolbar"
+            android:layout_height="1sp"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:contentDescription="@string/cd_sort_order"
+            android:src="@drawable/glyphicons_409_sort_by_attributes" />
+
+        <ImageView
+            android:contentDescription="@string/cd_sort_order"
+            android:id="@+id/sortOrder"
+            android:layout_width="@dimen/wh_toolbar"
+            android:layout_height="1sp"
+            android:layout_weight="0"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="12dip"
+
+            android:src="@drawable/glyphicons_601_chevron_up"
+            android:tint="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/information_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below='@+id/pathContainer'
+        android:layout_gravity="fill_vertical"
+        android:layout_weight="0"
+        android:paddingTop="@dimen/wh_cardviewwithtoolbar">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

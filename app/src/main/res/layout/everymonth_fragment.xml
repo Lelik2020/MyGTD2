@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp">
+
+        <RadioButton
+            android:id="@+id/rBrepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/repeat"
+            android:theme="@style/MyRadioButton"/>
+
+        <RadioButton
+            android:id="@+id/rBin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in"
+            android:theme="@style/MyRadioButton"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinner1"
+                android:layout_width="76dp"
+                android:layout_height="22dp"
+
+                android:spinnerMode="dropdown"
+
+
+
+                app:smsp_floatingLabelColor="#1976D2"
+                app:smsp_hintColor="#388E3C"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="#7C4DFF"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="#512DA8"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="333"
+                android:textSize="15sp"/>
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinner2"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+
+                android:spinnerMode="dropdown"
+                app:smsp_floatingLabelColor="#1976D2"
+
+
+                app:smsp_hintColor="#388E3C"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="#7C4DFF"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="@color/colorPrimary"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RadioGroup>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

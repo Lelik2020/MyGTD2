@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    android:animateLayoutChanges="true"
+
+    card_view:cardCornerRadius="10sp"
+    card_view:cardElevation="2sp"
+
+
+    cardBackgroundColor="@color/black"
+    contentPadding="16sp"
+    cardElevation="2sp"
+    cardCornerRadius="5sp"
+
+    android:layout_marginTop="2sp"
+    android:layout_marginLeft="2sp"
+    android:layout_marginRight="2sp"
+    android:layout_marginBottom="2sp"
+
+
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/taginfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltagtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/tag_tree_icon"
+                    android:layout_width="@dimen/wh_btn_small"
+                    android:layout_height="@dimen/wh_btn_small"
+                    android:layout_weight="0"
+                    android:src="@drawable/glyphicons_66_tag"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:id="@+id/tagtitle"
+
+
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="5sp"
+                    android:textColor="@color/text_black_100"
+                    />
+            <androidx.appcompat.widget.LinearLayoutCompat
+
+                android:id="@+id/lnrLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:layout_weight="0"
+                >
+
+
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/tagcount1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_btn_small"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="12sp"
+
+                    android:textColor="@color/text_black_100"
+                    app:bgColor="@color/active_meeting"
+                    app:topLeftCorner="8sp"
+                    app:bottomLeftCorner="8sp"
+                    app:topRightCorner="0sp"
+                    app:bottomRightCorner="0sp"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/tagcount2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_btn_small"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="12sp"
+                    android:visibility="invisible"
+                    />
+
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/tagcount3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_btn_small"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="12sp"
+                    android:visibility="invisible"
+                    />
+                <com.apg.mobile.roundtextview.RoundTextView
+                    android:id="@+id/tagcount4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/wh_btn_small"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textSize="12sp"
+                    android:visibility="invisible"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

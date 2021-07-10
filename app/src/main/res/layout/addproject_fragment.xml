@@ -1,0 +1,223 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/textSection"
+                android:hint="@string/projectTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/projectTitle"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/inputProjectTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+
+
+            <TextView
+                style="@style/textSection"
+                android:hint="@string/infoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/projectInfo"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/inputProjectinfoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+
+                android:maxLines="10"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/textSection"
+                    android:hint="@string/parentproject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parentproject"
+                    android:textStyle="bold"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/parentProject"
+                        style="@style/textSection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="16sp"
+
+                        android:textStyle="bold"
+                        />
+
+                    <ImageView
+                        android:id="@+id/parentprojectchoise"
+
+                        android:layout_width="@dimen/wh_button_small"
+                        android:layout_height="@dimen/wh_button_small"
+
+
+                        android:src="@drawable/choice2" />
+
+                    <ImageView
+                        android:id="@+id/parentProjectclear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:paddingLeft="5sp"
+
+
+                        android:src="@drawable/glyphicons_208_remove_2" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/textSection"
+                    android:hint="@string/parentproject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/statusproject"
+                    android:textStyle="bold"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <com.apg.mobile.roundtextview.RoundTextView
+                        android:id="@+id/statusProject"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        style="@style/rtv1"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/statuschoise"
+
+                        android:layout_width="@dimen/wh_button_small"
+                        android:layout_height="@dimen/wh_button_small"
+
+
+                        android:src="@drawable/choice2" />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+    </ScrollView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        >
+
+
+        <Button
+            android:id="@+id/btnsaveproject"
+
+            style="@style/MyButton2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="@string/save"
+            android:layout_weight="1"
+
+            >
+
+        </Button>
+
+
+
+        <Button
+            android:id="@+id/btncancelproject"
+            style="@style/MyButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+            android:text="@string/cancel"
+            android:layout_weight="1"
+
+            >
+
+        </Button>
+
+
+        <!--
+        <Button
+            android:id="@+id/onSave"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Сохранить" />
+
+        <Button
+            android:id="@+id/onCancel"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="Отмена" />
+        -->
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

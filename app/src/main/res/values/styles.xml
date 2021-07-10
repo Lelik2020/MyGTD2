@@ -1,0 +1,599 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+        <item name="alertDialogTheme">@style/YDialog</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <style name="MyOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <style name="textSection2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">2sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/text_black_100</item>
+    </style>
+
+    <style name="textSection">
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">2sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/lt_grey_alpha</item>
+        <item name="android:textColor">@color/text_black_100</item>
+    </style>
+
+    <style name="rtv1">
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textColor">@color/text_black_100</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="rtv2">
+        <item name="android:textStyle">normal</item>
+
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="textList">
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">1sp</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/text_black_100</item>"
+    </style>
+
+    <style name="textListSection">
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">1sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_black_100</item>"
+    </style>
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">0sp</item>
+        <item name="android:textColor">@color/text_black_100</item>
+    </style>
+
+    <style name="txtTaskTitle">
+        <item name="android:textSize">18sp</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="txtTaskTitle2">
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="txtTaskTitleTaskCard2">
+        <item name="android:textSize">14sp</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="txtTaskTitleTaskCard">
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="txtTaskTextTaskCard">
+        <item name="android:textSize">12sp</item>
+
+
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+
+        <item name="android:scaleX">0.75</item>
+        <item name="android:scaleY">0.75</item>
+
+
+        <item name="android:textSize">10sp</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        >
+        <item name="android:button">@drawable/toggle</item>
+        <item name="android:textSize">1sp</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+
+
+    <style name="MyLegend">
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingLeft">5sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="textDialogEditText">
+
+        <item name="android:paddingLeft">15sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textCursorDrawable">@color/colorPrimary</item>
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+        <item name="android:cursorVisible">true</item>
+        <item name="android:focusable">true</item>
+
+    </style>
+
+    <style name="textDialogTextView">
+
+        <item name="android:paddingLeft">15sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textColor">@color/black</item>
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+    <style name="textLink">
+
+        <item name="android:paddingLeft">2sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+
+        <!--<item name="android:textColor">?android:attr/textColorLink</item>-->
+        <item name="android:textColor">@color/colorPrimary</item>
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+    <style name="textLink2">
+
+        <item name="android:paddingLeft">2sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+
+        <!--<item name="android:textColor">?android:attr/textColorLink</item>-->
+        <item name="android:textColor">@color/colorPrimary</item>
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+    <style name="textLinkTaskCardTitle">
+
+        <item name="android:paddingLeft">2sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+
+        <!--<item name="android:textColor">?android:attr/textColorLink</item>-->
+        <item name="android:textColor">@color/colorPrimary</item>
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+    <style name="textLinkTaskCard">
+
+        <item name="android:paddingLeft">2sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+
+        <!--<item name="android:textColor">?android:attr/textColorLink</item>-->
+
+
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+
+    <style name="Test" parent="@android:style/Theme.Dialog">
+
+        <item name="android:windowTitleStyle">@style/dialogTitle</item>
+
+    </style>
+
+
+    <style name="DialogStyle" parent="Base.Theme.AppCompat.Dialog">
+        <!--
+        <item name="android:windowMinWidthMajor">85%</item>
+        <item name="android:windowMinWidthMinor">75%</item>
+        <item name="windowFixedHeightMajor">80%</item>
+        <item name="windowFixedHeightMinor">75%</item>
+        -->
+
+        <item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+
+        <item name="android:windowTitleStyle">@style/dialogTitle</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textCursorDrawable">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/colorPrimary</item>
+        <item name="android:borderlessButtonStyle">@style/MyApp.BorderlessButton</item>
+        <item name="android:buttonStyle">@style/MyApp.BorderlessButton</item>
+        <!--<item name="android:buttonStyle">@style/MyButton2</item>-->
+
+
+
+    </style>
+
+    <style name="MyDialogStyle" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>                   <!--header background-->
+        <item name="android:windowBackground">@color/colorPrimary</item>     <!--calendar background-->
+        <item name="android:colorControlActivated">@color/colorAccent</item> <!--selected day-->
+        <item name="android:textColorPrimary">#6bf442</item> <!--days of the month-->
+        <item name="android:textColorSecondary">@color/colorAccent</item>    <!--days of the week-->
+    </style>
+
+    <style name="CalendarDatePickerDialog"  parent="Theme.AppCompat.Light.Dialog">
+    <!--<style name="CalendarDatePickerDialog"  parent="@android:style/Widget.Material.Light.DatePicker">-->
+
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="dialogTitle" parent="android:Widget.TextView">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">5sp</item>
+        <item name="android:paddingRight">0sp</item>
+        <item name="android:paddingTop">0sp</item>
+        <item name="android:paddingBottom">0sp</item>
+        <item name="android:textColor">@color/text_black_100</item>
+        <item name="android:textColorHint">@color/text_black_100</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+
+
+
+    </style>
+
+    <!--
+    <style name="Theme.YourTheme" parent="@android:style/Theme.Holo"> ... <item name="android:alertDialogTheme">@style/YourAlertDialogTheme</item> </style> <style name="YourAlertDialogTheme"> <item name="android:windowBackground">@android:color/transparent</item> <item name="android:windowContentOverlay">@null</item> <item name="android:windowIsFloating">true</item> <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item> <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item> <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item> <item name="android:windowTitleStyle">...</item> <item name="android:textAppearanceMedium">...</item> <item name="android:borderlessButtonStyle">...</item> <item name="android:buttonBarStyle">...</item> </style>
+    -->
+
+    <style name="ThemeDialogCustom"> <item name="android:windowFrame">@null</item> <item name="android:windowIsFloating">true</item> <item name="android:windowContentOverlay">@null</item> <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item> <item name="android:windowBackground">@color/white</item> <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item> <item name="android:colorBackgroundCacheHint">@null</item> </style>
+
+    <style name="MyApp.BorderlessButton" parent="@android:style/Widget.Holo.Button.Borderless">
+
+
+        <item name="android:textSize">12sp</item>
+
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+
+        <item name="android:tag">textLinkWhite</item>
+        <!--<item name="android:textColor">#ffffff</item>-->
+        <item name="android:background">@drawable/bg_search_second_clickable</item>
+
+        <!--<item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+
+        <item name="android:textAllCaps">false</item>-->
+
+
+    </style>
+
+
+    <!--
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:bottomBright">@color/white</item>
+        <item name="android:bottomDark">@color/white</item>
+        <item name="android:bottomMedium">@color/white</item>
+        <item name="android:centerBright">@color/white</item>
+        <item name="android:centerDark">@color/white</item>
+        <item name="android:centerMedium">@color/white</item>
+        <item name="android:fullBright">@color/orange</item>
+        <item name="android:fullDark">@color/orange</item>
+        <item name="android:topBright">@color/blue</item>
+        <item name="android:topDark">@color/blue</item>
+    </style>
+
+
+    <style name="MyBackground" parent="android:WindowTitleBackground">
+        <item name="android:background">@color/blue</item>
+    </style>
+
+    <style name="MyTheme">
+        <item name="android:windowTitleBackgroundStyle">@style/MyBackground</item>
+        <item name="android:alertDialogStyle">@style/CustomDialogTheme</item>
+    </style>
+
+    -->
+
+
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <!-- customize colorButtonNormal for the disable color -->
+
+        <!-- customize colorAccent for the enabled color -->
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyButton2" parent="Theme.AppCompat.Light">
+        <!-- customize colorButtonNormal for the disable color -->
+
+        <!-- customize colorAccent for the enabled color -->
+
+        <item name="android:tag">textLinkWhite</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/bg_search_second_clickable</item>
+    </style>
+
+    <style name="MyDialogButton2" parent="Theme.AppCompat.Light">
+        <!-- customize colorButtonNormal for the disable color -->
+
+        <!-- customize colorAccent for the enabled color -->
+
+        <item name="android:tag">textLinkWhite</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/bg_dialog_button_clickable</item>
+    </style>
+
+    <style name="MyDialogButton" parent="Theme.AppCompat.Light">
+        <!-- customize colorButtonNormal for the disable color -->
+
+        <!-- customize colorAccent for the enabled color -->
+
+        <item name="android:tag">textLinkWhite</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/bg_search_second_clickable</item>
+    </style>
+
+
+
+
+    <style name="mybuttonstyle" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:textSize">16dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/ic_next_button</item>
+    </style>
+
+    <style name="buttonWhite">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:padding">8dip</item>
+        <item name="android:layout_marginLeft">1.5dip</item>
+        <item name="android:layout_marginRight">1.5dip</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="textCircle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/bg_circular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">A</item>
+        <item name="android:layout_marginRight">8dip</item>
+        <item name="android:layout_marginLeft">4dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="btnChoice">
+
+
+        <item name="android:layout_marginLeft">5sp</item>
+        <item name="android:layout_marginRight">0sp</item>
+        <item name="android:layout_width">@dimen/wh_button_verysmall</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="buttonWhiteClose" parent="buttonWhite">
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="textLinkWhite" parent="textLink">
+        <item name="android:tag">textLinkWhite</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TaskCardViewStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">15sp</item>
+        <item name="cardElevation">15sp</item>
+        <item name="contentPaddingBottom">4sp</item>
+        <item name="contentPaddingTop">4sp</item>
+        <item name="contentPaddingLeft">4sp</item>
+        <item name="contentPaddingRight">4sp</item>
+        <item name="android:layout_marginTop">10sp</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">2sp</item>
+
+        <item name="android:background">@drawable/selector_2</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+    <style name="InfoCardViewStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">15sp</item>
+        <item name="cardElevation">15sp</item>
+        <item name="contentPaddingBottom">4sp</item>
+        <item name="contentPaddingTop">4sp</item>
+        <item name="contentPaddingLeft">4sp</item>
+        <item name="contentPaddingRight">4sp</item>
+        <item name="android:layout_marginTop">10sp</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">2sp</item>
+
+        <item name="android:background">@drawable/selector_2</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+
+
+    <style name="MyCardView" >
+
+        //xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+        <item name="cardCornerRadius">10sp</item>
+        <item name="cardElevation">2sp</item>
+        <!--
+        <item name="cardBackgroundColor">@color/black</item>
+        <item name="contentPadding">16sp</item>-->
+
+        <item name="android:layout_marginTop">2sp</item>
+        <item name="android:layout_marginLeft">2sp</item>
+        <item name="android:layout_marginRight">2sp</item>
+        <item name="android:layout_marginBottom">2sp</item>
+
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">2sp</item>
+        <item name="android:background">@drawable/selector</item>
+        <item name="cardBackgroundColor">@color/white</item>
+
+        <!--<item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40sp</item>
+
+        <item name="cardCornerRadius">10sp</item>
+        <item name="cardElevation">2sp</item>
+
+        <item name="cardBackgroundColor">@color/black</item>
+        <item name="contentPadding">16sp</item>
+
+        <item name="android:layout_marginTop">2sp</item>
+        <item name="android:layout_marginLeft">2sp</item>
+        <item name="android:layout_marginRight">2sp</item>
+        <item name="android:layout_marginBottom">2sp</item>-->
+
+
+    </style>
+
+
+    <style name="MyDialogTheme">
+
+
+
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Alert.Button.Neutral</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="YDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert.Bridge">
+        <!-- Base colors -->
+        <item name="android:textColorPrimary">@color/dialog_text</item>
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="colorControlNormal">@color/dialog_checkbox</item>
+        <item name="colorControlActivated">@color/dialog_checkbox_activated</item>
+        <item name="textColorAlertDialogListItem">@color/dialog_list_item</item>
+
+        <!-- Button styles -->
+        <item name="buttonBarPositiveButtonStyle">@style/YDialogPositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/YDialogNegativeButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/YDialogNeutralButton</item>
+
+        <!--<item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">90%</item>-->
+
+        <!-- Sizes -->
+        <item name="android:lineSpacingExtra">@dimen/dialog_line_spacing</item>
+        <item name="android:textSize">@dimen/dialog_text_size</item>
+        <item name="android:windowTitleStyle">@style/YDialogTitleTextAppearance</item>
+    </style>
+
+    <style name="YDialogButton" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <!--<item name="android:textColor">@color/dialog_button</item>-->
+        <item name="android:textSize">@dimen/dialog_buttons_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/alertdialog_button_height</item>
+        <item name="android:layout_margin">2sp</item>
+        <!--<item name="android:gravity">center</item>-->
+
+    </style>
+
+    <style name="YDialogPositiveButton" parent="MyDialogButton2"/>
+        <!--<item name="android:textColor">@color/dialog_accent_button</item>-->
+        <!--<item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>-->
+        <!--<item name="android:textColor">@color/white</item>-->
+        <!--<item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>-->
+
+
+
+    <style name="YDialogNegativeButton" parent="MyDialogButton2"/>
+    <style name="YDialogNeutralButton" parent="MyDialogButton2"/>
+
+    <style name="YDialogTitleTextAppearance" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textSize">@dimen/dialog_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="boldText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="normalText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+</resources>

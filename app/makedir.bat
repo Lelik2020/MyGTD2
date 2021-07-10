@@ -1,0 +1,2 @@
+mkdir build\intermediates\external_file_lib_dex_archives\debug\out
+mkdir build\intermediates\external_file_lib_dex_archives\betaDebug\out

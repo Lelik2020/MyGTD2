@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    style="@style/TaskCardViewStyle"
+
+
+
+    android:animateLayoutChanges="true"
+
+
+
+
+    >
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/taskinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltasktitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                tools:ignore="MissingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/tasktype"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:scaleType="fitCenter"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tasktitle"
+                    style="@style/textLinkTaskCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_horizontal|right"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tasktitle2"
+                    style="@style/txtTaskTitleTaskCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/category"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bookmark" />
+
+                <ImageView
+                    android:id="@+id/comments"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/comments3"
+                    app:tint="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/editTask"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/edittask"
+                    app:tint="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/starIcon"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/star55" />
+
+                <ImageView
+                    android:id="@+id/expandedIcon"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="fitCenter"
+
+                    android:src="@drawable/glyphicons_224_chevron_right"
+                    app:tint="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/itemTaskMenu"
+                    android:layout_width="@dimen/wh_button_small2"
+                    android:layout_height="@dimen/wh_button_small2"
+                    android:layout_weight="0"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/glyphicons_518_option_vertical"
+                    app:tint="@color/colorPrimary" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/taskinformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ltasktitle"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:id="@+id/statusTaskll"
+
+                    android:layout_width="@dimen/wh_layout_big2"
+
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical">
+
+                    <cn.refactor.library.SmoothCheckBox
+                        android:id="@+id/statusTask"
+                        android:layout_width="@dimen/wh_button_big2"
+                        android:layout_height="@dimen/wh_button_big2"
+                        android:layout_gravity="center"
+                        android:layout_weight="0"
+                        android:background="?android:attr/selectableItemBackground"
+                        app:color_checked="@color/tint_gray" />
+
+
+                    <ImageView
+                        android:id="@+id/itemdevice"
+                        android:layout_width="@dimen/wh_layout_big2"
+                        android:layout_height="@dimen/wh_layout_big2"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+
+
+                        android:src="@drawable/mobilephone" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ldetailstitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            android:id="@+id/taskdetail"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5sp"
+                            android:text="Name"
+                            android:textColor="@color/black"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/lparenttasktitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center_vertical"
+                            android:text="@string/parentTask"
+                            android:textStyle="bold"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/parenttasktype"
+                            android:layout_width="@dimen/wh_button_small3"
+                            android:layout_height="@dimen/wh_button_small3"
+                            android:layout_weight="0"
+                            android:background="?android:attr/selectableItemBackground"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/parenttasktitle"
+                            style="@style/textLinkTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center_vertical"
+                            android:text="Name"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/parenttasktitle2"
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5sp"
+                            android:text="Name"
+                            android:textStyle="bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+
+                        android:id="@+id/taskInfo1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="2sp">
+
+                        <TextView
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+
+                            android:gravity="center_vertical"
+                            android:text="@string/priority"
+                            android:textStyle="bold" />
+
+
+                        <ImageView
+
+                            android:id="@+id/priorityicon"
+                            android:layout_width="@dimen/wh_button_small3"
+                            android:layout_height="@dimen/wh_button_small3"
+                            android:layout_weight="0"
+                            android:background="?android:attr/selectableItemBackground"
+
+                            android:src="@drawable/folder" />
+
+
+                        <TextView
+                            android:id="@+id/priorityName"
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="2sp"
+                            android:text="Name"
+                            android:textColor="@color/text_black_100"
+                            android:textStyle="bold"
+
+                            />
+
+
+                        <TextView
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+
+                            android:gravity="center_vertical"
+                            android:text="@string/datedone"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/datedoneTask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+
+
+                            android:gravity="center_vertical"
+                            android:textColor="@color/white1"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tmp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+
+
+                            android:gravity="center_vertical"
+                            android:textColor="@color/white1"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/txtTaskTitleTaskCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+
+                            android:layout_weight="0"
+                            android:gravity="center_vertical"
+                            android:text="@string/status"
+                            android:textStyle="bold" />
+
+                        <com.apg.mobile.roundtextview.RoundTextView
+                            android:id="@+id/statusTask2"
+
+                            style="@style/rtv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_gravity="right"
+                            android:layout_weight="0"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:text="Name" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/taskInfo2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="2sp">
+
+                        <ImageView
+
+                            android:id="@+id/projecticon"
+                            android:layout_width="@dimen/wh_button_small3"
+                            android:layout_height="@dimen/wh_button_small3"
+                            android:layout_weight="0"
+                            android:background="?android:attr/selectableItemBackground"
+
+                            android:src="@drawable/folder" />
+
+                        <TextView
+                            android:id="@+id/projectName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5sp"
+                            android:text="Name"
+
+                            android:textColor="@color/text_black_100"
+                            android:textStyle="bold"
+
+                            />
+
+                        <ImageView
+
+                            android:id="@+id/targeticon"
+                            android:layout_width="@dimen/wh_button_small3"
+                            android:layout_height="@dimen/wh_button_small3"
+                            android:layout_weight="0"
+                            android:background="?android:attr/selectableItemBackground"
+
+                            android:src="@drawable/target4" />
+
+                        <TextView
+
+
+                            android:id="@+id/targettitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center_horizontal|right"
+                            android:paddingLeft="5sp"
+                            android:textColor="@color/text_black_100"
+                            android:textSize="12sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/text_black_100" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/taskInfo3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="2sp">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/taskTags"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:paddingLeft="2sp">
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0" />
+
+                        <TextView
+
+                            android:id="@+id/details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center_horizontal|right"
+
+                            android:text="@string/details"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+
+                            />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <!--<cn.refactor.library.SmoothCheckBox
+                    android:id="@+id/statusTask2"
+                    android:layout_width="0sp"
+                    android:layout_height="0sp"
+                    android:layout_weight="0"
+                    android:padding="4sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:color_checked="@color/tint_gray" />-->
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        app:showAsAction="always"
+
+        android:icon="@drawable/search"
+        android:title="@string/search_or_select_item"/>
+
+    <item
+        android:id="@+id/action_sort"
+        app:showAsAction="always"
+        
+        android:icon="@drawable/glyphicons_409_sort_by_attributes"
+        android:title="@string/cd_sort_order"/>
+
+    <item
+        android:id="@+id/action_sort_direction"
+        app:showAsAction="always"
+        android:icon="@drawable/glyphicons_601_chevron_up"
+        android:title="TODO" />
+</menu>

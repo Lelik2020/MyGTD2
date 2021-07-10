@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/textSection"
+                android:id="@+id/txtInputTitleMeeting"
+                android:hint="@string/titlemeeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titlemeeting"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/inputMeetingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="4" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <TextView
+                    style="@style/textSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtInputTitleMeeting"
+                    android:text="@string/datemeeting"/>
+
+                <EditText
+                    android:id="@+id/datemeeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5sp"
+                    android:focusable="false"
+
+                    android:hint="@string/dateformat"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/datameeting"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5sp"
+
+                    android:src="@drawable/glyphicons_602_chevron_down" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <TextView
+                    style="@style/textSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/datemeeting"
+                    android:text="@string/timebegin"/>
+
+                <EditText
+                    android:id="@+id/timebeginmeeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:hint="@string/timeformat"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/timestartmeeting"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5sp"
+
+                    android:src="@drawable/glyphicons_602_chevron_down" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <TextView
+                    style="@style/textSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/timeend"/>
+
+                <EditText
+                    android:id="@+id/timeendmeeting2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:hint="@string/timeformat"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/timefinishmeeting"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5sp"
+
+                    android:src="@drawable/glyphicons_602_chevron_down" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <CheckBox
+                android:button="@drawable/toggle"
+                android:theme="@style/MyCheckBox"
+                android:layout_marginTop="10dip"
+                android:id="@+id/checkBoxRemember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+
+                android:text="@string/periodicity"
+                android:textSize="16sp"
+
+                />
+
+            <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gridlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:columnCount="2"
+                android:orientation="horizontal" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dip"
+                    android:layout_column="0">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp">
+
+                        <RadioButton
+                            android:id="@+id/rBeveryday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/everyday"
+                            android:theme="@style/MyRadioButton"/>
+
+                        <RadioButton
+                            android:id="@+id/rBeveryweek"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/everyweek"
+                            android:theme="@style/MyRadioButton"/>
+
+                        <RadioButton
+                            android:id="@+id/rBeverymonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/everymonth"
+                            android:theme="@style/MyRadioButton"/>
+
+                    </RadioGroup>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dip"
+                    android:layout_column="1">
+
+                    <FrameLayout
+                        android:id="@+id/frameevery_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </GridLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+
+
+        <Button
+            android:id="@+id/btnsave"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Сохранить" />
+
+        <Button
+            android:id="@+id/btncancel"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="Отмена" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

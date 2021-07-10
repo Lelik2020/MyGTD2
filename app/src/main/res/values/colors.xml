@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="background">#e5e5e5</color>
+
+    <color name="half_black">#808080</color>
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+
+    <color name="white1">#FFFFFF</color>
+
+    <color name="black_semi_transparent">#B2000000</color>
+
+    <color name="review_green">#ff669900</color>
+
+    <color name="green_start">#FF2E8B57</color>
+    <color name="green_end">#FF3CB371</color>
+
+    <color name="green2_start">#FF008080</color>
+    <color name="green2_end">#FF66CDAA</color>
+
+    <color name="footerbackground">#686868</color>
+
+    <color name="gray">#484848</color>
+
+    <color name="gray_start">#FF484848</color>
+    <color name="gray_end">#FF686868</color>
+
+    <!-- Text -->
+    <color name="text_black_100">#000000</color>
+
+    <color name="colorFAB">#2196F3</color>
+
+    <color name="black_1">#333333</color>
+
+    <color name="active_meeting">#33FF99</color>
+
+    <color name="past_meeting">#999999</color>
+
+    <color name="future_meeting">#C71585</color>
+
+    <color name="red">#FF0000</color>
+
+    <color name="red_start">#FF0000</color>
+    <color name="red_end">#FF0000</color>
+
+    <color name="violet_start">#FF6600FF</color>
+    <color name="violet_end">#FF6699FF</color>
+
+    <color name="tint_selector">#aa03A9F4</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="tint_gray">#009688</color>
+
+    <color name="lt_grey_dima">#bbd1d1d1</color>
+
+    <color name="blue">#aa03A9F4</color>
+
+    <color name="orange">#FFA500</color>
+
+    <color name="lt_grey_alpha">#aaacacac</color>
+    <color name="lt_grey_alpha2">#88acacac</color>
+
+    <color name="tint_blue">#03A9F4</color>
+    <color name="tint_blue_alpha">#aa03A9F4</color>
+
+
+    <!-- Цвета эпиков, историй, задач  -->
+    <color name="epiccolor">#6A5ACD</color>
+    <color name="storycolor">#00FF00</color>
+    <color name="taskcolor">#0000FF</color>
+    <color name="bugcolor">#FF0000</color>
+    <color name="questioncolor">#808080</color>
+
+    <color name="dialog_text">#EEEEEE</color>
+    <color name="dialog_buttons_color">#C62828</color>
+    <color name="dialog_checkbox">#FFF</color>
+    <color name="dialog_checkbox_activated">#FF0000</color>
+    <color name="dialog_list_item">#FFF</color>
+    <color name="dialog_accent_button">#FFF</color>
+    <color name="dialog_button">#77FFFFFF</color>
+    <color name="dialog_background">#FFF</color>
+    
+    <color name="green">#008000</color>
+
+</resources>

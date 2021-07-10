@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/project_tree_icon"
+        android:layout_width="@dimen/wh_button_small"
+        android:layout_height="@dimen/wh_button_small"
+        android:layout_weight="0"
+        android:src="@drawable/plus"
+        android:scaleType="centerCrop"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="0"
+        android:button="@drawable/toggle"
+        android:focusable="false"
+        android:theme="@style/MyCheckBox" />
+
+    <TextView
+        android:id="@+id/project_tree_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_weight="2"
+
+
+         />
+
+    <ImageView
+        android:id="@+id/editProject"
+        android:layout_width="@dimen/wh_button_middle"
+        android:layout_height="@dimen/wh_button_middle"
+
+        android:padding="5sp"
+
+        android:src="@drawable/edit"
+        android:tint="@color/lt_grey_dima"
+        android:visibility="invisible" />
+</androidx.appcompat.widget.LinearLayoutCompat>

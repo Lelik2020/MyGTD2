@@ -1,0 +1,355 @@
+<resources>
+    <string name="app_name">MyGTD2</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="taskTitle">Краткое описание</string>
+    <string name="infoTitle">Детальное описание</string>
+    <string name="task">Задача</string>
+
+    <string name="infoShortTitle">Краткое описание</string>
+    <string name="infoFullTitle">Полное описание</string>
+    <string name="parentTasks">Родительские задачи</string>
+    <string name="parentTask">Родительская задача: </string>
+    <string name="childTask">Дочерние задачи</string>
+    <string name="statusTask">Статус задачи:</string>
+
+    <string name="datecreate">Дата создания</string>
+
+
+    <string name="project">Проект</string>
+    <string name="projectTitle">Название проекта</string>
+    <string name="parentproject">Родительский проект</string>
+    <string name="projectInfo">Описание проекта</string>
+    <string name="choiseproject">Выбрать проект</string>
+    <string name="statusproject">Статус проекта</string>
+    <string name="taskdetails">Подробности задачи</string>
+    <string name="priority">Приоритет</string>
+    <string name="choiseparenttask">Выбрать родительскую задачу</string>
+
+    <string name="add_info">Добавить информацию</string>
+    <string name="add_task">Добавить задачу</string>
+    <string name="addmeeting">Добавить встречу</string>
+    <string name="add_project">Добавить проект</string>
+    <string name="date_create">Дата создания:</string>
+    <string name="to_archive">Отправить в архив</string>
+
+    <string name="close_application_">Закрыть приложение?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <string name="date_done">Дата исполнения:</string>
+    <string name="datedone">Сделать до:</string>
+    <string name="taskdetail">Детальное описание:</string>
+    <string name="status">Статус:</string>
+    <string name="dateCreate">Дата создания:</string>
+    <string name="type">Тип:</string>
+
+    <string name="titlemeeting">Тема встречи:</string>
+    <string name="datemeeting">Дата встречи:</string>
+    <string name="timebegin">Время начала:</string>
+    <string name="timeend">Время окончания:</string>
+
+    <!--  Строки для выезжающего меню     -->
+
+    <string name="drawer_in">Входящие</string>
+    <string name="drawer_alltasks">Все задачи</string>
+    <string name="drawer_today">Сегодня</string>
+    <string name="drawer_settings">Настройки</string>
+
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="week">Неделя</string>
+    <string name="month">Месяц</string>
+    <string name="listmeetings">Список</string>
+
+    <string name="editmeeting">Редактировать встречу</string>
+    <string name="editinfo">Редактировать информацию</string>
+
+    <string name="addsubtask">Создать подзадачу</string>
+    <string name="clonetask">Клонировать задачу</string>
+    <string name="clonetasktomorrow">Клонировать задачу на завтра</string>
+    <string name="logworking">LogWorking</string>
+    <string name="addcomment">LogWorking</string>
+
+
+    <string name="editproject">Редактировать проект</string>
+    <string name="addproject">Добавить проект</string>
+
+    <string name="periodicity">Периодичность</string>
+
+
+        <string name="everyday">Ежедневно</string>
+        <string name="everyweek">Еженедельно</string>
+        <string name="everymonth">Ежемесячно</string>
+
+    <string name="oneveryday">Каждый день</string>
+    <string name="onworkdays">По рабочим дням</string>
+
+    <string name="oneveryweek">Каждую неделю</string>
+
+    <string name="every">Каждую</string>
+    <string name="week2">неделю</string>
+
+    <string name="repeat">Повторять</string>
+    <string name="in">в</string>
+
+
+    <string name="dateformat">dd.mm.yyyy</string>
+    <string name="timeformat">hh:mm</string>
+
+
+    <string name="day1">Пн</string>
+    <string name="day2">Вт</string>
+    <string name="day3">Ср</string>
+    <string name="day4">Чт</string>
+    <string name="day5">Пт</string>
+    <string name="day6">Сб</string>
+    <string name="day7">Вс</string>
+
+    <string name="day_1">Понедельник</string>
+    <string name="day_2">Вторник</string>
+    <string name="day_3">Среда</string>
+    <string name="day_4">Четверг</string>
+    <string name="day_5">Пятница</string>
+    <string name="day_6">Суббота</string>
+    <string name="day_7">Воскресенье</string>
+
+    <string name="projectchoice">Выбор проекта</string>
+
+
+    <string name="close">Закрыть</string>
+    <string name="apply">Применить</string>
+
+    <string name="choice">Выбрать</string>
+
+    <!--  Строки для пункта "Входящие"     -->
+    <string name="newinfo">Новая информация</string>
+    <string name="workinfo">Информация обработана</string>
+    <string name="archiveinfo">Информация в архиве</string>
+
+    <!--  Строки для пункта "Все задачи"     -->
+    <string name="newtask">Новая задача</string>
+    <string name="worktask">Задача в работе</string>
+    <string name="pausetask">Приостановлена</string>
+    <string name="posponedtask">Отложена</string>
+
+    <string name="completetask">Завершена</string>
+    <string name="sometime">Когда-нибудь</string>
+
+    <string name="paused">Приостановленные</string>
+    <string name="inhold">Отложенные</string>
+
+    <string name="completedtasks">Завершенные задачи</string>
+    <string name="targets">Цели</string>
+    <string name="tags">Тэги</string>
+    <string name="contexts">Контексты</string>
+
+    <!--  Строки для пункта "Сегодня"     -->
+    <string name="todaytask">Сделать сегодня</string>
+    <string name="expiredtask">Просроченные задачи</string>
+    <string name="allactivetask">Всего активных задач</string>
+    <string name="alltasks2">Всего задач</string>
+
+
+    <!--  Строки для пункта "Проекты"     -->
+    <string name="outstanding">Просроченные задачи</string>
+    <string name="dotoday">Сделать сегодня</string>
+    <string name="allactivetasks">Всего активных задач</string>
+
+    <string name="alltasks">Всего задач</string>
+
+    <string name="alltasks3">Все задачи</string>
+
+    <!--    -->
+
+    <string name="typeoftask">Тип задачи</string>
+    <string name="typeofinfo">Тип информации</string>
+    <string name="statusofinfo">Статус информации:</string>
+
+    <!--    -->
+    <string name="choisetags">Выбрать теги</string>
+    <string name="tag">Тэги</string>
+
+    <!--     -->
+
+    <string name="choisecategory">Выбрать категорию</string>
+
+    <!--    -->
+    <string name="choisetarget">Выбрать цель</string>
+
+    <!--    -->
+    <string name="choiseprojectstatus">Выбрать статус проекта</string>
+
+    <!--    -->
+    <string name="choisepriority">Выбрать приоритет</string>
+
+    <!--   -->
+    <string name="choisetypetask">Выбрать тип задачи</string>
+    <string name="choisetypeinfo">Выбрать тип информации</string>
+    <string name="choicestatusinfo">Выбрать статус информации</string>
+    <string name="choisecategorytask">Выбрать категорию</string>
+
+    <!--   -->
+    <string name="choisestatustask">Выбрать статус</string>
+
+    <!--   -->
+    <string name="choisecontext">Выбрать контексты</string>
+
+    <!--       -->
+    <string name="cancel">Отмена</string>
+    <string name="add">Добавить</string>
+
+    <!--    -->
+    <string name="dateend">Дата завершения (плановая)</string>
+
+    <!--     -->
+    <string name="bgcolor">Цвет фона</string>
+
+    <string name="comments">Комментарии</string>
+    <string name="comment">Комментарий</string>
+
+    <string name="datebegin">Дата начала</string>
+
+    <string name="add_tag">Добавить новый тег</string>
+
+    <string name="add_comment">Добавление комментария</string>
+    <string name="edit_comment">Редактирование комментария</string>
+    <string name="read_comment">Просмотр комментария</string>
+
+    <string name="add_target">Добавить новую цель</string>
+
+    <string name="add_priority">Добавить приоритет</string>
+
+    <string name="add_context">Добавить контекст</string>
+
+
+
+    <string name="save">Сохранить</string>
+    <string name="create">Создать</string>
+
+    <string name="commentcreated">Комментарий создан</string>
+    <string name="commentcreatedexception">Ошибка при создании комментария</string>
+    <string name="commentupdated">Комментарий обновлен</string>
+
+    <string name="taskcreated">Задача создана</string>
+    <string name="taskcreatederror">Ошибка при создании задачи</string>
+    <string name="taskupdated">Задача обновлена</string>
+    <string name="infocreated">Информация создана</string>
+    <string name="infocreatederror">Ошибка при создании информации</string>
+    <string name="infoupdated">Информация обновлена</string>
+    <string name="infotoarchive">Информация перенесена в архив</string>
+    <string name="infoupdatederror">Ошибка при обновлении информации</string>
+
+    <string name="projectcreated">Проект создан</string>
+    <string name="projectcreatederror">Ошибка при создании проекта</string>
+
+    <string name="projectedited">Проект отредактирован</string>
+    <string name="projecteditederror">Ошибка при редактировании проекта</string>
+
+    <string name="confirm">select</string>
+
+    <string name="choiceColor">Выбрать цвет: </string>
+
+    <string name="more">Подробнее</string>
+    <string name="fullread">Читать полностью</string>
+    <string name="hide">Скрыть</string>
+
+    <string name="cd_sort_order">Сортировать по...</string>
+
+    <string name="there_are_no_email_applications_installed_">No email client is installed</string>
+    <string name="please_wait_books_are_being_processed_">Please wait, Library is being updated...</string>
+
+    <string name="settings">Настройки</string>
+
+    <string name="previous_page">Предыдущая страница</string>
+    <string name="play_pause">Поставить на паузу</string>
+    <string name="next_page">Следующая страница</string>
+    <string name="next_track">Следующий трэк</string>
+    <string name="previous_track">Предыдущий трэк</string>
+    <string name="file_not_found">Файл не найден</string>
+
+    <string name="please_wait">Please wait...</string>
+
+    <string name="application_error_please_send_this_report_by_emial">Something went wrong! Kindly email this report so we can fix the bug ASAP.</string>
+    <string name="foot_notes">Footnote</string>
+
+    <string name="you_need_grant_permission">Please grant Librera access to external storage</string>
+    <string name="ok">OK</string>
+    <string name="full_list_of_changes_with_images_web_pdf_">Download a full list of changes (PDF file)</string>
+    <string name="rate_pdf_reader1">Please leave feedback and rate us on Google Play: it\'s very important for further development</string>
+    <string name="rate_us">Rate us</string>
+    <string name="what_is_new_in">What is new in</string>
+    <string name="write_feedback">Feedback</string>
+    <string name="new_beta_version_available">New Beta version is available</string>
+    <string name="success">Success</string>
+    <string name="fail">Error</string>
+    <string name="download">Download</string>
+    <string name="do_you_want_to_delete_">Delete this entry?</string>
+    <string name="new_profile">New Profile</string>
+    <string name="incorrect_value">Incorrect value</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="preferences">Preferences</string>
+    <string name="with_cutout">Notched</string>
+    <string name="normal">Normal</string>
+    <string name="open_web_page">Open Web page</string>
+    <string name="full_screen">Fullscreen</string>
+    <string name="text_highlight_mode_is_enable">Text selection is enabled</string>
+    <string name="text_highlight_mode_is_disable">Text selection is disabled</string>
+    <string name="remind_msg">Time to take a break!</string>
+    <string name="one_page">Single Page</string>
+    <string name="half_page">Half-Page</string>
+    <string name="fast_bookmark">Quick Bookmark</string>
+    <string name="system">System</string>
+    <string name="automatic">Auto</string>
+    <string name="landscape">Landscape</string>
+    <string name="portrait">Portrait</string>
+    <string name="landscape_180">Landscape (flipped)</string>
+    <string name="portrait_180">Portrait (flipped)</string>
+    <string name="msg_unexpected_error">Unexpected error has occurred</string>
+    <string name="custom_value">Custom</string>
+    <string name="by_pages">Page</string>
+    <string name="by_screans">Screen</string>
+    <string name="of_screen">Screen</string>
+    <string name="open_with">Open with</string>
+
+    <string name="by_file_name">Filename</string>
+    <string name="by_size">File Size</string>
+    <string name="by_status">По статусу</string>
+    <string name="by_date">По дате создания</string>
+    <string name="by_title">По описанию</string>
+    <string name="by_author">Author</string>
+    <string name="by_series">Series</string>
+    <string name="by_number_of_pages">Page Count</string>
+    <string name="by_number_in_serie"># in Series</string>
+    <string name="by_extension">Extension</string>
+
+    <!-- Строки для отображения задач  -->
+
+    <string name="overduetask">Просроченные задачи</string>
+    <string name="maketoday">Сделать сегодня</string>
+    <string name="maketomorrow">Сделать завтра</string>
+    <string name="makenextweek">Сделать за ближайшие 7 дней</string>
+    <string name="makeafterweek">Сделать через неделю (с 7-го по 14-ый день)</string>
+    <string name="makeaftertwoweek">Сделать через две недели (с 15-го по 30-ый день)</string>
+    <string name="makeinfuture">Сделать в будущем</string>
+    <string name="makenoenddate">Нет конечной даты</string>
+    <string name="closedtasks">Закрытые задачи</string>
+
+    <string name="details">Подробнее</string>
+
+    <string name="target">Цель</string>
+
+    <string name="dash">dash</string>
+    
+    <string name="sevendays">7 дней</string>
+    <string name="fourteendays">14 дней</string>
+    <string name="thirtydays">30 дней</string>
+
+    <string name="search_hint">Type name…</string>
+
+
+</resources>

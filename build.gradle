@@ -1,0 +1,71 @@
+ext {
+    defaultMinSdkVersion = 26
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//apply plugin: 'com.novoda.bintray-release'
+buildscript {
+
+    ext {
+        //...
+        kotlinVersion = "1.4.32"
+    }
+    
+    repositories {
+        google()
+        //jcenter()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+
+        //maven { url 'https://dl.bintray.com/novoda-oss/snapshots/'}
+        //maven { url 'https://maven.google.com' }
+        //maven { url 'https://dl.google.com/dl/android/maven2/' }
+
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:4.2.0-alpha10'
+        classpath 'com.android.tools.build:gradle:7.1.0-alpha02'
+        //classpath 'com.android.tools.build:gradle:4.0.0-rc01'
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.26.0"
+        classpath "com.novoda:bintray-release:0.8.0"
+
+        //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.4.30"
+
+        classpath "com.vanniktech:gradle-maven-publish-plugin:0.13.0"
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+        //classpath "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotlessGradle"
+        //classpath "com.vanniktech:gradle-maven-publish-plugin:$versions.mavenPublish"
+        //classpath "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokkaGradle"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        //jcenter()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+
+        //maven { url 'https://maven.google.com' }
+        //maven { url 'https://dl.google.com/dl/android/maven2/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+apply plugin: "org.jetbrains.dokka"
+//apply plugin: "com.vanniktech.maven.publish"

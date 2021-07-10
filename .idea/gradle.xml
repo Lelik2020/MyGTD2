@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../Gradle70" />
+        <option name="gradleJvm" value="Android Studio java home" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MPChartLib" />
+            <option value="$PROJECT_DIR$/MaterialDialogLibrary" />
+            <option value="$PROJECT_DIR$/MultilevelTreeLibrary" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bottom-navigation-bar" />
+            <option value="$PROJECT_DIR$/cblibrary" />
+            <option value="$PROJECT_DIR$/colorpickerview" />
+            <option value="$PROJECT_DIR$/custombutton" />
+            <option value="$PROJECT_DIR$/mydynamiccalendar" />
+            <option value="$PROJECT_DIR$/roundtextview" />
+            <option value="$PROJECT_DIR$/smartmaterialspinner" />
+            <option value="$PROJECT_DIR$/toasty" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

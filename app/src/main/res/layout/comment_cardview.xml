@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/allcomments"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="2sp"
+    card_view:cardCornerRadius="10sp"
+    card_view:cardElevation="5dp"
+    android:animateLayoutChanges="true"
+    >
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/textListSection"
+                android:hint="@string/taskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/datecreate"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/datecreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textList"
+                 />
+
+
+
+                    <TextView
+                        style="@style/textListSection"
+                        android:hint="@string/infoTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/comment"
+                        android:textStyle="bold"
+                        />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/commentTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/textList"
+                    android:lines="1"
+
+                    android:maxLines="10"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/commentTitle"
+                    android:gravity="end"
+                    android:padding="1sp" >
+                        <ImageView
+                            android:id="@+id/editComment"
+                            android:layout_width="@dimen/wh_button_verysmall"
+                            android:layout_height="@dimen/wh_button_verysmall"
+                            android:padding="1sp"
+                            android:gravity="right"
+                            android:src="@drawable/edit"
+                            android:visibility="visible"
+                            card_view:tint="@color/lt_grey_dima" />
+
+                        <TextView
+                            android:id="@+id/moreDetails"
+                            style="@style/textLink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:singleLine="false"
+                            android:text="@string/fullread"
+                             />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

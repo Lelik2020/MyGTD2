@@ -1,0 +1,11 @@
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'kau'
+    groupId = 'ru.kau'
+    artifactId = 'mygtd'
+    publishVersion = versions.versionName
+    desc = ''
+    website = ''
+    issueTracker = ""
+    repository = ""
+}

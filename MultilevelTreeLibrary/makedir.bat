@@ -1,0 +1,1 @@
+mkdir build\intermediates\compiled_local_resources\debug\out

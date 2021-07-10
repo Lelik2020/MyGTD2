@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+
+
+
+    android:animateLayoutChanges="true"
+
+
+
+
+    >
+
+
+    <!--
+    <FrameLayout
+
+        android:layout_width="1sp"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_edge"/>
+    -->
+
+    <!--<RelativeLayout
+        android:id="@+id/taskinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+
+        android:paddingLeft="2dp">-->
+
+
+
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                >
+
+
+                <CheckBox
+                    android:id="@+id/checkBoxTask"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="0"
+                    android:button="@drawable/toggle"
+                    android:clickable="false"
+                    android:theme="@style/MyCheckBox" />
+
+                <ImageView
+                    android:id="@+id/tasktype"
+                    android:layout_width="@dimen/wh_button_small"
+                    android:layout_height="@dimen/wh_button_small"
+                    android:layout_weight="0"
+                    android:background="?android:attr/selectableItemBackground"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/tasktitle"
+                    style="@style/textLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tasktitle2"
+                    style="@style/txtTaskTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+
+
+
+
+
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--</RelativeLayout>-->
+
+
+
+</androidx.cardview.widget.CardView>

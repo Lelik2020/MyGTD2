@@ -1,0 +1,24 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_toast_background"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/customToastImage"
+
+        android:layout_width="@dimen/wh_button_small"
+        android:layout_height="@dimen/wh_button_small"
+
+        android:src="@drawable/toast"/>
+
+    <TextView
+        android:id="@+id/customToastText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/taskcreated"
+        android:paddingLeft="5sp"
+        android:textSize="20dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

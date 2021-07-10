@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "PACKAGED_MANIFESTS",
+    "kind": "Directory"
+  },
+  "applicationId": "cn.pedant.SweetAlert",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [
+        {
+          "key": "packageId",
+          "value": "cn.pedant.SweetAlert"
+        },
+        {
+          "key": "split",
+          "value": ""
+        }
+      ],
+      "versionCode": 2,
+      "versionName": "1.1",
+      "outputFile": "../../library_manifest/debug/AndroidManifest.xml"
+    }
+  ]
+}
