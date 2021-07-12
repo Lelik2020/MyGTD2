@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
 
-        codeNumber = 450000
+        codeNumber = 450001
         db = 4
         major = "500"
-        minor = "00"
+        minor = "01"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -15,13 +15,13 @@ ext {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '31.0.0-rc3'
+    compileSdkVersion 30
+    buildToolsVersion '31.0.0-rc5'
 
     defaultConfig {
         applicationId "ru.kau.mygtd2"
-        minSdkVersion 26
-        targetSdkVersion 29
+        minSdkVersion 23
+        targetSdkVersion 30
 
         versionCode codeNumber
         versionName versionNumber
