@@ -5,12 +5,12 @@ group = 'com.github.vatsaldesai92'
 version = '1.0.1'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '31.0.0-rc3'
+    compileSdkVersion 30
+    buildToolsVersion '31.0.0-rc5'
 
     defaultConfig {
-        minSdkVersion 26
-        targetSdkVersion 29
+        minSdkVersion 23
+        targetSdkVersion 30
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 

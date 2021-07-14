@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 29
-  buildToolsVersion '30.0.2'
+  compileSdkVersion 30
+  buildToolsVersion '31.0.0-rc5'
 
   defaultConfig {
-    minSdkVersion 26
-    targetSdkVersion 29
+    minSdkVersion 23
+    targetSdkVersion 30
     versionName project.VERSION_NAME
     versionCode Integer.parseInt(project.VERSION_CODE)
     consumerProguardFiles 'consumer-proguard-rules.pro'
