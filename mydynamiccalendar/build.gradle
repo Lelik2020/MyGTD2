@@ -5,12 +5,12 @@ group = 'com.github.vatsaldesai92'
 version = '1.0.1'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '31.0.0-rc3'
+    compileSdkVersion 30
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
-        minSdkVersion 26
-        targetSdkVersion 29
+        minSdkVersion 23
+        targetSdkVersion 30
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
@@ -25,14 +25,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.4.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'androidx.viewpager:viewpager:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     testImplementation 'junit:junit:4.13.2'
 
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
 
 }
 
