@@ -18,6 +18,7 @@ apply plugin: 'org.jetbrains.dokka'
 apply from: "$rootDir/dependencies.gradle"
 
 android {
+  //compileSdkVersion versions.compileSdk
   compileSdkVersion versions.compileSdk
   defaultConfig {
     minSdkVersion versions.minSdk

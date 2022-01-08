@@ -15,13 +15,13 @@ ext {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '32.0.0-rc1'
+    compileSdkVersion 31
+    buildToolsVersion '32.0.0'
 
     defaultConfig {
         applicationId "ru.kau.mygtd2"
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion 26
+        targetSdkVersion 31
 
         versionCode codeNumber
         versionName versionNumber
@@ -151,33 +151,33 @@ dependencies {
     implementation project(path: ':MaterialDialogLibrary')
     //implementation project(path: ':progresslibrary')
     //implementation project(path: ':sadlibrary')
-    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
     /*implementation ('com.google.apis:google-api-services-youtube:v3-rev204-1.23.0'){
         exclude group:'com.google.guava'
     }*/
 
     //implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-android'
 
-    implementation('com.google.api-client:google-api-client-android:1.32.2') {
+    implementation('com.google.api-client:google-api-client-android:1.33.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev99-1.23.0') {
         exclude group: 'org.apache.httpcomponents'
         exclude group: 'com.google.guava'
     }
-    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'org.greenrobot:eventbus:3.3.1'
     implementation 'com.github.albfernandez:juniversalchardet:2.4.0'
     implementation 'com.cloudrail:cloudrail-si-android:2.22.4'
 
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
-    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.3'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.40.1'
+    implementation 'com.google.http-client:google-http-client-gson:1.41.0'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
 
     //implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
@@ -186,7 +186,7 @@ dependencies {
 
     //def room_version2 = "2.1.0"
     //def room_version = "1.1.1"
-    def room_version2 = '2.3.0'
+    def room_version2 = '2.4.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -194,7 +194,7 @@ dependencies {
     //implementation 'androidx.appcompat:appcompat:1.1.0-alpha5'
     //implementation 'androidx.appcompat:design:1.1.0-alpha5'
     //implementation 'com.android.support:design:28.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 
     implementation 'com.google.android.material:material:1.4.0'
 

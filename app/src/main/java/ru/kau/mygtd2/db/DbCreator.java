@@ -909,8 +909,10 @@ public class DbCreator {
         String tmDevice;
         String tmSerial;
         final TelephonyManager tm = (TelephonyManager) (MyApplication.getContext()).getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-        tmDevice = "" + tm.getImei();
-        tmSerial = "" + tm.getSimSerialNumber();
+        //tmDevice = "" + tm.getImei();
+        tmDevice = "" + Utils.getIMEIDeviceId(MyApplication.getContext());
+        //tmSerial = "" + tm.getSimSerialNumber();
+        tmSerial = "" + Utils.getSerialDeviceId(MyApplication.getContext());
         final String ANDROID_ID = Settings.Secure.getString(MyApplication.getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         UUID deviceUuid = new UUID(ANDROID_ID.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String deviceId = deviceUuid.toString();
@@ -931,7 +933,8 @@ public class DbCreator {
 
         deviceInfo.setDeviceid(1);
         deviceInfo.setKey("SimSerialNumber".toUpperCase());
-        deviceInfo.setValue(tm.getSimSerialNumber());
+        //deviceInfo.setValue(tm.getSimSerialNumber());
+        deviceInfo.setValue(Utils.getSerialDeviceId(MyApplication.getContext()));
         MyApplication.getDatabase().deviceInfoDao().insert(deviceInfo);
 
         deviceInfo.setDeviceid(1);
@@ -979,7 +982,8 @@ public class DbCreator {
 
         deviceInfo.setDeviceid(1);
         deviceInfo.setKey("Serial".toUpperCase());
-        deviceInfo.setValue(android.os.Build.getSerial());
+        //deviceInfo.setValue(android.os.Build.getSerial());
+        deviceInfo.setValue(Utils.getSerial());
         MyApplication.getDatabase().deviceInfoDao().insert(deviceInfo);
 
     }

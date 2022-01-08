@@ -1,13 +1,33 @@
 package ru.kau.mygtd2.utils;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+import static ru.kau.mygtd2.common.MyApplication.getContext;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKAFTERTOMORROW_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKOVERDUE_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKTODAY_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKTOMORROW_COLOR;
+import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
+import android.provider.Settings;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.sqlite.db.SimpleSQLiteQuery;
 
@@ -33,20 +53,7 @@ import ru.kau.mygtd2.objects.SQLCondition;
 import ru.kau.mygtd2.objects.Statistic;
 import ru.kau.mygtd2.objects.Task;
 
-import static java.time.temporal.ChronoUnit.DAYS;
-import static ru.kau.mygtd2.common.MyApplication.getContext;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKAFTERTOMORROW_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKOVERDUE_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKTODAY_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKTOMORROW_COLOR;
-import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
-
 public class Utils {
-
 
 
     public static String dateToString(Date date) {
@@ -55,9 +62,8 @@ public class Utils {
     }
 
 
-
     public static String dateToString(SimpleDateFormat format, Date date) {
-        if (format == null || format.equals("")){
+        if (format == null || format.equals("")) {
             format = DEFAULT_DATEFORMAT_WITHSECONDS;
         }
 
@@ -75,6 +81,7 @@ public class Utils {
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
+
     public static Date getEndOfDay(Date date) {
         return getEndOfDay(date, 999);
     }
@@ -118,7 +125,7 @@ public class Utils {
         return calendar.getTime();
     }
 
-    public static long getDateOfParam(int day, int month, int year, int hours, int minutes, int seconds){
+    public static long getDateOfParam(int day, int month, int year, int hours, int minutes, int seconds) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, day);
         calendar.set(Calendar.MONTH, month);
@@ -130,11 +137,11 @@ public class Utils {
         return calendar.getTime().getTime();
     }
 
-    public static int parseColor(String colorString){
+    public static int parseColor(String colorString) {
         return parseColor(colorString, DEFAULT_COLOR);
     }
 
-    public static int parseColor(String colorString, String defaultColorString){
+    public static int parseColor(String colorString, String defaultColorString) {
         int ret = 0;
         if (colorString != null) {
 
@@ -151,28 +158,28 @@ public class Utils {
     }
 
     @SuppressLint("ResourceType")
-    public static ImageView getIconTaskType(Context c, TypeOfTask typeOfTask){
+    public static ImageView getIconTaskType(Context c, TypeOfTask typeOfTask) {
 
-        switch (typeOfTask.Value){
+        switch (typeOfTask.Value) {
             case 1:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.epic);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.epic);
             case 2:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.story);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.story);
             case 3:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.task);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.task);
             case 4:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.bug);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.bug);
             case 5:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.question);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.question);
             default:
-                return (ImageView) ((Activity)c).findViewById(R.drawable.task);
+                return (ImageView) ((Activity) c).findViewById(R.drawable.task);
         }
         //return (ImageView) ((Activity)c).findViewById(R.drawable.task);
     }
 
-    public static int getImageResourceTaskType(TypeOfTask typeOfTask){
+    public static int getImageResourceTaskType(TypeOfTask typeOfTask) {
 
-        switch (typeOfTask.Value){
+        switch (typeOfTask.Value) {
             case 1:
                 return R.drawable.epic;
             case 2:
@@ -189,8 +196,8 @@ public class Utils {
         //return (ImageView) ((Activity)c).findViewById(R.drawable.task);
     }
 
-    public static int getImageResourceDeviceType(int devicetype){
-        switch (devicetype){
+    public static int getImageResourceDeviceType(int devicetype) {
+        switch (devicetype) {
             case 1:
                 return R.drawable.tablet;
             case 2:
@@ -203,11 +210,11 @@ public class Utils {
         }
     }
 
-    public static int getImageResourceInfoType(TypeOfInfo typeOfInfo){
+    public static int getImageResourceInfoType(TypeOfInfo typeOfInfo) {
 
         int image = R.drawable.info;
 
-        switch (typeOfInfo){
+        switch (typeOfInfo) {
             case QUESTION:
                 image = R.drawable.question2;
                 break;
@@ -226,7 +233,7 @@ public class Utils {
     }
 
 
-    public static String getColorByEndDate(Date date){
+    public static String getColorByEndDate(Date date) {
         //int diff = daysBetween(Utils.getStartOfDay(date), Utils.getStartOfDay(new Date()));
         long diff = diffInDays(convertToLocalDateViaInstant(getStartOfDay(date)), convertToLocalDateViaInstant(getStartOfDay(new Date())));
         if (diff < 0) {
@@ -247,7 +254,7 @@ public class Utils {
 
     }
 
-    public static int getBackgroundByEndDate(Date date){
+    public static int getBackgroundByEndDate(Date date) {
         long diff = diffInDays(convertToLocalDateViaInstant(getStartOfDay(date)), convertToLocalDateViaInstant(getStartOfDay(new Date())));
         if (diff < 0) {
             return R.drawable.roundrect_1;
@@ -266,12 +273,12 @@ public class Utils {
     }
 
     public static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
-        return dateToConvert == null ? null: dateToConvert.toInstant()
+        return dateToConvert == null ? null : dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
 
-    public static int daysBetween(Date d1, Date d2){
+    public static int daysBetween(Date d1, Date d2) {
         if (d1 != null && d2 != null) {
             return (int) ((d1.getTime() - d2.getTime()) / (1000 * 60 * 60 * 24));
         } else {
@@ -283,11 +290,11 @@ public class Utils {
         return (a != null && b != null) ? DAYS.between(b, a) : 1000000000;
     }
 
-    public static int getLevelTask(Task task){
+    public static int getLevelTask(Task task) {
         int level = 0;
         long id = task.getParenttask_id();
         while (id > 0) {
-            level ++;
+            level++;
             id = MyApplication.getDatabase().taskDao().getById(id).getParenttask_id();
             Task t1 = MyApplication.getDatabase().taskDao().getById(id);
             if (t1 != null) {
@@ -298,7 +305,7 @@ public class Utils {
         return level;
     }
 
-    public static Project getProjectByRootTask(Task task){
+    public static Project getProjectByRootTask(Task task) {
         Project pr;
 
         long id = task.getParenttask_id();
@@ -317,34 +324,40 @@ public class Utils {
         return pr;
     }
 
-    public static void updateProjectSubTasks(){
+    public static void updateProjectSubTasks() {
 
     }
 
-    public static int getIconForPriority(Priority priority){
+    public static int getIconForPriority(Priority priority) {
 
-        switch (priority.getId()){
-            case 1: return R.drawable.hi_priority;
-                    //break;
-            case 2: return R.drawable.hi_priority2;
-                    //break;
-            case 3: return R.drawable.middle_prior;
-                    //break;
-            case 4: return R.drawable.low_priority;
-                    //break;
-            case 5: return R.drawable.minus;
-                    //break;
-            default: return R.drawable.minus;
-                     //break;
+        switch (priority.getId()) {
+            case 1:
+                return R.drawable.hi_priority;
+            //break;
+            case 2:
+                return R.drawable.hi_priority2;
+            //break;
+            case 3:
+                return R.drawable.middle_prior;
+            //break;
+            case 4:
+                return R.drawable.low_priority;
+            //break;
+            case 5:
+                return R.drawable.minus;
+            //break;
+            default:
+                return R.drawable.minus;
+            //break;
         }
 
     }
 
-    public static String getTextHeading(Fragment fr, TypeDateTasks typeHeading, int count){
+    public static String getTextHeading(Fragment fr, TypeDateTasks typeHeading, int count) {
 
         String ret = "";
 
-        switch (typeHeading){
+        switch (typeHeading) {
             case OVERDUE:
                 ret = ret + fr.getResources().getString(R.string.overduetask);
                 break;
@@ -421,35 +434,35 @@ public class Utils {
 
     }
 
-    public static byte[] getArrayByte(List<Integer> intArray){
+    public static byte[] getArrayByte(List<Integer> intArray) {
         byte[] ret = new byte[intArray.size()];
-        for (int i = 0; i < intArray.size();i++){
+        for (int i = 0; i < intArray.size(); i++) {
             ret[i] = intArray.get(i).byteValue();
         }
         return ret;
     }
 
-    public static String getStringByArrayInteger(List<Integer> intArray){
+    public static String getStringByArrayInteger(List<Integer> intArray) {
         String ret = "";
-        for (int i = 0; i < intArray.size() - 1;i++){
+        for (int i = 0; i < intArray.size() - 1; i++) {
             ret = ret + intArray.get(i).toString() + ", ";
         }
         ret = ret + intArray.get(intArray.size() - 1).toString();
         return ret;
     }
 
-    public static List<Task> getListTasksBySQL(List<SQLCondition> lstSQLCond, String sqlText2, Object[] args){
+    public static List<Task> getListTasksBySQL(List<SQLCondition> lstSQLCond, String sqlText2, Object[] args) {
         List<Task> lstTask = null;
         String sqlText = HIERARCHY_TASKS;
-        if (sqlText2 != null && !sqlText2.equals("")){
+        if (sqlText2 != null && !sqlText2.equals("")) {
             sqlText += " AND " + sqlText2;
         }
-        for(int i = 0; i < lstSQLCond.size(); i++){
+        for (int i = 0; i < lstSQLCond.size(); i++) {
             if (lstSQLCond.get(i).getCond().trim().equals("=")
                     || lstSQLCond.get(i).getCond().trim().equals("<")
                     || lstSQLCond.get(i).getCond().trim().equals(">")
                     || lstSQLCond.get(i).getCond().trim().equals(">=")
-                    || lstSQLCond.get(i).getCond().trim().equals("<=")){
+                    || lstSQLCond.get(i).getCond().trim().equals("<=")) {
                 sqlText += " AND " + lstSQLCond.get(i).getSource1() + " " + lstSQLCond.get(i).getCond().trim() + " " + lstSQLCond.get(i).getSource2();
             } else {
                 sqlText += " AND " + lstSQLCond.get(i).getSource1() + " " + lstSQLCond.get(i).getCond().trim() + " (" + lstSQLCond.get(i).getSource2() + ")";
@@ -463,12 +476,12 @@ public class Utils {
         return lstTask;
     }
 
-    public static long getLastTaskId(){
+    public static long getLastTaskId() {
         long id = MyApplication.getDatabase().taskDao().getMaxId();
         return id + 1;
     }
 
-    public static long getLastInfoId(){
+    public static long getLastInfoId() {
         long id = MyApplication.getDatabase().informationDao().getMaxId();
         return id + 1;
     }
@@ -478,9 +491,9 @@ public class Utils {
         String strDate1 = dateToString(DEFAULT_DATEFORMAT, d1);
         String strDate2 = dateToString(DEFAULT_DATEFORMAT, d2);
         lstDates.add(strDate1);
-        while (!strDate1.equals(strDate2)){
+        while (!strDate1.equals(strDate2)) {
             Calendar cal = Calendar.getInstance();
-            cal.setTime( DEFAULT_DATEFORMAT.parse(strDate1));
+            cal.setTime(DEFAULT_DATEFORMAT.parse(strDate1));
             cal.add(Calendar.DATE, 1);
             strDate1 = dateToString(DEFAULT_DATEFORMAT, cal.getTime());
             lstDates.add(strDate1);
@@ -490,10 +503,10 @@ public class Utils {
         return lstDates;
     }
 
-    public static int getMaxFromArray(List<Statistic> lstStat){
+    public static int getMaxFromArray(List<Statistic> lstStat) {
         int max = 0;
-        for(int i = 0; i < lstStat.size();i++){
-            if (lstStat.get(i).getCount1() > max){
+        for (int i = 0; i < lstStat.size(); i++) {
+            if (lstStat.get(i).getCount1() > max) {
                 max = (int) lstStat.get(i).getCount1();
             }
         }
@@ -501,10 +514,10 @@ public class Utils {
         return max;
     }
 
-    public static int getMinFromArray(List<Statistic> lstStat){
+    public static int getMinFromArray(List<Statistic> lstStat) {
         int min = 1000000;
-        for(int i = 0; i < lstStat.size();i++){
-            if (lstStat.get(i).getCount1() < min){
+        for (int i = 0; i < lstStat.size(); i++) {
+            if (lstStat.get(i).getCount1() < min) {
                 min = (int) lstStat.get(i).getCount1();
             }
         }
@@ -512,16 +525,16 @@ public class Utils {
         return min;
     }
 
-    public static double getAvgFromArray(List<Statistic> lstStat){
+    public static double getAvgFromArray(List<Statistic> lstStat) {
         double avg = 0;
-        for(int i = 0; i < lstStat.size();i++){
+        for (int i = 0; i < lstStat.size(); i++) {
             avg += lstStat.get(i).getCount1();
         }
 
-        return avg / (double)lstStat.size();
+        return avg / (double) lstStat.size();
     }
 
-    public static Task getCloneTask(Task t){
+    public static Task getCloneTask(Task t) {
         Task tt = new Task();
 
         tt.setTitle(t.getTitle());
@@ -553,7 +566,7 @@ public class Utils {
 
     }
 
-    public static Task getCloneTaskTomorrow(Task t){
+    public static Task getCloneTaskTomorrow(Task t) {
         Task tt = getCloneTask(t);
         Date date = new Date();
         tt.setId(Utils.getLastTaskId());
@@ -631,5 +644,80 @@ public class Utils {
         return tt;
     }
 
+    public static String getIMEIDeviceId(Context context) {
+
+        String deviceId;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        } else {
+            final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    return "";
+                }
+            }
+            assert mTelephony != null;
+            if (mTelephony.getDeviceId() != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    deviceId = mTelephony.getImei();
+                } else {
+                    deviceId = mTelephony.getDeviceId();
+                }
+            } else {
+                deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            }
+        }
+        //Log.d("deviceId", deviceId);
+        return deviceId;
+    }
+
+    public static String getSerialDeviceId(Context context) {
+
+        String deviceId = "";
+
+        //if ( isPermissionGranted(READ_PHONE_STATE) ) {
+
+        String simSerialNo = "";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+
+            SubscriptionManager subsManager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+
+
+            List<SubscriptionInfo> subsList = subsManager.getActiveSubscriptionInfoList();
+
+                if (subsList!=null) {
+                    for (SubscriptionInfo subsInfo : subsList) {
+                        if (subsInfo != null) {
+                            deviceId  = subsInfo.getIccId();
+                        }
+                    }
+                }
+            } else {
+                TelephonyManager tMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                deviceId = tMgr.getSimSerialNumber();
+            }
+        //}
+        return deviceId;
+    }
+
+    public static String getSerial() {
+
+        String deviceId = "";
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
+        {
+            // Todo Don't forget to ask the permission
+            deviceId = Build.SERIAL;
+        }
+        else
+        {
+            deviceId = Build.getSerial();
+
+        }
+
+        return deviceId;
+    }
 
 }

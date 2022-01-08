@@ -4,11 +4,11 @@ apply plugin: 'com.android.library'
 group='com.github.philjay'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '32.0.0-rc1'
+    compileSdkVersion 31
+    buildToolsVersion '32.0.0'
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion 26
+        targetSdkVersion 31
     }
     buildTypes {
         release {
