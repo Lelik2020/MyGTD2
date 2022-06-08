@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 ext {
 
-        codeNumber = 450000
-        db = 4
-        major = "500"
+        codeNumber = 10000
+        db = 1
+        major = "00"
         minor = "00"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
@@ -16,17 +16,17 @@ ext {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion '32.0.0'
+    buildToolsVersion '33.0.0-rc4'
 
     defaultConfig {
-        applicationId "ru.kau.mygtd2"
+        applicationId "ru.kau.mygtd3"
         minSdkVersion 26
         targetSdkVersion 31
 
         versionCode codeNumber
         versionName versionNumber
 
-        buildConfigField  "int", "DB", "13"
+        buildConfigField  "int", "DB", "1"
 
         //buildConfigField  "int", "databasenumber", "2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -58,9 +58,9 @@ android {
     productFlavors {
         beta {
             dimension "version"
-            applicationId "ru.kau.mygtd2"
+            applicationId "ru.kau.mygtd3"
             manifestPlaceholders = [
-                    appName       : "MyGTD2 Beta ",
+                    appName       : "MyGTD3 Beta",
                     appIcon       : "@mipmap/mygtd",
                     appRoundIcon  : "@mipmap/mygtd",
 
@@ -93,9 +93,9 @@ android {
 
         mygtd2 {
             dimension "version"
-            applicationId "ru.kau.mygtd2"
+            applicationId "ru.kau.mygtd3"
             manifestPlaceholders = [
-                    appName       : "MyGTD2",
+                    appName       : "MyGTD3",
                     appIcon       : "@mipmap/mygtd",
                     appRoundIcon  : "@mipmap/mygtd",
 
@@ -151,14 +151,14 @@ dependencies {
     implementation project(path: ':MaterialDialogLibrary')
     //implementation project(path: ':progresslibrary')
     //implementation project(path: ':sadlibrary')
-    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
     /*implementation ('com.google.apis:google-api-services-youtube:v3-rev204-1.23.0'){
         exclude group:'com.google.guava'
     }*/
 
     //implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-android'
 
-    implementation('com.google.api-client:google-api-client-android:1.33.0') {
+    implementation('com.google.api-client:google-api-client-android:1.35.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev99-1.23.0') {
@@ -170,14 +170,14 @@ dependencies {
     implementation 'com.cloudrail:cloudrail-si-android:2.22.4'
 
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'org.jsoup:jsoup:1.14.3'
+    implementation 'org.jsoup:jsoup:1.15.1'
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
-    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.3'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.7'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.41.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.41.8'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
 
     //implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
@@ -186,7 +186,7 @@ dependencies {
 
     //def room_version2 = "2.1.0"
     //def room_version = "1.1.1"
-    def room_version2 = '2.4.0'
+    def room_version2 = '2.4.2'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -194,9 +194,9 @@ dependencies {
     //implementation 'androidx.appcompat:appcompat:1.1.0-alpha5'
     //implementation 'androidx.appcompat:design:1.1.0-alpha5'
     //implementation 'com.android.support:design:28.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.6.1'
 
     implementation "androidx.room:room-runtime:$room_version2"
 
