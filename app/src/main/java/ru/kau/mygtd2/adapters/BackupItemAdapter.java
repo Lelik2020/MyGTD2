@@ -39,7 +39,11 @@ public class BackupItemAdapter extends RecyclerView.Adapter<BackupItemAdapter.Vi
         viewHolder.title2.setText(backupItem.getCount1() + "/" + backupItem.getCount2());
         viewHolder.title3.setText(backupItem.getPercent() + "%");
         //Log.
-        viewHolder.progressBar.setProgress((int)(backupItem.getCount1() * 100/ backupItem.getCount2()));
+        try {
+            viewHolder.progressBar.setProgress((int) (backupItem.getCount1() * 100 / backupItem.getCount2()));
+        } catch (ArithmeticException e){
+            viewHolder.progressBar.setProgress(0);
+        }
 
     }
 
