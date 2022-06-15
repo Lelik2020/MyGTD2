@@ -627,19 +627,19 @@ public class DbCreator {
 
     public static void firstInitData(){
         Target target = new Target();
-        target.setId(1L);
+        /*target.setId(1L);
         target.setTitle("Выход на ТЕСТ");
         target.setDescription("1111");
-        MyApplication.getDatabase().targetDao().insert(target);
+        MyApplication.getDatabase().targetDao().insert(target);*/
 
-        target = new Target();
+        /*target = new Target();
         target.setId(2L);
         target.setTitle("Выход на ПРОМ");
         target.setDescription("222222");
-        MyApplication.getDatabase().targetDao().insert(target);
+        MyApplication.getDatabase().targetDao().insert(target);*/
 
         target = new Target();
-        target.setId(3L);
+        target.setId(1L);
         target.setTitle("Изучение английского языка");
         target.setDescription("3333333");
         MyApplication.getDatabase().targetDao().insert(target);
@@ -677,39 +677,38 @@ public class DbCreator {
         project.setPrStatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
-        project = new Project();
+        /*project = new Project();
         project.setId(3L);
         project.setTitle("Логистика банковских продуктов");
         project.setSearchtitle(project.getTitle());
         project.setDescription("333333");
         project.setParentid(1L);
         project.setPrStatus(PrStatus.ACTIVE);
-        MyApplication.getDatabase().projectDao().insert(project);
+        MyApplication.getDatabase().projectDao().insert(project);*/
 
-        project = new Project();
+        /*project = new Project();
         project.setId(4L);
         project.setTitle("Персонализация сайта");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект \"Персонализация сайта \"");
         project.setParentid(1L);
         project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);*/
 
-        MyApplication.getDatabase().projectDao().insert(project);
-
-        project = new Project();
+        /*project = new Project();
         project.setId(5L);
         project.setTitle("Performance Management");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект Performance Management");
         project.setParentid(1L);
         project.setPrStatus(PrStatus.ACTIVE);
-        MyApplication.getDatabase().projectDao().insert(project);
+        MyApplication.getDatabase().projectDao().insert(project);*/
 
 
 
 
         project = new Project();
-        project.setId(6L);
+        project.setId(3L);
         project.setTitle("MyReader");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект MyReader. ");
@@ -718,7 +717,7 @@ public class DbCreator {
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
-        project.setId(7L);
+        project.setId(4L);
         project.setTitle("MyGTD");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект MyGTD. ");
@@ -726,14 +725,14 @@ public class DbCreator {
         project.setPrStatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
-        project = new Project();
+        /*project = new Project();
         project.setId(8L);
         project.setTitle("Маркетинговый оптимизатор");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект Performance Managment");
         project.setParentid(1L);
         project.setPrStatus(PrStatus.ACTIVE);
-        MyApplication.getDatabase().projectDao().insert(project);
+        MyApplication.getDatabase().projectDao().insert(project);*/
 
         /*Task task = new Task();
         task.setId(1L);
