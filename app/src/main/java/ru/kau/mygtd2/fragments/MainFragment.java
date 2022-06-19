@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,7 +38,7 @@ public class MainFragment extends Fragment implements ClickListener {
     private MainAdapter2 mainAdapter2;
     private MainAdapter3 mainAdapter3;
     private MainAdapter4 mainAdapter4;
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
 
 
     @SuppressLint("ResourceAsColor")
@@ -50,7 +48,7 @@ public class MainFragment extends Fragment implements ClickListener {
         View rootView = inflater.inflate(R.layout.main_fragment, null);
 
 
-        ActionBar toolbar = ((MainActivity) getActivity()).getSupportActionBar();
+        //ActionBar toolbar = ((MainActivity) getActivity()).getSupportActionBar();
 
         //toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 

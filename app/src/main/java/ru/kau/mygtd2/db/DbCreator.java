@@ -295,7 +295,13 @@ public class DbCreator {
         //category.setUsed();
         MyApplication.getDatabase().categoryDao().insert(category);
 
-
+        category = new Category();
+        category.setId(22L);
+        category.setTitle("Синхронизация");
+        category.setDescription("Синхронизация");
+        category.setGrp(3);
+        //category.setUsed();
+        MyApplication.getDatabase().categoryDao().insert(category);
 
     }
 
@@ -627,21 +633,29 @@ public class DbCreator {
 
     public static void firstInitData(){
         Target target = new Target();
-        /*target.setId(1L);
-        target.setTitle("Выход на ТЕСТ");
-        target.setDescription("1111");
-        MyApplication.getDatabase().targetDao().insert(target);*/
 
-        /*target = new Target();
-        target.setId(2L);
-        target.setTitle("Выход на ПРОМ");
-        target.setDescription("222222");
-        MyApplication.getDatabase().targetDao().insert(target);*/
 
         target = new Target();
         target.setId(1L);
         target.setTitle("Изучение английского языка");
         target.setDescription("3333333");
+        MyApplication.getDatabase().targetDao().insert(target);
+
+        target.setId(2L);
+        target.setTitle("Обучение");
+        target.setDescription("1111");
+        MyApplication.getDatabase().targetDao().insert(target);
+
+        target = new Target();
+        target.setId(3L);
+        target.setTitle("Утвердить КА ФО");
+        target.setDescription("222222");
+        MyApplication.getDatabase().targetDao().insert(target);
+
+        target = new Target();
+        target.setId(4L);
+        target.setTitle("Выход на арх. совет");
+        target.setDescription("222222");
         MyApplication.getDatabase().targetDao().insert(target);
 
         /*

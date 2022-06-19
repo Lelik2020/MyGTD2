@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +27,7 @@ public class TargetFragment extends Fragment {
 
     private CommonAdapter commonAdapter;
     private TargetAdapter targetAdapter;
-
+    private ActionBar toolbar;
 
     @SuppressLint("ResourceAsColor")
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class TargetFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.target_fragment, null);
 
         RecyclerView lvCommon = (RecyclerView) rootView.findViewById(R.id.lvCommon);
+
+        toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        toolbar.setTitle("Информация");
+        setHasOptionsMenu(true);
 
         final List<String> lstCommon = new ArrayList<String>();
         lstCommon.add("Все задачи");
@@ -80,5 +86,24 @@ public class TargetFragment extends Fragment {
         return rootView;
 
     }
+
+    /*@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.toolbar_target, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }*/
+
+    /*@Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.add_target) {
+            getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("AddTargetFragment").replace(R.id.frame_container,new AddTargetFragment()).commit();
+            //Intent intent = new Intent(this, SearchUsersActivity.class);
+            //startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }*/
+
 
 }
