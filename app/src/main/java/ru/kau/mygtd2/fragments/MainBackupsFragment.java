@@ -21,7 +21,7 @@ import ru.kau.mygtd2.adapters.BackupsAdapter;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.objects.Category;
 
-public class MainBackupsFragment extends Fragment  implements ClickListener {
+public class MainBackupsFragment extends Fragment implements ClickListener {
 
     private RecyclerView recyclerView;
 

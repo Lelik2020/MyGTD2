@@ -296,7 +296,7 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(22L);
+        category.setId(23L);
         category.setTitle("Синхронизация");
         category.setDescription("Синхронизация");
         category.setGrp(3);
