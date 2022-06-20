@@ -280,7 +280,8 @@ public class Const {
 
     // --------------------------------------------------------------------------------------
 
-    public static final String BASE_URL = "http://192.168.31.202:8090/"; // DEV
+    //public static final String BASE_URL = "http://192.168.31.202:8090/"; // DEV HOME
+    public static final String BASE_URL = "http://192.168.68.2:8090/"; // DEV WORK
     //public static final String BASE_URL = "http://192.168.31.202:9999/"; // PROD
 
     // --------------------------------------------------------------------------------------
