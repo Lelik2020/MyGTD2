@@ -281,8 +281,14 @@ public class Const {
     // --------------------------------------------------------------------------------------
 
     //public static final String BASE_URL = "http://192.168.31.202:8090/"; // DEV HOME
-    public static final String BASE_URL = "http://192.168.68.2:8090/"; // DEV WORK
-    //public static final String BASE_URL = "http://192.168.31.202:9999/"; // PROD
+    //public static final String BASE_URL2 = "http://192.168.31.202:8091/"; // DEV WORK
+    //public static final String BASE_URL = "http://192.168.31.202:9999/"; // PROD HOME
+
+    public static final String BASE_URL = "http://192.168.68.2:8090/"; // DEV WORK BACKUP
+    public static final String BASE_URL2 = "http://192.168.68.2:8091/"; // DEV WORK SYNC
+
+
+
 
     // --------------------------------------------------------------------------------------
 
