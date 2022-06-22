@@ -2,6 +2,7 @@ package ru.kau.mygtd2.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BackupsAdapter;
@@ -18,6 +21,7 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Sync;
+import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.restapi.SyncApi;
 import stream.custombutton.CustomButton;
 
@@ -67,6 +71,19 @@ public class SyncsFragment extends Fragment {
 
                 calApi = Controller.getSyncApi();
                 Call<Sync> call = calApi.create(sync);
+                call.enqueue(new Callback<Sync>() {
+
+                    @Override
+                    public void onResponse(Call<Sync> call, Response<Sync> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Sync> call, Throwable t) {
+
+                    }
+                });
+
             }
         });
 
