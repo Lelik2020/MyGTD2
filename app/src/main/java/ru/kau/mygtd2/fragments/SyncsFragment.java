@@ -2,7 +2,6 @@ package ru.kau.mygtd2.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,7 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BackupsAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
-import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Sync;
-import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.restapi.SyncApi;
 import stream.custombutton.CustomButton;
 
@@ -32,6 +29,8 @@ public class SyncsFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private BackupsAdapter mainAdapter;
+
+    private Long l;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -70,16 +69,19 @@ public class SyncsFragment extends Fragment {
                 sync.setDeviceguid(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
 
                 calApi = Controller.getSyncApi();
-                Call<Sync> call = calApi.create(sync);
-                call.enqueue(new Callback<Sync>() {
+                Call<Long> call = calApi.getlastsync();
+                call.enqueue(new Callback() {
 
                     @Override
-                    public void onResponse(Call<Sync> call, Response<Sync> response) {
-
+                    public void onResponse(Call call, Response response) {
+                        l = (Long) response.body();
+                        System.out.println("Long: " + l);
                     }
 
+
+
                     @Override
-                    public void onFailure(Call<Sync> call, Throwable t) {
+                    public void onFailure(Call call, Throwable t) {
 
                     }
                 });
