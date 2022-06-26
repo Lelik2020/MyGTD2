@@ -4,7 +4,7 @@ ext {
 
         codeNumber = 10000
         db = 1
-        major = "00"
+        major = "10"
         minor = "00"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 

@@ -13,6 +13,8 @@
 
         >
 
+
+
         <stream.custombutton.CustomButton
             android:id="@+id/btncreate"
             android:layout_width="wrap_content"
@@ -25,7 +27,7 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="@string/create"
+            android:text="@string/sync"
             android:textSize="18sp"
             android:singleLine="true"
             android:ellipsize="none"

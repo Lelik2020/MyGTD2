@@ -22,6 +22,7 @@ import ru.kau.mygtd2.restapi.DirectoriesApi;
 import ru.kau.mygtd2.restapi.InformationsApi;
 import ru.kau.mygtd2.restapi.SyncApi;
 import ru.kau.mygtd2.restapi.TasksApi;
+import ru.kau.mygtd2.restapi.TasksApi2;
 
 public class Controller {
 
@@ -122,6 +123,26 @@ public class Controller {
         TasksApi calApi = retrofit.create(TasksApi.class);
         return calApi;
     }
+
+    public static TasksApi2 getTasksApi(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                //.setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .registerTypeAdapter(Date.class, new DateConverter())
+                .registerTypeAdapter(Status.class, new StatusConverter())
+                .registerTypeAdapter(TypeOfTask.class, new TypeOfTaskConverter())
+                .create();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL2)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        TasksApi2 calApi = retrofit.create(TasksApi2.class);
+        return calApi;
+    }
+
 
 
 }

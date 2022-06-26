@@ -229,6 +229,7 @@
 
     <string name="save">Сохранить</string>
     <string name="create">Создать</string>
+    <string name="sync">Синхронизировать</string>
 
     <string name="commentcreated">Комментарий создан</string>
     <string name="commentcreatedexception">Ошибка при создании комментария</string>
