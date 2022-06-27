@@ -617,6 +617,30 @@ public abstract class AppDatabase extends RoomDatabase {
 
     };
 
+    public static final Migration MIGRATION_13_14 = new Migration(1, 2) {
+        @Override
+        public void migrate(final SupportSQLiteDatabase database) {
+            String SQL1 = "CREATE TABLE [devices](\n" +
+                    "  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, \n" +
+                    "  [title] TEXT NOT NULL UNIQUE, \n" +
+                    "  [guid] TEXT NOT NULL UNIQUE, \n" +
+                    "  [iscurrent] INTEGER NOT NULL DEFAULT 0)";
+
+            String SQL2 = "CREATE UNIQUE INDEX [index_devices_guid] ON [devices]([guid])";
+
+            String SQL3 = "CREATE TABLE [devicesinfo](\n" +
+                    "  [deviceid] INTEGER NOT NULL, \n" +
+                    "  [key] TEXT NOT NULL, \n" +
+                    "  [value] TEXT NOT NULL, \n" +
+                    "  PRIMARY KEY([deviceid], [key]));\n";
+
+            database.execSQL(SQL1);
+            database.execSQL(SQL2);
+            database.execSQL(SQL3);
+        }
+
+    };
+
     /*public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(final SupportSQLiteDatabase database) {

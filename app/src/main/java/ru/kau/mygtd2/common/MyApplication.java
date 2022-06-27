@@ -1,6 +1,6 @@
 package ru.kau.mygtd2.common;
 
-import static ru.kau.mygtd2.db.AppDatabase.MIGRATION_12_13;
+import static ru.kau.mygtd2.db.AppDatabase.MIGRATION_13_14;
 
 import android.app.Application;
 import android.content.Context;
@@ -39,7 +39,8 @@ public class MyApplication extends Application {
                 //.addMigrations(MIGRATION_9_10)
                 //.addMigrations(MIGRATION_10_11)
                 //.addMigrations(MIGRATION_11_12)
-                .addMigrations(MIGRATION_12_13)
+                //.addMigrations(MIGRATION_12_13)
+                .addMigrations(MIGRATION_13_14)
                 .allowMainThreadQueries()
                 .build();
         DbCreator.firstInit();
@@ -53,6 +54,8 @@ public class MyApplication extends Application {
         //DbCreator.taskUpdate();
         //DbCreator.taskUpdate2();
     }
+
+    77
 
     public static MyApplication getInstance() {
         return instance;
