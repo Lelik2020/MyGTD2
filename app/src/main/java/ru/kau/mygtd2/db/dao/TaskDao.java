@@ -35,6 +35,9 @@ public interface TaskDao {
     @Query("SELECT * FROM tasks")
     List<Task> getAllTasks2();
 
+    @Query("SELECT * FROM tasks WHERE dateEdit >= :dateEdit")
+    List<Task> getTasksForUpdate(long dateEdit);
+
     @Query("SELECT Max(id) FROM tasks")
     long getMaxId();
 

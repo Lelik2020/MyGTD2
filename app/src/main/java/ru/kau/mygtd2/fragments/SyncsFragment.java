@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +26,7 @@ import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.restapi.SyncApi;
 import ru.kau.mygtd2.restapi.TasksApi2;
+import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
 public class SyncsFragment extends Fragment {
@@ -46,7 +49,9 @@ public class SyncsFragment extends Fragment {
 
         ActionBar toolbar = ((MainActivity) getActivity()).getSupportActionBar();
 
-        CustomButton btncreate = rootView.findViewById(R.id.btncreate);
+        CustomButton btncreate = rootView.findViewById(R.id.btnsync);
+
+        TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
 
         calApi = Controller.getSyncApi();
         Call<Long> call = calApi.getlastsync();
@@ -56,7 +61,7 @@ public class SyncsFragment extends Fragment {
             public void onResponse(Call call, Response response) {
                 l = (Long) response.body();
                 System.out.println("Long: " + l);
-
+                txtLastSync.setText(Utils.dateToString(new Date(l)));
             }
 
 
@@ -92,12 +97,10 @@ public class SyncsFragment extends Fragment {
                 Sync sync = new Sync();
                 sync.setDeviceguid(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
 
-
-
-                List<Task> lstTask = MyApplication.getDatabase().taskDao().getAllTasks();
+                List<Task> lstTask = MyApplication.getDatabase().taskDao().getTasksForUpdate(l);
                 calApi2 = Controller.getTasksApi();
-                Call<String> call2 = calApi2.settasksforupdate(lstTask);   //settst(lstTask.get(0));
-                call2.enqueue(new Callback<String>() {
+                Call call2 = calApi2.settasksforupdate(lstTask);   //settst(lstTask.get(0));
+                call2.enqueue(new Callback() {
 
                     @Override
                     public void onResponse(Call call, Response response) {
