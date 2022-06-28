@@ -30,7 +30,7 @@ public class Controller {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-
+        System.out.println("URL: " + BASE_URL2);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL2)
                 .addConverterFactory(GsonConverterFactory.create(gson))

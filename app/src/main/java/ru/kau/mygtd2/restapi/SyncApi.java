@@ -15,5 +15,8 @@ public interface SyncApi {
     Call<Long> getlastsync();
 
     @GET("sync/getlastsyncdevice")
-    Call<Long> getlastsyncdevice(Sync sync);
+    Call<Long> getlastsyncdevice(String deviceGuid);
+
+    @GET("sync/gettst")
+    Call<Long> gettst(String deviceGuid);
 }

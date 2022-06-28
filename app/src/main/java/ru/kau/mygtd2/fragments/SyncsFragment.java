@@ -54,8 +54,9 @@ public class SyncsFragment extends Fragment {
         TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
 
         calApi = Controller.getSyncApi();
-        Call<Long> call = calApi.getlastsync();
-        call.enqueue(new Callback() {
+        Call<Long> call = calApi.getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+        //Call<Long> call = calApi.getlastsyncdevice("678678");
+        call.enqueue(new Callback<Long>() {
 
             @Override
             public void onResponse(Call call, Response response) {
