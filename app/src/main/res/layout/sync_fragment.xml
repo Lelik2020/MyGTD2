@@ -90,9 +90,19 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        </RelativeLayout>>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lstsyncs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_alignParentBottom="true"
 
 
+            android:paddingTop="@dimen/wh_tasks_description_text">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

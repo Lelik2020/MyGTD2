@@ -55,7 +55,7 @@ public class MyApplication extends Application {
         //DbCreator.taskUpdate2();
     }
 
-    77
+    //77
 
     public static MyApplication getInstance() {
         return instance;
