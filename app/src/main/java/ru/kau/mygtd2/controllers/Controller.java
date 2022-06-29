@@ -10,6 +10,7 @@ import java.util.Date;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 import ru.kau.mygtd2.common.enums.Status;
 import ru.kau.mygtd2.common.enums.TypeOfInfo;
 import ru.kau.mygtd2.common.enums.TypeOfTask;
@@ -32,8 +33,9 @@ public class Controller {
                 .create();
         System.out.println("URL: " + BASE_URL2);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL2)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl(BASE_URL2)
                 .build();
 
         SyncApi calApi = retrofit.create(SyncApi.class);
