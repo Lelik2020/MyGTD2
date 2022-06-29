@@ -55,7 +55,7 @@ public class SyncsFragment extends Fragment {
 
         calApi = Controller.getSyncApi();
         //Call<Long> call = calApi.getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-        Call<Long> call = calApi.getlastsyncdevice2(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+        Call<Long> call = calApi.getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
         //Call<Long> call = calApi.getlastsyncdevice("678678");
         call.enqueue(new Callback<Long>() {
 
