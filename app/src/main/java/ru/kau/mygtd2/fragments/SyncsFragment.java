@@ -11,6 +11,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class SyncsFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private BackupsAdapter mainAdapter;
+
+    List<Sync> lstSync = new ArrayList<Sync>();
 
     private Long l;
 
@@ -73,6 +77,30 @@ public class SyncsFragment extends Fragment {
                 System.out.println("ERROR: " + t.getMessage());
             }
         });
+
+        // Получаем список синхронизаций данного устройства
+
+        Call<List<Sync>> call2 = calApi.getlstsyncsdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+
+        call2.enqueue(new Callback<List<Sync>>() {
+
+            @Override
+            public void onResponse(Call<List<Sync>> call, Response<List<Sync>> response) {
+                if (response.body() != null) {
+                    lstSync.addall(Arrays.asList((List<Sync>) response.body()));
+                }
+                System.out.println("Sync: " + lstSync[0].get(0).getGuid());
+                txtLastSync.setText(Utils.dateToString(new Date(l)));
+            }
+
+
+
+            @Override
+            public void onFailure(Call<List<Sync>> call, Throwable t) {
+                System.out.println("ERROR: " + t.getMessage());
+            }
+        });
+
 
         //toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
