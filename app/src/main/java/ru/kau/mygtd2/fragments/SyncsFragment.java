@@ -87,9 +87,12 @@ public class SyncsFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Sync>> call, Response<List<Sync>> response) {
                 if (response.body() != null) {
-                    lstSync.addall(Arrays.asList((List<Sync>) response.body()));
+                    for(int i = 0; i <= Arrays.asList((List<Sync>) response.body()).size(); i++){
+                        lstSync.add((Sync) Arrays.asList((List<Sync>) response.body()).get(i));
+                    }
+                    //lstSync.addall(Arrays.asList((List<Sync>) response.body()));
                 }
-                System.out.println("Sync: " + lstSync[0].get(0).getGuid());
+                //System.out.println("Sync: " + lstSync[0].get(0).getGuid());
                 txtLastSync.setText(Utils.dateToString(new Date(l)));
             }
 
