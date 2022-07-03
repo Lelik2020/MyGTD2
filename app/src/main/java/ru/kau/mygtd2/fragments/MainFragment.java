@@ -154,6 +154,12 @@ public class MainFragment extends Fragment implements ClickListener {
             //addProjectFragment.setArguments(bundle);
             getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("AddProjectFragment").replace(R.id.frame_container,addProjectFragment).commit();
         }
+
+        if(item.getItemId() == R.id.settings){
+            AddProjectFragment addProjectFragment = new AddProjectFragment();
+            //addProjectFragment.setArguments(bundle);
+            getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("AddProjectFragment").replace(R.id.frame_container,addProjectFragment).commit();
+        }
         //return true;
         return super.onOptionsItemSelected(item);
     }

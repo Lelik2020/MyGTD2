@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +22,7 @@ import retrofit2.Response;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BackupsAdapter;
+import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.objects.Sync;
@@ -66,17 +67,24 @@ public class SyncsFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) {
                 l = (Long) response.body();
-                System.out.println("Long: " + l);
-                txtLastSync.setText(Utils.dateToString(new Date(l)));
+                //System.out.println("Long: " + l);
+                if (l != null) {
+                    txtLastSync.setText(Utils.dateToString(new Date(l)));
+                } else {
+                    txtLastSync.setText("Синхронизаций пока не было");
+                }
             }
-
-
-
             @Override
             public void onFailure(Call call, Throwable t) {
                 System.out.println("ERROR: " + t.getMessage());
             }
         });
+
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.lstsyncs);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         // Получаем список синхронизаций данного устройства
 
@@ -86,14 +94,15 @@ public class SyncsFragment extends Fragment {
 
             @Override
             public void onResponse(Call<List<Sync>> call, Response<List<Sync>> response) {
-                if (response.body() != null) {
-                    for(int i = 0; i <= Arrays.asList((List<Sync>) response.body()).size(); i++){
-                        lstSync.add((Sync) Arrays.asList((List<Sync>) response.body()).get(i));
-                    }
-                    //lstSync.addall(Arrays.asList((List<Sync>) response.body()));
+                if (response.isSuccessful()) {
+                    System.out.println(response.body().size());
+                    lstSync.addAll(response.body());
+                    SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), lstSync);
+                    recyclerView.setAdapter(syncsAdapter);
+                    recyclerView.setVisibility(View.VISIBLE);
                 }
-                //System.out.println("Sync: " + lstSync[0].get(0).getGuid());
                 txtLastSync.setText(Utils.dateToString(new Date(l)));
+
             }
 
 

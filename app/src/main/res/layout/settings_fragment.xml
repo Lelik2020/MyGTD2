@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:text="Общие настройки"
+        android:textSize="14sp" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/group_uninstall"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:text="Настройки синхронизации"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/group_share"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+        <TextView
+            android:id="@+id/txtipdaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="IP-адрес"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txteditipdaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txtipdaddress"
+            android:text=""
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

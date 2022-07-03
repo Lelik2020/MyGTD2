@@ -6,8 +6,8 @@ public class Sync {
 
     private String deviceguid;
 
-    private long datebegin;
-    private long dateend;
+    private Long datebegin;
+    private Long dateend;
 
     private String datebeginstr;
     private String dateendstr;
@@ -28,39 +28,35 @@ public class Sync {
         this.deviceguid = deviceguid;
     }
 
-    public long getDateBegin() {
+    public Long getDatebegin() {
         return datebegin;
     }
 
-    public void setDateBegin(long dateBegin) {
-        this.datebegin = dateBegin;
+    public void setDatebegin(Long datebegin) {
+        this.datebegin = datebegin;
     }
 
-    public long getDateEnd() {
+    public Long getDateend() {
         return dateend;
     }
 
-    public void setDateEnd(long dateEnd) {
-        this.dateend = dateEnd;
+    public void setDateend(Long dateend) {
+        this.dateend = dateend;
     }
 
-    public String getDateBeginStr() {
+    public String getDatebeginstr() {
         return datebeginstr;
     }
 
-    public void setDateBeginStr(String dateBeginStr) {
-        this.datebeginstr = dateBeginStr;
+    public void setDatebeginstr(String datebeginstr) {
+        this.datebeginstr = datebeginstr;
     }
 
-    public String getDateEndStr() {
+    public String getDateendstr() {
         return dateendstr;
     }
 
-    public void setDateEndStr(String dateEndStr) {
-        this.dateendstr = dateEndStr;
+    public void setDateendstr(String dateendstr) {
+        this.dateendstr = dateendstr;
     }
-
-
-
-
 }
