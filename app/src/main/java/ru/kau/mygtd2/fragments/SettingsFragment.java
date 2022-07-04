@@ -15,7 +15,7 @@ import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 
 public class SettingsFragment extends Fragment implements IPAddressEnterDialogListener {
 
-    EditText txteditipdaddress
+    EditText txteditipdaddress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
 
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        txteditipdaddress.setText(dialog.);
+    public void onDialogPositiveClick(String txtIPAddress) {
+        txteditipdaddress.setText(txtIPAddress);
     }
 
     @Override
