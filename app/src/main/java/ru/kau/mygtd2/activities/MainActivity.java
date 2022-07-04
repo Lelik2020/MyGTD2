@@ -13,7 +13,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -21,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.fragments.MainFragment;
-import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.LOG;
 
@@ -52,7 +50,7 @@ import ru.kau.mygtd2.utils.LOG;
 // https://developer.android.com/training/data-storage/room/referencing-data
 // https://stackoverrun.com/ru/q/7684648
 
-public class MainActivity extends AppCompatActivity implements IPAddressEnterDialogListener {//implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
 
     //Fragment fragment;
 
@@ -368,16 +366,6 @@ public class MainActivity extends AppCompatActivity implements IPAddressEnterDia
     public void showInterstial() {
 
             onFinish.run();
-
-    }
-
-    @Override
-    public void onDialogPositiveClick(String txtIPAddress) {
-
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
 
     }
 

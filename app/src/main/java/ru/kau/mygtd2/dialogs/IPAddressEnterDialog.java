@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
@@ -13,9 +14,12 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import ru.kau.mygtd2.R;
+import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 
 public class IPAddressEnterDialog extends DialogFragment {
+
+    Context a;
 
     public TextInputEditText getTxtEditIPAddess() {
         return txtEditIPAddess;
@@ -25,7 +29,13 @@ public class IPAddressEnterDialog extends DialogFragment {
         this.txtEditIPAddess = txtEditIPAddess;
     }
 
+    public IPAddressEnterDialog(Context a){
+        this.a = a;
+        callback4 = (IPAddressEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
+    }
+
     com.google.android.material.textfield.TextInputEditText txtEditIPAddess;
+    IPAddressEnterDialogListener callback4;// = (IPAddressEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
     @SuppressLint("ResourceType")
     @Override
@@ -36,13 +46,17 @@ public class IPAddressEnterDialog extends DialogFragment {
         //txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) inflater.inflate(R.id.txtEditIPAddess2, null);
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
+        View v = inflater.inflate(R.layout.dialog_editipaddress, null);
+        txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) v.findViewById(R.id.txtEditIPAddess2);
         builder.setView(inflater.inflate(R.layout.dialog_editipaddress, null))
                 // Add action buttons
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-
-                        listener.onDialogPositiveClick(((com.google.android.material.textfield.TextInputEditText) inflater.inflate(R.id.txtEditIPAddess2, null)).getText().toString());
+                        //v.findViewById(R.id.btnYes).setOnClickListener(this);
+                        //listener.onDialogPositiveClick(((com.google.android.material.textfield.TextInputEditText)v.findViewById(R.id.txtEditIPAddess2)).getText().toString());
+                        //callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddess.getText()));
+                        //callback4.onDialogPositiveClick(txtEditIPAddess.get);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -55,7 +69,7 @@ public class IPAddressEnterDialog extends DialogFragment {
 
     IPAddressEnterDialogListener listener;
 
-    @Override
+    /*@Override
     public void onAttach(Context context) {
         super.onAttach(context);
         // Verify that the host activity implements the callback interface
@@ -67,7 +81,7 @@ public class IPAddressEnterDialog extends DialogFragment {
             throw new ClassCastException(getActivity().toString()
                     + " must implement NoticeDialogListener");
         }
-    }
+    }*/
 
 
 }

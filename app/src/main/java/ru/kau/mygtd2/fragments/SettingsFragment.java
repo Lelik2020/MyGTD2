@@ -26,7 +26,7 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
         txteditipdaddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IPAddressEnterDialog dialog = new IPAddressEnterDialog();
+                IPAddressEnterDialog dialog = new IPAddressEnterDialog(getActivity());
                 dialog.show(getActivity().getSupportFragmentManager(), "ipaddress");
             }
         });
