@@ -12,7 +12,7 @@
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:text="Общие настройки"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
 
 
@@ -34,7 +34,7 @@
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:text="Настройки синхронизации"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:id="@+id/group_share"
@@ -57,9 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/txtipdaddress"
-            android:text=""
-            android:textSize="16sp" />
+            android:layout_below="@+id/txtipdaddress"
+            android:text="_"
+
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-//import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
@@ -55,10 +53,10 @@ public class IPAddressEnterDialog extends DialogFragment {
         //View v = inflater.inflate(R.layout.dialog_editipaddress2, null);
         //View view = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_editipaddress2, null);
         //View view = LayoutInflater.from(a).inflate(R.layout.dialog_editipaddress2, null, false);
-        View view = inflater.inflate(R.layout.dialog_editipaddress2, null, false);
+        View view = inflater.inflate(R.layout.dialog_editipaddress, null, false);
         //txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) view.findViewById(R.id.txtEditIPAddess2);
         //txtEditIPAddr = (EditText) view.findViewById(R.id.txtEditIPAddr);
-        builder.setView(inflater.inflate(R.layout.dialog_editipaddress2, null))
+        builder.setView(inflater.inflate(R.layout.dialog_editipaddress, null))
                 // Add action buttons
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -67,9 +65,10 @@ public class IPAddressEnterDialog extends DialogFragment {
                         //listener.onDialogPositiveClick(((com.google.android.material.textfield.TextInputEditText)v.findViewById(R.id.txtEditIPAddess2)).getText().toString());
                         //callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddess.getText()));
                         //callback4.onDialogPositiveClick(txtEditIPAddess.get);
-                        txtEditIPAddr = (EditText) ((AlertDialog)dialog).findViewById(R.id.txtEditIPAddr);
+                        //txtEditIPAddess = (EditText) ((AlertDialog)dialog).findViewById(R.id.txtEditIPAddr);
+                        txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) ((AlertDialog)dialog).findViewById(R.id.txtEditIPAddess2);
                         //System.out.printf("222  " + txtEditIPAddr.getText().toString());
-                        callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddr.getText()));
+                        callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddess.getText()));
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
