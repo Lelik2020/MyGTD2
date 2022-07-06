@@ -1,5 +1,8 @@
 package ru.kau.mygtd2.fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +19,26 @@ import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 public class SettingsFragment extends Fragment implements IPAddressEnterDialogListener {
 
     EditText txteditipdaddress;
+    SharedPreferences settings;
+    SharedPreferences.Editor prefEditor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_fragment, null);
 
+        settings = getActivity().getSharedPreferences("MyGTD3", MODE_PRIVATE);
+        //prefEditor = settings.edit();
+
         txteditipdaddress = (EditText) rootView.findViewById(R.id.txteditipdaddress);
+
+        String ipAddress = settings.getString("ipaddresssync", "Не установлен");
+        if ((ipAddress == null) || (ipAddress.equals(""))) {
+            txteditipdaddress.setText("Не установлен");
+        } else {
+            txteditipdaddress.setText(ipAddress);
+        }
+
+
 
         txteditipdaddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +55,12 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
 
     @Override
     public void onDialogPositiveClick(String txtIPAddress) {
-        txteditipdaddress.setText(txtIPAddress);
+        prefEditor = settings.edit();
+        prefEditor.putString("ipaddresssync", txtIPAddress);
+        prefEditor.apply();
+        //txteditipdaddress.setText(txtIPAddress);
+        txteditipdaddress.setText(settings.getString("ipaddresssync", "Не установлен"));
+
     }
 
     @Override
