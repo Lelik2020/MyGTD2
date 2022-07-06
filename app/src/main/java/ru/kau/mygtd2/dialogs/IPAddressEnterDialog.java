@@ -12,8 +12,6 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
@@ -21,17 +19,11 @@ import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 public class IPAddressEnterDialog extends DialogFragment {
 
     Context a;
+    String type;
 
-    public TextInputEditText getTxtEditIPAddess() {
-        return txtEditIPAddess;
-    }
-
-    public void setTxtEditIPAddess(TextInputEditText txtEditIPAddess) {
-        this.txtEditIPAddess = txtEditIPAddess;
-    }
-
-    public IPAddressEnterDialog(Context a){
+    public IPAddressEnterDialog(Context a, String type){
         this.a = a;
+        this.type = type;
         callback4 = (IPAddressEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
     }
 
@@ -68,7 +60,7 @@ public class IPAddressEnterDialog extends DialogFragment {
                         //txtEditIPAddess = (EditText) ((AlertDialog)dialog).findViewById(R.id.txtEditIPAddr);
                         txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) ((AlertDialog)dialog).findViewById(R.id.txtEditIPAddess2);
                         //System.out.printf("222  " + txtEditIPAddr.getText().toString());
-                        callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddess.getText()));
+                        callback4.onDialogPositiveClick(String.valueOf(txtEditIPAddess.getText()), type);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

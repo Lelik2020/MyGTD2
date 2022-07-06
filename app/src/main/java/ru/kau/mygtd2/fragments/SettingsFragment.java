@@ -17,8 +17,8 @@ import ru.kau.mygtd2.dialogs.IPAddressEnterDialog;
 import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 
 public class SettingsFragment extends Fragment implements IPAddressEnterDialogListener {
-
-    EditText txteditipdaddress;
+    EditText txteditipdaddressbackup;
+    EditText txteditipdaddresssync;
     SharedPreferences settings;
     SharedPreferences.Editor prefEditor;
 
@@ -29,22 +29,27 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
         settings = getActivity().getSharedPreferences("MyGTD3", MODE_PRIVATE);
         //prefEditor = settings.edit();
 
-        txteditipdaddress = (EditText) rootView.findViewById(R.id.txteditipdaddress);
+        txteditipdaddresssync = (EditText) rootView.findViewById(R.id.txteditipdaddress);
+        txteditipdaddressbackup = (EditText) rootView.findViewById(R.id.txteditipdaddressbackup);
 
-        String ipAddress = settings.getString("ipaddresssync", "Не установлен");
-        if ((ipAddress == null) || (ipAddress.equals(""))) {
-            txteditipdaddress.setText("Не установлен");
-        } else {
-            txteditipdaddress.setText(ipAddress);
-        }
+        String ipAddresssync = settings.getString("ipaddresssync", "Не установлен");
+        txteditipdaddresssync.setText(ipAddresssync);
+        String ipAddressbackup= settings.getString("ipaddressbackup", "Не установлен");
+        txteditipdaddressbackup.setText(ipAddressbackup);
 
-
-
-        txteditipdaddress.setOnClickListener(new View.OnClickListener() {
+        txteditipdaddresssync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IPAddressEnterDialog dialog = new IPAddressEnterDialog(getActivity());
-                dialog.show(getActivity().getSupportFragmentManager(), "ipaddress");
+                IPAddressEnterDialog dialog = new IPAddressEnterDialog(getActivity(), "ipsync");
+                dialog.show(getActivity().getSupportFragmentManager(), "ipsync");
+            }
+        });
+
+        txteditipdaddressbackup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IPAddressEnterDialog dialog = new IPAddressEnterDialog(getActivity(), "ipbackup");
+                dialog.show(getActivity().getSupportFragmentManager(), "ipbackup");
             }
         });
 
@@ -54,13 +59,24 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
 
 
     @Override
-    public void onDialogPositiveClick(String txtIPAddress) {
+    public void onDialogPositiveClick(String txtIPAddress, String type) {
         prefEditor = settings.edit();
-        prefEditor.putString("ipaddresssync", txtIPAddress);
+        if (type.equals("ipsync")) {
+            prefEditor.putString("ipaddresssync", txtIPAddress);
+        }
+        if (type.equals("ipbackup")) {
+            prefEditor.putString("ipaddressbackup", txtIPAddress);
+        }
+
         prefEditor.apply();
         //txteditipdaddress.setText(txtIPAddress);
-        txteditipdaddress.setText(settings.getString("ipaddresssync", "Не установлен"));
+        if (type.equals("ipsync")) {
+            txteditipdaddresssync.setText(settings.getString("ipaddresssync", "Не установлен"));
+        }
 
+        if (type.equals("ipbackup")) {
+            txteditipdaddressbackup.setText(settings.getString("ipaddressbackup", "Не установлен"));
+        }
     }
 
     @Override
