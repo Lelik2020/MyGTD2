@@ -71,6 +71,7 @@ public class SyncsFragment extends Fragment {
                 if (l != null) {
                     txtLastSync.setText(Utils.dateToString(new Date(l)));
                 } else {
+                    l = 0L;
                     txtLastSync.setText("Синхронизаций пока не было");
                 }
             }
@@ -101,7 +102,11 @@ public class SyncsFragment extends Fragment {
                     recyclerView.setAdapter(syncsAdapter);
                     recyclerView.setVisibility(View.VISIBLE);
                 }
-                txtLastSync.setText(Utils.dateToString(new Date(l)));
+                if (l != null && l != 0L) {
+                    txtLastSync.setText(Utils.dateToString(new Date(l)));
+                } else {
+                    txtLastSync.setText("Синхронизаций не было");
+                }
 
             }
 
