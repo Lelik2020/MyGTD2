@@ -1,7 +1,10 @@
 package ru.kau.mygtd2.controllers;
 
-import static ru.kau.mygtd2.utils.Const.BASE_URL;
-import static ru.kau.mygtd2.utils.Const.BASE_URL2;
+//import static ru.kau.mygtd2.utils.Const.BASE_URL;
+//import static ru.kau.mygtd2.utils.Const.BASE_URL2;
+
+import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERBACKUP;
+import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERSYNC;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +26,7 @@ import ru.kau.mygtd2.restapi.InformationsApi;
 import ru.kau.mygtd2.restapi.SyncApi;
 import ru.kau.mygtd2.restapi.TasksApi;
 import ru.kau.mygtd2.restapi.TasksApi2;
+import ru.kau.mygtd2.utils.Settings;
 
 public class Controller {
 
@@ -30,11 +34,11 @@ public class Controller {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        System.out.println("URL: " + BASE_URL2);
+        System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
         Retrofit retrofit = new Retrofit.Builder()
                 //.addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl(BASE_URL2)
+                .baseUrl(Settings.getStringSetting(IPSERVERSYNC))
                 .build();
 
         SyncApi calApi = retrofit.create(SyncApi.class);
@@ -47,7 +51,7 @@ public class Controller {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Settings.getStringSetting(IPSERVERBACKUP))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -63,7 +67,7 @@ public class Controller {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Settings.getStringSetting(IPSERVERBACKUP))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -79,7 +83,7 @@ public class Controller {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Settings.getStringSetting(IPSERVERBACKUP))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -117,7 +121,7 @@ public class Controller {
         };*/
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Settings.getStringSetting(IPSERVERBACKUP))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -136,7 +140,7 @@ public class Controller {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL2)
+                .baseUrl(Settings.getStringSetting(IPSERVERSYNC))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

@@ -2,6 +2,9 @@ package ru.kau.mygtd2.fragments;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERBACKUP;
+import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERSYNC;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,26 +18,27 @@ import androidx.fragment.app.Fragment;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.dialogs.IPAddressEnterDialog;
 import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
+import ru.kau.mygtd2.utils.Settings;
 
 public class SettingsFragment extends Fragment implements IPAddressEnterDialogListener {
     EditText txteditipdaddressbackup;
     EditText txteditipdaddresssync;
-    SharedPreferences settings;
-    SharedPreferences.Editor prefEditor;
+    //SharedPreferences settings;
+    //SharedPreferences.Editor prefEditor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_fragment, null);
 
-        settings = getActivity().getSharedPreferences("MyGTD3", MODE_PRIVATE);
+        //settings = getActivity().getSharedPreferences("MyGTD3", MODE_PRIVATE);
         //prefEditor = settings.edit();
 
         txteditipdaddresssync = (EditText) rootView.findViewById(R.id.txteditipdaddress);
         txteditipdaddressbackup = (EditText) rootView.findViewById(R.id.txteditipdaddressbackup);
 
-        String ipAddresssync = settings.getString("ipaddresssync", "Не установлен");
+        String ipAddresssync = Settings.getStringSetting(IPSERVERSYNC);
         txteditipdaddresssync.setText(ipAddresssync);
-        String ipAddressbackup= settings.getString("ipaddressbackup", "Не установлен");
+        String ipAddressbackup= Settings.getStringSetting(IPSERVERBACKUP);
         txteditipdaddressbackup.setText(ipAddressbackup);
 
         txteditipdaddresssync.setOnClickListener(new View.OnClickListener() {
@@ -60,22 +64,20 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
 
     @Override
     public void onDialogPositiveClick(String txtIPAddress, String type) {
-        prefEditor = settings.edit();
+
         if (type.equals("ipsync")) {
-            prefEditor.putString("ipaddresssync", txtIPAddress);
+            Settings.setStringSettings(IPSERVERSYNC, txtIPAddress);
         }
         if (type.equals("ipbackup")) {
-            prefEditor.putString("ipaddressbackup", txtIPAddress);
+            Settings.setStringSettings(IPSERVERBACKUP, txtIPAddress);
         }
 
-        prefEditor.apply();
-        //txteditipdaddress.setText(txtIPAddress);
         if (type.equals("ipsync")) {
-            txteditipdaddresssync.setText(settings.getString("ipaddresssync", "Не установлен"));
+            txteditipdaddresssync.setText(Settings.getStringSetting(IPSERVERSYNC));
         }
 
         if (type.equals("ipbackup")) {
-            txteditipdaddressbackup.setText(settings.getString("ipaddressbackup", "Не установлен"));
+            txteditipdaddressbackup.setText(Settings.getStringSetting(IPSERVERBACKUP));
         }
     }
 
