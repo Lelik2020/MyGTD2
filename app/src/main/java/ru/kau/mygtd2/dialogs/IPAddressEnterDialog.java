@@ -28,7 +28,6 @@ public class IPAddressEnterDialog extends DialogFragment {
     }
 
     com.google.android.material.textfield.TextInputEditText txtEditIPAddess;
-    EditText txtEditIPAddr;
     IPAddressEnterDialogListener callback4;// = (IPAddressEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
     @SuppressLint({"ResourceType", "MissingInflatedId"})
@@ -45,7 +44,7 @@ public class IPAddressEnterDialog extends DialogFragment {
         //View v = inflater.inflate(R.layout.dialog_editipaddress2, null);
         //View view = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_editipaddress2, null);
         //View view = LayoutInflater.from(a).inflate(R.layout.dialog_editipaddress2, null, false);
-        View view = inflater.inflate(R.layout.dialog_editipaddress, null, false);
+        //View view = inflater.inflate(R.layout.dialog_editipaddress, null, false);
         //txtEditIPAddess = (com.google.android.material.textfield.TextInputEditText) view.findViewById(R.id.txtEditIPAddess2);
         //txtEditIPAddr = (EditText) view.findViewById(R.id.txtEditIPAddr);
         builder.setView(inflater.inflate(R.layout.dialog_editipaddress, null))

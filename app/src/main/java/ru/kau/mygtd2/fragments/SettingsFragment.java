@@ -1,11 +1,8 @@
 package ru.kau.mygtd2.fragments;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERBACKUP;
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERSYNC;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +14,15 @@ import androidx.fragment.app.Fragment;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.dialogs.IPAddressEnterDialog;
+import ru.kau.mygtd2.dialogs.TypeDeviceEnterDialog;
 import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
 import ru.kau.mygtd2.utils.Settings;
 
 public class SettingsFragment extends Fragment implements IPAddressEnterDialogListener {
     EditText txteditipdaddressbackup;
     EditText txteditipdaddresssync;
+
+    EditText txtedittypeofdevice;
     //SharedPreferences settings;
     //SharedPreferences.Editor prefEditor;
 
@@ -35,11 +35,23 @@ public class SettingsFragment extends Fragment implements IPAddressEnterDialogLi
 
         txteditipdaddresssync = (EditText) rootView.findViewById(R.id.txteditipdaddress);
         txteditipdaddressbackup = (EditText) rootView.findViewById(R.id.txteditipdaddressbackup);
+        txtedittypeofdevice = (EditText) rootView.findViewById(R.id.txtedittypeofdevice);
 
         String ipAddresssync = Settings.getStringSetting(IPSERVERSYNC);
         txteditipdaddresssync.setText(ipAddresssync);
         String ipAddressbackup= Settings.getStringSetting(IPSERVERBACKUP);
         txteditipdaddressbackup.setText(ipAddressbackup);
+
+
+
+        txtedittypeofdevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TypeDeviceEnterDialog dialog = new TypeDeviceEnterDialog(getActivity(), "typedevice");
+                dialog.show(getActivity().getSupportFragmentManager(), "typedevice");
+            }
+        });
+
 
         txteditipdaddresssync.setOnClickListener(new View.OnClickListener() {
             @Override

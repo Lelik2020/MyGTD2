@@ -1,8 +1,5 @@
 package ru.kau.mygtd2.controllers;
 
-//import static ru.kau.mygtd2.utils.Const.BASE_URL;
-//import static ru.kau.mygtd2.utils.Const.BASE_URL2;
-
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERBACKUP;
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERSYNC;
 

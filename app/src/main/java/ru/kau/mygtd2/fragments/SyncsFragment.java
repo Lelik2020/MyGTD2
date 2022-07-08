@@ -67,7 +67,7 @@ public class SyncsFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) {
                 l = (Long) response.body();
-                //System.out.println("Long: " + l);
+                System.out.println("Long: " + l);
                 if (l != null) {
                     txtLastSync.setText(Utils.dateToString(new Date(l)));
                 } else {

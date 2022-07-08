@@ -25,6 +25,26 @@
         android:paddingEnd="16dp"
         android:paddingStart="16dp">
 
+        <TextView
+            android:id="@+id/txttypeofdevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Тип устройства"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtedittypeofdevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/txttypeofdevice"
+            android:text="_"
+
+            android:textSize="15sp" />
+
+
+
     </RelativeLayout>
 
     <TextView
