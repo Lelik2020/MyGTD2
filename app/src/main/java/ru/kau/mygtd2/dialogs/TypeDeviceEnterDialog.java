@@ -22,18 +22,18 @@ import java.util.Set;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
-import ru.kau.mygtd2.common.MyApplication;
-import ru.kau.mygtd2.interfaces.IPAddressEnterDialogListener;
-import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.interfaces.TypeDeviceEnterDialogListener;
 
 public class TypeDeviceEnterDialog extends DialogFragment {
 
     Context a;
 
+    TypeDeviceEnterDialogListener callback;
+
     public TypeDeviceEnterDialog(Context a, String type){
         this.a = a;
 
-        //callback4 = (IPAddressEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
+        callback = (TypeDeviceEnterDialogListener) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
     }
 
     @Override
@@ -100,6 +100,17 @@ public class TypeDeviceEnterDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
+                        String ret = "";
+
+                        int i = 0;
+                        for (String tag: typesdevices){
+                            //Tag tag1 =
+                            if (checked.contains(i)) {
+                                ret = typesdevices.get(i);
+                            }
+                            i++;
+                        }
+                        callback.onDialogPositiveClick(ret);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

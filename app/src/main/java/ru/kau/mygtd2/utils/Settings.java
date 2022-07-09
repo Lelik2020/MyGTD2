@@ -22,6 +22,9 @@ public class Settings {
             case IPSERVERSYNC:
                 ret = settings.getString("ipaddresssync", "Не установлен");
                 break;
+            case TYPEDEVICE:
+                ret = settings.getString("typedevice", "Не установлен");
+                break;
         }
 
 
@@ -37,6 +40,9 @@ public class Settings {
                 break;
             case IPSERVERSYNC:
                 prefEditor.putString("ipaddresssync", value);
+                break;
+            case TYPEDEVICE:
+                prefEditor.putString("typedevice", value);
                 break;
         }
         prefEditor.apply();

@@ -35,6 +35,9 @@ public interface DeviceDao {
     @Query("SELECT devicetype FROM devices WHERE guid = :guid")
     int getDeviceType(String guid);
 
+    //@Query("SELECT devicetype FROM devices WHERE guid = :guid")
+    //int setDeviceType(String guid, int devicetype);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(Device device);
 

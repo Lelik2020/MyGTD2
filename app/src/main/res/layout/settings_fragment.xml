@@ -20,7 +20,7 @@
     <RelativeLayout
         android:id="@+id/group_uninstall"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
 
         android:paddingEnd="16dp"
         android:paddingStart="16dp">
