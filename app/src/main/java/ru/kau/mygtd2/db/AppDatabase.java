@@ -9,13 +9,12 @@ package ru.kau.mygtd2.db;
 //import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
-import java.util.Date;
 
 import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.db.dao.CategoryDao;
@@ -60,9 +59,6 @@ import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.objects.TaskTagJoin;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Converters;
-import ru.kau.mygtd2.utils.Utils;
-
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
 
 @Database(entities = {  Task.class, Information.class, Project.class, Category.class, TaskStatus.class, Contekst.class,
                         Tag.class, InfoStatus.class,
@@ -74,8 +70,11 @@ import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
                         , DeviceInfo.class
                         , TaskCategory.class
                         },
-                        //version = 3
-                        version = BuildConfig.DB
+                        version = 1
+                        //version = BuildConfig.DB
+                        /*autoMigrations = {
+                                @AutoMigration(from = 1, to = 2)
+                        }*/
                         , exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -637,6 +636,59 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL(SQL1);
             database.execSQL(SQL2);
             database.execSQL(SQL3);
+        }
+
+    };
+
+    public static final Migration MIGRATION_14_15 = new Migration(1, 2) {
+        @Override
+        public void migrate(final SupportSQLiteDatabase database) {
+            String SQL1 = "CREATE TABLE [devices](\n" +
+                    "  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, \n" +
+                    "  [title] TEXT NOT NULL UNIQUE, \n" +
+                    "  [guid] TEXT NOT NULL UNIQUE, \n" +
+                    "  [iscurrent] INTEGER NOT NULL DEFAULT 0)";
+
+            String SQL2 = "CREATE UNIQUE INDEX [index_devices_guid] ON [devices]([guid])";
+
+            String SQL3 = "CREATE TABLE [devicesinfo](\n" +
+                    "  [deviceid] INTEGER NOT NULL, \n" +
+                    "  [key] TEXT NOT NULL, \n" +
+                    "  [value] TEXT NOT NULL, \n" +
+                    "  PRIMARY KEY([deviceid], [key]));\n";
+
+            String SQL4 = "PRAGMA [main].legacy_alter_table = 'on';\n" +
+                    "\n" +
+                    "PRAGMA [main].foreign_keys = 'off';\n" +
+                    "\n" +
+                    "SAVEPOINT [sqlite_expert_apply_design_transaction];\n" +
+                    "\n" +
+                    "DROP INDEX [main].[index_devices_guid];\n" +
+                    "\n" +
+                    "ALTER TABLE [main].[devices] RENAME TO [_sqliteexpert_temp_table_1];\n" +
+                    "\n" +
+                    "CREATE TABLE [main].[devices](\n" +
+                    "  [title] TEXT NOT NULL, \n" +
+                    "  [guid] TEXT PRIMARY KEY NOT NULL, \n" +
+                    "  [iscurrent] INTEGER NOT NULL, \n" +
+                    "  [devicetype] INTEGER NOT NULL);\n" +
+                    "\n" +
+                    "INSERT INTO [main].[devices]([rowid], [title], [guid], [iscurrent], [devicetype])\n" +
+                    "SELECT [rowid], [title], [guid], [iscurrent], [devicetype]\n" +
+                    "FROM [main].[_sqliteexpert_temp_table_1];\n" +
+                    "\n" +
+                    "DROP TABLE IF EXISTS [main].[_sqliteexpert_temp_table_1];\n" +
+                    "\n" +
+                    "CREATE UNIQUE INDEX [main].[index_devices_guid] ON [devices]([guid]);\n" +
+                    "\n" +
+                    "RELEASE [sqlite_expert_apply_design_transaction];\n" +
+                    "\n" +
+                    "PRAGMA [main].foreign_keys = 'on';\n" +
+                    "\n" +
+                    "PRAGMA [main].legacy_alter_table = 'off';";
+
+            System.out.println("MIGRATION_14_15" );
+            //database.execSQL(SQL4);
         }
 
     };

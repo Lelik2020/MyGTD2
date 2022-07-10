@@ -21,25 +21,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
-import ru.kau.mygtd2.adapters.BackupsAdapter;
 import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
+import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Sync;
-import ru.kau.mygtd2.objects.Task;
+import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.restapi.SyncApi;
-import ru.kau.mygtd2.restapi.TasksApi2;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
 public class SyncsFragment extends Fragment {
 
     private static SyncApi calApi;
-    private static TasksApi2 calApi2;
+    //private static TasksApi2 calApi2;
 
     private RecyclerView recyclerView;
 
-    private BackupsAdapter mainAdapter;
+    //private BackupsAdapter mainAdapter;
 
     List<Sync> lstSync = new ArrayList<Sync>();
 
@@ -119,24 +118,7 @@ public class SyncsFragment extends Fragment {
         });
 
 
-        //toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
-
-        /*recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview1);
-
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setStroke(2, R.color.black_1);
-        drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setCornerRadius(20);
-
-        recyclerView.setBackground(drawable);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));*/
-
-        //mainAdapter = new BackupsAdapter(getActivity(), lstCategories);
-        //mainAdapter.setClickListener(this);
-
-        //recyclerView.setAdapter(mainAdapter);
 
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +126,49 @@ public class SyncsFragment extends Fragment {
                 Sync sync = new Sync();
                 sync.setDeviceguid(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
 
-                List<Task> lstTask = MyApplication.getDatabase().taskDao().getTasksForUpdate(l);
+                Call<Sync> call3 = calApi.create(sync);
+
+                // Обновляем справочники
+                // Контексты
+                List<Contekst> lstConteksts = MyApplication.getDatabase().contextDao().getAll();
+                for(int i = 0; i < lstConteksts.size(); i++){
+                    Call<Contekst> contekstCall = calApi.createContekst(lstConteksts.get(i));
+                    contekstCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            System.out.println("CONTEXT");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+
+                        }
+                    });
+                }
+
+
+                List<Tag> lstTag = MyApplication.getDatabase().tagDao().getAll();
+                for(int i = 0; i < lstTag.size(); i++){
+                    Call<Tag> tagCall = calApi.createTag(lstTag.get(i));
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            System.out.println("TAG");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+
+                        }
+                    });
+                }
+
+
+
+
+                /*List<Task> lstTask = MyApplication.getDatabase().taskDao().getTasksForUpdate(l);
                 calApi2 = Controller.getTasksApi();
                 Call call2 = calApi2.settasksforupdate(lstTask);   //settst(lstTask.get(0));
                 call2.enqueue(new Callback() {
@@ -160,7 +184,7 @@ public class SyncsFragment extends Fragment {
                         //Log.e("ERROR8888", t.getMessage());
                     }
                 });
-
+*/
             }
         });
 

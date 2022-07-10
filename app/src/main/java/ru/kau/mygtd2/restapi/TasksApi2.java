@@ -12,7 +12,5 @@ public interface TasksApi2 {
     @POST("tasks/settasksforupdate")
     Call<String> settasksforupdate(@Body List<Task> lstTasks);
 
-    @POST("tasks/settst")
-    Call<String> settst(@Body Task lstTasks);
 
 }

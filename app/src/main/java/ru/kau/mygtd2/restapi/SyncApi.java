@@ -9,12 +9,20 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Project;
+import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
+import ru.kau.mygtd2.objects.Tag;
+import ru.kau.mygtd2.objects.Target;
 
 public interface SyncApi {
 
     @POST("sync/new")
     Call<Sync> create(@Body Sync sync);
+
+    @POST("sync/update")
+    Call<Sync> update(@Body Sync sync);
 
     @GET("sync/getlastsync")
     Call<Long> getlastsync();
@@ -25,11 +33,25 @@ public interface SyncApi {
     Call<Long> getlastsyncdevice(@Query("deviceGuid") String deviceGuid);
 
 
-    @GET("sync/gettst")
-    Call<Long> gettst(String deviceGuid);
-
     @GET("sync/getlstsyncsdevice")
     Call<List<Sync>> getlstsyncsdevice(@Query("deviceGuid") String deviceGuid);
 
+    // Справочники
+    // Контекст
+
+    @POST("dict/contekst/new")
+    Call<Contekst> createContekst(@Body Contekst contekst);
+
+    @POST("dict/project/new")
+    Call<Project> createProject(@Body Project project);
+
+    @POST("dict/projectstatus/new")
+    Call<ProjectStatus> createProjectStatus(@Body ProjectStatus projectStatus);
+
+    @POST("dict/tag/new")
+    Call<Tag> createTag(@Body Tag tag);
+
+    @POST("dict/target/new")
+    Call<Target> createTarget(@Body Target target);
 
 }
