@@ -83,11 +83,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
         View v= LayoutInflater.from(c).inflate(R.layout.main_cardview,viewGroup,false);
 
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setStroke(4, R.color.black);
+        /*GradientDrawable drawable = new GradientDrawable();
+        drawable.setStroke(5, R.color.black);
         drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setCornerRadius(20);
-        v.setBackground(drawable);
+        drawable.setCornerRadius(7);
+        v.setBackground(drawable);*/
 
         return new ViewHolder(v);
     }

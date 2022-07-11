@@ -59,7 +59,7 @@ public class MainFragment extends Fragment implements ClickListener {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
         drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setCornerRadius(20);
+        drawable.setCornerRadius(7);
 
         //ShapeDrawable drawable = new ShapeDrawable();
         //drawable.getPaint().setColor(Color.BLACK);
