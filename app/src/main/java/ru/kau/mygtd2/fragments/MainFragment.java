@@ -55,18 +55,14 @@ public class MainFragment extends Fragment implements ClickListener {
         LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
-
         GradientDrawable drawable = new GradientDrawable();
+
+        /*GradientDrawable drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(7);
 
-        //ShapeDrawable drawable = new ShapeDrawable();
-        //drawable.getPaint().setColor(Color.BLACK);
-        //drawable.getPaint().setStrokeWidth(5);
-
-
-        recyclerView.setBackground(drawable);
+        recyclerView.setBackground(drawable);*/
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mainAdapter = new MainAdapter(getActivity(), MyApplication.getDatabase().categoryDao().getAllByGroup(1));

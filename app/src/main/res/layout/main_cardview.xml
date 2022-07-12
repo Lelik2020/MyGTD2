@@ -3,15 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/card_view"
 
     style="@style/MyCardView"
-
-
-    >
 
 
     >
@@ -27,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-
+        android:background="@drawable/selector_nn"
         android:padding="2dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
