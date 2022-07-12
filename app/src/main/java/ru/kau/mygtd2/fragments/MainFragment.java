@@ -1,7 +1,6 @@
 package ru.kau.mygtd2.fragments;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,7 +54,7 @@ public class MainFragment extends Fragment implements ClickListener {
         LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
-        GradientDrawable drawable = new GradientDrawable();
+        //GradientDrawable drawable = new GradientDrawable();
 
         /*GradientDrawable drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
@@ -72,11 +71,12 @@ public class MainFragment extends Fragment implements ClickListener {
 
         recyclerView2 = (RecyclerView) rootView.findViewById(R.id.main_recyclerview2);
 
-        drawable = new GradientDrawable();
+        /*drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(20);
-        recyclerView2.setBackground(drawable);
+        recyclerView2.setBackground(drawable);*/
+
         recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mainAdapter2 = new MainAdapter2(getActivity(), MyApplication.getDatabase().categoryDao().getAllByGroup(2));
@@ -86,11 +86,11 @@ public class MainFragment extends Fragment implements ClickListener {
 
         recyclerView3 = (RecyclerView) rootView.findViewById(R.id.main_recyclerview3);
 
-        drawable = new GradientDrawable();
+        /*drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(20);
-        recyclerView3.setBackground(drawable);
+        recyclerView3.setBackground(drawable);*/
         recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mainAdapter3 = new MainAdapter3(getActivity(), MyApplication.getDatabase().categoryDao().getAllByGroup(3));
@@ -100,11 +100,11 @@ public class MainFragment extends Fragment implements ClickListener {
 
         recyclerView4 = (RecyclerView) rootView.findViewById(R.id.main_recyclerview4);
 
-        drawable = new GradientDrawable();
+        /*drawable = new GradientDrawable();
         drawable.setStroke(2, R.color.black_1);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(20);
-        recyclerView4.setBackground(drawable);
+        recyclerView4.setBackground(drawable);*/
         recyclerView4.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mainAdapter4 = new MainAdapter4(getActivity(), MyApplication.getDatabase().categoryDao().getAllByGroup(4));

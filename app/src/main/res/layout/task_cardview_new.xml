@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-
+        android:background="@drawable/selector_nn"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -56,6 +56,9 @@
                     android:layout_weight="0"
                     android:background="?android:attr/selectableItemBackground"
                     android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="2sp"
 
                     />
 

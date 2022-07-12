@@ -59,11 +59,11 @@ public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
         View v= LayoutInflater.from(c).inflate(R.layout.main_cardview2,viewGroup,false);
 
-        GradientDrawable drawable = new GradientDrawable();
+        /*GradientDrawable drawable = new GradientDrawable();
         drawable.setStroke(4, R.color.black);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(20);
-        v.setBackground(drawable);
+        v.setBackground(drawable);*/
 
         return new ViewHolder(v);
     }

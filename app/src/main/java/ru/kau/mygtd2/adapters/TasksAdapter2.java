@@ -205,9 +205,9 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         viewHolder.taskdetail.setText(lstTask.get(i).getDescription());
         TxtUtils.underlineTextView(viewHolder.title);
         viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask()));
-        viewHolder.typeTask.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //viewHolder.typeTask.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
-        lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), ViewGroup.LayoutParams.WRAP_CONTENT);
+        lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
         lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
         lParamsrtv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_RTV_WIDTH, Const.DEFAULT_RTV_HEIGHT);
         lParamsiv.setMargins(5, 5, 0, 0);
@@ -223,7 +223,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             TxtUtils.underlineTextView(viewHolder.parenttitle);
             viewHolder.parenttypeTask.setImageResource(Utils.getImageResourceTaskType(parenttask.getTypeOfTask()));
             //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
-            lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), ViewGroup.LayoutParams.WRAP_CONTENT);
+            lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
             lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTHSMALL, Const.DEFAULT_ICON_HEIGHTSMALL);
             lParamsrtv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_RTV_WIDTH, Const.DEFAULT_RTV_HEIGHT);
             lParamsiv.setMargins(5, 5, 0, 0);

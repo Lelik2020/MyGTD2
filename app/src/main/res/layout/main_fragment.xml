@@ -15,13 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_margin="5dp"
             >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5sp"
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
 
                 >
 
@@ -31,8 +33,8 @@
                 android:id="@+id/main_recyclerview2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
                 >
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -41,8 +43,8 @@
                 android:id="@+id/main_recyclerview3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
                 >
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -51,8 +53,8 @@
                 android:id="@+id/main_recyclerview4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
                 >
 
             </androidx.recyclerview.widget.RecyclerView>

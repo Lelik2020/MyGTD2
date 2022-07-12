@@ -1,8 +1,10 @@
 package ru.kau.mygtd2.adapters;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,6 @@ import java.util.List;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.objects.Category;
-
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
 
 public class MainAdapter3 extends RecyclerView.Adapter<MainAdapter3.ViewHolder>{
 
@@ -57,11 +56,11 @@ public class MainAdapter3 extends RecyclerView.Adapter<MainAdapter3.ViewHolder>{
 
         View v= LayoutInflater.from(c).inflate(R.layout.main_cardview2,viewGroup,false);
 
-        GradientDrawable drawable = new GradientDrawable();
+        /*GradientDrawable drawable = new GradientDrawable();
         drawable.setStroke(4, R.color.black);
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(20);
-        v.setBackground(drawable);
+        v.setBackground(drawable);*/
 
 
 

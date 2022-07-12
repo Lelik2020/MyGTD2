@@ -7,7 +7,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="wh_button_verysmall">18sp</dimen>
-    <dimen name="wh_button_small2">20sp</dimen>
+    <dimen name="wh_button_small2">20dp</dimen>
     <dimen name="wh_button_small">25sp</dimen>
     <dimen name="wh_button_middle">30sp</dimen>
     <dimen name="wh_button_small3">16sp</dimen>
