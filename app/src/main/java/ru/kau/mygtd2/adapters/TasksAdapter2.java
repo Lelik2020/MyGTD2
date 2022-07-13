@@ -264,7 +264,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
         viewHolder.statusTask.setLayoutParams(lParamsiv);
         //lParamsiv.setMargins(5, 5, 0, 0);
-        lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
+        lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), ViewGroup.LayoutParams.MATCH_PARENT);
         lParamsll.setMargins(2, 2, 0, 0);
         viewHolder.statusTaskll.setLayoutParams(lParamsll);
         viewHolder.statusTask.setOnClickListener(new View.OnClickListener() {
@@ -592,7 +592,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         //viewHolder.card.getBackgroundResource();
         //viewHolder.card.getBackground().setTint(Color.RED);
 
-        GradientDrawable gradientDrawable = new GradientDrawable();
+        /*GradientDrawable gradientDrawable = new GradientDrawable();
         //gradientDrawable.setColor(Color.GREEN);
         //gradientDrawable.setShape();
 
@@ -604,7 +604,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         }
         gradientDrawable.setStroke(4, R.color.colorPrimaryDark);
         setCornerRadius(gradientDrawable, 20f);
-        viewHolder.card.setBackground(gradientDrawable);
+        viewHolder.card.setBackground(gradientDrawable);*/
 
 
 
