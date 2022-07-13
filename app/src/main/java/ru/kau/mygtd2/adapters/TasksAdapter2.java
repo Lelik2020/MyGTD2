@@ -134,12 +134,12 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             taskInfo1 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo1);
             taskInfo2 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo2);
             taskInfo3 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo3);
-            taskTags = (LinearLayoutCompat) itemView.findViewById(R.id.taskTags);
+            taskTags = itemView.findViewById(R.id.taskTags);
             statusTaskll = (LinearLayoutCompat) itemView.findViewById(R.id.statusTaskll);
             parenttaskll = (LinearLayoutCompat) itemView.findViewById(R.id.lparenttasktitle);
 
             projecticon = (ImageView) itemView.findViewById(R.id.projecticon);
-            projectName = (TextView) itemView.findViewById(R.id.projectName);
+            projectName = itemView.findViewById(R.id.projectName);
             targeticon = (ImageView) itemView.findViewById(R.id.targeticon);
             targetTitle = (TextView) itemView.findViewById(R.id.targettitle);
             details = (TextView) itemView.findViewById(R.id.details);
@@ -211,7 +211,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
         lParamsrtv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_RTV_WIDTH, Const.DEFAULT_RTV_HEIGHT);
         lParamsiv.setMargins(5, 5, 0, 0);
-        viewHolder.typeTask.setLayoutParams(lParamsiv);
+        //viewHolder.typeTask.setLayoutParams(lParamsiv);
         //Log.e("dateEnd", String.valueOf(lstTask.get(i).getDateEnd().getTime()) + "   " + Utils.dateToString(lstTask.get(i).getDateEnd()));
 
         Task parenttask = MyApplication.getDatabase().taskDao().getById(lstTask.get(i).getParenttask_id());
@@ -249,7 +249,8 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             viewHolder.datedoneTask.setTextColor(R.color.black);
             viewHolder.datedoneTask.setTextSize(13);
             //viewHolder.datedoneTask.setTypeface(viewHolder.datedoneTask.getTypeface(), Typeface.BOLD);
-            viewHolder.datedoneTask.setTextAppearance(c, R.style.boldText);
+            //viewHolder.datedoneTask.setTextAppearance(c, R.style.boldText);
+            viewHolder.datedoneTask.setTextAppearance(R.style.boldText);
         }
 
         if (lstTask.get(i).getStatus()== Status.COMPLETED) {
@@ -260,7 +261,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
 
         viewHolder.statusTask.setChecked((lstTask.get(i).getStatus() != Status.COMPLETED) ? false : true);
         //viewHolder.statusTask.setChecked((Status.from(lstTask.get(i).getStatus()) != Status.COMPLETED) ? false : true);
-        lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
+        lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big3), (int) c.getResources().getDimension(R.dimen.wh_button_big3));
         viewHolder.statusTask.setLayoutParams(lParamsiv);
         //lParamsiv.setMargins(5, 5, 0, 0);
         lParamsll.setMargins(2, 2, 0, 0);
@@ -285,7 +286,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
                 }
                 viewHolder.statusTask.setChecked((lstTask.get(i).getStatus() != Status.COMPLETED) ? false : true);
                 //viewHolder.statusTask.setChecked((Status.from(lstTask.get(i).getStatus()) != Status.COMPLETED) ? false : true);
-                lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
+                lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big3), (int) c.getResources().getDimension(R.dimen.wh_button_big3));
                 viewHolder.statusTask.setLayoutParams(lParamsiv);
                 Date date = new Date();
                 lstTask.get(i).setDateEdit(date);
