@@ -4,8 +4,8 @@ ext {
 
         codeNumber = 10000
         db = 1
-        major = "20"
-        minor = "10"
+        major = "21"
+        minor = "00"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -158,7 +158,7 @@ dependencies {
 
     //implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-android'
 
-    implementation('com.google.api-client:google-api-client-android:1.35.1') {
+    implementation('com.google.api-client:google-api-client-android:1.35.2') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev99-1.23.0') {
@@ -170,11 +170,11 @@ dependencies {
     implementation 'com.cloudrail:cloudrail-si-android:2.22.4'
 
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'org.jsoup:jsoup:1.15.1'
+    implementation 'org.jsoup:jsoup:1.15.2'
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.9'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.42.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.42.1'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'

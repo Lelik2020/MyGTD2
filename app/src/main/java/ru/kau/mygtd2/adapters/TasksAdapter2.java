@@ -121,36 +121,36 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.tasktitle);
-            typeTask = (ImageView) itemView.findViewById(R.id.tasktype);
-            statusTask= (SmoothCheckBox) itemView.findViewById(R.id.statusTask);
-            title2 = (TextView) itemView.findViewById(R.id.tasktitle2);
+            title = itemView.findViewById(R.id.tasktitle);
+            typeTask = itemView.findViewById(R.id.tasktype);
+            statusTask= itemView.findViewById(R.id.statusTask);
+            title2 = itemView.findViewById(R.id.tasktitle2);
             taskdetail = itemView.findViewById(R.id.taskdetail);
 
-            parenttitle = (TextView) itemView.findViewById(R.id.parenttasktitle);
-            parenttypeTask = (ImageView) itemView.findViewById(R.id.parenttasktype);
-            parenttitle2 = (TextView) itemView.findViewById(R.id.parenttasktitle2);
+            parenttitle = itemView.findViewById(R.id.parenttasktitle);
+            parenttypeTask = itemView.findViewById(R.id.parenttasktype);
+            parenttitle2 = itemView.findViewById(R.id.parenttasktitle2);
 
-            taskInfo1 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo1);
-            taskInfo2 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo2);
-            taskInfo3 = (LinearLayoutCompat) itemView.findViewById(R.id.taskInfo3);
+            taskInfo1 = itemView.findViewById(R.id.taskInfo1);
+            taskInfo2 = itemView.findViewById(R.id.taskInfo2);
+            taskInfo3 = itemView.findViewById(R.id.taskInfo3);
             taskTags = itemView.findViewById(R.id.taskTags);
-            statusTaskll = (LinearLayoutCompat) itemView.findViewById(R.id.statusTaskll);
-            parenttaskll = (LinearLayoutCompat) itemView.findViewById(R.id.lparenttasktitle);
+            statusTaskll = itemView.findViewById(R.id.statusTaskll);
+            parenttaskll = itemView.findViewById(R.id.lparenttasktitle);
 
-            projecticon = (ImageView) itemView.findViewById(R.id.projecticon);
+            projecticon = itemView.findViewById(R.id.projecticon);
             projectName = itemView.findViewById(R.id.projectName);
-            targeticon = (ImageView) itemView.findViewById(R.id.targeticon);
-            targetTitle = (TextView) itemView.findViewById(R.id.targettitle);
-            details = (TextView) itemView.findViewById(R.id.details);
+            targeticon = itemView.findViewById(R.id.targeticon);
+            targetTitle = itemView.findViewById(R.id.targettitle);
+            details = itemView.findViewById(R.id.details);
             card = itemView.findViewById(R.id.alltaskinfo);
-            editTask = (ImageView) itemView.findViewById(R.id.editTask);
-            statusTask2 = (RoundTextView) itemView.findViewById(R.id.statusTask2);
-            datedoneTask = (TextView) itemView.findViewById(R.id.datedoneTask);
-            menu = (ImageView) itemView.findViewById(R.id.itemTaskMenu);
-            starIcon = (ImageView) itemView.findViewById(R.id.starIcon);
-            priorityicon = (ImageView) itemView.findViewById(R.id.priorityicon);
-            priorityName = (TextView) itemView.findViewById(R.id.priorityName);
+            editTask = itemView.findViewById(R.id.editTask);
+            statusTask2 = itemView.findViewById(R.id.statusTask2);
+            datedoneTask = itemView.findViewById(R.id.datedoneTask);
+            menu = itemView.findViewById(R.id.itemTaskMenu);
+            starIcon = itemView.findViewById(R.id.starIcon);
+            priorityicon = itemView.findViewById(R.id.priorityicon);
+            priorityName = itemView.findViewById(R.id.priorityName);
             category = itemView.findViewById(R.id.category);
             itemdevice = itemView.findViewById(R.id.itemdevice);
 
@@ -261,9 +261,10 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
 
         viewHolder.statusTask.setChecked((lstTask.get(i).getStatus() != Status.COMPLETED) ? false : true);
         //viewHolder.statusTask.setChecked((Status.from(lstTask.get(i).getStatus()) != Status.COMPLETED) ? false : true);
-        lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big3), (int) c.getResources().getDimension(R.dimen.wh_button_big3));
+        lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
         viewHolder.statusTask.setLayoutParams(lParamsiv);
         //lParamsiv.setMargins(5, 5, 0, 0);
+        lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
         lParamsll.setMargins(2, 2, 0, 0);
         viewHolder.statusTaskll.setLayoutParams(lParamsll);
         viewHolder.statusTask.setOnClickListener(new View.OnClickListener() {
@@ -286,7 +287,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
                 }
                 viewHolder.statusTask.setChecked((lstTask.get(i).getStatus() != Status.COMPLETED) ? false : true);
                 //viewHolder.statusTask.setChecked((Status.from(lstTask.get(i).getStatus()) != Status.COMPLETED) ? false : true);
-                lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big3), (int) c.getResources().getDimension(R.dimen.wh_button_big3));
+                lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
                 viewHolder.statusTask.setLayoutParams(lParamsiv);
                 Date date = new Date();
                 lstTask.get(i).setDateEdit(date);
