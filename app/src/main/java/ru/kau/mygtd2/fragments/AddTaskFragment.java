@@ -1219,8 +1219,17 @@ public class AddTaskFragment extends Fragment
 
         ImageView iv = new ImageView(getActivity());
         //iv.setImageResource(R.drawable.pririty);
-        //iv.setImageResource(R.drawable.priority4);
         iv.setImageResource(Utils.getIconForPriority(priority));
+        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+
+        lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+        iv.setLayoutParams(lParams);
+
+
+        //ImageView iv = new ImageView(getActivity());
+        //iv.setImageResource(R.drawable.pririty);
+        //iv.setImageResource(R.drawable.priority4);
+        //iv.setImageResource(Utils.getIconForPriority(priority));
         //iv.setMinimumWidth(25);
         //iv.setMinimumHeight(25);
         //iv.getLayoutParams().width = 25;
@@ -1236,9 +1245,10 @@ public class AddTaskFragment extends Fragment
         //iv.setColorFilter(color);
         //iv.set
 
-        LinearLayoutCompat.LayoutParams lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
-        iv.setScaleType(FIT_XY);
-        iv.setLayoutParams(lParamsiv);
+        //LinearLayoutCompat.LayoutParams lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+        //iv.setScaleType(FIT_XY);
+        //iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //iv.setLayoutParams(lParamsiv);
 
 
         ltaskpriority.addView(iv);
@@ -1375,21 +1385,6 @@ public class AddTaskFragment extends Fragment
         //iv.setImageResource(R.drawable.pririty);
         iv.setImageResource(getImageResourceTaskType(TypeOfTask.from(tasktype.getId())));
         iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-
-        //iv.setMinimumWidth(25);
-        //iv.setMinimumHeight(25);
-        //iv.getLayoutParams().width = 25;
-        //iv.getLayoutParams().height = 25;
-        //iv.setMaxWidth(25);
-        //iv.setMaxHeight(25);
-        //iv.setla
-
-
-
-        //int color = Color.parseColor("#fafafa");
-        //iv.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
-        //iv.setColorFilter(color);
-        //iv.set
 
         lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
         iv.setLayoutParams(lParams);

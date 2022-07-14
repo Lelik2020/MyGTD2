@@ -220,7 +220,7 @@ public class Dialogs {
         }
 
 
-        projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 1, R.drawable.minus, R.drawable.plus);
+        projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
         //adapter = new ProjectListAdapter(a, projectList);
 
         //projectsAdapter.set
