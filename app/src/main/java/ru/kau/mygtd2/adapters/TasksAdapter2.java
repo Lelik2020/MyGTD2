@@ -166,7 +166,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
     @NonNull
     @Override
     public TasksAdapter2.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new,viewGroup,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new2,viewGroup,false);
 
         return new TasksAdapter2.ViewHolder(v);
     }
