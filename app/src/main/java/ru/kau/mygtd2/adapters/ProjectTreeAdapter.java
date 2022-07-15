@@ -3,12 +3,14 @@ package ru.kau.mygtd2.adapters;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.multilevel.treelist.Node;
+import com.multilevel.treelist.OnTreeNodeClickListener;
 import com.multilevel.treelist.TreeListViewAdapter;
 
 import java.util.List;
@@ -19,9 +21,36 @@ public class ProjectTreeAdapter extends TreeListViewAdapter {
 
     public Context context;
 
+
+    private OnTreeNodeClickListener onTreeNodeClickListener;
+
+    public void setOnTreeNodeClickListener(
+            OnTreeNodeClickListener onTreeNodeClickListener) {
+        this.onTreeNodeClickListener = onTreeNodeClickListener;
+    }
+
     public ProjectTreeAdapter(ListView mTree, Context context, List<Node> datas, int defaultExpandLevel, int iconExpand, int iconNoExpand) {
         super(mTree, context, datas, defaultExpandLevel, iconExpand, iconNoExpand);
         this.context = context;
+
+        mTree.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id)
+            {
+                expandOrCollapse(position);
+
+                if (onTreeNodeClickListener != null) {
+                    onTreeNodeClickListener.onClick(mNodes.get(position),
+                            position);
+                }
+            }
+
+        });
+
+
+
     }
 
     public ProjectTreeAdapter(ListView mTree, Context context, List<Node> datas,
