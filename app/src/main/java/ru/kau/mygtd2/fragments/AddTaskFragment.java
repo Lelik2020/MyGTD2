@@ -1,5 +1,15 @@
 package ru.kau.mygtd2.fragments;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKBG_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKCATEGORY_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TEXT_COLOR;
+import static ru.kau.mygtd2.utils.Utils.getImageResourceTaskType;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -66,22 +76,14 @@ import ru.kau.mygtd2.objects.TaskCategory;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.objects.TaskTagJoin;
+import ru.kau.mygtd2.objects.TaskTemplate;
+import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
+import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.BubbleFlag;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.TxtUtils;
 import ru.kau.mygtd2.utils.Utils;
-
-import static android.widget.ImageView.ScaleType.FIT_XY;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKBG_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKCATEGORY_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_TEXT_COLOR;
-import static ru.kau.mygtd2.utils.Utils.getImageResourceTaskType;
 
 public class AddTaskFragment extends Fragment
         implements DialogProjectChoice, DialogTagsChoice, DialogTargetChoice,
@@ -109,7 +111,7 @@ public class AddTaskFragment extends Fragment
 
     private long projectId = 0L;
     private long targetId = 0L;
-    private int taskCategoryId = 3;
+    private int taskCategoryId = 2;
     private long priorityId = 0L;
     private int taskTypeId = 3;
     private long parentTaskId = 0L;
@@ -144,6 +146,8 @@ public class AddTaskFragment extends Fragment
     private LinearLayoutCompat ltaskcontext;
     private LinearLayoutCompat ltaskcategory;
     private Task taskUpdate = null;
+    private TaskTemplate taskTemplate = null;
+
     private Task parentTask = null;
 
 
@@ -956,6 +960,96 @@ public class AddTaskFragment extends Fragment
             }
         });
 
+        Button btnsavetasktemplate = (Button) rootView.findViewById(R.id.btnsavetasktemplate);
+        btnsavetasktemplate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                taskTemplate = new TaskTemplate();
+
+                guid = UUID.randomUUID().toString();
+
+                taskTemplate.setTitle(txtTaskTitle.getText().toString());
+                taskTemplate.setSearchtitle(taskTemplate.getTitle().toUpperCase());
+                taskTemplate.setDescription(txtTaskInfoTitle.getText().toString());
+                taskTemplate.setStatus(Status.from(taskStatus.getId()));
+                //taskUpdate.setStatus(taskStatus.getId());
+                //taskUpdate.setStatus(taskStatus.getId());
+                taskTemplate.setPriority_id(priorityId);
+                taskTemplate.setProject_id(projectId);
+
+                taskTemplate.setTypeOfTask(TypeOfTask.from(taskTypes.getId()));
+
+                //taskUpdate.setStatus(Status.NEW);
+
+                taskTemplate.setTarget_id(targetId);
+                //taskUpdate.setDateCreate(new Date());
+                //taskUpdate.setDateCreateStr(Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), taskUpdate.getDateCreate()));
+
+                taskTemplate.setBgColor(taskBgColor);
+                taskTemplate.setTemplateguid(guid);
+                taskTemplate.setDeviceguid(deviceID);
+                taskTemplate.setCategory(taskCategoryId);
+
+                try {
+
+                    MyApplication.getDatabase().taskTemplateDao().insert(taskTemplate);
+
+
+                    List<TaskTemplateTagJoin> taskTemplateTagJoinList = new ArrayList<TaskTemplateTagJoin>();
+                    if (lsttags != null){
+                        for (Tag tag : lsttags) {
+
+                            //TaskTagJoin taskTagJoin = new TaskTagJoin(task_id, tag.getId());
+                            TaskTemplateTagJoin taskTemplateTagJoin = new TaskTemplateTagJoin(tag.getId(), guid);
+                            taskTemplateTagJoinList.add(taskTemplateTagJoin);
+                        }
+                        MyApplication.getDatabase().taskTemplateTagJoinDao().insert(taskTemplateTagJoinList);
+                    }
+
+
+
+                    List<TaskTemplateContextJoin> taskTemplateContextJoinList = new ArrayList<TaskTemplateContextJoin>();
+                    if (lstConteksts != null) {
+                        for (Contekst contekst : lstConteksts) {
+
+                            TaskTemplateContextJoin taskTemplateContextJoin = new TaskTemplateContextJoin(contekst.getId(), guid);
+                            taskTemplateContextJoinList.add(taskTemplateContextJoin);
+                        }
+
+                        MyApplication.getDatabase().taskTemplateContextJoinDao().insert(taskTemplateContextJoinList);
+                    }
+                    //Toast.makeText(getActivity(), R.string.taskcreated, Toast.LENGTH_LONG).show();
+
+                    //ViewUtils.viewPositiveToast(getContext(), getLayoutInflater(), String.valueOf(R.string.taskcreated), Toast.LENGTH_SHORT, Gravity.BOTTOM, 0, 0);
+
+                    /*
+                    View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
+
+                    // Initiate the Toast instance.
+                    Toast toast = new Toast(getContext());
+                    // Set custom view in toast.
+                    toast.setView(toastView);
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 0);
+                    toast.show();
+
+                     */
+
+                    Toasty.success(getContext(), getString(R.string.templatecreated), Toast.LENGTH_SHORT, true).show();
+
+
+
+
+                } catch (Exception e) {
+                    Toasty.error(getContext(), getString(R.string.templatecreatederror), Toast.LENGTH_SHORT, true).show();
+
+                }
+
+                //TaskTemplateDaoAbs.updateTaskTemplate(taskTemplate, lsttags, lstConteksts);
+            }
+        });
+
         Button imgbtncanceltask = (Button) rootView.findViewById(R.id.btncanceltask);
         imgbtncanceltask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1216,40 +1310,21 @@ public class AddTaskFragment extends Fragment
         ltaskpriority.removeAllViews();
 
         LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
+        //addtaskpriority.
+        ltaskpriority.setLayoutParams(lParams);
 
-        ImageView iv = new ImageView(getActivity());
-        //iv.setImageResource(R.drawable.pririty);
+        iv = new ImageView(getActivity());
         iv.setImageResource(Utils.getIconForPriority(priority));
         iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //iv.setImageResource(R.drawable.context2);
 
         lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-        iv.setLayoutParams(lParams);
-
-
-        //ImageView iv = new ImageView(getActivity());
-        //iv.setImageResource(R.drawable.pririty);
-        //iv.setImageResource(R.drawable.priority4);
-        //iv.setImageResource(Utils.getIconForPriority(priority));
-        //iv.setMinimumWidth(25);
-        //iv.setMinimumHeight(25);
-        //iv.getLayoutParams().width = 25;
-        //iv.getLayoutParams().height = 25;
-        //iv.setMaxWidth(25);
-        //iv.setMaxHeight(25);
-        //iv.setla
-
-
-
-        //int color = Color.parseColor(priority.getColor());
-        //iv.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
-        //iv.setColorFilter(color);
-        //iv.set
-
-        //LinearLayoutCompat.LayoutParams lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-        //iv.setScaleType(FIT_XY);
         //iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        //iv.setLayoutParams(lParamsiv);
+        iv.setLayoutParams(lParams);
+        //iv.setla
+        //lParams.setMargins(2, 0, 0, 0);
 
+        //iv.setLayoutParams(lParams);
 
         ltaskpriority.addView(iv);
 

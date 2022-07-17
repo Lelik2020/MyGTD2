@@ -521,7 +521,7 @@
                     android:id="@+id/prioritychoise"
                     android:layout_width="@dimen/wh_button_verysmall"
                     android:layout_height="fill_parent"
-
+                    android:layout_marginLeft="3dp"
 
                     android:src="@drawable/choice2" />
 
@@ -813,6 +813,24 @@
             android:gravity="center"
             android:padding="12sp"
             android:text="@string/save"
+            android:layout_weight="1"
+
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnsavetasktemplate"
+
+            style="@style/MyButton2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="@string/savetemplate"
             android:layout_weight="1"
 
             >

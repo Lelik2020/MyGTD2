@@ -228,6 +228,7 @@
 
 
     <string name="save">Сохранить</string>
+    <string name="savetemplate">Сохранить шаблон</string>
     <string name="create">Создать</string>
     <string name="sync">Синхронизировать</string>
 
@@ -243,6 +244,9 @@
     <string name="infoupdated">Информация обновлена</string>
     <string name="infotoarchive">Информация перенесена в архив</string>
     <string name="infoupdatederror">Ошибка при обновлении информации</string>
+
+    <string name="templatecreated">Шаблон создан</string>
+    <string name="templatecreatederror">Ошибка при создании шаблона</string>
 
     <string name="projectcreated">Проект создан</string>
     <string name="projectcreatederror">Ошибка при создании проекта</string>

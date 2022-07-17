@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 ext {
 
-        codeNumber = 10000
+        codeNumber = 12400
         db = 1
-        major = "21"
+        major = "24"
         minor = "01"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
@@ -26,7 +26,7 @@ android {
         versionCode codeNumber
         versionName versionNumber
 
-        buildConfigField  "int", "DB", "1"
+        buildConfigField  "int", "DB", "2"
 
         //buildConfigField  "int", "databasenumber", "2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -34,6 +34,16 @@ android {
         //vectorDrawables.generatedDensities = []
         //vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+
+
+
     }
 
     compileOptions {
@@ -51,6 +61,8 @@ android {
         }
 
     }
+
+
 
     //def abiCodes = ['x86':1, 'x86_64':2, 'armeabi-v7a':3, 'arm64-v8a':4]
 

@@ -36,6 +36,9 @@ import ru.kau.mygtd2.db.dao.TaskContextJoinDao;
 import ru.kau.mygtd2.db.dao.TaskDao;
 import ru.kau.mygtd2.db.dao.TaskStatusDao;
 import ru.kau.mygtd2.db.dao.TaskTagJoinDao;
+import ru.kau.mygtd2.db.dao.TaskTemplateContextJoinDao;
+import ru.kau.mygtd2.db.dao.TaskTemplateDao;
+import ru.kau.mygtd2.db.dao.TaskTemplateTagJoinDao;
 import ru.kau.mygtd2.db.dao.TaskTypesDao;
 import ru.kau.mygtd2.objects.Category;
 import ru.kau.mygtd2.objects.Comment;
@@ -57,6 +60,9 @@ import ru.kau.mygtd2.objects.TaskCategory;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.objects.TaskTagJoin;
+import ru.kau.mygtd2.objects.TaskTemplate;
+import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
+import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Converters;
 
@@ -69,13 +75,18 @@ import ru.kau.mygtd2.utils.Converters;
                         , Device.class
                         , DeviceInfo.class
                         , TaskCategory.class
+                        , TaskTemplate.class
+                        , TaskTemplateContextJoin.class
+                        , TaskTemplateTagJoin.class
                         },
-                        version = 1
-                        //version = BuildConfig.DB
-                        /*autoMigrations = {
+                        //version = 1,
+                        version = BuildConfig.DB,
+                        autoMigrations = {
                                 @AutoMigration(from = 1, to = 2)
-                        }*/
-                        , exportSchema = false)
+                        },
+                        //exportSchema = false
+                        exportSchema = true
+                        )
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -691,6 +702,38 @@ public abstract class AppDatabase extends RoomDatabase {
             //database.execSQL(SQL4);
         }
 
+
+
+    };
+
+    public static final Migration MIGRATION_15_16 = new Migration(1, 2) {
+        @Override
+        public void migrate(final SupportSQLiteDatabase database) {
+
+            String SQL4 = "CREATE TABLE `tasktemplate` \n" +
+                    "(`title` TEXT NOT NULL, \n" +
+                    "`searchtitle` TEXT, \n" +
+                    "`description` TEXT, \n" +
+                    "`project_id` INTEGER NOT NULL, \n" +
+                    "`target_id` INTEGER NOT NULL, \n" +
+                    "`priority_id` INTEGER NOT NULL, \n" +
+                    "`bgColor` TEXT, \n" +
+                    "`status` INTEGER, \n" +
+                    "`typeOfTask` INTEGER, \n" +
+                    "`templateguid` TEXT NOT NULL, \n" +
+                    "`deviceguid` TEXT NOT NULL, \n" +
+                    "`category` INTEGER NOT NULL, \n" +
+                    "PRIMARY KEY(`templateguid`));\n" +
+                    "\n" +
+                    "CREATE UNIQUE INDEX `index_tasktemplate_guid` ON `tasktemplate` (`templateguid`);";
+
+            //database.execSQL(SQL4);
+            System.out.println("MIGRATION_15_16" );
+            //database.execSQL(SQL4);
+        }
+
+
+
     };
 
     /*public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
@@ -779,6 +822,12 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract DeviceInfoDao deviceInfoDao();
 
     public abstract TaskCategoryDao taskCategoryDao();
+
+    public abstract TaskTemplateDao taskTemplateDao();
+
+    public abstract TaskTemplateTagJoinDao taskTemplateTagJoinDao();
+
+    public abstract TaskTemplateContextJoinDao taskTemplateContextJoinDao();
 
 }
 
