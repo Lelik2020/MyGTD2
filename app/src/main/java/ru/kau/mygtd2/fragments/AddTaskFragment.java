@@ -1019,34 +1019,17 @@ public class AddTaskFragment extends Fragment
 
                         MyApplication.getDatabase().taskTemplateContextJoinDao().insert(taskTemplateContextJoinList);
                     }
-                    //Toast.makeText(getActivity(), R.string.taskcreated, Toast.LENGTH_LONG).show();
-
-                    //ViewUtils.viewPositiveToast(getContext(), getLayoutInflater(), String.valueOf(R.string.taskcreated), Toast.LENGTH_SHORT, Gravity.BOTTOM, 0, 0);
-
-                    /*
-                    View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
-
-                    // Initiate the Toast instance.
-                    Toast toast = new Toast(getContext());
-                    // Set custom view in toast.
-                    toast.setView(toastView);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 0);
-                    toast.show();
-
-                     */
 
                     Toasty.success(getContext(), getString(R.string.templatecreated), Toast.LENGTH_SHORT, true).show();
-
-
-
 
                 } catch (Exception e) {
                     Toasty.error(getContext(), getString(R.string.templatecreatederror), Toast.LENGTH_SHORT, true).show();
 
                 }
 
-                //TaskTemplateDaoAbs.updateTaskTemplate(taskTemplate, lsttags, lstConteksts);
+                //closeFragment();
+                //FragmentManager fm = getActivity().getSupportFragmentManager();
+                //fm.popBackStack();
             }
         });
 

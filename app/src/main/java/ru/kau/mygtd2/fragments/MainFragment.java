@@ -319,6 +319,12 @@ public class MainFragment extends Fragment implements ClickListener {
         }
 
         if (grp == 3) {
+            if (position == 0){
+                Fragment fragment;
+                fragment = new TemplatesFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("TemplatesFragment").replace(R.id.frame_container, fragment, "TemplatesFragment").commit();
+            }
+
             if (position == 1){
                 Fragment fragment;
                 fragment = new MainBackupsFragment();
