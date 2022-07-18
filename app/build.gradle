@@ -5,7 +5,7 @@ ext {
         codeNumber = 12400
         db = 1
         major = "24"
-        minor = "01"
+        minor = "02"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
