@@ -9,13 +9,7 @@
     android:layout_height="wrap_content"
 
     style="@style/TaskCardViewStyle"
-
-
-
     android:animateLayoutChanges="true"
-
-
-
 
     >
 

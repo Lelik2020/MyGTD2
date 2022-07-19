@@ -435,12 +435,24 @@
     </style>
 
     <style name="buttonWhiteClose" parent="buttonWhite">
-        <item name="android:padding">10dip</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="textLinkWhite" parent="textLink">
         <item name="android:tag">textLinkWhite</item>
         <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TemplateCardViewStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="contentPaddingBottom">2dp</item>
+        <item name="contentPaddingTop">2dp</item>
+        <item name="contentPaddingLeft">2dp</item>
+        <item name="contentPaddingRight">2dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+
+
     </style>
 
     <style name="TaskCardViewStyle" parent="Theme.AppCompat.Light">
@@ -456,15 +468,15 @@
     </style>
 
     <style name="InfoCardViewStyle" parent="Theme.AppCompat.Light">
-        <item name="cardCornerRadius">15sp</item>
-        <item name="cardElevation">15sp</item>
-        <item name="contentPaddingBottom">4sp</item>
-        <item name="contentPaddingTop">4sp</item>
-        <item name="contentPaddingLeft">4sp</item>
-        <item name="contentPaddingRight">4sp</item>
-        <item name="android:layout_marginTop">10sp</item>
+        <item name="cardCornerRadius">15dp</item>
+        <item name="cardElevation">15dp</item>
+        <item name="contentPaddingBottom">4dp</item>
+        <item name="contentPaddingTop">4dp</item>
+        <item name="contentPaddingLeft">4dp</item>
+        <item name="contentPaddingRight">4dp</item>
+        <item name="android:layout_marginTop">10dp</item>
         <item name="strokeColor">@color/black</item>
-        <item name="strokeWidth">2sp</item>
+        <item name="strokeWidth">2dp</item>
 
         <item name="android:background">@drawable/selector_2</item>
         <item name="cardBackgroundColor">@color/white</item>
