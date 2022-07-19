@@ -280,6 +280,20 @@ public class AddTaskFragment extends Fragment
             }
         });
 
+
+        if (arguments != null && arguments.containsKey("template")) {
+
+            taskTemplate = (TaskTemplate) arguments.getSerializable("template");
+            txtTaskTitle.setText(taskTemplate.getTitle());
+            txtTaskInfoTitle.setText(taskTemplate.getDescription());
+
+            guid = taskUpdate.getGuid();
+            deviceID = taskUpdate.getDeviceguid();
+
+
+
+        }
+
         if (arguments != null && arguments.containsKey("task")) {
             taskUpdate = (Task) arguments.getSerializable("task");
             txtTaskTitle.setText(taskUpdate.getTitle());
@@ -1302,12 +1316,9 @@ public class AddTaskFragment extends Fragment
         //iv.setImageResource(R.drawable.context2);
 
         lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-        //iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        iv.setLayoutParams(lParams);
-        //iv.setla
-        //lParams.setMargins(2, 0, 0, 0);
 
-        //iv.setLayoutParams(lParams);
+        iv.setLayoutParams(lParams);
+
 
         ltaskpriority.addView(iv);
 
@@ -1360,13 +1371,8 @@ public class AddTaskFragment extends Fragment
                     rtv1.setLayoutParams(lParams);
                     rtv1.setCorner(20);
                     rtv1.setPadding(20, 0, 20, 0);
-                    //rtv1.setCorner(5, 5, 5, 5);
                     rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
-                    //rtv1.setTextColor(R.color.black);
 
-                    //rtv1.setBgColor(Color.parseColor(lstTag.get(i).getColor()));
-                    //rtv1.setCorner(2, 2, 2, 2);
-                    //rtv1.setCorner(5);
                     rtv1.setText(conteksts.get(j).getTitle());
                     rtv1.setTextSize(16);
                     rtv1.setTypeface(Typeface.DEFAULT_BOLD);
@@ -1376,33 +1382,6 @@ public class AddTaskFragment extends Fragment
                 }
             }
         }
-
-        /*
-        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
-
-        ImageView iv = new ImageView(getActivity());
-        iv.setImageResource(R.drawable.up);
-        //iv.setMinimumWidth(25);
-        //iv.setMinimumHeight(25);
-        //iv.getLayoutParams().width = 25;
-        //iv.getLayoutParams().height = 25;
-        //iv.setMaxWidth(25);
-        //iv.setMaxHeight(25);
-        //iv.setla
-
-
-
-        int color = Color.parseColor(priority.getColor());
-        iv.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
-        //iv.set
-
-        iv.setLayoutParams(lParams);
-
-
-        ltaskpriority.addView(iv);
-
-        priorityTitle.setText(priority.getTitle());
-        */
 
 
     }
