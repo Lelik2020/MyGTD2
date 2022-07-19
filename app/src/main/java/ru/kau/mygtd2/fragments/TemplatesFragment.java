@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ru.kau.mygtd2.R;
+import ru.kau.mygtd2.adapters.TemplatesAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskTemplate;
@@ -22,6 +24,8 @@ public class TemplatesFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private ActionBar toolbar;
+
+    private TemplatesAdapter templatesAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,13 +37,17 @@ public class TemplatesFragment extends Fragment {
         setHasOptionsMenu(true);
 
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.templates_recyclerview);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rvtemplates);
 
         List<TaskTemplate> lstTaskTemplate;
 
         lstTaskTemplate = MyApplication.getDatabase().taskTemplateDao().getAll();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        templatesAdapter = new TemplatesAdapter(getActivity(), lstTaskTemplate);
 
+        recyclerView.setAdapter(templatesAdapter);
 
+        return rootView;
 
     }
 }

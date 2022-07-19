@@ -335,7 +335,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:paddingLeft="2sp"
+
                             android:text="Name"
                             android:textColor="@color/text_black_100"
                             android:textStyle="bold"
@@ -429,11 +429,12 @@
 
                         <TextView
                             android:id="@+id/projectName"
+                            style="@style/txtTaskTitleTaskCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:paddingLeft="5sp"
+
                             android:text="Name"
 
                             android:textColor="@color/text_black_100"

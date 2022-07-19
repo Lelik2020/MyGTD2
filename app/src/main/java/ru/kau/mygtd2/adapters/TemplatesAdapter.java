@@ -34,7 +34,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.title.setText(lstTaskTemplate.get(position).getTitle());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.tasktitle);
+            title = itemView.findViewById(R.id.tasktitle2);
         }
     }
 
