@@ -28,6 +28,7 @@ import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.TaskTemplate;
 import ru.kau.mygtd2.restapi.SyncApi;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
@@ -183,6 +184,26 @@ public class SyncsFragment extends Fragment {
                     });
                 }
 
+                List<TaskTemplate> lstTaskTemplate = MyApplication.getDatabase().taskTemplateDao().getAll();
+                for(int i = 0; i < lstTaskTemplate.size(); i++){
+                    Call<TaskTemplate> tagCall = calApi.createTaskTemplate(lstTaskTemplate.get(i));
+
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            System.out.println("TaskTemplate");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            System.out.println("1111111");
+                        }
+                    });
+
+
+
+                }
 
 
 

@@ -15,6 +15,7 @@ import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.TaskTemplate;
 
 public interface SyncApi {
 
@@ -54,4 +55,6 @@ public interface SyncApi {
     @POST("dict/target/new")
     Call<Target> createTarget(@Body Target target);
 
+    @POST("dict/tasktemplate/new")
+    Call<TaskTemplate> createTaskTemplate(@Body TaskTemplate taskTemplate);
 }
