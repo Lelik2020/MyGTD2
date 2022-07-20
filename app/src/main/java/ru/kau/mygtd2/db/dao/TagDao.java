@@ -22,6 +22,9 @@ public interface TagDao {
     @Query("SELECT * FROM tags INNER JOIN tasktags ON id = idtag WHERE taskguid = :taskGuid")
     List<Tag> getAllByTaskGuid(final String taskGuid);
 
+    @Query("SELECT * FROM tags INNER JOIN tasktemplatetags ON id = idtag WHERE tasktemplateguid = :templateGuid")
+    List<Tag> getAllByTemplateGuid(final String templateGuid);
+
     @Query("SELECT id FROM tags")
     List<Integer> getAllId();
 

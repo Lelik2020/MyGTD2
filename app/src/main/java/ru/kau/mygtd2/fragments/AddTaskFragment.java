@@ -287,9 +287,52 @@ public class AddTaskFragment extends Fragment
             txtTaskTitle.setText(taskTemplate.getTitle());
             txtTaskInfoTitle.setText(taskTemplate.getDescription());
 
-            guid = taskUpdate.getGuid();
-            deviceID = taskUpdate.getDeviceguid();
+            taskStatus = MyApplication.getDatabase().taskStatusDao().getById(taskTemplate.getStatus().Value);
+            //taskStatus = MyApplication.getDatabase().taskStatusDao().getById(taskUpdate.getStatus());
+            getStatusTask(taskStatus);
+            taskBgColor = taskTemplate.getBgColor();
 
+            projectId = taskTemplate.getProject_id();
+            ltaskproject.removeAllViews();
+            if (projectId > 0) {
+                getProject(MyApplication.getDatabase().projectDao().getProjectById(projectId));
+            }
+            taskTypeId = taskTemplate.getTypeOfTask().Value;
+            getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
+
+            List<Tag> lstTags = MyApplication.getDatabase().tagDao().getAllByTemplateGuid(taskTemplate.getTemplateguid());
+
+            getTags(lstTags);
+
+            // Собираем контексты
+
+            List<Contekst> lstConteksts = MyApplication.getDatabase().contextDao().getAllByTemplateGuid(taskTemplate.getTemplateguid());
+
+            getContexts(lstConteksts);
+
+
+            //
+            targetId = taskTemplate.getTarget_id();
+            target = MyApplication.getDatabase().targetDao().getById(targetId);
+            //targetTitle.setText((target == null) ? "" : target.getTitle());
+
+            getTarget(target);
+
+            taskCategoryId = taskTemplate.getCategory();
+            taskCategory = MyApplication.getDatabase().taskCategoryDao().getById(taskCategoryId);
+
+            getTaskCategory(taskCategory);
+
+
+
+            priorityId = taskTemplate.getPriority_id();
+            priorityId = (priorityId <= 0 ? 3 : priorityId);
+            /*if (priorityId <= 0) {
+                priorityId = 3;
+            }*/
+            priority = MyApplication.getDatabase().priorityDao().getById(priorityId);
+
+            getPriority(priority);
 
 
         }
@@ -322,64 +365,10 @@ public class AddTaskFragment extends Fragment
             projectId = taskUpdate.getProject_id();
             ltaskproject.removeAllViews();
             if (projectId > 0) {
-
                 getProject(MyApplication.getDatabase().projectDao().getProjectById(projectId));
-                /*project = MyApplication.getDatabase().projectDao().getProjectById(projectId);
-
-
-
-                LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-                ImageView iv = new ImageView(getActivity());
-                iv.setImageResource(R.drawable.folder);
-                iv.setLayoutParams(lParams);
-
-                ltaskproject.addView(iv);
-
-
-                lParams = new LinearLayoutCompat.LayoutParams(DEFAULT_RTV_WIDTH, DEFAULT_RTV_HEIGHT);
-
-                RoundTextView rtv1 = new RoundTextView(getActivity());
-
-
-                rtv1.setCorner(20);
-                rtv1.setPadding(10, 0, 10, 0);
-
-                rtv1.setTextColor(R.color.black);
-
-
-                try {
-                    rtv1.setBgColor(Color.parseColor(project.getColor()));
-                } catch (Exception ex) {
-                    rtv1.setBgColor(Color.parseColor(DEFAULT_PROJECT_COLOR));
-                }
-
-
-                rtv1.setText((project == null) ? "" : project.getTitle());
-
-                ltaskproject.addView(rtv1, lParams);*/
-
             }
-
-            // Тип задачи
-
-            /*ltasktype.removeAllViews();
-            LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-            ImageView iv = new ImageView(getActivity());
-            iv.setImageResource(getImageResourceTaskType(taskUpdate.getTypeOfTask()));
-            iv.setLayoutParams(lParams);
-
-            ltasktype.addView(iv);*/
-
             taskTypeId = taskUpdate.getTypeOfTask().Value;
             getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
-
-            //TextView tv1 = new TextView(getActivity());
-
-
-
-
-
-            // ----------------------------------------------------------------
 
             // Собираем тэги
 
@@ -389,7 +378,7 @@ public class AddTaskFragment extends Fragment
 
             // ------------------------------------------------------------------
 
-            //
+            // Собираем контексты
 
             List<Contekst> lstConteksts = MyApplication.getDatabase().contextDao().getAllByTaskGuid(taskUpdate.getGuid());
 
@@ -412,9 +401,7 @@ public class AddTaskFragment extends Fragment
 
             priorityId = taskUpdate.getPriority_id();
             priorityId = (priorityId <= 0 ? 3 : priorityId);
-            /*if (priorityId <= 0) {
-                priorityId = 3;
-            }*/
+
             priority = MyApplication.getDatabase().priorityDao().getById(priorityId);
 
             getPriority(priority);
@@ -494,34 +481,10 @@ public class AddTaskFragment extends Fragment
         }
 
 
-        // Тип задачи
-
-        /*ltasktype.removeAllViews();
-        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-        ImageView iv = new ImageView(getActivity());
-        iv.setImageResource(Utils.getImageResourceTaskType(TypeOfTask.from(taskTypeId)));
-        iv.setLayoutParams(lParams);
-
-        ltasktype.addView(iv);*/
-
         getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
 
-        //iv.setColorFilter(Color.parseColor(taskBgColor));
-
-
-
-        /*ltasktype.removeAllViews();
-        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
-        ImageView iv = new ImageView(getActivity());
-        iv.setImageResource(R.drawable.target4);
-        iv.setLayoutParams(lParams);
-
-        ltasktype.addView(iv);*/
-
         priorityId = (priorityId <= 0 ? 3 : priorityId);
-            /*if (priorityId <= 0) {
-                priorityId = 3;
-            }*/
+
         priority = MyApplication.getDatabase().priorityDao().getById(priorityId);
 
         getPriority(priority);
@@ -580,11 +543,6 @@ public class AddTaskFragment extends Fragment
             //projectTitle.setText(parentProject.getTitle());
         }
 
-
-        /*if (taskUpdate.getParenttask_id() > 0) {
-            projectchoise.setVisibility(View.INVISIBLE);
-            projectclear.setVisibility(View.INVISIBLE);
-        }*/
 
         final ImageView typesoftaskchoise = (ImageView) rootView.findViewById(R.id.typesoftaskchoise);
 
@@ -748,22 +706,12 @@ public class AddTaskFragment extends Fragment
 
         iv = (ImageView) rootView.findViewById(R.id.choiseColor);
 
-        //iv.getDrawable().setColorFilter(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR), PorterDuff.Mode.MULTIPLY);
-        //iv.getDrawable().setColorFilter(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR));
-        //iv.getDrawable().setColorFilter(Color.parseColor(taskBgColor));
         iv.setColorFilter(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR));
 
-
-        //iv.getDrawable().setTint(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR));
-
-
-        //iv.setTint(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR), PorterDuff.Mode.SRC_IN);
-        //iv.setImageTintList(ColorStateList.valueOf(Utils.parseColor(taskBgColor, DEFAULT_TASKBG_COLOR)));
         iv.setEnabled(true);
         //ImageViewCompat.setImageTintList(iv, );
 
         final ImageView bgcolorchoise = (ImageView) rootView.findViewById(R.id.bgcolorchoise);
-
         bgcolorchoise.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -924,50 +872,17 @@ public class AddTaskFragment extends Fragment
 
                             MyApplication.getDatabase().taskContextJoinDao().insert(taskContextJoins);
                         }
-                        //Toast.makeText(getActivity(), R.string.taskcreated, Toast.LENGTH_LONG).show();
 
-                        //ViewUtils.viewPositiveToast(getContext(), getLayoutInflater(), String.valueOf(R.string.taskcreated), Toast.LENGTH_SHORT, Gravity.BOTTOM, 0, 0);
 
-                    /*
-                    View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
-
-                    // Initiate the Toast instance.
-                    Toast toast = new Toast(getContext());
-                    // Set custom view in toast.
-                    toast.setView(toastView);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 0);
-                    toast.show();
-
-                     */
 
                         Toasty.success(getContext(), getString(R.string.taskcreated), Toast.LENGTH_SHORT, true).show();
 
                     } catch (Exception e) {
                         Toasty.error(getContext(), getString(R.string.taskcreatederror), Toast.LENGTH_SHORT, true).show();
-                        //ViewUtils.viewNegativeToast(getContext(), getLayoutInflater(), String.valueOf(R.string.taskcreatederror), Toast.LENGTH_SHORT, Gravity.BOTTOM, 0, 0);
 
-                    /*
-                    View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view2, null);
-
-                    // Initiate the Toast instance.
-                    Toast toast = new Toast(getContext());
-                    // Set custom view in toast.
-                    toast.setView(toastView);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 0);
-                    toast.show();
-                    */
                     }
                 }
-                //MyApplication.getDatabase().tagDao().insert();
 
-                //MyApplication.getDatabase().taskDao().insert(task);
-                //MyApplication.getDatabase().
-                //MyApplication.getDatabase().endTransaction();
-                //FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                //fragmentTransaction.remove(this);
-                //getActivity().onBackPressed();
                 closeFragment();
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack();
