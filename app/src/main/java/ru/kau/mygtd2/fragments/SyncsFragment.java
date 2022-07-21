@@ -25,6 +25,8 @@ import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Project;
+import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
@@ -139,7 +141,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onResponse(Call call, Response response) {
-                            System.out.println("CONTEXT");
+                            //System.out.println("CONTEXT");
                         }
 
                         @Override
@@ -157,7 +159,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onResponse(Call call, Response response) {
-                            System.out.println("TAG");
+                            //System.out.println("TAG");
                         }
 
                         @Override
@@ -184,6 +186,44 @@ public class SyncsFragment extends Fragment {
                     });
                 }
 
+                List<Project> lstProjects = MyApplication.getDatabase().projectDao().getAll();
+                for(int i = 0; i < lstProjects.size(); i++){
+                    Call<Project> tagCall = calApi.createProject(lstProjects.get(i));
+
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            //System.out.println("TaskTemplate");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            //System.out.println("1111111");
+                        }
+                    });
+
+                }
+
+                List<ProjectStatus> lstProjectStatus = MyApplication.getDatabase().projectStatusDao().getAll();
+                for(int i = 0; i < lstProjectStatus.size(); i++){
+                    Call<ProjectStatus> tagCall = calApi.createProjectStatus(lstProjectStatus.get(i));
+
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            //System.out.println("TaskTemplate");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            //System.out.println("1111111");
+                        }
+                    });
+
+                }
+
                 List<TaskTemplate> lstTaskTemplate = MyApplication.getDatabase().taskTemplateDao().getAll();
                 for(int i = 0; i < lstTaskTemplate.size(); i++){
                     Call<TaskTemplate> tagCall = calApi.createTaskTemplate(lstTaskTemplate.get(i));
@@ -192,16 +232,14 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onResponse(Call call, Response response) {
-                            System.out.println("TaskTemplate");
+                            //System.out.println("TaskTemplate");
                         }
 
                         @Override
                         public void onFailure(Call call, Throwable t) {
-                            System.out.println("1111111");
+                            //System.out.println("1111111");
                         }
                     });
-
-
 
                 }
 

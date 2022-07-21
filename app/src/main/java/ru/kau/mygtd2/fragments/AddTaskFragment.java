@@ -917,6 +917,7 @@ public class AddTaskFragment extends Fragment
 
                 taskTemplate.setBgColor(taskBgColor);
                 taskTemplate.setTemplateguid(guid);
+                deviceID = MyApplication.getDatabase().deviceDao().getGuidCurrentDevice();
                 taskTemplate.setDeviceguid(deviceID);
                 taskTemplate.setCategory(taskCategoryId);
 

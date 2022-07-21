@@ -13,17 +13,13 @@ import java.io.Serializable;
 
 import ru.kau.mygtd2.common.enums.Status;
 import ru.kau.mygtd2.common.enums.TypeOfTask;
+import ru.kau.mygtd2.jsonconvert.StatusConverter;
 import ru.kau.mygtd2.jsonconvert.TypeOfTaskConverter;
 import ru.kau.mygtd2.utils.Converters;
 
 
 @Entity(tableName = "tasktemplate",
         indices = {        @Index(name = "index_tasktemplate_guid", value = {"templateguid"}, unique = true)}
-
-        //columns={deviceguid=Column{name='deviceguid', type='TEXT', affinity='2', notNull=true, primaryKeyPosition=0, defaultValue='null'}, description=Column{name='description', type='TEXT', affinity='2', notNull=false, primaryKeyPosition=0, defaultValue='null'}, target_id=Column{name='target_id', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=0, defaultValue='null'}, title=Column{name='title', type='TEXT', affinity='2', notNull=true, primaryKeyPosition=0, defaultValue='null'}, searchtitle=Column{name='searchtitle', type='TEXT', affinity='2', notNull=false, primaryKeyPosition=0, defaultValue='null'}, priority_id=Column{name='priority_id', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=0, defaultValue='null'}, bgColor=Column{name='bgColor', type='TEXT', affinity='2', notNull=false, primaryKeyPosition=0, defaultValue='null'}, project_id=Column{name='project_id', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=0, defaultValue='null'}, typeOfTask=Column{name='typeOfTask', type='INTEGER', affinity='3', notNull=false, primaryKeyPosition=0, defaultValue='null'}, id=Column{name='id', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=0, defaultValue='null'}, category=Column{name='category', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=0, defaultValue='null'}, status=Column{name='status', type='INTEGER', affinity='3', notNull=false, primaryKeyPosition=0, defaultValue='null'}, templateguid=Column{name='templateguid', type='TEXT', affinity='2', notNull=true, primaryKeyPosition=1, defaultValue='null'}}, foreignKeys=[], indices=[Index{name='index_tasktemplate_templateguid', unique=true, columns=[templateguid], orders=[ASC]}]}
-
-
-
 )
 public class TaskTemplate implements Serializable {
 
@@ -57,6 +53,7 @@ public class TaskTemplate implements Serializable {
 
 
     @TypeConverters(Converters.class)
+    @JsonAdapter(StatusConverter.class)
     private Status status;
 
 

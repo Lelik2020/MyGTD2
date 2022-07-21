@@ -12,9 +12,12 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.io.Serializable;
 
 import ru.kau.mygtd2.common.enums.PrStatus;
+import ru.kau.mygtd2.jsonconvert.ProjectStatusConverter;
 import ru.kau.mygtd2.utils.Converters;
 
 @Entity(tableName = "projects",
@@ -48,6 +51,7 @@ public class Project implements Serializable {
     }
 
     @TypeConverters(Converters.class)
+    @JsonAdapter(ProjectStatusConverter.class)
     private PrStatus prStatus;
 
     private String color;
