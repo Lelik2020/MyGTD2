@@ -12,6 +12,9 @@ import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
 @Dao
 public interface TaskTemplateContextJoinDao {
 
+    @Query("SELECT * FROM tasktemplatecontexts")
+    List<TaskTemplateContextJoin> getAll();
+
     @Query("DELETE FROM tasktemplatecontexts WHERE tasktemplateguid = :taskGyid")
     void deleteTaskTemplateContekst(final String taskGyid);
 

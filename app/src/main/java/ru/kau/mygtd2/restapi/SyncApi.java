@@ -16,6 +16,7 @@ import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.TaskTemplate;
+import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
 
 public interface SyncApi {
 
@@ -57,4 +58,7 @@ public interface SyncApi {
 
     @POST("dict/tasktemplate/new")
     Call<TaskTemplate> createTaskTemplate(@Body TaskTemplate taskTemplate);
+
+    @POST("dict/tasktemplatecontextjoin/new")
+    Call<TaskTemplateContextJoin> createTaskTemplateContextJoin(@Body TaskTemplateContextJoin taskTemplateContextJoin);
 }
