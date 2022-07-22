@@ -244,7 +244,9 @@ public class SyncsFragment extends Fragment {
 
                 }
 
-                List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
+
+
+                /*List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
                 for(int i = 0; i < lstTaskTemplateContextJoin.size(); i++){
                     Call<TaskTemplateContextJoin> tagCall = calApi.createTaskTemplateContextJoin(lstTaskTemplateContextJoin.get(i));
 
@@ -261,7 +263,7 @@ public class SyncsFragment extends Fragment {
                         }
                     });
 
-                }
+                }*/
 
 
 
