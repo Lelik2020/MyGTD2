@@ -30,8 +30,10 @@ import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskTemplate;
 import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
+import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
 import ru.kau.mygtd2.restapi.SyncApi;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
@@ -244,9 +246,7 @@ public class SyncsFragment extends Fragment {
 
                 }
 
-
-
-                /*List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
+                List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
                 for(int i = 0; i < lstTaskTemplateContextJoin.size(); i++){
                     Call<TaskTemplateContextJoin> tagCall = calApi.createTaskTemplateContextJoin(lstTaskTemplateContextJoin.get(i));
 
@@ -254,7 +254,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onResponse(Call call, Response response) {
-                            //System.out.println("TaskTemplate");
+                            System.out.println("TaskTemplateContextJoin");
                         }
 
                         @Override
@@ -263,27 +263,50 @@ public class SyncsFragment extends Fragment {
                         }
                     });
 
-                }*/
+                }
+
+                List<TaskTemplateTagJoin> lstTaskTemplateTagJoin = MyApplication.getDatabase().taskTemplateTagJoinDao().getAll();
+                for(int i = 0; i < lstTaskTemplateTagJoin.size(); i++){
+                    Call<TaskTemplateTagJoin> tagCall = calApi.createTaskTemplateTagJoin(lstTaskTemplateTagJoin.get(i));
+
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            System.out.println("TaskTemplateTagJoin");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            //System.out.println("1111111");
+                        }
+                    });
+
+                }
+
+                // Задачи
+
+                List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAllTasks();
+                for(int i = 0; i < lstTasks.size(); i++){
+                    Call<Task> tagCall = calApi.settasksforupdate(lstTasks.get(i));
+
+                    tagCall.enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            System.out.println("TaskSync");
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            //System.out.println("1111111");
+                        }
+                    });
+
+                }
 
 
 
-                /*List<Task> lstTask = MyApplication.getDatabase().taskDao().getTasksForUpdate(l);
-                calApi2 = Controller.getTasksApi();
-                Call call2 = calApi2.settasksforupdate(lstTask);   //settst(lstTask.get(0));
-                call2.enqueue(new Callback() {
-
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        //System.out.println("Response: " + response.code());
-                    }
-
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        //System.out.println("Response: " + response.code());
-                        //Log.e("ERROR8888", t.getMessage());
-                    }
-                });
-*/
             }
         });
 

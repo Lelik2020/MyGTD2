@@ -115,6 +115,7 @@ public class AddTaskFragment extends Fragment
     private long priorityId = 0L;
     private int taskTypeId = 3;
     private long parentTaskId = 0L;
+    private String parentTaskGuid = "";
     private String guid = "";
     private String deviceID = "";
     //private int taskStatusId = 0;
@@ -349,6 +350,7 @@ public class AddTaskFragment extends Fragment
             }
 
             parentTaskId = taskUpdate.getParenttask_id();
+            parentTaskGuid = taskUpdate.getParenttaskguid();
             getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
 
             dateBegin = taskUpdate.getDateBegin();
@@ -432,6 +434,7 @@ public class AddTaskFragment extends Fragment
         if (arguments != null && arguments.containsKey("subtask")) {
             parentTask = (Task) arguments.getSerializable("subtask");
             parentTaskId = parentTask.getId();
+            parentTaskGuid = parentTask.getParenttaskguid();
             taskCategoryId = parentTask.getCategory();
             parentProject = MyApplication.getDatabase().projectDao().getProjectById(parentTask.getProject_id());
             getParentTask(parentTask);
@@ -444,6 +447,7 @@ public class AddTaskFragment extends Fragment
             task.setId(Utils.getLastTaskId());
 
             parentTaskId = task.getParenttask_id();
+            parentTaskGuid = task.getParenttaskguid();
             // Если есть родительская задача, то берем проект оттуда.
             if (task.getParenttask_id() > 0) {
                 projectId = MyApplication.getDatabase().taskDao().getById(task.getParenttask_id()).getProject_id();
@@ -475,8 +479,10 @@ public class AddTaskFragment extends Fragment
             getTags(lsttags);
             getTarget(MyApplication.getDatabase().targetDao().getById(task.getTarget_id()));
             getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
-            getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
 
+            //getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
+            getParentTask(MyApplication.getDatabase().taskDao().getByGuid(parentTaskGuid));
+            //вап
 
         }
 
@@ -767,7 +773,10 @@ public class AddTaskFragment extends Fragment
                     taskUpdate.setPriority_id(priorityId);
                     taskUpdate.setProject_id(projectId);
                     taskUpdate.setParenttask_id(parentTaskId);
+                    taskUpdate.setParenttaskguid(parentTaskGuid);
                     taskUpdate.setTypeOfTask(TypeOfTask.from(taskTypes.getId()));
+
+                    //taskUpdate.
 
                     //taskUpdate.setStatus(Status.NEW);
                     taskUpdate.setDateEnd(dateEnd);
@@ -799,10 +808,11 @@ public class AddTaskFragment extends Fragment
                     //task.setStatus(taskStatus.getId());
                     task.setTypeOfTask(TypeOfTask.from(taskTypes.getId()));
                     task.setParenttask_id(parentTaskId);
+                    task.setParenttaskguid(parentTaskGuid);
                     task.setProject_id(projectId);
                     task.setPriority_id(priorityId);
                     //task.setStatus(Status.NEW);
-                    task.setParenttask_id(parentTaskId);
+                    //task.setParenttask_id(parentTaskId);
                     task.setDateEnd(dateEnd);
                     task.setDateEndStr(dateEndTitle.getText().toString());
                     task.setTarget_id(targetId);
@@ -1524,6 +1534,7 @@ public class AddTaskFragment extends Fragment
             lparenttasktype.addView(tv2);
 
             parentTaskId = task.getId();
+            parentTaskGuid = task.getParenttaskguid();
         }
 
         //taskTypeTitle.setText(tasktype.getTitle());

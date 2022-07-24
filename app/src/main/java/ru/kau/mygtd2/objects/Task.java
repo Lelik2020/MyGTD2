@@ -211,6 +211,8 @@ public class Task implements Serializable{  //Parcelable {
 
     private String dateEditStr;
 
+    private String parenttaskguid = "";
+
     public int getLevel() {
         return level;
     }
@@ -425,5 +427,13 @@ public class Task implements Serializable{  //Parcelable {
 
     public void setBackupguid(String backupguid) {
         this.backupguid = backupguid;
+    }
+
+    public String getParenttaskguid() {
+        return parenttaskguid;
+    }
+
+    public void setParenttaskguid(String parenttaskguid) {
+        this.parenttaskguid = parenttaskguid;
     }
 }

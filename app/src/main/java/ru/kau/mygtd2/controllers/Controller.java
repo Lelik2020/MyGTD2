@@ -30,10 +30,12 @@ public class Controller {
     public static SyncApi getSyncApi(){
         Gson gson = new GsonBuilder()
                 .setLenient()
+                .registerTypeAdapter(Date.class, new DateConverter())
+                .registerTypeAdapter(Status.class, new StatusConverter())
+                .registerTypeAdapter(TypeOfTask.class, new TypeOfTaskConverter())
                 .create();
         System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
         Retrofit retrofit = new Retrofit.Builder()
-                //.addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(Settings.getStringSetting(IPSERVERSYNC))
                 .build();

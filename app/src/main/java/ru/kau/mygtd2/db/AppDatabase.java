@@ -82,7 +82,8 @@ import ru.kau.mygtd2.utils.Converters;
                         //version = 1,
                         version = BuildConfig.DB,
                         autoMigrations = {
-                                @AutoMigration(from = 1, to = 2)
+                                //@AutoMigration(from = 1, to = 2),
+                                @AutoMigration(from = 2, to = 3)
                         },
                         //exportSchema = false
                         exportSchema = true
@@ -706,30 +707,15 @@ public abstract class AppDatabase extends RoomDatabase {
 
     };
 
-    public static final Migration MIGRATION_15_16 = new Migration(1, 2) {
+    public static final Migration MIGRATION_15_16 = new Migration(2, 3) {
         @Override
         public void migrate(final SupportSQLiteDatabase database) {
 
-            String SQL4 = "CREATE TABLE `tasktemplate` \n" +
-                    "(`title` TEXT NOT NULL, \n" +
-                    "`searchtitle` TEXT, \n" +
-                    "`description` TEXT, \n" +
-                    "`project_id` INTEGER NOT NULL, \n" +
-                    "`target_id` INTEGER NOT NULL, \n" +
-                    "`priority_id` INTEGER NOT NULL, \n" +
-                    "`bgColor` TEXT, \n" +
-                    "`status` INTEGER, \n" +
-                    "`typeOfTask` INTEGER, \n" +
-                    "`templateguid` TEXT NOT NULL, \n" +
-                    "`deviceguid` TEXT NOT NULL, \n" +
-                    "`category` INTEGER NOT NULL, \n" +
-                    "PRIMARY KEY(`templateguid`));\n" +
-                    "\n" +
-                    "CREATE UNIQUE INDEX `index_tasktemplate_guid` ON `tasktemplate` (`templateguid`);";
+            String SQL4 = "ALTER TABLE tasks ADD COLUMN parenttaskguid TEXT DEFAULT ''";
 
             //database.execSQL(SQL4);
             System.out.println("MIGRATION_15_16" );
-            //database.execSQL(SQL4);
+            database.execSQL(SQL4);
         }
 
 

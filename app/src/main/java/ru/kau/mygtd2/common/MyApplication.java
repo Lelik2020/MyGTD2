@@ -1,12 +1,13 @@
 package ru.kau.mygtd2.common;
 
+import static ru.kau.mygtd2.db.AppDatabase.MIGRATION_15_16;
+
 import android.app.Application;
 import android.content.Context;
 
 import androidx.room.Room;
 
 import ru.kau.mygtd2.db.AppDatabase;
-import ru.kau.mygtd2.db.DbCreator;
 
 //import android.arch.persistence.room.Room;
 
@@ -40,12 +41,12 @@ public class MyApplication extends Application {
                 //.addMigrations(MIGRATION_12_13)
                 //.addMigrations(MIGRATION_13_14)
                 //.addMigrations(MIGRATION_14_15)
-                //.addMigrations(MIGRATION_15_16)
+                .addMigrations(MIGRATION_15_16)
 
                 //.fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
-        DbCreator.firstInit();
+        //DbCreator.firstInit();
         //DbCreator.tasksUpdate2();
         //DbCreator.infoUpdate();
         //DbCreator.tasksUpdate3();

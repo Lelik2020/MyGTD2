@@ -11,8 +11,8 @@ import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
 
 @Dao
 public interface TaskTemplateTagJoinDao {
-
-
+    @Query("SELECT * FROM tasktemplatetags")
+    List<TaskTemplateTagJoin> getAll();
     @Query("DELETE FROM tasktemplatetags WHERE tasktemplateguid = :taskGuid")
     void deleteTaskTemplateTags(final String taskGuid);
 

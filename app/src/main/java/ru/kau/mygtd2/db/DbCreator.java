@@ -55,6 +55,22 @@ public class DbCreator {
         firstInitSpr6();
 
         firstInitSpr7();
+
+        taskUpdate22();
+    }
+
+    public static void taskUpdate22() {
+        List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAllTasks();
+        for (int i = 0; i < lstTasks.size(); i++){
+            Task task = lstTasks.get(i);
+            if (task.getParenttask_id() > 0) {
+                String parentguid = MyApplication.getDatabase().taskDao().getParentGuidById(task.getParenttask_id(), task.getDeviceguid());
+                task.setParenttaskguid(parentguid);
+                task.setDateEdit(new Date());
+                MyApplication.getDatabase().taskDao().update(task);
+            }
+
+        }
     }
 
     public static void taskUpdate() {

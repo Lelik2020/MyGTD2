@@ -12,6 +12,8 @@ package ru.kau.mygtd2.db.dao;
 
 //import android.arch.persistence.room.Update;
 
+import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,8 +25,6 @@ import androidx.sqlite.db.SupportSQLiteQuery;
 import java.util.List;
 
 import ru.kau.mygtd2.objects.Task;
-
-import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
 
 @Dao
 public interface TaskDao {
@@ -88,6 +88,9 @@ public interface TaskDao {
 
     @Query(HIERARCHY_TASKS + " and id = :id")
     Task getById(long id);
+
+    @Query(HIERARCHY_TASKS + " and guid = :guid")
+    Task getByGuid(String guid);
 
     @Query("SELECT count(*) FROM tasks WHERE status in (:idStatus)")
     long getCountByStatus(List<Integer> idStatus);
@@ -350,6 +353,9 @@ public interface TaskDao {
 
     @Query("SELECT guid FROM tasks WHERE id = :id AND deviceguid = :deviceID")
     String getGuidById(long id, String deviceID);
+
+    @Query("SELECT guid FROM tasks WHERE id = :id AND deviceguid = :deviceID")
+    String getParentGuidById(long id, String deviceID);
 
     @Query("SELECT MIN(dateClose) FROM tasks")
     long getMinDateClose();
