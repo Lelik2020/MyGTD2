@@ -27,6 +27,9 @@ public interface TaskTagJoinDao {
             "where idtask = :taskId")
     List<Tag> getTagsForTask(final long taskId);
 
+    @Query("select * from tasktags where taskguid = :taskGuid")
+    List<TaskTagJoin> getTagsForTask(final String taskGuid);
+
     // Получение задач для тега
     @Query("select * from tasktags where idtag = :tagId")
     List<TaskTagJoin> getTaskForTag(final long tagId);

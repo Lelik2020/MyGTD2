@@ -295,6 +295,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onResponse(Call call, Response response) {
                             System.out.println("TaskSync");
+                            //MyApplication.getDatabase().taskTagJoinDao().getTagsForTask(lstTasks.get(i).getGuid())
                         }
 
                         @Override
