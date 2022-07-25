@@ -8,6 +8,7 @@ import android.content.Context;
 import androidx.room.Room;
 
 import ru.kau.mygtd2.db.AppDatabase;
+import ru.kau.mygtd2.db.DbCreator;
 
 //import android.arch.persistence.room.Room;
 
