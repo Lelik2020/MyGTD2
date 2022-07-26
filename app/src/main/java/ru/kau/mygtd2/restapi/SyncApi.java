@@ -71,8 +71,8 @@ public interface SyncApi {
     @POST("tasks/settasksforupdate2")
     Call<Task> settasksforupdate(@Body Task task);
 
-    @POST("tasks/settasksforupdate2")
-    Call<Task> settasksforupdate2(@Body Task task, @Body List<TaskTagJoin> lstTaskTag);
+    @POST("tasks/settaskstagjoin")
+    Call<TaskTagJoin> settasktagjoin(@Body List<TaskTagJoin> taskTagJoinList);
 
 
 }

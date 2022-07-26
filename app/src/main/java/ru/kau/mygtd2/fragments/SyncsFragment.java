@@ -31,6 +31,7 @@ import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
+import ru.kau.mygtd2.objects.TaskTagJoin;
 import ru.kau.mygtd2.objects.TaskTemplate;
 import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
 import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
@@ -289,13 +290,32 @@ public class SyncsFragment extends Fragment {
                 List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAllTasks();
                 for(int i = 0; i < lstTasks.size(); i++){
                     Call<Task> tagCall = calApi.settasksforupdate(lstTasks.get(i));
-
+                    List<TaskTagJoin> lstTaskTagJoin = MyApplication.getDatabase().taskTagJoinDao().getTagsForTask(lstTasks.get(i).getGuid());
                     tagCall.enqueue(new Callback() {
 
                         @Override
                         public void onResponse(Call call, Response response) {
-                            System.out.println("TaskSync");
+                            //System.out.println("TaskSync");
                             //MyApplication.getDatabase().taskTagJoinDao().getTagsForTask(lstTasks.get(i).getGuid())
+                            //Сохраняем тэги по задаче
+
+                            Call<TaskTagJoin> call2 = calApi.settasktagjoin(lstTaskTagJoin);
+
+                            call2.enqueue(new Callback() {
+
+                                @Override
+                                public void onResponse(Call call, Response response) {
+                                    System.out.println("TaskTagJoin");
+                                }
+
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    //System.out.println("1111111");
+                                }
+                            });
+
+
+                            // ----------------------------------------------------------------------
                         }
 
                         @Override
