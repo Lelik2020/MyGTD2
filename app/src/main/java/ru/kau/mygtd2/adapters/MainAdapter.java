@@ -1,36 +1,5 @@
 package ru.kau.mygtd2.adapters;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.apg.mobile.roundtextview.RoundTextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import ru.kau.mygtd2.R;
-import ru.kau.mygtd2.common.MyApplication;
-import ru.kau.mygtd2.common.interfaces.ClickListener;
-import ru.kau.mygtd2.objects.Category;
-import ru.kau.mygtd2.objects.InfoStatus;
-import ru.kau.mygtd2.objects.TaskStatus;
-import ru.kau.mygtd2.utils.Const;
-import ru.kau.mygtd2.utils.Utils;
-
 import static android.view.View.GONE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
@@ -46,6 +15,35 @@ import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
 import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstStatus;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.apg.mobile.roundtextview.RoundTextView;
+
+import java.util.Date;
+import java.util.List;
+
+import ru.kau.mygtd2.R;
+import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.common.interfaces.ClickListener;
+import ru.kau.mygtd2.objects.Category;
+import ru.kau.mygtd2.objects.InfoStatus;
+import ru.kau.mygtd2.objects.TaskStatus;
+import ru.kau.mygtd2.utils.Const;
+import ru.kau.mygtd2.utils.Utils;
 
 //import android.support.annotation.NonNull;
 //import android.support.v7.widget.RecyclerView;
@@ -405,8 +403,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
             case 4:
 
-                count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteOutstanding(Utils.getStartOfDay(new Date()).getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), lstStatus, lstONLYFAVOURITE);
-
+                //count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteOutstanding(Utils.getStartOfDay(new Date()).getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), lstStatus, lstONLYFAVOURITE);
+                count = MyApplication.getDatabase().taskDao().getCountOutstandingFavourite(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
                 //setAllUnvisible(viewHolder);
 
                 viewHolder.rtv2.setCorner(16, 0, 0, 16);

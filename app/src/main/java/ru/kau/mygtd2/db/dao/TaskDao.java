@@ -150,6 +150,9 @@ public interface TaskDao {
     @Query("SELECT count(*) FROM tasks WHERE (dateEnd > 0 and dateEnd < :dateEnd) and status in (:lstStatus) AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects)")
     long getCountOutstanding(long dateEnd, List<Integer> lstStatus, List<Integer> lstPriority, List<Integer> lstProjects);
 
+    @Query("SELECT count(*) FROM tasks WHERE (dateEnd > 0 and dateEnd < :dateEnd) and status in (:lstStatus) AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND isFavourite = 1")
+    long getCountOutstandingFavourite(long dateEnd, List<Integer> lstStatus, List<Integer> lstPriority, List<Integer> lstProjects);
+
     @Query("SELECT count(*) FROM tasks WHERE (dateEnd < :dateEnd or dateEndStr < :dateEndStr) and status in (1, 2, 3) AND (id IN (SELECT idtask FROM tasktags WHERE idtag = :tag_id))")
     long getCountOutstandingByTag(long dateEnd, String dateEndStr, long tag_id);
 
