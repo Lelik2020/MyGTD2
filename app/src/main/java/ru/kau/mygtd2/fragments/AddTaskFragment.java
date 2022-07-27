@@ -3,6 +3,7 @@ package ru.kau.mygtd2.fragments;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKBG_COLOR;
@@ -1232,21 +1233,25 @@ public class AddTaskFragment extends Fragment
 
         ltaskpriority.removeAllViews();
 
-        LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
-        //addtaskpriority.
+        LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
         ltaskpriority.setLayoutParams(lParams);
+        ImageView iv = new ImageView(getActivity());
+        iv.setImageResource(Utils.getIconForPriority(priority));
+        //iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+        lParams.setMargins(0, 2, 0, 2);
+        iv.setLayoutParams(lParams);
 
+        ltaskpriority.addView(iv);
+
+        /*LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
+        ltaskpriority.setLayoutParams(lParams);
         iv = new ImageView(getActivity());
         iv.setImageResource(Utils.getIconForPriority(priority));
         iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        //iv.setImageResource(R.drawable.context2);
-
         lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
-
         iv.setLayoutParams(lParams);
-
-
-        ltaskpriority.addView(iv);
+        ltaskpriority.addView(iv);*/
 
         priorityTitle.setText(priority.getTitle());
 
@@ -1282,7 +1287,7 @@ public class AddTaskFragment extends Fragment
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
                     iv.setLayoutParams(lParams);
                     //iv.setla
-                    lParams.setMargins(2, 0, 0, 0);
+                    lParams.setMargins(0, 2, 0, 2);
 
                     iv.setLayoutParams(lParams);
 
@@ -1295,7 +1300,7 @@ public class AddTaskFragment extends Fragment
                             DEFAULT_RTV_WIDTH, DEFAULT_RTV_HEIGHT);
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
                     rtv1.setLayoutParams(lParams);
-                    rtv1.setCorner(20);
+                    rtv1.setCorner(DEFAULT_RADIUS);
                     rtv1.setPadding(20, 0, 20, 0);
                     rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
 
@@ -1338,21 +1343,25 @@ public class AddTaskFragment extends Fragment
 
         ltasktype.removeAllViews();
 
+        /*LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+        ltasktype.setLayoutParams(lParams);
+        ImageView iv = new ImageView(getActivity());
+        //iv.setImageResource(R.drawable.folder);
+        iv.setImageResource(getImageResourceTaskType(TypeOfTask.from(tasktype.getId())));
+        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+        iv.setLayoutParams(lParams);
+
+        ltaskproject.addView(iv);*/
 
         LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
-
         ltasktype.setLayoutParams(lParams);
-        //ltasktype.setGravity(Gravity.CENTER | Gravity.BOTTOM);
-
         ImageView iv = new ImageView(getActivity());
-        //iv.setImageResource(R.drawable.pririty);
         iv.setImageResource(getImageResourceTaskType(TypeOfTask.from(tasktype.getId())));
         iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
         lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
         iv.setLayoutParams(lParams);
-        //iv.setForegroundGravity(Gravity.FILL);
-        //iv.setGravity(Gravity.CENTER | Gravity.BOTTOM);
         ltasktype.addView(iv);
 
         taskTypeTitle.setTextSize(16);

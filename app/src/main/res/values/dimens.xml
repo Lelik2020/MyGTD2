@@ -46,4 +46,6 @@
 
     <dimen name="card_corner">20dp</dimen>
 
+    <dimen name="rtvraius">20dp</dimen>
+
 </resources>
