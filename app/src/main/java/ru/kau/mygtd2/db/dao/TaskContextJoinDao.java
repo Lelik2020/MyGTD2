@@ -26,6 +26,8 @@ public interface TaskContextJoinDao {
             "where idtask = :taskId")
     List<Contekst> getCotextsForTask(final long taskId);
 
+    @Query("select * from taskcontexts where taskguid = :taskGuid")
+    List<TaskContextJoin> getCotextsForTask(final String taskGuid);
     @Query("DELETE FROM taskcontexts WHERE idtask = :taskId")
     void deleteTaskContekst(final long taskId);
 
