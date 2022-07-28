@@ -74,7 +74,9 @@
                     app:bottomLeftCorner="2sp"
                     app:bottomRightCorner="0sp"
                     app:topLeftCorner="2sp"
-                    app:topRightCorner="0sp" />
+                    app:topRightCorner="0sp"
+
+                    />
 
                 <com.apg.mobile.roundtextview.RoundTextView
                     android:id="@+id/rtv2"

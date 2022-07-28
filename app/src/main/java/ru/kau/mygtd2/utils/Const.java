@@ -20,7 +20,10 @@ public class Const {
 
     //static public final int DEFAULT_RADIUS = (int) Utils.dpFromPx(MyApplication.getContext(), 20);
     //static public final int DEFAULT_RADIUS = (int) Utils.pxFromDp(MyApplication.getContext(), 20);
-    static public final int DEFAULT_RADIUS = (int) MyApplication.getContext().getResources().getDimension(R.dimen.rtvraius);
+    static public final int DEFAULT_RADIUS = (int) MyApplication.getContext().getResources().getDimension(R.dimen.rtvradius);
+    static public final int DEFAULT_RADIUS2 = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.rtvradius2);
+    static public final int DEFAULT_RTVPAGGING = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.rtvpagging);
+
     static final public int DEFAULT_LAYOUT_WIDTH = LinearLayoutCompat.LayoutParams.WRAP_CONTENT;
     static final public int DEFAULT_LAYOUT_HEIGHT = LinearLayoutCompat.LayoutParams.FILL_PARENT;
 

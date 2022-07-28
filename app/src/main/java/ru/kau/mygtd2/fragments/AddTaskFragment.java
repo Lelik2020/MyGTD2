@@ -4,6 +4,8 @@ import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS2;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RTVPAGGING;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKBG_COLOR;
@@ -1291,23 +1293,28 @@ public class AddTaskFragment extends Fragment
 
                     iv.setLayoutParams(lParams);
 
+
                     ltaskcontext.addView(iv);
 
 
+                    //RoundTextView rtv1 = new RoundTextView(getActivity(), null, R.style.rtvTextView);
                     RoundTextView rtv1 = new RoundTextView(getActivity());
+                    rtv1.setTextAppearance(R.style.rtvTextView);
                     //rtv1.setText(lstTask.get(0).getTitle());
                     lParams = new LinearLayoutCompat.LayoutParams(
                             DEFAULT_RTV_WIDTH, DEFAULT_RTV_HEIGHT);
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
                     rtv1.setLayoutParams(lParams);
-                    rtv1.setCorner(DEFAULT_RADIUS);
-                    rtv1.setPadding(20, 0, 20, 0);
+                    //rtv1.set
+                    rtv1.setCorner(DEFAULT_RADIUS2);
+
+                    rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
                     rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
 
                     rtv1.setText(conteksts.get(j).getTitle());
-                    rtv1.setTextSize(16);
-                    rtv1.setTypeface(Typeface.DEFAULT_BOLD);
-                    rtv1.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+                    //rtv1.setTextSize(16);
+                    //rtv1.setTypeface(Typeface.DEFAULT_BOLD);
+                    //rtv1.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
 
                     ltaskcontext.addView(rtv1, lParams);
                 }

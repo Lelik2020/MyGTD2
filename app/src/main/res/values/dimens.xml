@@ -46,6 +46,8 @@
 
     <dimen name="card_corner">20dp</dimen>
 
-    <dimen name="rtvraius">20dp</dimen>
+    <dimen name="rtvradius">20px</dimen>
 
+    <dimen name="rtvradius2">10dp</dimen>
+    <dimen name="rtvpagging">10dp</dimen>
 </resources>

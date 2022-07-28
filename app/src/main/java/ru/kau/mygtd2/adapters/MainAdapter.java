@@ -4,6 +4,7 @@ import static android.view.View.GONE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS2;
 import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
 import static ru.kau.mygtd2.utils.Const.LSTSTATUSINHOLD;
 import static ru.kau.mygtd2.utils.Const.LSTSTATUSINPROGRESS;
@@ -161,7 +162,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 long count = MyApplication.getDatabase().informationDao().getCountByStatus(infoStatus.getId());
 
                 //setAllUnvisible(viewHolder);
-                viewHolder.rtv2.setCorner(16, 0, 0, 16);
+                viewHolder.rtv2.setCorner(DEFAULT_RADIUS2, 0, 0, DEFAULT_RADIUS2);
 
                 viewHolder.rtv2.setBgColor(Color.parseColor(infoStatus.getColor()));
                 viewHolder.iv1.setColorFilter(Color.parseColor(infoStatus.getColor()));
