@@ -2,6 +2,7 @@ package ru.kau.mygtd2.fragments;
 
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_ICON_MARGIN;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS2;
@@ -96,11 +97,10 @@ public class AddTaskFragment extends Fragment
 
     private TextView projectTitle;
     private TextView typeOfTaskTitle;
-    private TextView targetTitle;
     //private TextView taskParentTypeTitle;
     private TextView taskTypeTitle;
     private TextView priorityTitle;
-    private TextView contextTitle;
+    //private TextView contextTitle;
     private TextView dateEndTitle;
     private TextView dateBeginTitle;
 
@@ -195,7 +195,7 @@ public class AddTaskFragment extends Fragment
 
         typeOfTaskTitle = (TextView)rootView.findViewById(R.id.typeOfTaskTitle);
 
-        targetTitle = (TextView)rootView.findViewById(R.id.targetTitle);
+        //targetTitle = (TextView)rootView.findViewById(R.id.targetTitle);
 
         //taskParentTypeTitle = (TextView)rootView.findViewById(R.id.taskParentTypeTitle);
 
@@ -203,7 +203,7 @@ public class AddTaskFragment extends Fragment
 
         priorityTitle = (TextView)rootView.findViewById(R.id.priorityTitle);
 
-        contextTitle = (TextView)rootView.findViewById(R.id.contextTitle);
+        //contextTitle = (TextView)rootView.findViewById(R.id.contextTitle);
 
         dateEndTitle = (TextView)rootView.findViewById(R.id.dateendTitle);
 
@@ -318,7 +318,7 @@ public class AddTaskFragment extends Fragment
             //
             targetId = taskTemplate.getTarget_id();
             target = MyApplication.getDatabase().targetDao().getById(targetId);
-            //targetTitle.setText((target == null) ? "" : target.getTitle());
+
 
             getTarget(target);
 
@@ -393,7 +393,7 @@ public class AddTaskFragment extends Fragment
             //
             targetId = taskUpdate.getTarget_id();
             target = MyApplication.getDatabase().targetDao().getById(targetId);
-            //targetTitle.setText((target == null) ? "" : target.getTitle());
+
 
             getTarget(target);
 
@@ -1066,32 +1066,34 @@ public class AddTaskFragment extends Fragment
             lsttags.addAll(tags);
             if (tags.size() > 0) {
 
-                //LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
-
-
-                //iv.setMinimumWidth(25);
-                //iv.setMinimumHeight(25);
-                //iv.getLayoutParams().width = 25;
-                //iv.getLayoutParams().height = 25;
-                //iv.setMaxWidth(25);
-                //iv.setMaxHeight(25);
-                //iv.setla
-
-
-
-                //ltasktags.addView(iv);
-
-
 
                 for (int j = 0; j < tags.size(); j++) {
 
                     LinearLayoutCompat.LayoutParams lParams2 = new LinearLayoutCompat.LayoutParams(Const.LAYOUT_DEFAULT_WIDTH, Const.LAYOUT_DEFAULT_HEIGHT);
 
+                    /*iv = new ImageView(getActivity());
+                    iv.setImageResource(R.drawable.context2);
+                    lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+                    iv.setLayoutParams(lParams);
+                    lParams.setMargins(0, DEFAULT_ICON_MARGIN, 0, DEFAULT_ICON_MARGIN);
+                    iv.setLayoutParams(lParams);
+                    ltaskcontext.addView(iv);
+
+                    RoundTextView rtv1 = new RoundTextView(getActivity());
+                    rtv1.setTextAppearance(R.style.rtvTextView);
+                    lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+                    rtv1.setLayoutParams(lParams);
+                    rtv1.setCorner(DEFAULT_RADIUS2);
+                    rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
+                    rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
+                    rtv1.setText(conteksts.get(j).getTitle());
+                    ltaskcontext.addView(rtv1, lParams);*/
+
                     ImageView iv = new ImageView(getActivity());
                     iv.setImageResource(R.drawable.merchandising);
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+                    lParams.setMargins(0, DEFAULT_ICON_MARGIN, 0, DEFAULT_ICON_MARGIN);
                     iv.setLayoutParams(lParams);
-                    //iv.setLayoutParams(lParams2);
                     try {
                         iv.setColorFilter(Color.parseColor(tags.get(j).getColor()));
                     } catch (Exception e){
@@ -1100,19 +1102,14 @@ public class AddTaskFragment extends Fragment
 
                     ltasktags.addView(iv);
                     RoundTextView rtv1 = new RoundTextView(getActivity());
-                    //rtv1.setText(lstTask.get(0).getTitle());
-
-                    rtv1.setCorner(20);
-                    rtv1.setPadding(10, 0, 10, 0);
-                    //rtv1.setCorner(5, 5, 5, 5);
+                    rtv1.setTextAppearance(R.style.rtvTextView);
+                    lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+                    rtv1.setLayoutParams(lParams);
+                    rtv1.setCorner(DEFAULT_RADIUS2);
+                    rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
                     rtv1.setBgColor(Utils.parseColor(tags.get(j).getColor()));
-                    //rtv1.setTextColor(R.color.black);
                     rtv1.setTextSize(16);
-                    //rtv1.setTypeface(Typeface.DEFAULT_BOLD);
 
-                    //rtv1.setBgColor(Color.parseColor(lstTag.get(i).getColor()));
-                    //rtv1.setCorner(2, 2, 2, 2);
-                    //rtv1.setCorner(5);
                     rtv1.setText(tags.get(j).getTitle());
                     rtv1.setTypeface(Typeface.DEFAULT_BOLD);
                     rtv1.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
@@ -1181,30 +1178,44 @@ public class AddTaskFragment extends Fragment
 
         if (taskCategory2 != null) {
             taskCategoryId = taskCategory2.getId();
-            //Project project = MyApplication.getDatabase().projectDao().getProjectById(projectId);
             ltaskcategory.removeAllViews();
+
+            /*iv = new ImageView(getActivity());
+            iv.setImageResource(R.drawable.context2);
+            lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+            iv.setLayoutParams(lParams);
+            lParams.setMargins(0, DEFAULT_ICON_MARGIN, 0, DEFAULT_ICON_MARGIN);
+            iv.setLayoutParams(lParams);
+            ltaskcontext.addView(iv);
+
+            RoundTextView rtv1 = new RoundTextView(getActivity());
+            rtv1.setTextAppearance(R.style.rtvTextView);
+            lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+            rtv1.setLayoutParams(lParams);
+            rtv1.setCorner(DEFAULT_RADIUS2);
+            rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
+            rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
+            rtv1.setText(conteksts.get(j).getTitle());
+            ltaskcontext.addView(rtv1, lParams);*/
+
+
             LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
             ltaskcategory.setLayoutParams(lParams);
-
             ImageView iv = new ImageView(getActivity());
             iv.setImageResource(R.drawable.bookmark);
             iv.setColorFilter(Color.parseColor(taskCategory2.getColor()));
             lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
+            lParams.setMargins(0, DEFAULT_ICON_MARGIN, 0, DEFAULT_ICON_MARGIN);
             iv.setLayoutParams(lParams);
-
             ltaskcategory.addView(iv);
 
-            /*lParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);*/
-
             RoundTextView rtv1 = new RoundTextView(getActivity());
-            //rtv1.setText(lstTask.get(0).getTitle());
+            rtv1.setTextAppearance(R.style.rtvTextView);
+            lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+            rtv1.setLayoutParams(lParams);
+            rtv1.setCorner(DEFAULT_RADIUS2);
+            rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
 
-            rtv1.setCorner(20);
-            rtv1.setPadding(10, 0, 10, 0);
-            //rtv1.setCorner(5, 5, 5, 5);
-            //rtv1.setBgColor(Color.parseColor(tags.get(j).getColor()));
-            //rtv1.setTextColor(R.color.black);
 
 
             try {
@@ -1212,8 +1223,7 @@ public class AddTaskFragment extends Fragment
             } catch (Exception ex) {
                 rtv1.setBgColor(Color.parseColor(DEFAULT_TASKCATEGORY_COLOR));
             }
-            //rtv1.setCorner(2, 2, 2, 2);
-            //rtv1.setCorner(5);
+
 
             rtv1.setText(taskCategory2.getTitle());
 
@@ -1285,37 +1295,20 @@ public class AddTaskFragment extends Fragment
 
                     iv = new ImageView(getActivity());
                     iv.setImageResource(R.drawable.context2);
-
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
                     iv.setLayoutParams(lParams);
-                    //iv.setla
-                    lParams.setMargins(0, 2, 0, 2);
-
+                    lParams.setMargins(0, DEFAULT_ICON_MARGIN, 0, DEFAULT_ICON_MARGIN);
                     iv.setLayoutParams(lParams);
-
-
                     ltaskcontext.addView(iv);
 
-
-                    //RoundTextView rtv1 = new RoundTextView(getActivity(), null, R.style.rtvTextView);
                     RoundTextView rtv1 = new RoundTextView(getActivity());
                     rtv1.setTextAppearance(R.style.rtvTextView);
-                    //rtv1.setText(lstTask.get(0).getTitle());
-                    lParams = new LinearLayoutCompat.LayoutParams(
-                            DEFAULT_RTV_WIDTH, DEFAULT_RTV_HEIGHT);
                     lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
                     rtv1.setLayoutParams(lParams);
-                    //rtv1.set
                     rtv1.setCorner(DEFAULT_RADIUS2);
-
                     rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
                     rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
-
                     rtv1.setText(conteksts.get(j).getTitle());
-                    //rtv1.setTextSize(16);
-                    //rtv1.setTypeface(Typeface.DEFAULT_BOLD);
-                    //rtv1.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
-
                     ltaskcontext.addView(rtv1, lParams);
                 }
             }
@@ -1563,12 +1556,27 @@ public class AddTaskFragment extends Fragment
     public void getStatusTask(TaskStatus taskStatus2) {
         taskStatus = MyApplication.getDatabase().taskStatusDao().getById(taskStatus2.getId());
         //Log.e(taskStatus.getTitle().toUpperCase(), taskStatus.getTitle());
-        rtvstatusTaskTitle.setCorner(20);
+        /*rtvstatusTaskTitle.setCorner(20);
         rtvstatusTaskTitle.setPadding(20, 0, 20, 0);
         rtvstatusTaskTitle.setText(taskStatus.getTitle());
         rtvstatusTaskTitle.setTypeface(Typeface.DEFAULT_BOLD);
         rtvstatusTaskTitle.setTextSize(16);
         rtvstatusTaskTitle.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+        rtvstatusTaskTitle.setBgColor(Color.parseColor(taskStatus.getColor()));*/
+
+        //RoundTextView rtv1 = new RoundTextView(getActivity());
+        rtvstatusTaskTitle.setTextAppearance(R.style.rtvTextView);
+
+        LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT2);
+        rtvstatusTaskTitle.setLayoutParams(lParams);
+        rtvstatusTaskTitle.setCorner(DEFAULT_RADIUS2);
+        rtvstatusTaskTitle.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
         rtvstatusTaskTitle.setBgColor(Color.parseColor(taskStatus.getColor()));
+        rtvstatusTaskTitle.setText(taskStatus.getTitle());
+        //ltaskcontext.addView(rtv1, lParams);
+
+
+
+
     }
 }

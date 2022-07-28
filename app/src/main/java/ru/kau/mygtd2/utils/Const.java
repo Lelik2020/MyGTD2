@@ -33,9 +33,12 @@ public class Const {
     static final public int DEFAULT_LAYOUT_WIDTH3 = LinearLayoutCompat.LayoutParams.WRAP_CONTENT;
     static final public int DEFAULT_LAYOUT_HEIGHT3 = LinearLayoutCompat.LayoutParams.MATCH_PARENT;
 
-    static final public int DEFAULT_ICON_WIDTH = 45;; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
+    //static final public int DEFAULT_ICON_WIDTH = 45; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
+    static final public int DEFAULT_ICON_WIDTH = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.iconsize); //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
     static final public int DEFAULT_ICON_HEIGHT = LinearLayoutCompat.LayoutParams.FILL_PARENT; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
     static final public int DEFAULT_ICON_HEIGHT2 = 45;
+
+    static final public int DEFAULT_ICON_MARGIN = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.iconmargin);
 
     static final public int DEFAULT_CB_WIDTH = 25;; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
     static final public int DEFAULT_CB_HEIGHT = LinearLayoutCompat.LayoutParams.FILL_PARENT; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;

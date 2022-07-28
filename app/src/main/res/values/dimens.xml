@@ -48,6 +48,8 @@
 
     <dimen name="rtvradius">20px</dimen>
 
-    <dimen name="rtvradius2">10dp</dimen>
-    <dimen name="rtvpagging">10dp</dimen>
+    <dimen name="rtvradius2">7dp</dimen>
+    <dimen name="rtvpagging">7dp</dimen>
+    <dimen name="iconsize">30dp</dimen>
+    <dimen name="iconmargin">3dp</dimen>
 </resources>
