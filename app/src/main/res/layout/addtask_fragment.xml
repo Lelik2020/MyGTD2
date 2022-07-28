@@ -559,6 +559,19 @@
                     android:orientation="horizontal"
 
                     >
+                    <TextView
+                        style="@style/textSection"
+                        android:id="@+id/contextTaskTitle"
+                        android:layout_width="1sp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:textStyle="bold"
+                        android:visibility="invisible"
+
+                        />
+
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <ImageView
