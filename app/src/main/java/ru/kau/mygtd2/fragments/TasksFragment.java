@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.fragments;
 
+import static android.view.View.GONE;
+
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -45,8 +47,12 @@ import static ru.kau.mygtd2.enums.TypeDateTasks.TODONEXTSEVENDAYS;
 import static ru.kau.mygtd2.enums.TypeDateTasks.TODONOENDDATE;
 import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTODAY;
 import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTOMORROW;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON2;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMILSECONDS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON2;
 import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
 import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
@@ -72,6 +78,8 @@ public class TasksFragment extends Fragment {
     private RecyclerView recyclerView7;
     private RecyclerView recyclerView8;
     private RecyclerView recyclerView9;
+
+    private ImageView expandedIcon1;
 
     private TextView tv1;
     private TextView tv2;
@@ -202,6 +210,7 @@ public class TasksFragment extends Fragment {
                     tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
                     tv1.setText(getResources().getString(R.string.alltasks3));
                     recyclerView = (RecyclerView) rootView.findViewById(R.id.tasks_recyclerview_overdue);
+                    expandedIcon1 = rootView.findViewById(R.id.expandedIcon1);
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     //Log.e("TIME: ", String.valueOf(new Date().getTime()));
@@ -325,9 +334,33 @@ public class TasksFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.tasks_recyclerview_overdue);
+        expandedIcon1 = rootView.findViewById(R.id.expandedIcon1);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //Log.e("TIME: ", String.valueOf(new Date().getTime()));
+        expandedIcon1.setImageResource(DEFAULT_EXPANDED_ICON2);
+        expandedIcon1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recyclerView.getVisibility() != GONE) {
+                    recyclerView.setVisibility(GONE);
+                    expandedIcon1.setImageResource(DEFAULT_COLLAPSE_ICON2);
+                    return;
+                } else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    expandedIcon1.setImageResource(DEFAULT_EXPANDED_ICON2);
+                    return;
+                }
+
+                /*if (recyclerView.getVisibility() != GONE) {
+                    expandedIcon1.setImageResource(DEFAULT_COLLAPSE_ICON);
+                    return;
+                } else {
+                    expandedIcon1.setImageResource(DEFAULT_EXPANDED_ICON);
+                    return;
+                }*/
+            }
+        });
 
         List<Task> lstTask;
         if (lstTags == null) {
@@ -372,6 +405,7 @@ public class TasksFragment extends Fragment {
         if (tasksAdapter1.getItemCount() == 0){
             tv1.setVisibility(View.GONE);
             recyclerView.setVisibility(View.GONE);
+            //expandedIcon1
         }
 
 

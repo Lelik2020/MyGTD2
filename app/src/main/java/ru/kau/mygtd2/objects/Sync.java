@@ -12,6 +12,8 @@ public class Sync {
     private String datebeginstr;
     private String dateendstr;
 
+    private int status = 0;
+
     public String getGuid() {
         return guid;
     }
@@ -58,5 +60,13 @@ public class Sync {
 
     public void setDateendstr(String dateendstr) {
         this.dateendstr = dateendstr;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -69,6 +69,12 @@ public class Const {
     static final public int DEFAULT_EXPANDED_ICON = R.drawable.press_down;
     static final public int DEFAULT_COLLAPSE_ICON = R.drawable.not_press;
 
+    //static final public int DEFAULT_EXPANDED_ICON2 = R.drawable.cr3_toc_item_expanded;
+    //static final public int DEFAULT_COLLAPSE_ICON2 = R.drawable.cr3_toc_item_collapsed;
+
+    static final public int DEFAULT_EXPANDED_ICON2 = R.drawable.glyphicons_602_chevron_down;
+    static final public int DEFAULT_COLLAPSE_ICON2 = R.drawable.glyphicons_224_chevron_right;
+
     public static final String DEFAULT_PROJECT_COLOR = "#fafafa";
     //public static final String DEFAULT_TASKCATEGORY_COLOR = "#fafafa";
 

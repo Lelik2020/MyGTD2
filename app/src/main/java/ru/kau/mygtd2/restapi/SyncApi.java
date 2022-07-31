@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Project;
@@ -69,14 +70,14 @@ public interface SyncApi {
     @POST("dict/tasktemplatetagjoin/new")
     Call<TaskTemplateTagJoin> createTaskTemplateTagJoin(@Body TaskTemplateTagJoin taskTemplateTagJoin);
 
-    @POST("tasks/settasksforupdate2")
+    @POST("tasks/settasksforupdate")
     Call<Task> settasksforupdate(@Body Task task);
 
-    @POST("tasks/settaskstagjoin")
-    Call<TaskTagJoin> settasktagjoin(@Body List<TaskTagJoin> taskTagJoinList);
+    @POST("tasks/settaskstagjoin/{taskGuid}")
+    Call<TaskTagJoin> settasktagjoin(@Path("taskGuid") String taskGuid, @Body List<TaskTagJoin> taskTagJoinList);
 
-    @POST("tasks/settaskscontextjoin")
-    Call<TaskTagJoin> settaskscontextjoin(@Body List<TaskContextJoin> taskContextJoinList);
+    @POST("tasks/settaskscontextjoin/{taskGuid}")
+    Call<TaskContextJoin> settaskscontextjoin(@Path("taskGuid") String taskGuid, @Body List<TaskContextJoin> taskContextJoinList);
 
 
 }
