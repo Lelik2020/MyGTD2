@@ -59,7 +59,7 @@ public class SyncsFragment extends Fragment {
 
     private int syncStatus = 0; // -1 - ошибка при синхронизации
                                 // 1 - успешно
-
+    boolean isError = false;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -94,6 +94,7 @@ public class SyncsFragment extends Fragment {
             @Override
             public void onFailure(Call call, Throwable t) {
                 System.out.println("ERROR: " + t.getMessage());
+                isError = true;
             }
         });
 
@@ -131,6 +132,7 @@ public class SyncsFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Sync>> call, Throwable t) {
                 System.out.println("ERROR: " + t.getMessage());
+                isError = true;
             }
         });
 
@@ -150,7 +152,7 @@ public class SyncsFragment extends Fragment {
                 sync.setDatebeginstr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()));
 
                 //Call<Sync> call3 = calApi.create(sync);
-                System.out.println(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации контекстов");
+                Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации контекстов");
                 // Обновляем справочники
                 // Контексты
                 List<Contekst> lstConteksts = MyApplication.getDatabase().contextDao().getAll();
@@ -167,7 +169,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onFailure(Call call, Throwable t) {
-
+                            isError = true;
                         }
                     });
 
@@ -188,7 +190,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onFailure(Call call, Throwable t) {
-
+                            isError = true;
                         }
                     });
 
@@ -208,7 +210,7 @@ public class SyncsFragment extends Fragment {
 
                         @Override
                         public void onFailure(Call call, Throwable t) {
-
+                            isError = true;
                         }
                     });
 
@@ -229,6 +231,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
 
@@ -251,6 +254,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
                 }
@@ -272,6 +276,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
 
@@ -293,6 +298,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
 
@@ -315,6 +321,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
 
@@ -348,6 +355,7 @@ public class SyncsFragment extends Fragment {
                                 @Override
                                 public void onFailure(Call call, Throwable t) {
                                     //System.out.println("1111111");
+                                    isError = true;
                                 }
                             });
                             Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации задач и тегов");
@@ -364,6 +372,7 @@ public class SyncsFragment extends Fragment {
                                 @Override
                                 public void onFailure(Call call, Throwable t) {
                                     //System.out.println("1111111");
+                                    isError = true;
                                 }
                             });
                             Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации задач и контекстов");
@@ -374,6 +383,7 @@ public class SyncsFragment extends Fragment {
                         @Override
                         public void onFailure(Call call, Throwable t) {
                             //System.out.println("1111111");
+                            isError = true;
                         }
                     });
 
@@ -382,6 +392,7 @@ public class SyncsFragment extends Fragment {
 
                 sync.setDateend((new Date()).getTime());
                 sync.setDateendstr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()));
+                sync.setStatus((isError == false) ? 1 : -1);
 
                 Call<Sync> call3 = calApi.create(sync);
 
@@ -394,7 +405,7 @@ public class SyncsFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
-
+                        isError = true;
                     }
                 });
 

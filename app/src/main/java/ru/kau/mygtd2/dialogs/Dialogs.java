@@ -819,7 +819,8 @@ public class Dialogs {
 
         //final List<String> tags = StringDB.asList(AppState.get().bookTags);
         //final List<String> tags = DbItemCreator.getTagDb().getListStringItems();
-        final List<Tag> tags = MyApplication.getDatabase().tagDao().getAll();
+        //final List<Tag> tags = MyApplication.getDatabase().tagDao().getAll();
+        final List<Tag> tags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
 
 
         //final List<MyTag> tags = DbItemCreator.getTagDb().getListItems();    //StringDB.asList(AppState.get().bookTags);
