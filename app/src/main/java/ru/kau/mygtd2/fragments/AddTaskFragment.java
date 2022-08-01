@@ -1278,14 +1278,17 @@ public class AddTaskFragment extends Fragment
         //ltaskcontext
         ltaskcontext.removeAllViews();
 
+        LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+        ltaskcontext.setLayoutParams(lParams);
+
         if (conteksts != null) {
             lstConteksts = new ArrayList<Contekst>();
             lstConteksts.addAll(conteksts);
             if (conteksts.size() > 0) {
 
-                LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
+                //LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
 
-                ltaskcontext.setLayoutParams(lParams);
+                //ltaskcontext.setLayoutParams(lParams);
 
 
 
