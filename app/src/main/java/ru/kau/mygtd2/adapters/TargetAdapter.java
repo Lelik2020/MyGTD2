@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.apg.mobile.roundtextview.RoundTextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,10 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.Utils;
 
+import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
 import static ru.kau.mygtd2.utils.Const.lstStatus;
 
 public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder>{
@@ -63,7 +68,23 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder
         count = MyApplication.getDatabase().taskDao().getCountAllTasksByTarget(target.getId());
         count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByTag(target.getId(), lstStatus);
         count3 = MyApplication.getDatabase().taskDao().getCountByDateByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
-        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
+        //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
+
+        count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
+            {
+                target.getId();
+123123
+            }
+        });
+
+        /*count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, new ArrayList<Integer>() {
+            {
+                add(((Long) node.getId()).intValue());
+
+            }
+        });*/
+
+
 
         holder.roundTextView.setCorner(16, 0, 0, 16);
 
