@@ -72,8 +72,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder
 
         count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
             {
-                target.getId();
-123123
+                add((int)target.getId());
             }
         });
 
