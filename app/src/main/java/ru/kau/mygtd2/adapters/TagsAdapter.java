@@ -81,15 +81,15 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         count3 = MyApplication.getDatabase().taskDao().getCountByDateWithTags(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
                 lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
                     {
-                        tag.getId();
+                        add((int) tag.getId());
                     }
                 });
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
 
-        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithTags(Utils.getEndOfDay(new Date()).getTime(),
+        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithTags(new Date().getTime(),
                 lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
                     {
-                        tag.getId();
+                        add((int) tag.getId());
                     }
                 });
         holder.roundTextView.setCorner(16, 0, 0, 16);
