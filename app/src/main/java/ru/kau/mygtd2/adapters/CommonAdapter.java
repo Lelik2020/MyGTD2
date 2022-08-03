@@ -110,7 +110,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
                     count2 = MyApplication.getDatabase().taskDao().getCountTasksWithTags(lstStatus, lstPROJECTSID, lstALLTARGETSID, lstALLTAGSID);
                     count3 = MyApplication.getDatabase().taskDao().getCountByDateWithTags(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID, lstALLTAGSID);
                     //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithProject(new Date().getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, new Date()));
-                    count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithTags(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID, lstALLTAGSID);
+                    count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithTags(Utils.getEndOfDay(new Date()).getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID, lstALLTAGSID);
                     break;
             }
         }
@@ -131,7 +131,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
                     //count3 = MyApplication.getDatabase().taskDao().getCountByDateWithoutTag(new Date().getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, new Date()), lstStatus);
                     count3 = MyApplication.getDatabase().taskDao().getCountByDateWithoutTags(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID);
                     //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithoutTag(new Date().getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, new Date()));
-                    count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithoutTags(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID);
+                    count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithoutTags(Utils.getEndOfDay(new Date()).getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstPROJECTSID, lstALLTARGETSID);
                     break;
                 case TARGET:
                     //count = MyApplication.getDatabase().taskDao().getCountAllTasksWithoutTarget();

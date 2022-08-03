@@ -30,6 +30,7 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.Utils;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
@@ -67,7 +68,12 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder
 
         count = MyApplication.getDatabase().taskDao().getCountAllTasksByTarget(target.getId());
         count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByTag(target.getId(), lstStatus);
-        count3 = MyApplication.getDatabase().taskDao().getCountByDateByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
+        //count3 = MyApplication.getDatabase().taskDao().getCountByDateByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
+        count3 = MyApplication.getDatabase().taskDao().getCountByDate(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
+            {
+                add((int)target.getId());
+            }
+        });
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
 
         count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
