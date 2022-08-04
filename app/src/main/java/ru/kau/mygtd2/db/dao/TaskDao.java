@@ -139,6 +139,14 @@ public interface TaskDao {
                         List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstTags);
 
     @Query("SELECT count(*) FROM tasks WHERE (dateEnd = :dateEnd OR dateEndStr = :dateEndStr) AND status IN (:lstStatus) " +
+            "AND isFavourite IN (:lstFavour) AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets) " +
+            "AND guid IN (SELECT taskguid FROM taskcontexts WHERE idcontext IN (:lstContext))")
+    long getCountByDateWithContext(long dateEnd, String dateEndStr, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
+                                List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstContext);
+
+
+
+    @Query("SELECT count(*) FROM tasks WHERE (dateEnd = :dateEnd OR dateEndStr = :dateEndStr) AND status IN (:lstStatus) " +
             "AND isFavourite IN (:lstFavour) AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets)")
     long getCountByDate(long dateEnd, String dateEndStr, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
                         List<Integer> lstProjects, List<Integer> lstTargets);
@@ -179,6 +187,12 @@ public interface TaskDao {
             "AND guid IN (SELECT taskguid FROM tasktags WHERE idtag IN (:lstTags))")
     long getCountOutstandingWithTags(long date, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
                                      List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstTags);
+
+    @Query("SELECT count(*) FROM tasks WHERE (dateEnd < :date) AND status IN (:lstStatus) AND isFavourite IN (:lstFavour) " +
+            "AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets) " +
+            "AND guid IN (SELECT taskguid FROM taskcontexts WHERE idcontext IN (:lstContexts))")
+    long getCountOutstandingWithContext(long date, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
+                                     List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstContexts);
 
 
     @Query("SELECT count(*) FROM tasks WHERE (dateEnd < :date) AND status IN (:lstStatus) AND isFavourite IN (:lstFavour) " +

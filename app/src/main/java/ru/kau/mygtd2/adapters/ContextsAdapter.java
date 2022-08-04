@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.apg.mobile.roundtextview.RoundTextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,11 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.utils.Utils;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
 import static ru.kau.mygtd2.utils.Const.lstStatus;
 
 public class ContextsAdapter extends RecyclerView.Adapter<ContextsAdapter.ViewHolder> {
@@ -66,8 +72,24 @@ public class ContextsAdapter extends RecyclerView.Adapter<ContextsAdapter.ViewHo
 
         count = MyApplication.getDatabase().taskDao().getCountAllTasksByContekst(contekst.getId());
         count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByContekst(contekst.getId(), lstStatus);
-        count3 = MyApplication.getDatabase().taskDao().getCountByDateByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
-        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
+        //count3 = MyApplication.getDatabase().taskDao().getCountByDateByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
+        //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
+
+        count3 = MyApplication.getDatabase().taskDao().getCountByDateWithContext(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
+                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
+                    {
+                        add((int) contekst.getId());
+                    }
+                });
+        //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
+
+        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithContext(new Date().getTime(),
+                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
+                    {
+                        add((int) contekst.getId());
+                    }
+                });
+
 
         holder.roundTextView.setCorner(16, 0, 0, 16);
 

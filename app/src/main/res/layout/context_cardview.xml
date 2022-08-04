@@ -45,10 +45,10 @@
                 <ImageView
                     android:id="@+id/context_icon"
                     android:layout_width="@dimen/wh_btn_small"
-                    android:layout_height="@dimen/wh_btn_small"
+                    android:layout_height="match_parent"
                     android:layout_weight="0"
-                    android:src="@drawable/context"
-                    android:scaleType="centerCrop"/>
+                    android:src="@drawable/context2"
+                    android:scaleType="centerInside"/>
 
                 <TextView
                     android:layout_width="wrap_content"
