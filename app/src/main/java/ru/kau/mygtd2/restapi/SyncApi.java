@@ -79,5 +79,8 @@ public interface SyncApi {
     @POST("tasks/settaskscontextjoin/{taskGuid}")
     Call<TaskContextJoin> settaskscontextjoin(@Path("taskGuid") String taskGuid, @Body List<TaskContextJoin> taskContextJoinList);
 
+    @GET("tasks/gettasksforupdate/{date}")
+    Call<List<Task>> gettasksforupdate(@Path("date") long dateEdit);
+
 
 }

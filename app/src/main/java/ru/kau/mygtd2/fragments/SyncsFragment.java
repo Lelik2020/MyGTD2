@@ -330,6 +330,37 @@ public class SyncsFragment extends Fragment {
                 // Задачи
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации задач");
 
+
+                Call<List<Task>> getTasks = calApi.gettasksforupdate(l);
+                List<Task> lstTasksNew = new ArrayList<>();
+                getTasks.enqueue(new Callback<List<Task>>() {
+
+                    @Override
+                    public void onResponse(Call<List<Task>> call, Response<List<Task>> response) {
+                        lstTasksNew.addAll(response.body());
+                        for(int i = 0; i < lstTasksNew.size(); i++){
+                            Task t = MyApplication.getDatabase().taskDao().getByGuid(lstTasksNew.get(i).getGuid());
+                            try {
+                                if (t == null) {
+                                    MyApplication.getDatabase().taskDao().insert(lstTasksNew.get(i));
+                                } else {
+                                    if (lstTasksNew.get(i).getDateEdit().getTime() > t.getDateEdit().getTime()){
+                                        MyApplication.getDatabase().taskDao().update(lstTasksNew.get(i));
+                                    }
+                                }
+                            } catch (Exception e){
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Task>> call, Throwable t) {
+                        //System.out.println("1111111");
+                        isError = true;
+                    }
+                });
+
                 List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAllTasks();
                 for(int i = 0; i < lstTasks.size(); i++){
 
