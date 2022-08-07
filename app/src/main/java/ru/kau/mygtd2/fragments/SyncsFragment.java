@@ -151,6 +151,26 @@ public class SyncsFragment extends Fragment {
                 sync.setDatebegin((new Date()).getTime());
                 sync.setDatebeginstr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()));
 
+                Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации устройств");
+
+
+                Call deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
+                deviceCall.enqueue(new Callback() {
+
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        //System.out.println("CONTEXT");
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        isError = true;
+                    }
+                });
+
+
+                Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации устройств");
+
                 //Call<Sync> call3 = calApi.create(sync);
                 Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации контекстов");
                 // Обновляем справочники

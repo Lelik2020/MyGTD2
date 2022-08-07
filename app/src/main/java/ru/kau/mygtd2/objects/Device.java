@@ -19,6 +19,7 @@ public class Device {
     private String title;
 
     @NonNull
+    //@PrimaryKey
     private String guid;
 
     @NonNull

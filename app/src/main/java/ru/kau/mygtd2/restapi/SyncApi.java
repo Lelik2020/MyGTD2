@@ -4,6 +4,7 @@ package ru.kau.mygtd2.restapi;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -11,6 +12,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
@@ -82,5 +84,6 @@ public interface SyncApi {
     @GET("tasks/gettasksforupdate/{date}")
     Call<List<Task>> gettasksforupdate(@Path("date") long dateEdit);
 
-
+    @POST("device/new")
+    Call<ResponseBody> createDevice(@Body Device device);
 }
