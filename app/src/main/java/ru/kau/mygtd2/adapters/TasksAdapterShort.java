@@ -117,6 +117,9 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
 
         ImageView category;
         ImageView itemdevice;
+        ImageView expandedIcon;
+
+        LinearLayoutCompat taskinformation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -152,7 +155,9 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
             priorityName = itemView.findViewById(R.id.priorityName);
             category = itemView.findViewById(R.id.category);
             itemdevice = itemView.findViewById(R.id.itemdevice);
+            expandedIcon = itemView.findViewById(R.id.expandedIcon);
 
+            taskinformation = itemView.findViewById(R.id.taskinformation);
 
         }
 
@@ -165,7 +170,7 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
     @NonNull
     @Override
     public TasksAdapterShort.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new2,viewGroup,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new_s,viewGroup,false);
 
         return new TasksAdapterShort.ViewHolder(v);
     }
@@ -196,6 +201,8 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
         lParamscv = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
         lParamscv.setMargins(Utils.getLevelTask(lstTask.get(i)) * TASK_LEVEL_OFFSET + 10, 9, 5, 5);
         viewHolder.card.setLayoutParams(lParamscv);
+
+        viewHolder.taskinformation.setVisibility(View.GONE);
 
         viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + "-" + lstTask.get(i).getId());
         TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
@@ -266,6 +273,18 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
         lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), ViewGroup.LayoutParams.MATCH_PARENT);
         lParamsll.setMargins(2, 2, 0, 0);
         viewHolder.statusTaskll.setLayoutParams(lParamsll);
+
+        viewHolder.expandedIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewHolder.taskinformation.getVisibility() == View.GONE) {
+                    viewHolder.taskinformation.setVisibility(View.INVISIBLE);
+                } else {
+                    viewHolder.taskinformation.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         viewHolder.statusTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
