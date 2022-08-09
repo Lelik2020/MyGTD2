@@ -204,7 +204,7 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
 
         viewHolder.taskinformation.setVisibility(View.GONE);
 
-        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + "-" + lstTask.get(i).getId());
+        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + " - " + lstTask.get(i).getId());
         TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
         viewHolder.title.setTextColor(Color.parseColor(taskTypes.getColor()));
         viewHolder.title2.setText(lstTask.get(i).getTitle());
