@@ -37,120 +37,138 @@
             android:orientation="vertical"
             >
 
-
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ltasktitle"
+                android:id="@+id/ltaskinfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-234
+                android:orientation="vertical"
                 tools:ignore="MissingConstraints">
 
-
-                <ImageView
-                    android:id="@+id/tasktype"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tasktitle"
-                    style="@style/textLinkTaskCardTitle"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ltasktitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center_horizontal|right"
-                    android:text="Name"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
 
-                <TextView
-                    android:id="@+id/tasktitle2"
-                    style="@style/txtTaskTitleTaskCard2"
-                    android:layout_width="wrap_content"
+
+                    <ImageView
+                        android:id="@+id/tasktype"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tasktitle"
+                        style="@style/textLinkTaskCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center_horizontal|right"
+                        android:text="Name"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tasktitle2"
+                        style="@style/txtTaskTitleTaskCard2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:text="Name"
+                        android:textStyle="bold" />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ltasktitle222"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="5sp"
-                    android:text="Name"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
 
-                <ImageView
-                    android:id="@+id/category"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:adjustViewBounds="true"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/bookmark" />
+                    <ImageView
+                        android:id="@+id/category"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/bookmark" />
 
-                <ImageView
-                    android:id="@+id/comments"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:adjustViewBounds="true"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/comments3"
-                    app:tint="@color/colorPrimary" />
+                    <ImageView
+                        android:id="@+id/comments"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/comments3"
+                        app:tint="@color/colorPrimary" />
 
 
-                <ImageView
-                    android:id="@+id/editTask"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:adjustViewBounds="true"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/edittask"
-                    app:tint="@color/colorPrimary" />
+                    <ImageView
+                        android:id="@+id/editTask"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/edittask"
+                        app:tint="@color/colorPrimary" />
 
-                <ImageView
-                    android:id="@+id/starIcon"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:adjustViewBounds="true"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/star55" />
+                    <ImageView
+                        android:id="@+id/starIcon"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/star55" />
 
-                <ImageView
-                    android:id="@+id/expandedIcon"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
+                    <ImageView
+                        android:id="@+id/expandedIcon"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
 
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="fitCenter"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
 
-                    android:src="@drawable/glyphicons_224_chevron_right"
-                    app:tint="@color/colorPrimary" />
+                        android:src="@drawable/glyphicons_224_chevron_right"
+                        app:tint="@color/colorPrimary" />
 
-                <ImageView
-                    android:id="@+id/itemTaskMenu"
-                    android:layout_width="@dimen/wh_button_small2"
-                    android:layout_height="@dimen/wh_button_small2"
-                    android:layout_weight="0"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/glyphicons_518_option_vertical"
-                    app:tint="@color/colorPrimary" />
+                    <ImageView
+                        android:id="@+id/itemTaskMenu"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/glyphicons_518_option_vertical"
+                        app:tint="@color/colorPrimary" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

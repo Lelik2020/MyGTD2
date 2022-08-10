@@ -170,7 +170,8 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
     @NonNull
     @Override
     public TasksAdapterShort.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new_s,viewGroup,false);
+        //View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_new_s,viewGroup,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.task_cardview_ss,viewGroup,false);
 
         return new TasksAdapterShort.ViewHolder(v);
     }
