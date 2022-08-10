@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/TaskCardViewStyle"
+    android:animateLayoutChanges="true"
+    >
+
+    <RelativeLayout
+        android:id="@+id/taskinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/selector_nnn"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ltaskcommon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltaskinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ltasktitle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/tasktype"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tasktitle"
+                        style="@style/textLinkTaskCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center_horizontal|right"
+                        android:text="Name"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tasktitle2"
+                        style="@style/txtTaskTitleTaskCard2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5sp"
+                        android:text="Name"
+                        android:textStyle="bold" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ltasktitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/category"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/bookmark" />
+
+                    <ImageView
+                        android:id="@+id/comments"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/comments3"
+                        app:tint="@color/colorPrimary" />
+
+
+                    <ImageView
+                        android:id="@+id/editTask"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/edittask"
+                        app:tint="@color/colorPrimary" />
+
+                    <ImageView
+                        android:id="@+id/starIcon"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/star55" />
+
+                    <ImageView
+                        android:id="@+id/expandedIcon"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="fitCenter"
+
+                        android:src="@drawable/glyphicons_224_chevron_right"
+                        app:tint="@color/colorPrimary" />
+
+                    <ImageView
+                        android:id="@+id/itemTaskMenu"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_weight="0"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/glyphicons_518_option_vertical"
+                        app:tint="@color/colorPrimary" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                tools:ignore="MissingConstraints">
+
+                <cn.refactor.library.SmoothCheckBox
+                    android:id="@+id/statusTask"
+                    android:layout_width="@dimen/wh_button_big"
+                    android:layout_height="@dimen/wh_button_big"
+
+
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:color_checked="@color/tint_gray" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

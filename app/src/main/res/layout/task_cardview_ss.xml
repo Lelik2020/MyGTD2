@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-
+234
                 tools:ignore="MissingConstraints">
 
 
@@ -518,14 +518,7 @@
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <!--<cn.refactor.library.SmoothCheckBox
-                    android:id="@+id/statusTask2"
-                    android:layout_width="0sp"
-                    android:layout_height="0sp"
-                    android:layout_weight="0"
-                    android:padding="4sp"
-                    android:background="?android:attr/selectableItemBackground"
-                    app:color_checked="@color/tint_gray" />-->
+
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

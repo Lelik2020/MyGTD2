@@ -55,6 +55,7 @@ import java.util.List;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.adapters.TasksAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter2;
+import ru.kau.mygtd2.adapters.TasksAdapterShort;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.listeners.DefaultListeners;
 import ru.kau.mygtd2.objects.Project;
@@ -98,16 +99,16 @@ public class TasksFragmentN extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.tasks_fragment, null);
+        View rootView = inflater.inflate(R.layout.tasks_fragmentn, null);
 
         toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         toolbar.setTitle("Задачи");
         setHasOptionsMenu(true);
         //toolbar.menu  onCreateOptionsMenu
 
-        ImageView onSorting = (ImageView) rootView.findViewById(R.id.onSorting);
+        //ImageView onSorting = (ImageView) rootView.findViewById(R.id.onSorting);
 
-        onSort = (ImageView) rootView.findViewById(R.id.onSort);
+        //onSort = (ImageView) rootView.findViewById(R.id.onSort);
 
 
         //Log.e("ПОЗИЦИЯ", "ПОЗИЦИЯ");
@@ -296,6 +297,9 @@ public class TasksFragmentN extends Fragment {
         return rootView;
     }
 
+    public void bindAdapter(TasksAdapterShort tasksAdapter) {
+        DefaultListeners.bindAdapter2(getActivity(), tasksAdapter);
+    }
 
     public void bindAdapter(TasksAdapter2 tasksAdapter) {
         DefaultListeners.bindAdapter2(getActivity(), tasksAdapter);
@@ -393,7 +397,7 @@ public class TasksFragmentN extends Fragment {
             }, null, args);
         }
         tv1.setText(Utils.getTextHeading(this, OVERDUE, lstTask.size()));
-        TasksAdapter2 tasksAdapter1 = new TasksAdapter2(getActivity(), lstTask);
+        TasksAdapterShort tasksAdapter1 = new TasksAdapterShort(getActivity(), lstTask);
         //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
         //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
         bindAdapter(tasksAdapter1);
@@ -864,7 +868,7 @@ public class TasksFragmentN extends Fragment {
                 }
             }, null, args);
         }
-55
+
 
         TasksAdapter2 tasksAdapter9 = new TasksAdapter2(getActivity(), lstTask);
         //TasksAdapter tasksAdapter8 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getTasksWithoutSubtaskNoDateEnd());

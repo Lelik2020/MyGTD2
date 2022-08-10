@@ -163,7 +163,7 @@ public class MainFragment extends Fragment implements ClickListener {
                 bundle.putInt("menunumber", position);
 
                 Fragment fragment;
-                fragment = new TasksFragment();
+                fragment = new TasksFragmentN();
                 fragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("TasksFragment").replace(R.id.frame_container, fragment, "TasksFragment").commit();
             }

@@ -6,6 +6,7 @@ import ru.kau.mygtd2.adapters.CommentAdapter;
 import ru.kau.mygtd2.adapters.InformationAdapter;
 import ru.kau.mygtd2.adapters.SprProjectTreeAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter2;
+import ru.kau.mygtd2.adapters.TasksAdapterShort;
 import ru.kau.mygtd2.dialogs.ShareDialog;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.objects.Comment;
@@ -46,6 +47,14 @@ public class DefaultListeners {
         //searchAdapter.setOnItemLongClickListener(getOnItemLongClickListener(a, searchAdapter));
 
         informationAdapter.setOnMenuClickListener(getOnMenuClick(a, informationAdapter));
+        //searchAdapter.setOnStarClickListener(getOnStarClick(a));
+        //Log.e("555555555", "44444444444");
+    }
+    public static void bindAdapter2(Activity a, TasksAdapterShort tasksAdapter) {
+        //searchAdapter.setOnItemClickListener(getOnItemClickListener(a));
+        //searchAdapter.setOnItemLongClickListener(getOnItemLongClickListener(a, searchAdapter));
+
+        tasksAdapter.setOnMenuClickListener(getOnMenuClick2(a, tasksAdapter));
         //searchAdapter.setOnStarClickListener(getOnStarClick(a));
         //Log.e("555555555", "44444444444");
     }
@@ -129,7 +138,19 @@ public class DefaultListeners {
             }
         };
     }
+    public static ResultResponse<Task> getOnMenuClick2(final Activity a, final TasksAdapterShort tasksAdapter) {
+        return new ResultResponse<Task>() {
 
+            @Override
+            public boolean onResultRecive(final Task result) {
+
+
+                //Log.e("333333333333", "44444444444");
+                ShareDialog.show2(a, null, result);
+                return false;
+            }
+        };
+    }
     public static ResultResponse<Task> getOnMenuClick2(final Activity a, final TasksAdapter2 tasksAdapter) {
         return new ResultResponse<Task>() {
 

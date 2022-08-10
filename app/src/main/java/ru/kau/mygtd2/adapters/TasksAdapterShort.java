@@ -278,9 +278,11 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
             @Override
             public void onClick(View v) {
                 if (viewHolder.taskinformation.getVisibility() == View.GONE) {
-                    viewHolder.taskinformation.setVisibility(View.INVISIBLE);
-                } else {
                     viewHolder.taskinformation.setVisibility(View.VISIBLE);
+                    viewHolder.expandedIcon.setImageResource(R.drawable.glyphicons_602_chevron_down);
+                } else {
+                    viewHolder.taskinformation.setVisibility(View.GONE);
+                    viewHolder.expandedIcon.setImageResource(R.drawable.glyphicons_224_chevron_right);
                 }
             }
         });
