@@ -177,6 +177,30 @@ public class Utils {
         //return (ImageView) ((Activity)c).findViewById(R.drawable.task);
     }
 
+    public static int getImageResourceTaskType(TypeOfTask typeOfTask, String parentTask) {
+
+        Log.e("PARENTGUID: ", parentTask);
+        if ((parentTask != null) && !(parentTask.equals(""))){
+            return R.drawable.subtask2;
+        }
+
+        switch (typeOfTask.Value) {
+            case 1:
+                return R.drawable.epic;
+            case 2:
+                return R.drawable.story;
+            case 3:
+                return R.drawable.task;
+            case 4:
+                return R.drawable.bug;
+            case 5:
+                return R.drawable.question;
+            default:
+                return R.drawable.task;
+        }
+        //return (ImageView) ((Activity)c).findViewById(R.drawable.task);
+    }
+
     public static int getImageResourceTaskType(TypeOfTask typeOfTask) {
 
         switch (typeOfTask.Value) {

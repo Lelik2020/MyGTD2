@@ -211,7 +211,7 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
         viewHolder.title2.setText(lstTask.get(i).getTitle());
         viewHolder.taskdetail.setText(lstTask.get(i).getDescription());
         TxtUtils.underlineTextView(viewHolder.title);
-        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask()));
+        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask(), lstTask.get(i).getParenttaskguid()));
         //viewHolder.typeTask.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
         lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -228,7 +228,7 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
             viewHolder.parenttitle.setTextColor(Color.parseColor(taskTypes.getColor()));
             viewHolder.parenttitle2.setText(parenttask.getTitle());
             TxtUtils.underlineTextView(viewHolder.parenttitle);
-            viewHolder.parenttypeTask.setImageResource(Utils.getImageResourceTaskType(parenttask.getTypeOfTask()));
+            viewHolder.parenttypeTask.setImageResource(Utils.getImageResourceTaskType(parenttask.getTypeOfTask(), parenttask.getParenttaskguid()));
             //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
             lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
             lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTHSMALL, Const.DEFAULT_ICON_HEIGHTSMALL);
