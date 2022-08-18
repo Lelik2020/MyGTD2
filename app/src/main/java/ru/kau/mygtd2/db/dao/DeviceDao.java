@@ -20,6 +20,9 @@ public interface DeviceDao {
     @Query("SELECT * FROM devices WHERE id = :id")
     Device getById(int id);
 
+    @Query("SELECT * FROM devices WHERE guid = :guid")
+    Device getByGuid(String guid);
+
     @Query("SELECT * FROM devices")
     List<Device> getAll();
 

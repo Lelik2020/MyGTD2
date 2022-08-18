@@ -5,13 +5,15 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "devices",
         indices = {
                 @Index(value = {"guid"}, unique = true)
         })
 public class Device {
 
-    @PrimaryKey
+    @NotNull
     private int id;
 
     //@PrimaryKey
@@ -19,7 +21,7 @@ public class Device {
     private String title;
 
     @NonNull
-    //@PrimaryKey
+    @PrimaryKey
     private String guid;
 
     @NonNull

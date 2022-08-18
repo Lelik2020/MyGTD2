@@ -7,16 +7,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     style="@style/TaskCardViewStyle"
-
-
-
     android:animateLayoutChanges="true"
-
-
-
-
     >
 
 
@@ -114,6 +106,18 @@
                             android:text="Name"
                             android:textStyle="bold" />
 
+                        <ImageView
+                            android:id="@+id/expandedIcon"
+                            android:layout_width="@dimen/wh_button_small2"
+                            android:layout_height="@dimen/wh_button_small2"
+                            android:layout_weight="0"
+
+                            android:paddingTop="2sp"
+                            android:paddingBottom="2sp"
+                            android:scaleType="fitCenter"
+
+                            android:src="@drawable/glyphicons_224_chevron_right"
+                            app:tint="@color/colorPrimary" />
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -171,18 +175,7 @@
                             android:scaleType="fitCenter"
                             android:src="@drawable/star55" />
 
-                        <ImageView
-                            android:id="@+id/expandedIcon"
-                            android:layout_width="@dimen/wh_button_small2"
-                            android:layout_height="@dimen/wh_button_small2"
-                            android:layout_weight="0"
 
-                            android:paddingTop="2sp"
-                            android:paddingBottom="2sp"
-                            android:scaleType="fitCenter"
-
-                            android:src="@drawable/glyphicons_224_chevron_right"
-                            app:tint="@color/colorPrimary" />
 
                         <ImageView
                             android:id="@+id/itemTaskMenu"
@@ -200,7 +193,7 @@
                             android:id="@+id/details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0"
+                            android:layout_weight="1"
                             android:gravity="right"
                             android:textAlignment="gravity"
                             android:text="@string/details"
@@ -209,6 +202,18 @@
                             android:textStyle="bold"
 
                             />
+
+                        <ImageView
+                            android:id="@+id/eye"
+                            android:layout_width="@dimen/wh_button_small2"
+                            android:layout_height="@dimen/wh_button_small2"
+                            android:layout_weight="0"
+                            android:paddingTop="2sp"
+                            android:paddingBottom="2sp"
+                            android:gravity="right"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/eye2"
+                            app:tint="@color/colorPrimary" />
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -285,7 +290,7 @@
                             android:paddingLeft="5sp"
                             android:text="Name"
                             android:textColor="@color/black"
-                            android:textSize="9sp"
+                            android:textSize="12dp"
                             android:textStyle="bold" />
 
 

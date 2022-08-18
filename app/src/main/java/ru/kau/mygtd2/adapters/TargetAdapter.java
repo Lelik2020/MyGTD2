@@ -67,7 +67,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder
         long count4 = 0L;
 
         count = MyApplication.getDatabase().taskDao().getCountAllTasksByTarget(target.getId());
-        count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByTag(target.getId(), lstStatus);
+        count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByTarget(target.getId(), lstStatus);
         //count3 = MyApplication.getDatabase().taskDao().getCountByDateByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
         count3 = MyApplication.getDatabase().taskDao().getCountByDate(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
             {
@@ -76,7 +76,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.ViewHolder
         });
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
 
-        count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
+        count4 = MyApplication.getDatabase().taskDao().getCountOutstanding(Utils.getEndOfDay(new Date()).getTime(), lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, new ArrayList<Integer>() {
             {
                 add((int)target.getId());
             }

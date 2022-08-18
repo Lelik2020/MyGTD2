@@ -19,7 +19,7 @@ public interface TagDao {
     @Query("SELECT * FROM tags ORDER BY :sort")
     List<Tag> getAll(String sort);
 
-    @Query("SELECT * FROM tags ORDER BY title")
+    @Query("SELECT * FROM tags WHERE title <> '' ORDER BY title")
     List<Tag> getAllSortByTitle();
 
     @Query("SELECT * FROM tags INNER JOIN tasktags ON id = idtag WHERE idtask = :taskId")

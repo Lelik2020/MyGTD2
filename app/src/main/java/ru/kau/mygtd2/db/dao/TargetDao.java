@@ -15,7 +15,10 @@ import ru.kau.mygtd2.objects.Target;
 @Dao
 public interface TargetDao {
 
-    @Query("SELECT * FROM targets")
+    //@Query("SELECT * FROM targets")
+    //List<Target> getAll();
+
+    @Query("SELECT * FROM targets WHERE title <> '' ORDER BY title")
     List<Target> getAll();
 
     @Query("SELECT * FROM targets WHERE id = :target_id")

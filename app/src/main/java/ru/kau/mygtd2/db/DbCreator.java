@@ -907,19 +907,19 @@ public class DbCreator {
         MyApplication.getDatabase().taskTagJoinDao().insert(taskTagJoin);*/
 
         Contekst contekst = new Contekst();
-        contekst.setId(1L);
+        contekst.setId(1);
         contekst.setTitle("Дом");
         contekst.setColor("#2196F3");
         MyApplication.getDatabase().contextDao().insert(contekst);
 
         contekst = new Contekst();
-        contekst.setId(2L);
+        contekst.setId(2);
         contekst.setTitle("Работа");
         contekst.setColor("#33FF99");
         MyApplication.getDatabase().contextDao().insert(contekst);
 
         contekst = new Contekst();
-        contekst.setId(3L);
+        contekst.setId(3);
         contekst.setTitle("В метро");
         contekst.setColor("#C71585");
         MyApplication.getDatabase().contextDao().insert(contekst);

@@ -29,6 +29,7 @@ import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.ProjectStatus;
 import ru.kau.mygtd2.objects.Sync;
@@ -301,7 +302,7 @@ public class SyncsFragment extends Fragment {
                     });
 
                 }
-                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Коенц синхронизации шаблонов");
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации шаблонов");
                 List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации связки шаблонов и контекстов");
                 for(int i = 0; i < lstTaskTemplateContextJoin.size(); i++){
@@ -440,6 +441,78 @@ public class SyncsFragment extends Fragment {
 
                 }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации задач");
+
+                // До этого мы передавали данные для синхронизации
+                // Теперь будеи получать их
+
+                // Сначала получаем список устройств
+                //
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения девайсов");
+
+                try {
+                    Call<List<Device>> lstdeviceCall = calApi.getAllDevices();
+                    lstdeviceCall.enqueue(new Callback<List<Device>>() {
+
+                        @Override
+                        public void onResponse(Call<List<Device>> call, Response<List<Device>> response) {
+                            List<Device> lstDevices = new ArrayList<>();
+                            lstDevices.addAll(response.body());
+                            Log.e("ERROR: ", String.valueOf(lstDevices.size()));
+                            for (int i = 0; i < lstDevices.size(); i++) {
+                                Device d = MyApplication.getDatabase().deviceDao().getByGuid(lstDevices.get(i).getGuid());
+                                if (d == null) {
+                                    // Сохраняем новое устройство
+                                    lstDevices.get(i).setIscurrent(0);
+                                    try {
+                                        MyApplication.getDatabase().deviceDao().insert(lstDevices.get(i));
+                                    } catch (Exception e) {
+                                        Log.e("ERROR: ", e.getMessage());
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            isError = true;
+                        }
+                    });
+                } catch (Exception e){
+                    Log.e("ERROR: ", e.getMessage());
+                }
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения девайсов");
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения справочников");
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения контектов");
+
+                Call<List<Contekst>> lstContekstCall = calApi.getAllContext();
+                lstContekstCall.enqueue(new Callback<List<Contekst>>() {
+
+                    @Override
+                    public void onResponse(Call<List<Contekst>> call, Response<List<Contekst>> response) {
+                        //System.out.println("CONTEXT");
+                        List<Contekst> lstContexts = response.body();
+                        if (lstContexts != null) {
+                            for (int i = 0; i < lstContexts.size(); i++) {
+                                Contekst contekst = MyApplication.getDatabase().contextDao().getContextById(lstContexts.get(i).getId());
+                                if (contekst == null) {
+                                    MyApplication.getDatabase().contextDao().insert(lstContexts.get(i));
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        isError = true;
+                    }
+                });
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения контектов");
+
+                // ----------------------------------------------------------------------------------------------------
 
                 sync.setDateend((new Date()).getTime());
                 sync.setDateendstr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()));

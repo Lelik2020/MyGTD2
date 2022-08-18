@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 ext {
-        db = 3
-        codeNumber = 10000 * db + 5000
+        db = 4
+        codeNumber = 10000 * db + 0000
 
-        major = "50"
+        major = "00"
         minor = "00"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
@@ -26,7 +26,7 @@ android {
         versionCode codeNumber
         versionName versionNumber
 
-        buildConfigField  "int", "DB", "3"
+        buildConfigField  "int", "DB", "4"
 
         //buildConfigField  "int", "databasenumber", "2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'

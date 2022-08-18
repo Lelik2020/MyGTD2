@@ -83,7 +83,8 @@ import ru.kau.mygtd2.utils.Converters;
                         version = BuildConfig.DB,
                         autoMigrations = {
                                 //@AutoMigration(from = 1, to = 2),
-                                @AutoMigration(from = 2, to = 3)
+                                //@AutoMigration(from = 2, to = 3)
+                                @AutoMigration(from = 3, to = 4)
                         },
                         //exportSchema = false
                         exportSchema = true
@@ -710,16 +711,64 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final Migration MIGRATION_15_16 = new Migration(2, 3) {
         @Override
         public void migrate(final SupportSQLiteDatabase database) {
-
             String SQL4 = "ALTER TABLE tasks ADD COLUMN parenttaskguid TEXT DEFAULT ''";
 
             //database.execSQL(SQL4);
             System.out.println("MIGRATION_15_16" );
             database.execSQL(SQL4);
         }
+    };
+//555
+    public static final Migration MIGRATION_16_17 = new Migration(3, 4) {
+        @Override
+        public void migrate(final SupportSQLiteDatabase database) {
+            String SQL1 = "PRAGMA [main].legacy_alter_table = 'on';";
 
+            String SQL2 = "PRAGMA [main].foreign_keys = 'off';";
 
+            String SQL3 = "SAVEPOINT [sqlite_expert_apply_design_transaction];";
 
+            String SQL4 = "DROP INDEX [main].[index_devices_guid];";
+
+            String SQL5 = "ALTER TABLE [main].[devices] RENAME TO [_sqliteexpert_temp_table_1];";
+
+            String SQL6 = "CREATE TABLE [main].[devices](\n" +
+                    "  [id] INTEGER NOT NULL, \n" +
+                    "  [title] TEXT NOT NULL, \n" +
+                    "  [guid] TEXT PRIMARY KEY NOT NULL, \n" +
+                    "  [iscurrent] INTEGER NOT NULL, \n" +
+                    "  [devicetype] INTEGER NOT NULL);";
+
+            String SQL7 = "INSERT INTO [main].[devices]([rowid], [id], [title], [guid], [iscurrent], [devicetype])\n" +
+                    "SELECT [rowid], [id], [title], [guid], [iscurrent], [devicetype]\n" +
+                    "FROM [main].[_sqliteexpert_temp_table_1];";
+
+            String SQL8 = "DROP TABLE IF EXISTS [main].[_sqliteexpert_temp_table_1];";
+
+            String SQL9 = "CREATE UNIQUE INDEX [main].[index_devices_guid] ON [devices]([guid]);";
+
+            String SQL10 = "RELEASE [sqlite_expert_apply_design_transaction];";
+
+            String SQL11 = "PRAGMA [main].foreign_keys = 'on';";
+
+            String SQL12 = "PRAGMA [main].legacy_alter_table = 'off';";
+
+            //database.execSQL(SQL4);
+            System.out.println("MIGRATION_16_17" );
+
+            database.execSQL(SQL1);
+            database.execSQL(SQL2);
+            database.execSQL(SQL3);
+            database.execSQL(SQL4);
+            database.execSQL(SQL5);
+            database.execSQL(SQL6);
+            database.execSQL(SQL7);
+            database.execSQL(SQL8);
+            database.execSQL(SQL9);
+            database.execSQL(SQL10);
+            database.execSQL(SQL11);
+            database.execSQL(SQL12);
+        }
     };
 
     /*public static final Migration MIGRATION_1_2 = new Migration(1, 2) {

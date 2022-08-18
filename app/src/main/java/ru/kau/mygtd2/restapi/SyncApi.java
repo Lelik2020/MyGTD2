@@ -51,6 +51,9 @@ public interface SyncApi {
     @POST("dict/contekst/new")
     Call<Contekst> createContekst(@Body Contekst contekst);
 
+    @GET("dict/contekst/getall")
+    Call<List<Contekst>> getAllContext();
+
     @POST("dict/project/new")
     Call<Project> createProject(@Body Project project);
 
@@ -86,4 +89,7 @@ public interface SyncApi {
 
     @POST("device/new")
     Call<ResponseBody> createDevice(@Body Device device);
+
+    @GET("device/getalldevices")
+    Call<List<Device>> getAllDevices();
 }
