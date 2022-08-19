@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +22,7 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.utils.Utils;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_CONTEXT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
@@ -63,8 +63,11 @@ public class ContextsAdapter extends RecyclerView.Adapter<ContextsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Contekst contekst = getItem(position);
         holder.title.setText(contekst.getTitle());
-        holder.tagImage.setColorFilter(Color.parseColor(contekst.getColor()));
-
+        try {
+            holder.tagImage.setColorFilter(Color.parseColor(contekst.getColor()));
+        } catch (Exception e) {
+            holder.tagImage.setColorFilter(Color.parseColor(DEFAULT_CONTEXT_COLOR));
+        }
         long count = 0L;
         long count2 = 0L;
         long count3 = 0L;

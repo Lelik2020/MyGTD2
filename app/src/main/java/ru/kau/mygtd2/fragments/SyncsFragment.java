@@ -449,7 +449,7 @@ public class SyncsFragment extends Fragment {
                 //
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения девайсов");
 
-                try {
+
                     Call<List<Device>> lstdeviceCall = calApi.getAllDevices();
                     lstdeviceCall.enqueue(new Callback<List<Device>>() {
 
@@ -477,9 +477,7 @@ public class SyncsFragment extends Fragment {
                             isError = true;
                         }
                     });
-                } catch (Exception e){
-                    Log.e("ERROR: ", e.getMessage());
-                }
+
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения девайсов");
 
@@ -511,6 +509,38 @@ public class SyncsFragment extends Fragment {
                 });
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения контектов");
+
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения проектов");
+
+                Call<List<Project>> lstProjectCall = calApi.getAllProjects();
+                lstProjectCall.enqueue(new Callback<List<Project>>() {
+
+                    @Override
+                    public void onResponse(Call<List<Project>> call, Response<List<Project>> response) {
+                        //System.out.println("CONTEXT");
+                        List<Project> lstProjects = response.body();
+                        if (lstProjects != null) {
+                            for (int i = 0; i < lstProjects.size(); i++) {
+                                Project project = MyApplication.getDatabase().projectDao().getProjectById(lstProjects.get(i).getId());
+                                if (project == null) {
+                                    MyApplication.getDatabase().projectDao().insert(lstProjects.get(i));
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        isError = true;
+                    }
+                });
+
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения проектов");
+
+
+
+
 
                 // ----------------------------------------------------------------------------------------------------
 

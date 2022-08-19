@@ -65,6 +65,8 @@ public class Const {
     static final public String DEFAULT_RTV_COLOR = "#aa03A9F4";
     static final public String DEFAULT_TASKBG_COLOR = "#FFFFFFFF";
     static final public String DEFAULT_TEXT_COLOR = "#000000";
+    static final public String DEFAULT_INVERTTEXT_COLOR = "#FFFFFFFF";
+    static final public String DEFAULT_CONTEXT_COLOR = "#000000";
 
     static final public int DEFAULT_EXPANDED_ICON = R.drawable.press_down;
     static final public int DEFAULT_COLLAPSE_ICON = R.drawable.not_press;

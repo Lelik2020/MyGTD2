@@ -1,8 +1,10 @@
 package ru.kau.mygtd2.fragments;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_CONTEXT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_ICON_MARGIN;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_INVERTTEXT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS2;
@@ -1310,7 +1312,12 @@ public class AddTaskFragment extends Fragment
                     rtv1.setLayoutParams(lParams);
                     rtv1.setCorner(DEFAULT_RADIUS2);
                     rtv1.setPadding(DEFAULT_RTVPAGGING, 0, DEFAULT_RTVPAGGING, 0);
-                    rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
+                    try {
+                        rtv1.setBgColor(Color.parseColor(conteksts.get(j).getColor()));
+                    } catch (Exception e) {
+                        rtv1.setBgColor(Color.parseColor(DEFAULT_CONTEXT_COLOR));
+                        rtv1.setTextColor(Color.parseColor(DEFAULT_INVERTTEXT_COLOR));
+                    }
                     rtv1.setText(conteksts.get(j).getTitle());
                     ltaskcontext.addView(rtv1, lParams);
                 }

@@ -92,4 +92,8 @@ public interface SyncApi {
 
     @GET("device/getalldevices")
     Call<List<Device>> getAllDevices();
+
+    @GET("dict/project/getall")
+    Call<List<Project>> getAllProjects();
+
 }
