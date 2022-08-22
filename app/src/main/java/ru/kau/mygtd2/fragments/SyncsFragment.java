@@ -485,7 +485,7 @@ public class SyncsFragment extends Fragment {
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения справочников");
 
-                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения контектов");
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения контекстов");
 
                 Call<List<Contekst>> lstContekstCall = calApi.getAllContext();
                 lstContekstCall.enqueue(new Callback<List<Contekst>>() {
@@ -510,7 +510,7 @@ public class SyncsFragment extends Fragment {
                     }
                 });
 
-                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения контектов");
+                Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения контекстов");
 
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало получения проектов");
@@ -539,6 +539,8 @@ public class SyncsFragment extends Fragment {
                 });
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец получения проектов");
+
+
 
 
 
