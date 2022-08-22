@@ -98,8 +98,8 @@ public class Task implements Serializable{  //Parcelable {
     }*/
 
 
+    //@JsonAdapter(StatusConverter.class)
     @TypeConverters(Converters.class)
-    @JsonAdapter(StatusConverter.class)
     private Status previousStatus;
 
     public Status getPreviousStatus() {

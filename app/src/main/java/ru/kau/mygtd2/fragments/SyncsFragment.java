@@ -48,6 +48,7 @@ import stream.custombutton.CustomButton;
 public class SyncsFragment extends Fragment {
 
     private static SyncApi calApi;
+    private static SyncApi calApi2;
     //private static TasksApi2 calApi2;
 
     private RecyclerView recyclerView;
@@ -238,9 +239,10 @@ public class SyncsFragment extends Fragment {
                 }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации целей");
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации проектов");
+                calApi2 = Controller.getSyncApi2();
                 List<Project> lstProjects = MyApplication.getDatabase().projectDao().getAll();
                 for(int i = 0; i < lstProjects.size(); i++){
-                    Call<Project> tagCall = calApi.createProject(lstProjects.get(i));
+                    Call<Project> tagCall = calApi2.createProject(lstProjects.get(i));
 
                     tagCall.enqueue(new Callback() {
 

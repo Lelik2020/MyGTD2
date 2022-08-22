@@ -33,11 +33,26 @@ public class Controller {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .registerTypeAdapter(Date.class, new DateConverter())
-                .registerTypeAdapter(Status.class, new StatusConverter())
+                //.registerTypeAdapter(Status.class, new StatusConverter())
                 .registerTypeAdapter(TypeOfTask.class, new TypeOfTaskConverter())
-                .registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
+                //.registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
                 .create();
         System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl(Settings.getStringSetting(IPSERVERSYNC))
+                .build();
+
+        SyncApi calApi = retrofit.create(SyncApi.class);
+        return calApi;
+    }
+
+    public static SyncApi getSyncApi2(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
+                .create();
+        //System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(Settings.getStringSetting(IPSERVERSYNC))

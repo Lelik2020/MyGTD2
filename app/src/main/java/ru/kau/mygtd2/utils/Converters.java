@@ -28,24 +28,6 @@ public class Converters {
         return date == null ? null : Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), date);
     }
 
-    /*
-    @TypeConverter
-    public static String dateToFullString(Date date) {
-        return date == null ? null : Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy HH:mm:ss"), date);
-    }
-    */
-
-    /*
-    @TypeConverter
-    public static String dateToString(SimpleDateFormat format, Date date) {
-        if (format == null || format.equals("")){
-            format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        }
-
-        return date == null ? null : format.format(date);
-    }
-    */
-
     @TypeConverter
     public static Status intToStatus(int status){
 
