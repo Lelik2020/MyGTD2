@@ -10,10 +10,12 @@ import java.util.Date;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.kau.mygtd2.common.enums.PrStatus;
 import ru.kau.mygtd2.common.enums.Status;
 import ru.kau.mygtd2.common.enums.TypeOfInfo;
 import ru.kau.mygtd2.common.enums.TypeOfTask;
 import ru.kau.mygtd2.jsonconvert.DateConverter;
+import ru.kau.mygtd2.jsonconvert.ProjectStatusConverter;
 import ru.kau.mygtd2.jsonconvert.StatusConverter;
 import ru.kau.mygtd2.jsonconvert.TypeOfInfoConverter;
 import ru.kau.mygtd2.jsonconvert.TypeOfTaskConverter;
@@ -48,7 +50,7 @@ public class Controller {
     public static SyncApi getSyncApi2(){
         Gson gson = new GsonBuilder()
                 .setLenient()
-                //.registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
+                .registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
                 .create();
         //System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
         Retrofit retrofit = new Retrofit.Builder()
