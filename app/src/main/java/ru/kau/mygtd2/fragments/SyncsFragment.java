@@ -74,6 +74,7 @@ public class SyncsFragment extends Fragment {
 
         CustomButton btncreate = rootView.findViewById(R.id.btnsync);
 
+
         TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
 
         calApi = Controller.getSyncApi();
@@ -137,9 +138,6 @@ public class SyncsFragment extends Fragment {
                 isError = true;
             }
         });
-
-
-
 
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
