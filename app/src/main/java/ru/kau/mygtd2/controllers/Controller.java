@@ -2,6 +2,7 @@ package ru.kau.mygtd2.controllers;
 
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERBACKUP;
 import static ru.kau.mygtd2.enums.TypeSetting.IPSERVERSYNC;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TIMEOUT;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,9 +43,9 @@ public class Controller {
         System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(3, TimeUnit.SECONDS)
-                .writeTimeout(3, TimeUnit.SECONDS)
-                .connectTimeout(3, TimeUnit.SECONDS)
+                //.readTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
+                //.writeTimeout(2, TimeUnit.SECONDS)
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 //.addInterceptor(loggingInterceptor)
                 //.addNetworkInterceptor(networkInterceptor)
                 .build();

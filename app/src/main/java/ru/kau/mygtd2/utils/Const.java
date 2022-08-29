@@ -92,6 +92,8 @@ public class Const {
     @SuppressLint("SimpleDateFormat")
     static final public SimpleDateFormat DEFAULT_DATEFORMAT_WITHMILSECONDS = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss.SSS");
 
+    static final public int DEFAULT_TIMEOUT = 1000;
+
 
 
     static final public List<Integer> lstALLFAVOURITE = new ArrayList<Integer>(){
