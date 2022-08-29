@@ -73,7 +73,7 @@ public class SyncsFragment extends Fragment {
         ActionBar toolbar = ((MainActivity) getActivity()).getSupportActionBar();
 
         CustomButton btncreate = rootView.findViewById(R.id.btnsync);
-
+        CustomButton btntest = rootView.findViewById(R.id.btntest);
 
         TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
 
@@ -138,8 +138,38 @@ public class SyncsFragment extends Fragment {
                 isError = true;
             }
         });
+        btntest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Device> deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
+                deviceCall.enqueue(new Callback() {
 
-        btncreate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        //System.out.println("CONTEXT");
+                        if (response.isSuccessful()) {
+                            System.out.println("STATUS111: " + response.code());
+                            System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
+
+                        } else {
+                            System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+
+                        System.out.println("STATUS222: " + t.getMessage());
+                        isError = true;
+                    }
+                });
+            }
+        });
+
+
+
+            btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -160,10 +190,19 @@ public class SyncsFragment extends Fragment {
                     @Override
                     public void onResponse(Call call, Response response) {
                         //System.out.println("CONTEXT");
+                        if (response.isSuccessful()) {
+                            System.out.println("STATUS: " + response.code());
+
+                        } else {
+                            System.out.println("ERROR: " + response.code() + "   " + response.errorBody());
+                        }
+
                     }
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
+
+                        System.out.println("STATUS: " + t.getMessage());
                         isError = true;
                     }
                 });
@@ -281,6 +320,8 @@ public class SyncsFragment extends Fragment {
                 }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации статусов проектов");
 
+                Log.e("ERROR: ", String.valueOf(isError));
+
                 List<TaskTemplate> lstTaskTemplate = MyApplication.getDatabase().taskTemplateDao().getAll();
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации шаблонов");
                 for(int i = 0; i < lstTaskTemplate.size(); i++){
@@ -303,6 +344,8 @@ public class SyncsFragment extends Fragment {
 
                 }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации шаблонов");
+
+                Log.e("ERROR: ", String.valueOf(isError));
                 List<TaskTemplateContextJoin> lstTaskTemplateContextJoin = MyApplication.getDatabase().taskTemplateContextJoinDao().getAll();
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации связки шаблонов и контекстов");
                 for(int i = 0; i < lstTaskTemplateContextJoin.size(); i++){
@@ -325,6 +368,8 @@ public class SyncsFragment extends Fragment {
 
                 }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации связки шаблонов и контекстов");
+
+                Log.e("ERROR: ", String.valueOf(isError));
 
                 List<TaskTemplateTagJoin> lstTaskTemplateTagJoin = MyApplication.getDatabase().taskTemplateTagJoinDao().getAll();
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации связки тэгов и шаблонов");
@@ -351,7 +396,7 @@ public class SyncsFragment extends Fragment {
                 // Задачи
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации задач");
 
-
+                Log.e("ERROR: ", String.valueOf(isError));
                 Call<List<Task>> getTasks = calApi.gettasksforupdate(l);
                 List<Task> lstTasksNew = new ArrayList<>();
                 getTasks.enqueue(new Callback<List<Task>>() {

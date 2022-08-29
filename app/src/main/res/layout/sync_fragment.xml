@@ -87,8 +87,35 @@
                     app:btn_textColor="@color/colorPrimary"
                     app:btn_textSelectColor="@color/white"/>
 
+                <stream.custombutton.CustomButton
+                    android:id="@+id/btntest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="Test"
+                    android:textSize="18sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"
+                    android:layout_margin="5sp"
+                    app:btn_cornerRadius="15sp"
+                    app:btn_strokeWidth="1dp"
+                    app:btn_strokeColor="@color/colorPrimary"
+                    app:btn_buttonColor="@color/transparent"
+                    app:btn_buttonSelectColor="@color/colorPrimary"
+                    app:btn_textColor="@color/colorPrimary"
+                    app:btn_textSelectColor="@color/white"/>
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lstsyncs"

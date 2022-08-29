@@ -7,7 +7,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.kau.mygtd2.common.enums.PrStatus;
@@ -38,7 +40,18 @@ public class Controller {
                 //.registerTypeAdapter(PrStatus.class, new ProjectStatusConverter())
                 .create();
         System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(3, TimeUnit.SECONDS)
+                .writeTimeout(3, TimeUnit.SECONDS)
+                .connectTimeout(3, TimeUnit.SECONDS)
+                //.addInterceptor(loggingInterceptor)
+                //.addNetworkInterceptor(networkInterceptor)
+                .build();
+
+
         Retrofit retrofit = new Retrofit.Builder()
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(Settings.getStringSetting(IPSERVERSYNC))
                 .build();

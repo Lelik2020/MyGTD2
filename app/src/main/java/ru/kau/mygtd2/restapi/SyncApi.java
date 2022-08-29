@@ -6,6 +6,7 @@ import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -88,7 +89,7 @@ public interface SyncApi {
     Call<List<Task>> gettasksforupdate(@Path("date") long dateEdit);
 
     @POST("device/new")
-    Call<ResponseBody> createDevice(@Body Device device);
+    Call<Device> createDevice(@Body Device device);
 
     @GET("device/getalldevices")
     Call<List<Device>> getAllDevices();
