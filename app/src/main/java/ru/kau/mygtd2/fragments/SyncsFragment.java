@@ -28,6 +28,7 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
+import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
@@ -42,12 +43,13 @@ import ru.kau.mygtd2.objects.TaskTemplate;
 import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
 import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
 import ru.kau.mygtd2.restapi.SyncApi;
+import ru.kau.mygtd2.utils.Synchronisation;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
 public class SyncsFragment extends Fragment {
 
-    private static SyncApi calApi;
+    //private static SyncApi calApi;
     private static SyncApi calApi2;
     //private static TasksApi2 calApi2;
 
@@ -77,29 +79,17 @@ public class SyncsFragment extends Fragment {
 
         TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
 
-        calApi = Controller.getSyncApi();
-        //Call<Long> call = calApi.getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-        Call<Long> call = calApi.getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-        //Call<Long> call = calApi.getlastsyncdevice("678678");
-        call.enqueue(new Callback<Long>() {
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                l = (Long) response.body();
-                System.out.println("Long: " + l);
-                if (l != null) {
-                    txtLastSync.setText(Utils.dateToString(new Date(l)));
-                } else {
-                    l = 0L;
-                    txtLastSync.setText("Синхронизаций пока не было");
-                }
+        try {
+            l = Synchronisation.getLastSyncDevice();
+            if (l != null) {
+                txtLastSync.setText(Utils.dateToString(new Date(l)));
+            } else {
+                l = 0L;
+                txtLastSync.setText("Синхронизаций пока не было");
             }
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                System.out.println("ERROR: " + t.getMessage());
-                isError = true;
-            }
-        });
+        } catch (HttpException e) {
+            //throw new RuntimeException(e);
+        }
 
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.lstsyncs);
