@@ -29,6 +29,11 @@ public class Synchronisation {
             @Override
             public void onFailure(Call call, Throwable t) {
                 System.out.println("ERROR: " + t.getMessage());
+                try {
+                    throw new HttpException();
+                } catch (HttpException e) {
+                    //throw new RuntimeException(e);
+                }
                 //isError = true;
             }
         });

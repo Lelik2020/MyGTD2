@@ -49,7 +49,7 @@ import stream.custombutton.CustomButton;
 
 public class SyncsFragment extends Fragment {
 
-    //private static SyncApi calApi;
+    private static SyncApi calApi;
     private static SyncApi calApi2;
     //private static TasksApi2 calApi2;
 
