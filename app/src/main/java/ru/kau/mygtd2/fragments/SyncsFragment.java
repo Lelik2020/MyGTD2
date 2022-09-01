@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -99,6 +100,9 @@ public class SyncsFragment extends Fragment {
 
         } catch (HttpException e) {
             //throw new RuntimeException(e);
+            txtLastSync.setText("Сервер синхронизации недоступен");
+        } catch (IOException e) {
+            txtLastSync.setText("Сервер синхронизации недоступен 222");
         }
 
         // Получаем список синхронизаций данного устройства

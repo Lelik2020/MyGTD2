@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.kau.mygtd2.common.enums.PrStatus;
@@ -42,11 +43,15 @@ public class Controller {
                 .create();
         System.out.println("URL: " + Settings.getStringSetting(IPSERVERSYNC));
 
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 //.readTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 //.writeTimeout(2, TimeUnit.SECONDS)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 //.addInterceptor(loggingInterceptor)
+                .addInterceptor(interceptor)
                 //.addNetworkInterceptor(networkInterceptor)
                 .build();
 
