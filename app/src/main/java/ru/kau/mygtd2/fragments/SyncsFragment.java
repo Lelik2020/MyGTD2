@@ -57,7 +57,7 @@ public class SyncsFragment extends Fragment {
 
     //private BackupsAdapter mainAdapter;
 
-    List<Sync> lstSync = new ArrayList<Sync>();
+    private List<Sync> lstSync = new ArrayList<Sync>();
 
     private Long l;
 
@@ -77,7 +77,11 @@ public class SyncsFragment extends Fragment {
         CustomButton btncreate = rootView.findViewById(R.id.btnsync);
         CustomButton btntest = rootView.findViewById(R.id.btntest);
 
-        TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);;
+        TextView txtLastSync = rootView.findViewById(R.id.txtlastsync);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.lstsyncs);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         try {
             l = Synchronisation.getLastSyncDevice();
@@ -87,47 +91,18 @@ public class SyncsFragment extends Fragment {
                 l = 0L;
                 txtLastSync.setText("Синхронизаций пока не было");
             }
+
+            lstSync = Synchronisation.getListSyncsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+            SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), lstSync);
+            recyclerView.setAdapter(syncsAdapter);
+            recyclerView.setVisibility(View.VISIBLE);
+
         } catch (HttpException e) {
             //throw new RuntimeException(e);
         }
 
-
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.lstsyncs);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
         // Получаем список синхронизаций данного устройства
 
-        Call<List<Sync>> call2 = calApi.getlstsyncsdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-
-        call2.enqueue(new Callback<List<Sync>>() {
-
-            @Override
-            public void onResponse(Call<List<Sync>> call, Response<List<Sync>> response) {
-                if (response.isSuccessful()) {
-                    System.out.println(response.body().size());
-                    lstSync.addAll(response.body());
-                    SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), lstSync);
-                    recyclerView.setAdapter(syncsAdapter);
-                    recyclerView.setVisibility(View.VISIBLE);
-                }
-                if (l != null && l != 0L) {
-                    txtLastSync.setText(Utils.dateToString(new Date(l)));
-                } else {
-                    txtLastSync.setText("Синхронизаций не было");
-                }
-
-            }
-
-
-
-            @Override
-            public void onFailure(Call<List<Sync>> call, Throwable t) {
-                System.out.println("ERROR: " + t.getMessage());
-                isError = true;
-            }
-        });
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
