@@ -25,7 +25,7 @@ public class Synchronisation {
         return calApi;
     }
 
-    /*public static Long getLastSyncDevice() throws HttpException {
+    public static Long getLastSyncDevice2() throws HttpException {
         Call<Long> call = getSyncApi().getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
         call.enqueue(new Callback<Long>() {
 
@@ -47,7 +47,7 @@ public class Synchronisation {
             }
         });
         return l;
-    }*/
+    }
 
     public static Long getLastSyncDevice() throws HttpException, IOException {
         l = null;

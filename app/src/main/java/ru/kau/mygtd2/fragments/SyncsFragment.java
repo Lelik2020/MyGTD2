@@ -21,6 +21,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,7 +90,7 @@ public class SyncsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         try {
-            l = Synchronisation.getLastSyncDevice();
+            l = Synchronisation.getLastSyncDevice2();
             if (l != null) {
                 txtLastSync.setText(Utils.dateToString(new Date(l)));
             } else {
@@ -101,11 +106,44 @@ public class SyncsFragment extends Fragment {
         } catch (HttpException e) {
             //throw new RuntimeException(e);
             txtLastSync.setText("Сервер синхронизации недоступен");
-        } catch (IOException e) {
-            txtLastSync.setText("Сервер синхронизации недоступен 222");
+        //} catch (IOException e) {
+        //    txtLastSync.setText("Сервер синхронизации недоступен 222");
         }
 
         // Получаем список синхронизаций данного устройства
+
+        // RxJava
+
+        /*
+        Observable.create((ObservableOnSubscribe<Long>) e -> {
+            Long data = Synchronisation.getLastSyncDevice2();
+            e.onNext(data);
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+*/
+        Observable.create((ObservableOnSubscribe<Long>) e -> {
+                    try {
+                        Long data = Synchronisation.getLastSyncDevice();
+                        e.onNext(data);
+                    } catch (Exception ex) {
+                        e.onError(ex);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(match -> {
+                                        Log.e("rest api, success  ", String.valueOf(match));
+                                        txtLastSync.setText(Utils.dateToString(new Date(match)));
+                                    },
+                        throwable -> Log.e("rest api, error: ", throwable.getMessage()));
+
+
+
+        // RxJava
+
+
+
 
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
