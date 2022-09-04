@@ -1,6 +1,5 @@
 package ru.kau.mygtd2.utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +9,7 @@ import retrofit2.Response;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.exceptions.codec.HttpException;
+import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.restapi.SyncApi;
 
@@ -49,7 +49,7 @@ public class Synchronisation {
         return l;
     }
 
-    public static Long getLastSyncDevice() throws HttpException, IOException {
+    public static Long getLastSyncDevice() { //throws HttpException, IOException {
         l = null;
         Call<Long> call = getSyncApi().getlastsyncdevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
         try {
@@ -58,13 +58,13 @@ public class Synchronisation {
         }
         catch (Exception e){
 
-            throw new HttpException();
+            //throw new HttpException();
         }
 
         return l;
     }
 
-    public static List<Sync> getListSyncsDevice(String deviceGuid) throws HttpException {
+    public static List<Sync> getListSyncsDevice2(String deviceGuid) throws HttpException {
 
         List<Sync> lstSync = new ArrayList<Sync>();
         Call<List<Sync>> call2 = getSyncApi().getlstsyncsdevice(deviceGuid);
@@ -92,6 +92,55 @@ public class Synchronisation {
             }
         });
         return lstSync;
+    }
+
+    public static List<Sync> getListSyncsDevice(String deviceGuid) throws HttpException {
+
+        List<Sync> lstSync = new ArrayList<Sync>();
+        Call<List<Sync>> call2 = getSyncApi().getlstsyncsdevice(deviceGuid);
+
+
+
+        try {
+            Response<List<Sync>> response = call2.execute();
+            lstSync = response.body();
+        }
+        catch (Exception e){
+
+            //throw new HttpException();
+        }
+
+        return lstSync;
+    }
+
+    public static void createDevice(String deviceGuid) throws HttpException{
+
+        Call<Device> deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
+        deviceCall.enqueue(new Callback() {
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                //System.out.println("CONTEXT");
+                if (response.isSuccessful()) {
+                    System.out.println("STATUS111: " + response.code());
+                    System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
+
+                } else {
+                    System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+                System.out.println("STATUS222: " + t.getMessage());
+                //isError = true;
+            }
+        });
+
+
+
     }
 
 

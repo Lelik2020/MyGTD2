@@ -1,8 +1,11 @@
 package ru.kau.mygtd2.fragments;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMILSECONDS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKOVERDUE_COLOR;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +18,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
@@ -34,7 +35,6 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
-import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
@@ -89,7 +89,7 @@ public class SyncsFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        try {
+        /*try {
             l = Synchronisation.getLastSyncDevice2();
             if (l != null) {
                 txtLastSync.setText(Utils.dateToString(new Date(l)));
@@ -99,16 +99,13 @@ public class SyncsFragment extends Fragment {
             }
 
             lstSync = Synchronisation.getListSyncsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-            SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), lstSync);
-            recyclerView.setAdapter(syncsAdapter);
-            recyclerView.setVisibility(View.VISIBLE);
+
 
         } catch (HttpException e) {
-            //throw new RuntimeException(e);
+
             txtLastSync.setText("Сервер синхронизации недоступен");
-        //} catch (IOException e) {
-        //    txtLastSync.setText("Сервер синхронизации недоступен 222");
-        }
+
+        }*/
 
         // Получаем список синхронизаций данного устройства
 
@@ -121,7 +118,11 @@ public class SyncsFragment extends Fragment {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-*/
+        */
+
+        txtLastSync.setText("Сервер синхронизации недоступен");
+        txtLastSync.setTextColor(Color.parseColor(DEFAULT_TASKOVERDUE_COLOR));
+
         Observable.create((ObservableOnSubscribe<Long>) e -> {
                     try {
                         Long data = Synchronisation.getLastSyncDevice();
@@ -135,42 +136,46 @@ public class SyncsFragment extends Fragment {
                 .subscribe(match -> {
                                         Log.e("rest api, success  ", String.valueOf(match));
                                         txtLastSync.setText(Utils.dateToString(new Date(match)));
+                                        txtLastSync.setTextColor(Color.parseColor(DEFAULT_COLOR));
                                     },
-                        throwable -> Log.e("rest api, error: ", throwable.getMessage()));
+                            throwable ->    {
+                                            txtLastSync.setText("Сервер синхронизации недоступен");
+                                            txtLastSync.setTextColor(Color.parseColor(DEFAULT_TASKOVERDUE_COLOR));
+                                            Log.e("rest api, error: ", throwable.getMessage());
 
+                                        });
 
+        Observable.create((ObservableOnSubscribe<List<Sync>>) lstSyncs -> {
+                    try {
+                        List<Sync> data = Synchronisation.getListSyncsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+                        //Log.e("SIZE: ", String.valueOf(data.size()));
+                        SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), data);
+                        recyclerView.setAdapter(syncsAdapter);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        //e.onNext(data);
+                    } catch (Exception ex) {
+                        lstSyncs.onError(ex);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(match2 -> {
+                            //Log.e("rest api 33333, success 44444 ", String.valueOf(match2.size()));
+                            //SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), match2);
+                            //recyclerView.setAdapter(syncsAdapter);
+                            //recyclerView.setVisibility(View.VISIBLE);
+                        },
+                        throwable ->    {
+
+                                            Log.e("rest api  123123, error: 890890", throwable.getMessage());
+                                        });
 
         // RxJava
-
-
-
 
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<Device> deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
-                deviceCall.enqueue(new Callback() {
 
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        //System.out.println("CONTEXT");
-                        if (response.isSuccessful()) {
-                            System.out.println("STATUS111: " + response.code());
-                            System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
-
-                        } else {
-                            System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-
-                        System.out.println("STATUS222: " + t.getMessage());
-                        isError = true;
-                    }
-                });
             }
         });
 
