@@ -35,7 +35,6 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
-import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
@@ -217,56 +216,35 @@ public class SyncsFragment extends Fragment {
                                     Log.e("createDevice, error: ", throwable.getMessage());
 
                                 });
-
-                /*Call deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
-                deviceCall.enqueue(new Callback() {
-
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        //System.out.println("CONTEXT");
-                        if (response.isSuccessful()) {
-                            System.out.println("STATUS: " + response.code());
-
-                        } else {
-                            System.out.println("ERROR: " + response.code() + "   " + response.errorBody());
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-
-                        System.out.println("STATUS: " + t.getMessage());
-                        isError = true;
-                    }
-                });*/
-
-
                 Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации устройств");
 
                 //Call<Sync> call3 = calApi.create(sync);
                 Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации контекстов");
                 // Обновляем справочники
                 // Контексты
+
                 List<Contekst> lstConteksts = MyApplication.getDatabase().contextDao().getAll();
-                for(int i = 0; i < lstConteksts.size(); i++){
+                Observable.create((ObservableOnSubscribe<Long>) e -> {
+                            try {
+                                Long data = Synchronisation.createContexts(lstConteksts);
+                                e.onNext(data);
+                            } catch (Exception ex) {
+                                e.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match -> {
+                                    Log.e("createContexts, success  ", String.valueOf(match));
+
+                                },
+                                throwable ->    {
+
+                                    Log.e("createContexts, error: ", throwable.getMessage());
+
+                                });
 
 
-                    Call<Contekst> contekstCall = calApi.createContekst(lstConteksts.get(i));
-                    contekstCall.enqueue(new Callback() {
-
-                        @Override
-                        public void onResponse(Call call, Response response) {
-                            //System.out.println("CONTEXT");
-                        }
-
-                        @Override
-                        public void onFailure(Call call, Throwable t) {
-                            isError = true;
-                        }
-                    });
-
-                }
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации контекстов");
 
                 List<Tag> lstTag = MyApplication.getDatabase().tagDao().getAll();

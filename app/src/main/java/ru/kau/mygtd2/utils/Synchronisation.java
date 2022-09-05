@@ -1,23 +1,15 @@
 package ru.kau.mygtd2.utils;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Consumer;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.exceptions.codec.HttpException;
+import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.restapi.SyncApi;
@@ -124,33 +116,6 @@ public class Synchronisation {
 
     public static Long createDevice(Device device) throws HttpException{
 
-        /*calApi.createDevice(device)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Device>() {
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Device device) {
-
-                    }
-                });*/
-
         Call<Device> deviceCall = calApi.createDevice(device);
 
         try {
@@ -168,11 +133,19 @@ public class Synchronisation {
             throw new HttpException();
         }
 
-        /*deviceCall.enqueue(new Callback() {
 
-            @Override
-            public void onResponse(Call call, Response response) {
-                //System.out.println("CONTEXT");
+        return 0L;
+
+    }
+
+    public static Long createContexts(List<Contekst> lstConteksts) throws HttpException{
+
+
+        for(int i = 0; i < lstConteksts.size(); i++){
+
+            Call<Contekst> contekstCall = calApi.createContekst(lstConteksts.get(i));
+            try {
+                Response response = contekstCall.execute();
                 if (response.isSuccessful()) {
                     System.out.println("STATUS111: " + response.code());
                     System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
@@ -180,22 +153,16 @@ public class Synchronisation {
                 } else {
                     System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
                 }
-
+            }
+            catch (Exception e){
+                System.out.println("ERROR333: " + e.getMessage());
+                throw new HttpException();
             }
 
-            @Override
-            public void onFailure(Call call, Throwable t) {
 
-                System.out.println("ERROR333: " + t.getMessage());
-                try {
-                    throw new HttpException();
-                } catch (HttpException e) {
-                    throw new RuntimeException(e);
-                }
-                //isError = true;
-            }
-        });*/
 
+
+        }
         return 0L;
 
     }
