@@ -1,8 +1,17 @@
 package ru.kau.mygtd2.utils;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -113,10 +122,53 @@ public class Synchronisation {
         return lstSync;
     }
 
-    public static void createDevice(String deviceGuid) throws HttpException{
+    public static Long createDevice(Device device) throws HttpException{
 
-        Call<Device> deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
-        deviceCall.enqueue(new Callback() {
+        /*calApi.createDevice(device)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Device>() {
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Device device) {
+
+                    }
+                });*/
+
+        Call<Device> deviceCall = calApi.createDevice(device);
+
+        try {
+            Response response = deviceCall.execute();
+            if (response.isSuccessful()) {
+                System.out.println("STATUS111: " + response.code());
+                System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
+
+            } else {
+                System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
+            }
+        }
+        catch (Exception e){
+            System.out.println("ERROR333: " + e.getMessage());
+            throw new HttpException();
+        }
+
+        /*deviceCall.enqueue(new Callback() {
 
             @Override
             public void onResponse(Call call, Response response) {
@@ -134,12 +186,17 @@ public class Synchronisation {
             @Override
             public void onFailure(Call call, Throwable t) {
 
-                System.out.println("STATUS222: " + t.getMessage());
+                System.out.println("ERROR333: " + t.getMessage());
+                try {
+                    throw new HttpException();
+                } catch (HttpException e) {
+                    throw new RuntimeException(e);
+                }
                 //isError = true;
             }
-        });
+        });*/
 
-
+        return 0L;
 
     }
 

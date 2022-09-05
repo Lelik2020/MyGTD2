@@ -4,9 +4,8 @@ package ru.kau.mygtd2.restapi;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -25,6 +24,7 @@ import ru.kau.mygtd2.objects.TaskTagJoin;
 import ru.kau.mygtd2.objects.TaskTemplate;
 import ru.kau.mygtd2.objects.TaskTemplateContextJoin;
 import ru.kau.mygtd2.objects.TaskTemplateTagJoin;
+//import rx.Observable;
 
 public interface SyncApi {
 
@@ -90,6 +90,9 @@ public interface SyncApi {
 
     @POST("device/new")
     Call<Device> createDevice(@Body Device device);
+
+    //@POST("device/new")
+    //Observable<Device> createDevice(@Body Device device);
 
     @GET("device/getalldevices")
     Call<List<Device>> getAllDevices();

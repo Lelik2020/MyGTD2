@@ -35,6 +35,7 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.SyncAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.controllers.Controller;
+import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
@@ -172,12 +173,12 @@ public class SyncsFragment extends Fragment {
 
         // RxJava
 
-        btntest.setOnClickListener(new View.OnClickListener() {
+        /*btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-        });
+        });*/
 
 
 
@@ -196,7 +197,28 @@ public class SyncsFragment extends Fragment {
                 Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации устройств");
 
 
-                Call deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
+
+                Observable.create((ObservableOnSubscribe<Long>) e -> {
+                            try {
+                                Long data = Synchronisation.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
+                                e.onNext(data);
+                            } catch (Exception ex) {
+                                e.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match -> {
+                                    Log.e("createDevice, success  ", String.valueOf(match));
+
+                                },
+                                throwable ->    {
+
+                                    Log.e("createDevice, error: ", throwable.getMessage());
+
+                                });
+
+                /*Call deviceCall = calApi.createDevice(MyApplication.getDatabase().deviceDao().getCurrentDevice());
                 deviceCall.enqueue(new Callback() {
 
                     @Override
@@ -217,7 +239,7 @@ public class SyncsFragment extends Fragment {
                         System.out.println("STATUS: " + t.getMessage());
                         isError = true;
                     }
-                });
+                });*/
 
 
                 Log.e("ERROR", Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации устройств");
