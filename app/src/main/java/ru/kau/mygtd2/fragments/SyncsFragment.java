@@ -247,45 +247,58 @@ public class SyncsFragment extends Fragment {
 
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации контекстов");
 
-                List<Tag> lstTag = MyApplication.getDatabase().tagDao().getAll();
+
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации тэгов");
-                for(int i = 0; i < lstTag.size(); i++){
-                    Call<Tag> tagCall = calApi.createTag(lstTag.get(i));
 
-                    tagCall.enqueue(new Callback() {
+                List<Tag> lstTag = MyApplication.getDatabase().tagDao().getAll();
+                Observable.create((ObservableOnSubscribe<Long>) e -> {
+                            try {
+                                Long data = Synchronisation.createTags(lstTag);
+                                e.onNext(data);
+                            } catch (Exception ex) {
+                                e.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match -> {
+                                    Log.e("createTags, success  ", String.valueOf(match));
 
-                        @Override
-                        public void onResponse(Call call, Response response) {
-                            //System.out.println("TAG");
-                        }
+                                },
+                                throwable ->    {
 
-                        @Override
-                        public void onFailure(Call call, Throwable t) {
-                            isError = true;
-                        }
-                    });
+                                    Log.e("createTags, error: ", throwable.getMessage());
 
-                }
+                                });
+
+
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации тэгов");
-                List<Target> lstTarget = MyApplication.getDatabase().targetDao().getAll();
+
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации целей");
-                for(int i = 0; i < lstTarget.size(); i++){
 
-                    Call<Target> tagCall = calApi.createTarget(lstTarget.get(i));
-                    tagCall.enqueue(new Callback() {
+                List<Target> lstTarget = MyApplication.getDatabase().targetDao().getAll();
 
-                        @Override
-                        public void onResponse(Call call, Response response) {
-                            //System.out.println("TAG");
-                        }
+                Observable.create((ObservableOnSubscribe<Long>) e -> {
+                            try {
+                                Long data = Synchronisation.createTargets(lstTarget);
+                                e.onNext(data);
+                            } catch (Exception ex) {
+                                e.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match -> {
+                                    Log.e("createTags, success  ", String.valueOf(match));
 
-                        @Override
-                        public void onFailure(Call call, Throwable t) {
-                            isError = true;
-                        }
-                    });
+                                },
+                                throwable ->    {
 
-                }
+                                    Log.e("createTags, error: ", throwable.getMessage());
+
+                                });
+
+
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Конец синхронизации целей");
                 Log.e("ERROR",Utils.dateToString(DEFAULT_DATEFORMAT_WITHMILSECONDS, new Date()) + ": Начало синхронизации проектов");
                 calApi2 = Controller.getSyncApi2();

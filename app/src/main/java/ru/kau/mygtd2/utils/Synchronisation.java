@@ -12,6 +12,8 @@ import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Sync;
+import ru.kau.mygtd2.objects.Tag;
+import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.restapi.SyncApi;
 
 public class Synchronisation {
@@ -162,6 +164,56 @@ public class Synchronisation {
 
 
 
+        }
+        return 0L;
+
+    }
+
+    public static Long createTags(List<Tag> lstTags) throws HttpException{
+
+
+        for(int i = 0; i < lstTags.size(); i++){
+
+            Call<Tag> tagCall = calApi.createTag(lstTags.get(i));
+            try {
+                Response response = tagCall.execute();
+                if (response.isSuccessful()) {
+                    System.out.println("STATUS111: " + response.code());
+                    System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
+
+                } else {
+                    System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
+                }
+            }
+            catch (Exception e){
+                System.out.println("ERROR333: " + e.getMessage());
+                throw new HttpException();
+            }
+        }
+        return 0L;
+
+    }
+
+    public static Long createTargets(List<Target> lstTargets) throws HttpException{
+
+
+        for(int i = 0; i < lstTargets.size(); i++){
+
+            Call<Target> tagCall = calApi.createTarget(lstTargets.get(i));
+            try {
+                Response response = tagCall.execute();
+                if (response.isSuccessful()) {
+                    System.out.println("STATUS111: " + response.code());
+                    System.out.println("ERROR111: " + response.code() + "   " + response.errorBody());
+
+                } else {
+                    System.out.println("ERROR222: " + response.code() + "   " + response.errorBody());
+                }
+            }
+            catch (Exception e){
+                System.out.println("ERROR333: " + e.getMessage());
+                throw new HttpException();
+            }
         }
         return 0L;
 
