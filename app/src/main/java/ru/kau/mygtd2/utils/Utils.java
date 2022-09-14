@@ -570,6 +570,7 @@ public class Utils {
         tt.setTarget_id(t.getTarget_id());
         tt.setPriority_id(t.getPriority_id());
         tt.setParenttask_id(t.getParenttask_id());
+        tt.setParenttaskguid(t.getParenttaskguid());
         tt.setIsFavourite(t.getIsFavourite());
         tt.setBgColor(t.getBgColor());
         tt.setPreviousStatus(t.getPreviousStatus());

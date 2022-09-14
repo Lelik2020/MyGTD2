@@ -443,6 +443,11 @@ public class AddTaskFragment extends Fragment
             taskCategoryId = parentTask.getCategory();
             parentProject = MyApplication.getDatabase().projectDao().getProjectById(parentTask.getProject_id());
             getParentTask(parentTask);
+            // Получаем тэги из parentTask
+            getTags(MyApplication.getDatabase().tagDao().getAllByTaskGuid(parentTask.getGuid()));
+
+
+
         }
 
         if (arguments != null && arguments.containsKey("clonetask")) {
@@ -453,11 +458,17 @@ public class AddTaskFragment extends Fragment
 
             parentTaskId = task.getParenttask_id();
             parentTaskGuid = task.getParenttaskguid();
+
             // Если есть родительская задача, то берем проект оттуда.
-            if (task.getParenttask_id() > 0) {
+            /*if (task.getParenttask_id() > 0) {
+                projectId = MyApplication.getDatabase().taskDao().getById(task.getParenttask_id()).getProject_id();
+                parentProject = MyApplication.getDatabase().projectDao().getProjectById(projectId);
+            }*/
+            if (!task.getParenttaskguid().equals("") && task.getParenttaskguid() != null) {
                 projectId = MyApplication.getDatabase().taskDao().getById(task.getParenttask_id()).getProject_id();
                 parentProject = MyApplication.getDatabase().projectDao().getProjectById(projectId);
             }
+
 
             dateBegin = task.getDateBegin();
             dateEnd = task.getDateEnd();
@@ -486,7 +497,7 @@ public class AddTaskFragment extends Fragment
             getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
 
             //getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
-            getParentTask(MyApplication.getDatabase().taskDao().getByGuid(parentTaskGuid));
+            getParentTask(MyApplication.getDatabase().taskDao().getByGuid(task.getParenttaskguid()));
             //вап
 
         }
