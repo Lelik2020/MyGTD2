@@ -8,6 +8,7 @@ import android.content.Context;
 import androidx.room.Room;
 
 import ru.kau.mygtd2.db.AppDatabase;
+import ru.kau.mygtd2.db.DbCreator;
 
 //import android.arch.persistence.room.Room;
 
@@ -47,7 +48,7 @@ public class MyApplication extends Application {
                 //.fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
-        //DbCreator.firstInit();
+        DbCreator.firstInit();
         //DbCreator.tasksUpdate2();
         //DbCreator.infoUpdate();
         //DbCreator.tasksUpdate3();

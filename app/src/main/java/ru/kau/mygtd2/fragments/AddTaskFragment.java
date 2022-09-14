@@ -855,6 +855,7 @@ public class AddTaskFragment extends Fragment
 
                         } else {
                             task.setParenttask_id(task2.getId());
+                            task.setParenttaskguid(task2.getParenttaskguid());
                         }
                         information = (Information) bundle.getSerializable("information");
                         if (information == null) {
