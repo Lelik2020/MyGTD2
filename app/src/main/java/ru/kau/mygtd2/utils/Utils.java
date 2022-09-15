@@ -15,6 +15,7 @@ import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -29,8 +30,12 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.sqlite.db.SimpleSQLiteQuery;
 
+import net.lingala.zip4j.exception.ZipException;
+
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -752,5 +757,38 @@ public class Utils {
     public static float pxFromDp(final Context context, final float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
     }
+
+    public static void exportDialog(final FragmentActivity activity) {
+        String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
+        ChooserDialogFragment.createFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
+
+            @Override
+            public boolean onResultRecive(String result1, Dialog result2) {
+                File toFile = new File(result1);
+                AppState.get().save(activity);
+
+                new AsyncProgressResultToastTask(activity) {
+                    @Override
+                    protected Boolean doInBackground(Object... objects) {
+                        try {
+                            ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
+                            return true;
+                        } catch (ZipException e) {
+                            return false;
+                        } finally {
+                            activity.runOnUiThread(() -> result2.dismiss());
+                        }
+                    }
+                }.execute();
+
+
+                return false;
+            }
+        });
+
+    }
+
+
+
 
 }
