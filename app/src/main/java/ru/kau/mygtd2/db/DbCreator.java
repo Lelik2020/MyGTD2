@@ -40,22 +40,26 @@ public class DbCreator {
     public static void firstInit(){
 
 
-        //firstInitSpr();
+        firstInitSpr();
 
-        //firstInitData();
+        firstInitData();
 
-        //firstInitSpr2();
+        firstInitSpr2();
 
-        //firstInitData3();
+        firstInitData3();
 
-        //firstInitSpr4();
+        firstInitSpr4();
 
-        //firstInitSpr5();
+        firstInitSpr5();
 
-        //firstInitSpr6();
+        firstInitSpr6();
 
-        //firstInitSpr7();
+        firstInitSpr7();
 
+        taskUpdate22();
+    }
+
+    public static void firstInit2(){
         taskUpdate22();
     }
 

@@ -49,6 +49,7 @@ public class MyApplication extends Application {
                 .allowMainThreadQueries()
                 .build();
         DbCreator.firstInit();
+        //DbCreator.firstInit2();
         //DbCreator.tasksUpdate2();
         //DbCreator.infoUpdate();
         //DbCreator.tasksUpdate3();

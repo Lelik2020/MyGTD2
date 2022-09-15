@@ -356,7 +356,8 @@ public class AddTaskFragment extends Fragment
 
             parentTaskId = taskUpdate.getParenttask_id();
             parentTaskGuid = taskUpdate.getParenttaskguid();
-            getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
+            //getParentTask(MyApplication.getDatabase().taskDao().getById(parentTaskId));
+            getParentTask(MyApplication.getDatabase().taskDao().getByGuid(parentTaskGuid));
 
             dateBegin = taskUpdate.getDateBegin();
             dateEnd = taskUpdate.getDateEnd();
@@ -1565,7 +1566,7 @@ public class AddTaskFragment extends Fragment
             lparenttasktype.addView(tv2);
 
             parentTaskId = task.getId();
-            parentTaskGuid = task.getParenttaskguid();
+            parentTaskGuid = task.getGuid();
         }
 
         //taskTypeTitle.setText(tasktype.getTitle());
