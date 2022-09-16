@@ -758,7 +758,7 @@ public class Utils {
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
-    public static void exportDialog(final FragmentActivity activity) {
+    /*public static void exportDialog(final FragmentActivity activity) {
         String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
         ChooserDialogFragment.createFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
 
@@ -786,7 +786,7 @@ public class Utils {
             }
         });
 
-    }
+    }*/
 
 
 
