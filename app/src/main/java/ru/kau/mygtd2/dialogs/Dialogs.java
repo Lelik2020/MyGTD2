@@ -1,6 +1,7 @@
 package ru.kau.mygtd2.dialogs;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -65,6 +66,7 @@ import ru.kau.mygtd2.interfaces.DialogTagsChoice;
 import ru.kau.mygtd2.interfaces.DialogTargetChoice;
 import ru.kau.mygtd2.interfaces.DialogTypeOfInfoChoice;
 import ru.kau.mygtd2.interfaces.DialogTypeOfTaskChoice;
+import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.objects.Comment;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.InfoStatus;
@@ -81,6 +83,7 @@ import ru.kau.mygtd2.objects.TaskCategory;
 import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.BubbleFlag;
+import ru.kau.mygtd2.utils.Keyboards;
 import ru.kau.mygtd2.utils.TxtUtils;
 import ru.kau.mygtd2.utils.Utils;
 
@@ -2555,5 +2558,45 @@ public class Dialogs {
 
     }
     */
+
+    public static void showEditDialog2(final Activity c, String title, String init,
+                                       final ResultResponse<String> onresult) {
+        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(c);
+        builder.setTitle(title);
+        final EditText input = new EditText(c);
+        input.setSingleLine();
+
+        if (init != null) {
+            if (!init.endsWith("/")) {
+                init += "/";
+            }
+            input.setText(init);
+            input.setSelection(init.length());
+        }
+        builder.setView(input);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onresult.onResultRecive(input.getText().toString());
+            }
+        });
+
+
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        final android.app.AlertDialog alertDialog = builder.create();
+        alertDialog.setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Keyboards.close(input);
+                Keyboards.hideNavigation(c);
+            }
+        });
+        alertDialog.show();
+    }
+
 
 }

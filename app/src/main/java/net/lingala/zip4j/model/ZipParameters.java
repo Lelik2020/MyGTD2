@@ -57,6 +57,7 @@ public class ZipParameters implements Cloneable {
 		this.compressionMethod = compressionMethod;
 	}
 
+
 	public boolean isEncryptFiles() {
 		return encryptFiles;
 	}

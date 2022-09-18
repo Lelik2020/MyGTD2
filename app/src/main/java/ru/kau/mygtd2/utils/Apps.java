@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.provider.Settings;
+import android.view.View;
 import android.widget.Toast;
 
 import ru.kau.mygtd2.R;
@@ -167,6 +168,22 @@ public class Apps {
 
         return isNight;
 
+    }
+
+    public static void accessibilityButtonSize(View... views) {
+        try {
+            if (AppState.get().isEnableAccessibility) {
+                for (View view : views) {
+                    if (view != null) {
+                        view.getLayoutParams().width = Dips.DP_45;
+                        view.getLayoutParams().height = Dips.DP_45;
+                        view.setLayoutParams(view.getLayoutParams());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            LOG.e(e);
+        }
     }
 
 

@@ -2,6 +2,13 @@ package ru.kau.mygtd2;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ru.kau.mygtd2.objects.FileMeta;
+import ru.kau.mygtd2.ui.FileMetaCore;
+import ru.kau.mygtd2.utils.LOG;
+
 public class AppDB {
 
     private final static AppDB in = new AppDB();
@@ -686,5 +693,184 @@ public class AppDB {
         }
 
     }*/
+    public void delete(FileMeta meta) {
+        //fileMetaDao.delete(meta);
+    }
+
+    public FileMeta getOrCreate(String path) {
+        /*if (fileMetaDao == null) {
+            return new FileMeta(path);
+        }
+        FileMeta load = null;
+        try {
+            load = fileMetaDao.load(path);
+
+            if (load == null) {
+                load = new FileMeta(path);
+                fileMetaDao.insert(load);
+            }
+        } catch (Exception e) {
+            LOG.e(e);
+        }*/
+        FileMeta load = null;
+        if (load == null) {
+            load = new FileMeta(path);
+        }
+
+        if (load.getState() == null) {
+            load.setState(FileMetaCore.STATE_NONE);
+        }
+
+        return load;
+    }
+
+    public List<FileMeta> searchBy(String str, boolean isAsc) {
+        LOG.d("searchBy", str);
+        return new ArrayList<>();
+        /*try {
+            QueryBuilder<FileMeta> where = fileMetaDao.queryBuilder();
+            where.preferLocalizedStringOrder();
+
+            SEARCH_IN searchIn = null;
+            for (SEARCH_IN in : SEARCH_IN.values()) {
+                if (str.startsWith(in.getDotPrefix())) {
+                    str = str.replace(in.getDotPrefix(), "").trim();
+
+                    if (in == SEARCH_IN.LANGUAGES) {
+                        str = str.substring(str.indexOf("(") + 1).replace(")", "").trim();
+                    }
+
+                    searchIn = in;
+                    break;
+                }
+            }
+
+            if (searchIn == SEARCH_IN.TAGS) {
+                str = str + StringDB.DIVIDER;
+
+            }
+            LOG.d("searchBy", searchIn, str, "-");
+            if (str.startsWith(SearchFragment2.EMPTY_ID)) {
+                where = where.whereOr(searchIn.getProperty().like(""), searchIn.getProperty().isNull());
+            } else {
+                if (TxtUtils.isNotEmpty(str)) {
+                    str = str.replace(" ", "%").replace("*", "%");
+
+                    String string = "%" + str + "%";
+
+
+                    LOG.d("searchBy-final", string);
+
+                    if (searchIn != null) {
+                        where = where.whereOr(searchIn.getProperty().like(string), searchIn.getProperty().like(string.toLowerCase(Locale.US)));
+                    } else {
+                        where = where.whereOr(//
+                                FileMetaDao.Properties.PathTxt.like(string), //
+                                FileMetaDao.Properties.Title.like(string), //
+                                FileMetaDao.Properties.Author.like(string)//
+                        );
+                    }
+                }
+            }
+            where = where.where(FileMetaDao.Properties.IsSearchBook.eq(1));
+
+            if (sortby == SORT_BY.RECENT_TIME) {
+                where = where.where(FileMetaDao.Properties.IsRecentTime.ge(1));
+            }
+
+
+            if (isAsc) {
+                where = where.orderAsc(sortby.getProperty());
+            } else {
+                where = where.orderDesc(sortby.getProperty());
+            }
+            if (sortby != SORT_BY.TITLE) {
+                where = where.orderAsc(SORT_BY.TITLE.getProperty());
+            }
+
+
+            return where.list();
+
+        } catch (Exception e) {
+            LOG.e(e);
+            return new ArrayList<FileMeta>();
+        }*/
+    }
+
+    /*
+    public enum SORT_BY {
+        //
+        PATH(0, R.string.folder, FileMetaDao.Properties.ParentPath), //
+        FILE_NAME(1, R.string.by_file_name, FileMetaDao.Properties.PathTxt), //
+        SIZE(2, R.string.by_size, FileMetaDao.Properties.Size), //
+        DATA(3, R.string.by_date, FileMetaDao.Properties.Date), //
+        TITLE(4, R.string.by_title, FileMetaDao.Properties.Title), //
+        AUTHOR(5, R.string.by_author, FileMetaDao.Properties.Author), //
+        SERIES(6, R.string.by_series, FileMetaDao.Properties.Sequence), //
+        SERIES_INDEX(7, R.string.by_number_in_serie, FileMetaDao.Properties.SIndex), //
+        PAGES(8, R.string.by_number_of_pages, FileMetaDao.Properties.Pages), //
+        EXT(9, R.string.by_extension, FileMetaDao.Properties.Ext), //
+        LANGUAGE(10, R.string.language, FileMetaDao.Properties.Lang),//
+        PUBLICATION_YEAR(11, R.string.publication_date, FileMetaDao.Properties.Year),//
+        PUBLISHER(12, R.string.publisher, FileMetaDao.Properties.Publisher),//
+        RECENT_TIME(13, R.string.recent, FileMetaDao.Properties.IsRecentTime);//
+
+
+        private final int index;
+        private final int resName;
+        private final Property property;
+
+        private SORT_BY(int index, int resName, Property property) {
+            this.index = index;
+            this.resName = resName;
+            this.property = property;
+        }
+
+        public static SORT_BY getByID(int index) {
+            for (SORT_BY sortBy : values()) {
+                if (sortBy.getIndex() == index) {
+                    return sortBy;
+                }
+            }
+            return SORT_BY.PATH;
+
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public int getResName() {
+            return resName;
+        }
+
+        public Property getProperty() {
+            return property;
+        }
+
+    }*/
+
+    public boolean isStarFolder(String path) {
+        try {
+            FileMeta load = new FileMeta();
+            if (load == null) {
+                return false;
+            }
+            return load != null && load.getIsStar();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public synchronized void updateOrSave(FileMeta meta) {
+        /*if (fileMetaDao.load(meta.getPath()) == null) {
+            fileMetaDao.insert(meta);
+            //LOG.d("updateOrSave insert", LOG.ojectAsString(meta));
+        } else {
+            fileMetaDao.update(meta);
+            //LOG.d("updateOrSave update", LOG.ojectAsString(meta));
+        }*/
+
+    }
 
 }

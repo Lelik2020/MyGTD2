@@ -43,6 +43,9 @@ public class AppState {
 
     private static AppState instance = new AppState();
 
+    public boolean isDisplayAnnotation = false;
+    public boolean isEnableAccessibility = false;
+
 
 
     public static final String PROXY_HTTP = "HTTP";
@@ -173,7 +176,7 @@ public class AppState {
     public final static int BR_SORT_BY_NUMBER = 4;// not possible
     public final static int BR_SORT_BY_PAGES = 5;// not possible
     public final static int BR_SORT_BY_EXT = 6;// not possible
-
+    public final static int BR_SORT_BY_AUTHOR = 7;
     public final static int NEXT_SCREEN_SCROLL_BY_PAGES = 0;
     public final static int OUTLINE_HEADERS_AND_SUBHEADERES = 0;
     public final static int OUTLINE_ONLY_HEADERS = 1;

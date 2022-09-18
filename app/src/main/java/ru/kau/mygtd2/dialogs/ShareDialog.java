@@ -1,8 +1,13 @@
 package ru.kau.mygtd2.dialogs;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
+import static ru.kau.mygtd2.utils.Utils.dateToString;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,17 +20,27 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
 
+import net.lingala.zip4j.exception.ZipException;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
+import ru.kau.mygtd2.AppDB;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.TasksAdapter3;
@@ -33,23 +48,34 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.db.dao.TaskDaoAbs;
 import ru.kau.mygtd2.fragments.AddInformationFragment;
 import ru.kau.mygtd2.fragments.AddTaskFragment;
+import ru.kau.mygtd2.fragments.ChooserDialogFragment;
+import ru.kau.mygtd2.interfaces.ResultResponse2;
 import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.FileMeta;
 import ru.kau.mygtd2.objects.Information;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Task;
+import ru.kau.mygtd2.utils.AppProfile;
+import ru.kau.mygtd2.utils.AppState;
+import ru.kau.mygtd2.utils.AsyncProgressResultToastTask;
 import ru.kau.mygtd2.utils.Const;
+import ru.kau.mygtd2.utils.ExportConverter;
+import ru.kau.mygtd2.utils.ExportSettingsManager;
+import ru.kau.mygtd2.utils.IOUtils;
+import ru.kau.mygtd2.utils.Keyboards;
+import ru.kau.mygtd2.utils.LOG;
+import ru.kau.mygtd2.utils.TempHolder;
 import ru.kau.mygtd2.utils.TxtUtils;
+import ru.kau.mygtd2.utils.Urls;
 import ru.kau.mygtd2.utils.Utils;
 import ru.kau.mygtd2.utils.info.wrapper.DocumentController;
-
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
-import static ru.kau.mygtd2.utils.Utils.dateToString;
 
 public class ShareDialog {
 
     static AlertDialog infoDialog;
+
+    public static final String EXPORT_BACKUP_ZIP = "-export-backup.zip";
 
     public static void show(final Activity a, final Runnable onDeleteAction, final Information information) {
         List<String> items = new ArrayList<String>();
@@ -870,6 +896,133 @@ public class ShareDialog {
 
     }
 
+    public static void exportDialog(final FragmentActivity activity) {
+        String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
+        ChooserDialogFragment.createFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
+
+            @Override
+            public boolean onResultRecive(String result1, Dialog result2) {
+                File toFile = new File(result1);
+                AppState.get().save(activity);
+
+                new AsyncProgressResultToastTask(activity) {
+                    @Override
+                    protected Boolean doInBackground(Object... objects) {
+                        try {
+                            ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
+                            return true;
+                        } catch (ZipException e) {
+                            return false;
+                        } finally {
+                            activity.runOnUiThread(() -> result2.dismiss());
+                        }
+                    }
+                }.execute();
+
+
+                return false;
+            }
+        });
+
+    }
+
+    public static void dirLongPress(final Activity a, final String to, final Runnable onRefresh) {
+        List<String> items = new ArrayList<String>();
+
+
+        items.add(a.getString(R.string.paste));
+        items.add(a.getString(R.string.move));
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(a);
+        builder.setItems(items.toArray(new String[items.size()]), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(final DialogInterface dialog, final int which) {
+                int i = 0;
+                if (which == i++) {
+                    try {
+                        String from = TempHolder.get().copyFromPath;
+                        File fromFile = new File(from);
+                        File toFile = new File(to, fromFile.getName());
+
+                        if (toFile.exists()) {
+                            Toast.makeText(a, R.string.the_file_already_exists_, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        LOG.d("Copy from to", from, ">>", to);
+
+                        InputStream input = new BufferedInputStream(new FileInputStream(from));
+                        OutputStream output = new BufferedOutputStream(new FileOutputStream(toFile));
+
+                        IOUtils.copyClose(input, output);
+
+
+                        TempHolder.get().listHash++;
+
+                        Toast.makeText(a, R.string.success, Toast.LENGTH_SHORT).show();
+                        TempHolder.get().copyFromPath = null;
+                        onRefresh.run();
+                    } catch (Exception e) {
+                        LOG.e(e);
+                        Toast.makeText(a, R.string.msg_unexpected_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if (which == i++) {
+                    try {
+                        String from = TempHolder.get().copyFromPath;
+                        File fromFile = new File(from);
+                        File toFile = new File(to, fromFile.getName());
+                        LOG.d("Copy from to", from, ">>", to);
+
+                        if (toFile.exists()) {
+                            Toast.makeText(a, R.string.the_file_already_exists_, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        InputStream input = new BufferedInputStream(new FileInputStream(from));
+                        OutputStream output = new BufferedOutputStream(new FileOutputStream(toFile));
+
+                        IOUtils.copyClose(input, output);
+
+
+                        fromFile.delete();
+                        AppDB.get().delete(new FileMeta(fromFile.getPath()));
+                        TempHolder.get().listHash++;
+
+                        Toast.makeText(a, R.string.success, Toast.LENGTH_SHORT).show();
+                        TempHolder.get().copyFromPath = null;
+                        onRefresh.run();
+                    } catch (Exception e) {
+                        LOG.e(e);
+                        Toast.makeText(a, R.string.msg_unexpected_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        AlertDialog create = builder.create();
+        create.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Keyboards.hideNavigation(a);
+            }
+        });
+        create.show();
+    }
+
+    public static void showsItemsDialog(final Activity a, String title, final String[] items) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(a);
+        builder.setTitle(title)//
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, final int which) {
+                        Urls.open(a, items[which]);
+                    }
+                });
+
+        AlertDialog dialog = builder.show();
+
+    }
 
 
 }

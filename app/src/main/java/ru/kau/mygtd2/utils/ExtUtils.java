@@ -1925,4 +1925,16 @@ public class ExtUtils {
         return true;
     }
 
+    public static List<String> getAllExternalStorages(Context a) {
+        List<String> extFolders = new ArrayList<String>();
+
+        extFolders = ExtUtils.getExternalStorageDirectories(a);
+        String sdPath = ExtUtils.getSDPath();
+        if (TxtUtils.isNotEmpty(sdPath) && !extFolders.contains(sdPath)) {
+            extFolders.add(sdPath);
+        }
+        return  extFolders;
+
+    }
+
 }

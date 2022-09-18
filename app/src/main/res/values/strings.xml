@@ -356,5 +356,72 @@
 
     <string name="search_hint">Type name…</string>
 
+    <string name="menu">Menu</string>
+    <string name="brightness">Brightness</string>
+
+    <string name="folders">Folder</string>
+    <string name="go_to_the_folder">Go to Folder</string>
+    <string name="back">Back</string>
+    <string name="msg_loading">Loading... Please wait</string>
+    <string name="favorites">Favorites</string>
+    <string name="create_folder">New Folder</string>
+    <string name="open_folder_as_a_book">Bind in a Book</string>
+    <string name="select">Select</string>
+    <string name="ascending">Ascending</string>
+    <string name="descending">Descending</string>
+    <string name="cd_sort_results">Sort results</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="downloads">Downloads</string>
+    <string name="logout">Log out</string>
+    <string name="new_file">New File</string>
+    <string name="folder_selected">Folder selected</string>
+
+    <string name="delete_the_directory_all_the_files_in_the_directory_">Folder is not empty. Delete anyway?</string>
+    <string name="add_resource">New storage</string>
+    <string name="book">Book</string>
+    <string name="play">Play</string>
+    <string name="add_to_favorites">Add to Favorites</string>
+    <string name="book_menu">Book menu</string>
+    <string name="remove">Remove</string>
+    <string name="books">Books</string>
+    <string name="cd_clear_all">Clear all</string>
+    <string name="clear_all">Clear all</string>
+    <string name="cd_show_results_as_a_list_or_grid">Display results as a list or grid</string>
+    <string name="starred">Favorites</string>
+    <string name="recent">Recent</string>
+    <string name="folder">Folder</string>
+    <string name="playlists">Playlists</string>
+    <string name="paste">Paste</string>
+    <string name="move">Move</string>
+    <string name="remove_from_favorites">Remove from Favorites</string>
+    <string name="the_file_already_exists_">File already exists!</string>
+    <string name="list">List</string>
+    <string name="compact">Condensed</string>
+    <string name="grid">Grid</string>
+    <string name="cover">Book Cover</string>
+    <string name="paste_or_type_text_in_here">Paste or type text in here</string>
+    <string name="read_a_book">Read!</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="annotation">Annotation</string>
+    <string name="year">Year</string>
+    <string name="serie">Series</string>
+    <string name="genre">Genre</string>
+    <string name="publisher">Publisher</string>
+    <string name="keywords">Keywords</string>
+    <string name="my_tags">My tags</string>
+    <string name="meta_tags">Meta tags</string>
+    <string name="convert_to">Convert to</string>
+    <string name="send_file">Send file</string>
+    <string name="information">File Info</string>
+    <string name="file_path">Path</string>
+    <string name="language">Language</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="delete">Delete</string>
+    <string name="tab">Tab</string>
+    <string name="choose_">Choose...</string>
+    <string name="do_you_want_to_delete_this_file_">Delete this file?</string>
+    <string name="show_hidden">Show hidden</string>
+
 
 </resources>

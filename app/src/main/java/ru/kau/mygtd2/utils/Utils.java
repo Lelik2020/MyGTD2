@@ -758,35 +758,7 @@ public class Utils {
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
-    /*public static void exportDialog(final FragmentActivity activity) {
-        String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
-        ChooserDialogFragment.createFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
 
-            @Override
-            public boolean onResultRecive(String result1, Dialog result2) {
-                File toFile = new File(result1);
-                AppState.get().save(activity);
-
-                new AsyncProgressResultToastTask(activity) {
-                    @Override
-                    protected Boolean doInBackground(Object... objects) {
-                        try {
-                            ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
-                            return true;
-                        } catch (ZipException e) {
-                            return false;
-                        } finally {
-                            activity.runOnUiThread(() -> result2.dismiss());
-                        }
-                    }
-                }.execute();
-
-
-                return false;
-            }
-        });
-
-    }*/
 
 
 

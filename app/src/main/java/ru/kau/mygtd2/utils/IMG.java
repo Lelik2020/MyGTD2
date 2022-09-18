@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -351,5 +353,28 @@ public class IMG {
 
     public static String[] fromUrl(final String url) {
         return url.split(pattern);
+    }
+
+    public static void clear(ImageView image) {
+        LOG.d("Glide-clear", image.getContext());
+        try {
+            with(image.getContext()).clear(image);
+        } catch (Exception e) {
+            LOG.e(e);
+        }
+    }
+
+    public static RequestManager with(Context a) {
+        /*if (a instanceof HorizontalViewActivity) {
+            return Glide.with((HorizontalViewActivity) a);
+        } else if (a instanceof VerticalViewActivity) {
+            return Glide.with((VerticalViewActivity) a);
+        } else if (a instanceof MainTabs2) {
+            return Glide.with((MainTabs2) a);
+        } else {
+            return Glide.with(LibreraApp.context);
+        }*/
+        return Glide.with(a);
+
     }
 }

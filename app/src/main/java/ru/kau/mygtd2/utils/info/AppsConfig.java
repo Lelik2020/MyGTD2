@@ -9,14 +9,13 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.LOG;
-import ru.kau.mygtd2.utils.core.codec.pdf.MuPdfDocument;
 
 public class AppsConfig {
 
     public static int MUPDF_1_11 = 111;
     public static int MUPDF_1_16 = 116;
 
-    final public static int MUPDF_VERSION = MuPdfDocument.getMupdfVersion();
+    final public static int MUPDF_VERSION = 120; //MuPdfDocument.getMupdfVersion();
 
     public static final String PRO_LIBRERA_READER = "com.foobnix.pro.pdf.reader";
     public static final String LIBRERA_READER = "com.foobnix.pdf.reader";

@@ -1,5 +1,21 @@
 package ru.kau.mygtd2.adapters;
 
+import static android.view.View.GONE;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSINHOLD;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSINPROGRESS;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSNEW;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSPAUSE;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSSOMEDAY;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstStatus;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -28,6 +44,7 @@ import java.util.List;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
+import ru.kau.mygtd2.dialogs.ShareDialog;
 import ru.kau.mygtd2.fragments.AddRemoteBackupFragment;
 import ru.kau.mygtd2.objects.Category;
 import ru.kau.mygtd2.objects.InfoStatus;
@@ -35,22 +52,6 @@ import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
-
-import static android.view.View.GONE;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSINHOLD;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSINPROGRESS;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSNEW;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSPAUSE;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSSOMEDAY;
-import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
-import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
-import static ru.kau.mygtd2.utils.Const.lstStatus;
 
 public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHolder>{
 
@@ -682,6 +683,11 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
                 public void onClick(View v) {
                     //LOG.d("position", getAdapterPosition());
                     switch (getAdapterPosition()){
+
+                        case 0:
+                            ShareDialog.exportDialog(((FragmentActivity)c));
+                            break;
+
                         case 1:
                             Fragment fragment;
                             fragment = new AddRemoteBackupFragment();

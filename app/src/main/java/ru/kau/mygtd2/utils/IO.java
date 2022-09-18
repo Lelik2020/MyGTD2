@@ -105,6 +105,47 @@ public class IO {
         }
     }
 
+    public static String cacheFile;
+    public static String cacheString;
+
+    public static String readString(File file, boolean withSeparator) {
+        if (file.getPath().equals(cacheFile)) {
+            LOG.d("lib-IO", "read cache", file);
+            return cacheString;
+        }
+        synchronized (getLock(file)) {
+
+            try {
+                if (!file.exists()) {
+                    cacheString = "";
+                    cacheFile = file.getPath();
+                    return "";
+                }
+                LOG.d("lib-IO", "read file", file);
+                StringBuilder builder = new StringBuilder();
+                String aux = "";
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String separator = System.getProperty("line.separator");
+
+                while ((aux = reader.readLine()) != null) {
+                    builder.append(aux);
+                    if (withSeparator) {
+                        builder.append(separator);
+                    }
+                }
+                reader.close();
+                cacheFile = file.getPath();
+                cacheString = builder.toString();
+                return cacheString;
+            } catch (Exception e) {
+                LOG.e(e);
+            }
+            cacheFile = file.getPath();
+            cacheString = "";
+            return "";
+        }
+    }
+
     public static boolean writeString(File file, String string) {
         synchronized (getLock(file)) {
 
