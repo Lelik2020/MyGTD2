@@ -55,7 +55,6 @@ import ru.kau.mygtd2.info.view.MyPopupMenu;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.listeners.DefaultListeners;
 import ru.kau.mygtd2.objects.FileMeta;
-import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.ui.FastScrollRecyclerView;
 import ru.kau.mygtd2.ui.FileMetaCore;
 import ru.kau.mygtd2.utils.AppData;
@@ -1438,6 +1437,19 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
         return Collections.emptyList();
     }
 
+    @Override
+    public void populateDataInUI(List<FileMeta> items) {
+        displayItems(items);
+        showPathHeader();
+
+        if (isRestorePos) {
+            final int pos = rememberPos.get(displayPath) == null ? 0 : rememberPos.get(displayPath);
+            recyclerView.getLayoutManager().scrollToPosition(pos);
+            LOG.d("rememberPos go", displayPath, pos);
+        }
+
+
+    }
 
 
 }

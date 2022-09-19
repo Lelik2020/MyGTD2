@@ -30,6 +30,7 @@ import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.LOG;
 import ru.kau.mygtd2.utils.TempHolder;
 import ru.kau.mygtd2.utils.TxtUtils;
+import ru.kau.mygtd2.utils.info.AppsConfig;
 import ru.kau.mygtd2.utils.info.wrapper.DocumentController;
 import ru.kau.mygtd2.utils.msg.UpdateAllFragments;
 
@@ -286,7 +287,7 @@ public abstract class UIFragment<T> extends Fragment {
                 }
             });
         };
-        //AppsConfig.executorService.submit(target);
+        AppsConfig.executorService.submit(target);
     }
 
 

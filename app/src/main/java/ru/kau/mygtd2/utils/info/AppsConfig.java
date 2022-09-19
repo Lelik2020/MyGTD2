@@ -7,6 +7,9 @@ import android.os.Build;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.LOG;
 
@@ -24,6 +27,8 @@ public class AppsConfig {
 
     public static boolean isDOCXSupported = Build.VERSION.SDK_INT >= 26;
     public static boolean isCloudsEnable = false;
+
+    public final static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
 
     public static boolean checkIsProInstalled(final Context a) {
