@@ -873,4 +873,12 @@ public class AppDB {
 
     }
 
+    public FileMeta load(String path) {
+        /*if (fileMetaDao == null) {
+            return null;
+        }
+        return fileMetaDao.load(path);*/
+        return null;
+    }
+
 }

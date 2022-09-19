@@ -2,8 +2,10 @@ package ru.kau.mygtd2.fragments;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -32,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cloudrail.si.interfaces.CloudStorage;
+import com.cloudrail.si.types.CloudMetaData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,12 +50,14 @@ import ru.kau.mygtd2.adapters.FileMetaAdapter;
 import ru.kau.mygtd2.dialogs.AlertDialogs;
 import ru.kau.mygtd2.dialogs.Dialogs;
 import ru.kau.mygtd2.dialogs.ShareDialog;
+import ru.kau.mygtd2.enums.BookType;
 import ru.kau.mygtd2.info.view.MyPopupMenu;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.listeners.DefaultListeners;
 import ru.kau.mygtd2.objects.FileMeta;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.ui.FastScrollRecyclerView;
+import ru.kau.mygtd2.ui.FileMetaCore;
 import ru.kau.mygtd2.utils.AppData;
 import ru.kau.mygtd2.utils.AppProfile;
 import ru.kau.mygtd2.utils.AppState;
@@ -63,6 +68,7 @@ import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.ExtUtils;
 import ru.kau.mygtd2.utils.LOG;
 import ru.kau.mygtd2.utils.PopupHelper;
+import ru.kau.mygtd2.utils.SearchCore;
 import ru.kau.mygtd2.utils.StringDB;
 import ru.kau.mygtd2.utils.StringResponse;
 import ru.kau.mygtd2.utils.TempHolder;
@@ -73,7 +79,7 @@ import ru.kau.mygtd2.utils.info.AppsConfig;
 import ru.kau.mygtd2.utils.task.AsyncProgressTask;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class BrowseFragment2 extends UIFragment<Task> {
+public class BrowseFragment2 extends UIFragment<FileMeta> {
 
     public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.folders, R.drawable.glyphicons_145_folder_open);
     public static final String EXTRA_INIT_PATH = "EXTRA_PATH";
@@ -1291,6 +1297,148 @@ public class BrowseFragment2 extends UIFragment<Task> {
     public void bindAdapter(FileMetaAdapter searchAdapter) {
         DefaultListeners.bindAdapter7(getActivity(), searchAdapter);
     }
+
+    @Override
+    public List<FileMeta> prepareDataInBackground() {
+
+        try {
+
+            if (displayPath.startsWith(Clouds.PREFIX_CLOUD)) {
+                cloudStorage = Clouds.get().cloud(displayPath);
+                String cloudPath = Clouds.getPath(displayPath);
+                if (TxtUtils.isEmpty(cloudPath)) {
+                    cloudPath = "/";
+                }
+                LOG.d("Open clound path", cloudPath);
+                List<CloudMetaData> items = cloudStorage.getChildren(cloudPath);
+
+                List<FileMeta> result = new ArrayList<FileMeta>();
+
+                for (CloudMetaData cl : items) {
+                    String path = cl.getPath();
+                    String name = cl.getName();
+                    Long modifiedAt = cl.getModifiedAt();
+                    long size = cl.getSize();
+
+                    LOG.d("CloudMetaData", path, name, modifiedAt, size, cl.getImageMetaData());
+
+                    FileMeta meta = new FileMeta(Clouds.getPrefix(displayPath) + path);
+
+                    if (cl.getFolder()) {
+                        meta.setCusType(FileMetaAdapter.DISPLAY_TYPE_DIRECTORY);
+                    }
+
+                    meta.setTitle(name);
+                    meta.setPathTxt(name);
+
+                    meta.setSize(size);
+                    meta.setSizeTxt(ExtUtils.readableFileSize(size));
+
+                    if (modifiedAt != null) {
+                        meta.setDate(modifiedAt);
+                        meta.setDateTxt(ExtUtils.getDateFormat(modifiedAt));
+                    }
+                    meta.setState(FileMetaCore.STATE_FULL);
+
+                    result.add(meta);
+                }
+
+                return result;
+            }
+
+            if (ExtUtils.isExteralSD(getInitPath())) {
+
+                List<FileMeta> items = new ArrayList<FileMeta>();
+
+                Uri uri = Uri.parse(displayPath);
+
+                ContentResolver contentResolver = getActivity().getContentResolver();
+                Uri childrenUri = null;
+
+                childrenUri = ExtUtils.getChildUri(getContext(), uri);
+
+                if (childrenUri != null) {
+
+                    LOG.d("newNode uri >> ", uri);
+                    LOG.d("newNode childrenUri >> ", childrenUri);
+
+                    Cursor childCursor = contentResolver.query(childrenUri, new String[]{ //
+                                    DocumentsContract.Document.COLUMN_DISPLAY_NAME, //
+                                    DocumentsContract.Document.COLUMN_DOCUMENT_ID, //
+                                    DocumentsContract.Document.COLUMN_ICON, //
+                                    DocumentsContract.Document.COLUMN_LAST_MODIFIED, //
+                                    DocumentsContract.Document.COLUMN_MIME_TYPE, //
+                                    DocumentsContract.Document.COLUMN_SIZE, //
+                                    DocumentsContract.Document.COLUMN_SUMMARY, //
+                            }, //
+                            null, null, null); //
+                    try {
+                        while (childCursor.moveToNext()) {
+                            String COLUMN_DISPLAY_NAME = childCursor.getString(0);
+                            String COLUMN_DOCUMENT_ID = childCursor.getString(1);
+                            String COLUMN_ICON = childCursor.getString(2);
+                            String COLUMN_LAST_MODIFIED = childCursor.getString(3);
+                            String COLUMN_MIME_TYPE = childCursor.getString(4);
+                            String COLUMN_SIZE = childCursor.getString(5);
+                            String COLUMN_SUMMARY = childCursor.getString(6);
+
+                            LOG.d("found- child 2=", COLUMN_DISPLAY_NAME, COLUMN_DOCUMENT_ID, COLUMN_ICON);
+
+                            FileMeta meta = new FileMeta();
+                            //meta.setAuthor(SearchFragment2.EMPTY_ID);
+
+                            final Uri newNode = DocumentsContract.buildDocumentUriUsingTree(uri, COLUMN_DOCUMENT_ID);
+                            meta.setPath(newNode.toString());
+                            LOG.d("newNode", newNode);
+
+                            if (DocumentsContract.Document.MIME_TYPE_DIR.equals(COLUMN_MIME_TYPE)) {
+                                meta.setCusType(FileMetaAdapter.DISPLAY_TYPE_DIRECTORY);
+                                meta.setPathTxt(COLUMN_DISPLAY_NAME);
+                                meta.setTitle(COLUMN_DISPLAY_NAME);
+
+                            } else {
+                                try {
+                                    if (COLUMN_SIZE != null) {
+                                        long size = Long.parseLong(COLUMN_SIZE);
+                                        meta.setSize(size);
+                                        meta.setSizeTxt(ExtUtils.readableFileSize(size));
+                                    }
+                                    if (COLUMN_LAST_MODIFIED != null) {
+                                        meta.setDateTxt(ExtUtils.getDateFormat(Long.parseLong(COLUMN_LAST_MODIFIED)));
+                                    }
+                                } catch (Exception e) {
+                                    LOG.e(e);
+                                }
+                                meta.setExt(ExtUtils.getFileExtension(COLUMN_DISPLAY_NAME));
+
+                                if (BookType.FB2.is(COLUMN_DISPLAY_NAME)) {
+                                    meta.setTitle(TxtUtils.encode1251(COLUMN_DISPLAY_NAME));
+                                } else {
+                                    meta.setTitle(COLUMN_DISPLAY_NAME);
+                                }
+
+                            }
+                            items.add(meta);
+
+                        }
+                    } finally {
+                        closeQuietly(childCursor);
+                    }
+                }
+                return items;
+
+            } else {
+                List<FileMeta> filesAndDirs = SearchCore.getFilesAndDirs(displayPath, fragmentType == TYPE_DEFAULT, AppState.get().isDisplayAllFilesInFolder);
+                //ExtUtils.removeReadBooks(filesAndDirs);
+                return filesAndDirs;
+            }
+        } catch (Exception e) {
+            LOG.e(e);
+        }
+        return Collections.emptyList();
+    }
+
+
 
 }
 
