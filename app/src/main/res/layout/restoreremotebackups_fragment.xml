@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lcommon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginTop="5sp"
+                    android:text="Последняя синхронизация: "
+                    android:textStyle="bold"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtlastsync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginTop="5sp"
+                    android:text=""
+                    android:textStyle="bold"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltasktitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp"
+                android:layout_below="@+id/lcommon"
+                tools:ignore="MissingConstraints">
+
+                <stream.custombutton.CustomButton
+                    android:id="@+id/btnsync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/sync"
+                    android:textSize="18sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"
+                    android:layout_margin="5sp"
+                    app:btn_cornerRadius="15sp"
+                    app:btn_strokeWidth="1dp"
+                    app:btn_strokeColor="@color/colorPrimary"
+                    app:btn_buttonColor="@color/transparent"
+                    app:btn_buttonSelectColor="@color/colorPrimary"
+                    app:btn_textColor="@color/colorPrimary"
+                    app:btn_textSelectColor="@color/white"/>
+
+                <stream.custombutton.CustomButton
+                    android:id="@+id/btntest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="Test"
+                    android:textSize="18sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"
+                    android:layout_margin="5sp"
+                    app:btn_cornerRadius="15sp"
+                    app:btn_strokeWidth="1dp"
+                    app:btn_strokeColor="@color/colorPrimary"
+                    app:btn_buttonColor="@color/transparent"
+                    app:btn_buttonSelectColor="@color/colorPrimary"
+                    app:btn_textColor="@color/colorPrimary"
+                    app:btn_textSelectColor="@color/white"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lstsyncs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ltasktitle"
+                android:layout_alignParentBottom="true"
+
+
+                android:paddingTop="@dimen/wh_tasks_description_text">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

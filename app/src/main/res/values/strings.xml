@@ -423,5 +423,8 @@
     <string name="do_you_want_to_delete_this_file_">Delete this file?</string>
     <string name="show_hidden">Show hidden</string>
 
+    <string name="btnallbackups">Все бэкапы</string>
+    <string name="btndevicebackups">Бэкапы устройства</string>
+
 
 </resources>

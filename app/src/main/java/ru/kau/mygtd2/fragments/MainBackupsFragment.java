@@ -27,6 +27,8 @@ public class MainBackupsFragment extends Fragment implements ClickListener {
 
     private BackupsAdapter mainAdapter;
 
+    List<Category> lstCategories;
+
     @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,20 +51,36 @@ public class MainBackupsFragment extends Fragment implements ClickListener {
         recyclerView.setBackground(drawable);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<Category> lstCategories = new ArrayList<Category>();
+        lstCategories = new ArrayList<Category>();
         Category category = new Category();
-        category.setId(1L);
+        category.setId(1);
         category.setTitle("Локальные бэкапы");
         category.setDescription("Локальные бэкапы");
         category.setGrp(0);
         lstCategories.add(category);
 
         category = new Category();
-        category.setId(2L);
+        category.setId(2);
         category.setTitle("Удаленные бэкапы");
         category.setDescription("Удаленные бэкапы");
         category.setGrp(0);
         lstCategories.add(category);
+
+        category = new Category();
+        category.setId(3);
+        category.setTitle("Восстановление из локального бэкапа");
+        category.setDescription("Восстановление из локального бэкапа");
+        category.setGrp(0);
+        lstCategories.add(category);
+
+        category = new Category();
+        category.setId(4);
+        category.setTitle("Восстановление из удаленного бэкапа");
+        category.setDescription("Восстановление из удаленного бэкапа");
+        category.setGrp(0);
+        lstCategories.add(category);
+
+
         mainAdapter = new BackupsAdapter(getActivity(), lstCategories);
         mainAdapter.setClickListener(this);
 
@@ -82,7 +100,15 @@ public class MainBackupsFragment extends Fragment implements ClickListener {
     public void itemClicked(View view, int position) {
         //Toast.makeText(getContext(), "1111111", Toast.LENGTH_SHORT).show();
         Fragment fragment;
-        fragment = new RemoteBackupsFragment();
-        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("RemoteBackupsFragment").replace(R.id.frame_container, fragment, "RemoteBackupsFragment").commit();
+        switch (lstCategories.get(position).getId()) {
+            case 2:
+
+                fragment = new RemoteBackupsFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("RemoteBackupsFragment").replace(R.id.frame_container, fragment, "RemoteBackupsFragment").commit();
+                break;
+            case 4:
+                break;
+        }
+
     }
 }
