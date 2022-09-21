@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.List;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.objects.Backup;
+import stream.custombutton.CustomButton;
 
 
 public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder>{
@@ -40,6 +40,16 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
         holder.title.setText(lstBackups.get(position).getGuid());
         //holder.syncbegin.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateBegin())));
         //holder.syncend.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateEnd())));
+
+        holder.btnRestore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //
+            }
+        });
+
+
+
     }
 
     @Override
@@ -53,9 +63,12 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
         TextView syncbegin;
         TextView syncend;
 
+        CustomButton btnRestore;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.commontitle);
+            title = (TextView) itemView.findViewById(R.id.backuptitle);
+            btnRestore = itemView.findViewById(R.id.btnrestore);
             //syncbegin = (TextView) itemView.findViewById(R.id.backupbegin);
             //syncend = (TextView) itemView.findViewById(R.id.backupend);
         }

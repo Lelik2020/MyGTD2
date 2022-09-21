@@ -232,6 +232,8 @@
     <string name="create">Создать</string>
     <string name="sync">Синхронизировать</string>
 
+    <string name="restore">Восстановить</string>
+
     <string name="commentcreated">Комментарий создан</string>
     <string name="commentcreatedexception">Ошибка при создании комментария</string>
     <string name="commentupdated">Комментарий обновлен</string>

@@ -7,6 +7,7 @@ import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKOVERDUE_COLOR;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -149,9 +150,18 @@ public class SyncsFragment extends Fragment {
                     try {
                         List<Sync> data = Synchronisation.getListSyncsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
                         //Log.e("SIZE: ", String.valueOf(data.size()));
-                        SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), data);
-                        recyclerView.setAdapter(syncsAdapter);
-                        recyclerView.setVisibility(View.VISIBLE);
+
+                        Handler handler = new Handler(getContext().getMainLooper());
+                        handler.post( new Runnable() {
+                            @Override
+                            public void run() {
+                                SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), data);
+                                recyclerView.setAdapter(syncsAdapter);
+                                recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        } );
+
+
                         //e.onNext(data);
                     } catch (Exception ex) {
                         lstSyncs.onError(ex);

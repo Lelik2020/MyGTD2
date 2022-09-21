@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2sp"
-    android:layout_marginTop="2sp"
-    android:layout_marginLeft="2sp"
-    android:layout_marginRight="2sp"
-    android:layout_marginBottom="2sp"
+    style="@style/TaskCardViewStyle"
     android:animateLayoutChanges="true"
     >
 
-
     <RelativeLayout
-        android:id="@+id/commoninfo"
+        android:id="@+id/backupinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:padding="2dp">
+
+        >
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/lltitle"
+            android:id="@+id/llbackuptitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -30,26 +27,106 @@
             >
 
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lbackuptitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
 
-
-
+                tools:ignore="MissingConstraints">
 
 
                 <TextView
+                    android:id="@+id/backuptitle"
+                    style="@style/textLinkTaskCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_horizontal|right"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/backuptitle2"
+                    style="@style/txtTaskTitleTaskCard2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"
-                    android:id="@+id/commontitle"
+                    android:gravity="center_vertical"
                     android:paddingLeft="5sp"
+                    android:text="Name"
+                    android:textStyle="bold" />
 
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_black_100"
-                    />
+                <stream.custombutton.CustomButton
+                    android:id="@+id/btnrestore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/restore"
+                    android:textSize="18sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"
+                    android:layout_margin="5sp"
+                    app:btn_cornerRadius="15sp"
+                    app:btn_strokeWidth="1dp"
+                    app:btn_strokeColor="@color/colorPrimary"
+                    app:btn_buttonColor="@color/transparent"
+                    app:btn_buttonSelectColor="@color/colorPrimary"
+                    app:btn_textColor="@color/colorPrimary"
+                    app:btn_textSelectColor="@color/white"/>
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lbackupdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                tools:ignore="MissingConstraints">
+
+
+                <TextView
+                    android:id="@+id/backupbegin"
+                    style="@style/textLinkTaskCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_horizontal|right"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/backupend"
+                    style="@style/txtTaskTitleTaskCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5sp"
+                    android:text="Name"
+                    android:textStyle="bold" />
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+
     </RelativeLayout>
+
+
 
 </androidx.cardview.widget.CardView>
