@@ -168,6 +168,7 @@ public class SyncsFragment extends Fragment {
                         throwable ->    {
 
                                             Log.e("rest api  123123, error: 890890", throwable.getMessage());
+                                            Log.e("rest api  345345, error: 890890", throwable.getStackTrace().toString());
                                         });
 
         // RxJava

@@ -54,7 +54,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ltasktitle"
+                android:id="@+id/lchoicebackup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -118,10 +118,10 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lstsyncs"
+                android:id="@+id/lstbackups"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/ltasktitle"
+                android:layout_below="@+id/lchoicebackup"
                 android:layout_alignParentBottom="true"
 
 

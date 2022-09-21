@@ -208,7 +208,7 @@ public class DbCreator {
     public static void firstInitSpr6() {
 
         Category category = new Category();
-        category.setId(22L);
+        category.setId(22);
         category.setTitle("Статистика");
         category.setDescription("Статистика");
         category.setGrp(3);
@@ -284,7 +284,7 @@ public class DbCreator {
     public static void firstInitSpr4(){
 
         Category category = new Category();
-        category.setId(18L);
+        category.setId(18);
         category.setTitle("Шаблоны задач");
         category.setDescription("Шаблоны задач");
         category.setGrp(3);
@@ -292,7 +292,7 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(19L);
+        category.setId(19);
         category.setTitle("Резервное копирование");
         category.setDescription("Резервное копирование");
         category.setGrp(3);
@@ -300,7 +300,7 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(20L);
+        category.setId(20);
         category.setTitle("Настройки");
         category.setDescription("Настройки");
         category.setGrp(4);
@@ -308,7 +308,7 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(21L);
+        category.setId(21);
         category.setTitle("Об устройстве");
         category.setDescription("Об устройстве");
         category.setGrp(4);
@@ -316,7 +316,7 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(23L);
+        category.setId(23);
         category.setTitle("Синхронизация");
         category.setDescription("Синхронизация");
         category.setGrp(3);
@@ -327,7 +327,7 @@ public class DbCreator {
 
     public static void firstInitSpr5(){
         Category category = new Category();
-        category.setId(22L);
+        category.setId(22);
         category.setTitle("Резервные копии");
         category.setDescription("Работа с резервными копиями");
         category.setGrp(5);
@@ -412,7 +412,7 @@ public class DbCreator {
 
 
         Category category = new Category();
-        category.setId(1L);
+        category.setId(1);
         category.setTitle("Входящие");
         category.setDescription("9999");
         category.setGrp(1);
@@ -420,35 +420,35 @@ public class DbCreator {
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(2L);
+        category.setId(2);
         category.setTitle("Все задачи");
         category.setDescription("8888");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(3L);
+        category.setId(3);
         category.setTitle("Сегодня");
         category.setDescription("8888");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(4L);
+        category.setId(4);
         category.setTitle("Горящие");
         category.setDescription("8888");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(5L);
+        category.setId(5);
         category.setTitle("Избранные");
         category.setDescription("8888");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(6L);
+        category.setId(6);
         category.setTitle("Завершенные");
         category.setDescription("8888");
         category.setGrp(1);
@@ -458,77 +458,77 @@ public class DbCreator {
 
         // --------------------------------------------------
         category = new Category();
-        category.setId(7L);
+        category.setId(7);
         category.setTitle("Проекты");
         category.setDescription("7777");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(8L);
+        category.setId(8);
         category.setTitle("Цели");
         category.setDescription("7777");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(9L);
+        category.setId(9);
         category.setTitle("Тэги");
         category.setDescription("7777");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(10L);
+        category.setId(10);
         category.setTitle("Контексты");
         category.setDescription("7777");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(11L);
+        category.setId(11);
         category.setTitle("Календарь");
         category.setDescription("5555");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(12L);
+        category.setId(12);
         category.setTitle("Следующие действия");
         category.setDescription("4444");
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(13L);
+        category.setId(13);
         category.setTitle("Когда-нибудь");
         category.setDescription("4444");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(14L);
+        category.setId(14);
         category.setTitle("Все задачи (тест)");
         category.setDescription("999999");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(15L);
+        category.setId(15);
         category.setTitle("Все задачи (new)");
         category.setDescription("7777777");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(16L);
+        category.setId(16);
         category.setTitle("Приостановленные");
         category.setDescription("999999");
         category.setGrp(1);
         MyApplication.getDatabase().categoryDao().insert(category);
 
         category = new Category();
-        category.setId(17L);
+        category.setId(17);
         category.setTitle("Отложенные");
         category.setDescription("999999");
         category.setGrp(1);

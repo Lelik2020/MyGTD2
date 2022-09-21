@@ -88,7 +88,20 @@ public class Controller {
                 .setLenient()
                 .create();
 
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                //.readTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
+                //.writeTimeout(2, TimeUnit.SECONDS)
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
+                //.addInterceptor(loggingInterceptor)
+                .addInterceptor(interceptor)
+                //.addNetworkInterceptor(networkInterceptor)
+                .build();
+
         Retrofit retrofit = new Retrofit.Builder()
+                .client(okHttpClient)
                 .baseUrl(Settings.getStringSetting(IPSERVERBACKUP))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
