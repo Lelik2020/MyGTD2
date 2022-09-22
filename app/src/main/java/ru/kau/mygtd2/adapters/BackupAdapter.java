@@ -1,6 +1,7 @@
 package ru.kau.mygtd2.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.objects.Backup;
+import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
 
@@ -38,8 +41,10 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.title.setText(lstBackups.get(position).getGuid());
-        //holder.syncbegin.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateBegin())));
-        //holder.syncend.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateEnd())));
+        holder.backupbegin.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateBegin())));
+        holder.backupend.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateEnd())));
+
+        Log.e("ERROR: ", lstBackups.get(position).getGuid() + "  " + lstBackups.get(position).getDateBegin());
 
         holder.btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +65,8 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title;
 
-        TextView syncbegin;
-        TextView syncend;
+        TextView backupbegin;
+        TextView backupend;
 
         CustomButton btnRestore;
 
@@ -69,8 +74,8 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.backuptitle);
             btnRestore = itemView.findViewById(R.id.btnrestore);
-            //syncbegin = (TextView) itemView.findViewById(R.id.backupbegin);
-            //syncend = (TextView) itemView.findViewById(R.id.backupend);
+            backupbegin = (TextView) itemView.findViewById(R.id.backupbegin);
+            backupend = (TextView) itemView.findViewById(R.id.backupend);
         }
     }
 

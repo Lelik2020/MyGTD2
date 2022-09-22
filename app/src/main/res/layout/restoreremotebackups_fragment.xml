@@ -19,39 +19,7 @@
             android:layout_height="wrap_content"
             >
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/lcommon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
 
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="5sp"
-                    android:layout_marginTop="5sp"
-                    android:text="Последняя синхронизация: "
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/txtlastsync"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="5sp"
-                    android:layout_marginTop="5sp"
-                    android:text=""
-                    android:textStyle="bold"
-                    />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/lchoicebackup"
@@ -59,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5sp"
-                android:layout_below="@+id/lcommon"
+
                 tools:ignore="MissingConstraints">
 
                 <stream.custombutton.CustomButton
@@ -74,7 +42,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text="@string/sync"
+                    android:text="@string/btnallbackups"
                     android:textSize="18sp"
                     android:singleLine="true"
                     android:ellipsize="none"
@@ -99,7 +67,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text="Test"
+                    android:text="@string/btndevicebackups"
                     android:textSize="18sp"
                     android:singleLine="true"
                     android:ellipsize="none"
