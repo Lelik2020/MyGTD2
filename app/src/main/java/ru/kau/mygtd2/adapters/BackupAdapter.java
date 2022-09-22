@@ -14,7 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
+import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Backup;
+import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
@@ -49,6 +51,19 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
         holder.btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //  --------------------------------------------------------
+                // Восстанавливаем информацию об устройстве
+                // Меняем идентификатор устройства
+                Device device = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                device.setGuid(lstBackups.get(position).getDeviceguid());
+                MyApplication.getDatabase().deviceDao().update(device);
+
+                // Получаем справочники
+                // -------- Получаем справочник контекстов ------------------------
+
+
+                // ----------------------------------------------------------------
+
                 //
             }
         });
