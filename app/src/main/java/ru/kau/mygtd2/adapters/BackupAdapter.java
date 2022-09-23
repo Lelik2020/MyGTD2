@@ -1,6 +1,7 @@
 package ru.kau.mygtd2.adapters;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Date;
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Backup;
+import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
+import ru.kau.mygtd2.utils.RemoteBackup;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
 
@@ -61,6 +68,46 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                 // Получаем справочники
                 // -------- Получаем справочник контекстов ------------------------
 
+                Observable.create((ObservableOnSubscribe<List<Contekst>>) lstConteksts -> {
+                            try {
+                                //List<Backup> data = RemoteBackup.getListBackupsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+                                List<Contekst> data = RemoteBackup.getListBackupsDevice("");
+                                //Log.e("SIZE: ", String.valueOf(data.size()));
+                                //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
+
+                                Handler handler = new Handler(c.getMainLooper());
+                                handler.post( new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        BackupAdapter backupsAdapter = new BackupAdapter(getContext(), data);
+                                        recyclerView.setAdapter(backupsAdapter);
+                                        recyclerView.setVisibility(View.VISIBLE);
+                                    }
+                                } );
+
+                                //e.onNext(data);
+                            } catch (Exception ex) {
+                                //Log.e("ERROR: ", ex.getMessage());
+                                ex.printStackTrace();
+                                lstBackups.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match2 -> {
+                                    //Log.e("rest api 33333, success 44444 ", String.valueOf(match2.size()));
+                                    //SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), match2);
+                                    //recyclerView.setAdapter(syncsAdapter);
+                                    //recyclerView.setVisibility(View.VISIBLE);
+                                },
+                                throwable ->    {
+
+                                    Log.e("rest api  123123, error: 890890", throwable.getMessage());
+                                    Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace()));
+                            /*for(int i = 0; i < throwable.getStackTrace().length; i++) {
+                                Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace().));
+                            }*/
+                                });
 
                 // ----------------------------------------------------------------
 

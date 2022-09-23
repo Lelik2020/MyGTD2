@@ -21,4 +21,7 @@ public interface BackupApi {
 
     @GET("backup/getlstbackups")
     Call<List<Backup>> getlstbackupsdevice(@Query("deviceGuid") String deviceGuid);
+
+    @GET("backup/getlstbackups")
+    Call<List<Backup>> getlstbackupsdevice(@Query("deviceGuid") String deviceGuid);
 }
