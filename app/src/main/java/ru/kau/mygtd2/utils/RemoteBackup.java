@@ -10,6 +10,7 @@ import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Sync;
+import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.restapi.BackupApi;
 import ru.kau.mygtd2.restapi.SyncApi;
 
@@ -46,21 +47,40 @@ public class RemoteBackup {
 
     public static List<Contekst> getListContekstDevice() throws HttpException {
 
-        List<Contekst> lstBackups = new ArrayList<Contekst>();
-        Call<List<Contekst>> call2 = getBackupAPI().getlstbackupsdevice(deviceGuid);
+        List<Contekst> lstConteksts = new ArrayList<Contekst>();
+        Call<List<Contekst>> call2 = getBackupAPI().getLstConteksts();
 
 
 
         try {
-            Response<List<Backup>> response = call2.execute();
-            lstBackups = response.body();
+            Response<List<Contekst>> response = call2.execute();
+            lstConteksts = response.body();
         }
         catch (Exception e){
 
             //throw new HttpException();
         }
 
-        return lstBackups;
+        return lstConteksts;
+    }
+
+    public static List<Tag> getListTag() throws HttpException {
+
+        List<Tag> lstTags = new ArrayList<Tag>();
+        Call<List<Tag>> call2 = getBackupAPI().getLstTags();
+
+
+
+        try {
+            Response<List<Tag>> response = call2.execute();
+            lstTags = response.body();
+        }
+        catch (Exception e){
+
+            //throw new HttpException();
+        }
+
+        return lstTags;
     }
 
 }

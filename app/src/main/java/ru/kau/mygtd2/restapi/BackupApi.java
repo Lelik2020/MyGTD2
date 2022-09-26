@@ -8,6 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import ru.kau.mygtd2.objects.Backup;
+import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Tag;
 
 
 public interface BackupApi {
@@ -22,6 +24,9 @@ public interface BackupApi {
     @GET("backup/getlstbackups")
     Call<List<Backup>> getlstbackupsdevice(@Query("deviceGuid") String deviceGuid);
 
-    //@GET("backup/getlstbackups")
-    //Call<List<Backup>> getlstbackupsdevice(@Query("deviceGuid") String deviceGuid);
+    @GET("contekst/getlstconteksts")
+    Call<List<Contekst>> getLstConteksts();
+
+    @GET("tag/getlsttags")
+    Call<List<Tag>> getLstTags();
 }

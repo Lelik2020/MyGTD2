@@ -44,7 +44,8 @@ public interface ContextDao {
     @Query("SELECT * FROM contexts INNER JOIN tasktemplatecontexts ON id = idcontext WHERE tasktemplateguid = :templateGuid")
     List<Contekst> getAllByTemplateGuid(final String templateGuid);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    //@Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Contekst contekst);
 
     @Update

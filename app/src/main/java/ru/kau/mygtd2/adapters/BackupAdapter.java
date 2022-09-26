@@ -23,6 +23,7 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
+import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.utils.RemoteBackup;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
@@ -71,25 +72,27 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                 Observable.create((ObservableOnSubscribe<List<Contekst>>) lstConteksts -> {
                             try {
                                 //List<Backup> data = RemoteBackup.getListBackupsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-                                List<Contekst> data = RemoteBackup.getListBackupsDevice("");
-                                //Log.e("SIZE: ", String.valueOf(data.size()));
+                                List<Contekst> data = RemoteBackup.getListContekstDevice();
+                                Log.e("SIZE: ", String.valueOf(data.size()));
                                 //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
+                                for(int i = 0; i < data.size(); i++){
+                                    MyApplication.getDatabase().contextDao().insert(data.get(i));
+                                }
 
-                                Handler handler = new Handler(c.getMainLooper());
+
+                                /*Handler handler = new Handler(c.getMainLooper());
                                 handler.post( new Runnable() {
                                     @Override
                                     public void run() {
-                                        BackupAdapter backupsAdapter = new BackupAdapter(getContext(), data);
-                                        recyclerView.setAdapter(backupsAdapter);
-                                        recyclerView.setVisibility(View.VISIBLE);
+
                                     }
-                                } );
+                                } );*/
 
                                 //e.onNext(data);
                             } catch (Exception ex) {
                                 //Log.e("ERROR: ", ex.getMessage());
                                 ex.printStackTrace();
-                                lstBackups.onError(ex);
+                                lstConteksts.onError(ex);
                             }
                         })
                         .subscribeOn(Schedulers.io())
@@ -108,6 +111,55 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                                 Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace().));
                             }*/
                                 });
+
+                // Получаем список тэгов из справочника
+
+                Observable.create((ObservableOnSubscribe<List<Tag>>) lstTags -> {
+                            try {
+                                //List<Backup> data = RemoteBackup.getListBackupsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+                                List<Tag> data = RemoteBackup.getListTag();
+                                Log.e("SIZE: ", String.valueOf(data.size()));
+                                //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
+                                for(int i = 0; i < data.size(); i++){
+                                    MyApplication.getDatabase().tagDao().insert(data.get(i));
+                                }
+
+
+                                /*Handler handler = new Handler(c.getMainLooper());
+                                handler.post( new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                } );*/
+
+                                //e.onNext(data);
+                            } catch (Exception ex) {
+                                //Log.e("ERROR: ", ex.getMessage());
+                                ex.printStackTrace();
+                                lstConteksts.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match2 -> {
+                                    //Log.e("rest api 33333, success 44444 ", String.valueOf(match2.size()));
+                                    //SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), match2);
+                                    //recyclerView.setAdapter(syncsAdapter);
+                                    //recyclerView.setVisibility(View.VISIBLE);
+                                },
+                                throwable ->    {
+
+                                    Log.e("rest api  123123, error: 890890", throwable.getMessage());
+                                    Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace()));
+                            /*for(int i = 0; i < throwable.getStackTrace().length; i++) {
+                                Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace().));
+                            }*/
+                                });
+
+
+
+                // ----------------------------------------------------------------
 
                 // ----------------------------------------------------------------
 

@@ -40,7 +40,8 @@ public interface TagDao {
     @Query("SELECT count() FROM tags")
     int countOfTags();
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    //@Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Tag tag);
 
     @Update
