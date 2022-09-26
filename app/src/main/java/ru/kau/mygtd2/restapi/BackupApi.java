@@ -10,6 +10,7 @@ import retrofit2.http.Query;
 import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Tag;
+import ru.kau.mygtd2.objects.Target;
 
 
 public interface BackupApi {
@@ -29,4 +30,7 @@ public interface BackupApi {
 
     @GET("tag/getlsttags")
     Call<List<Tag>> getLstTags();
+
+    @GET("target/getlsttargets")
+    Call<List<Target>> getLstTargets();
 }

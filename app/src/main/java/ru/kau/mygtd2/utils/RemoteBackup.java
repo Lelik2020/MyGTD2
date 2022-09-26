@@ -9,10 +9,9 @@ import ru.kau.mygtd2.controllers.Controller;
 import ru.kau.mygtd2.exceptions.codec.HttpException;
 import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
-import ru.kau.mygtd2.objects.Sync;
 import ru.kau.mygtd2.objects.Tag;
+import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.restapi.BackupApi;
-import ru.kau.mygtd2.restapi.SyncApi;
 
 
 public class RemoteBackup {
@@ -73,6 +72,25 @@ public class RemoteBackup {
 
         try {
             Response<List<Tag>> response = call2.execute();
+            lstTags = response.body();
+        }
+        catch (Exception e){
+
+            //throw new HttpException();
+        }
+
+        return lstTags;
+    }
+
+    public static List<Target> getListTarget() throws HttpException {
+
+        List<Target> lstTags = new ArrayList<Target>();
+        Call<List<Target>> call2 = getBackupAPI().getLstTargets();
+
+
+
+        try {
+            Response<List<Target>> response = call2.execute();
             lstTags = response.body();
         }
         catch (Exception e){
