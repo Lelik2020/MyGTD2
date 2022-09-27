@@ -24,6 +24,7 @@ import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Tag;
+import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.utils.RemoteBackup;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
@@ -161,14 +162,14 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
 
                 // Получаем список целей из справочника
 
-                Observable.create((ObservableOnSubscribe<List<Tag>>) lstTags -> {
+                Observable.create((ObservableOnSubscribe<List<Target>>) lstTargets -> {
                             try {
                                 //List<Backup> data = RemoteBackup.getListBackupsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
-                                List<Tag> data = RemoteBackup.getListTag();
+                                List<Target> data = RemoteBackup.getListTarget();
                                 Log.e("SIZE: ", String.valueOf(data.size()));
                                 //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
                                 for(int i = 0; i < data.size(); i++){
-                                    MyApplication.getDatabase().tagDao().insert(data.get(i));  77
+                                    MyApplication.getDatabase().targetDao().insert(data.get(i));
                                 }
 
 
@@ -184,7 +185,7 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                             } catch (Exception ex) {
                                 //Log.e("ERROR: ", ex.getMessage());
                                 ex.printStackTrace();
-                                lstTags.onError(ex);
+                                lstTargets.onError(ex);
                             }
                         })
                         .subscribeOn(Schedulers.io())

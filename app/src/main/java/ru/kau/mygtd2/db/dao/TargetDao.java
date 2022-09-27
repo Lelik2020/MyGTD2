@@ -32,7 +32,8 @@ public interface TargetDao {
 
 
     //@Insert
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    //@Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Target target);
 
     @Update
