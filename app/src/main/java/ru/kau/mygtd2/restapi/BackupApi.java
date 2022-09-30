@@ -11,6 +11,7 @@ import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.Task;
 
 
 public interface BackupApi {
@@ -33,4 +34,7 @@ public interface BackupApi {
 
     @GET("target/getlsttargets")
     Call<List<Target>> getLstTargets();
+
+    @GET("tasks/getlsttasks")
+    Call<List<Task>> getLstTasks(@Query("backupGuid") String backupGuid);
 }

@@ -11,6 +11,7 @@ import ru.kau.mygtd2.objects.Backup;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.restapi.BackupApi;
 
 
@@ -84,21 +85,40 @@ public class RemoteBackup {
 
     public static List<Target> getListTarget() throws HttpException {
 
-        List<Target> lstTags = new ArrayList<Target>();
+        List<Target> lstTargets = new ArrayList<Target>();
         Call<List<Target>> call2 = getBackupAPI().getLstTargets();
 
 
 
         try {
             Response<List<Target>> response = call2.execute();
-            lstTags = response.body();
+            lstTargets = response.body();
         }
         catch (Exception e){
 
             //throw new HttpException();
         }
 
-        return lstTags;
+        return lstTargets;
+    }
+
+    public static List<Task> getListTask(String backupGuid) throws HttpException {
+
+        List<Task> lstTasks = new ArrayList<Task>();
+        Call<List<Task>> call2 = getBackupAPI().getLstTasks(backupGuid);
+
+
+
+        try {
+            Response<List<Task>> response = call2.execute();
+            lstTasks = response.body();
+        }
+        catch (Exception e){
+
+            //throw new HttpException();
+        }
+
+        return lstTasks;
     }
 
 }

@@ -25,6 +25,7 @@ import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.utils.RemoteBackup;
 import ru.kau.mygtd2.utils.Utils;
 import stream.custombutton.CustomButton;
@@ -211,7 +212,49 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
 
                 // Обрабатываем задачи
 
-                77
+                Observable.create((ObservableOnSubscribe<List<Task>>) lstTasks -> {
+                            try {
+                                //List<Backup> data = RemoteBackup.getListBackupsDevice(MyApplication.getDatabase().deviceDao().getGuidCurrentDevice());
+                                List<Task> data = RemoteBackup.getListTask(lstBackups.get(position).getGuid());
+                                Log.e("TASK SIZE: ", String.valueOf(data.size()));
+                                //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
+                                for(int i = 0; i < data.size(); i++){
+                                    //MyApplication.getDatabase().taskDao().insert(data.get(i));
+                                    Log.e("TASKGUID", data.get(i).getGuid());
+                                }
+
+
+                                /*Handler handler = new Handler(c.getMainLooper());
+                                handler.post( new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                } );*/
+
+                                //e.onNext(data);
+                            } catch (Exception ex) {
+                                //Log.e("ERROR: ", ex.getMessage());
+                                ex.printStackTrace();
+                                lstTasks.onError(ex);
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(match2 -> {
+                                    //Log.e("rest api 33333, success 44444 ", String.valueOf(match2.size()));
+                                    //SyncAdapter syncsAdapter = new SyncAdapter(getActivity(), match2);
+                                    //recyclerView.setAdapter(syncsAdapter);
+                                    //recyclerView.setVisibility(View.VISIBLE);
+                                },
+                                throwable ->    {
+
+                                    Log.e("rest api  123123, error: 890890", throwable.getMessage());
+                                    Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace()));
+                            /*for(int i = 0; i < throwable.getStackTrace().length; i++) {
+                                Log.e("rest api  345345, error: 890890", String.valueOf(throwable.getStackTrace().));
+                            }*/
+                                });
 
                 // ----------------------------------------------------------------
 
