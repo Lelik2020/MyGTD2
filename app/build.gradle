@@ -19,7 +19,7 @@ android {
     buildToolsVersion '33.0.0'
 
     defaultConfig {
-        applicationId "ru.kau.mygtd3"
+        applicationId "ru.kau.mygtd4"
         minSdkVersion 26
         targetSdkVersion 33
 
@@ -70,11 +70,11 @@ android {
     productFlavors {
         beta {
             dimension "version"
-            applicationId "ru.kau.mygtd3"
+            applicationId "ru.kau.mygtd4"
             manifestPlaceholders = [
-                    appName       : "MyGTD3 Beta",
-                    appIcon       : "@mipmap/mygtd",
-                    appRoundIcon  : "@mipmap/mygtd",
+                    appName       : "MyGTD4 Beta",
+                    appIcon       : "@mipmap/app_icon10",
+                    appRoundIcon  : "@mipmap/app_icon10",
 
             ]
             //buildConfigField  "int", "DB", "4"
@@ -105,11 +105,11 @@ android {
 
         mygtd2 {
             dimension "version"
-            applicationId "ru.kau.mygtd3"
+            applicationId "ru.kau.mygtd4"
             manifestPlaceholders = [
-                    appName       : "MyGTD3",
-                    appIcon       : "@mipmap/mygtd",
-                    appRoundIcon  : "@mipmap/mygtd",
+                    appName       : "MyGTD4",
+                    appIcon       : "@mipmap/app_icon10",
+                    appRoundIcon  : "@mipmap/app_icon10",
 
             ]
             //buildConfigField  "int", "DB", "4"
@@ -146,7 +146,7 @@ android {
             def abiName = getFilter("ABI")
             //output.versionCodeOverride = abiCodes.get(abiName, 0) * 100000 + variant.versionCode
 
-            outputFileName = "MyGTD2 ${flavor}-${versionNumber}-${abiName}.apk"
+            outputFileName = "MyGTD4 ${flavor}-${versionNumber}-${abiName}.apk"
         }
     }
 

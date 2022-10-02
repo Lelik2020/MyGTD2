@@ -56,7 +56,7 @@ public class DbCreator {
 
         firstInitSpr7();
 
-        taskUpdate22();
+        //taskUpdate22();
     }
 
     public static void firstInit2(){

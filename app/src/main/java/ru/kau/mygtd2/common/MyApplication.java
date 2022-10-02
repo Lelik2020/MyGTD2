@@ -1,7 +1,5 @@
 package ru.kau.mygtd2.common;
 
-import static ru.kau.mygtd2.db.AppDatabase.MIGRATION_16_17;
-
 import android.app.Application;
 import android.content.Context;
 
@@ -43,7 +41,7 @@ public class MyApplication extends Application {
                 //.addMigrations(MIGRATION_13_14)
                 //.addMigrations(MIGRATION_14_15)
                 //.addMigrations(MIGRATION_15_16)
-                .addMigrations(MIGRATION_16_17)
+                //.addMigrations(MIGRATION_16_17)
 
                 //.fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
