@@ -30,6 +30,7 @@ import ru.kau.mygtd2.adapters.BackupAdapter;
 import ru.kau.mygtd2.objects.Backup;
 
 import ru.kau.mygtd2.utils.RemoteBackup;
+import ru.kau.mygtd2.utils.Utils;
 
 
 public class RestoreRemoteBackupsFragment extends Fragment {
@@ -48,6 +49,10 @@ public class RestoreRemoteBackupsFragment extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.lstbackups);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Log.e("IP1: ", Utils.getLocalIpAddress());
+        //Log.e("IP2: ", Utils.getLocalIpAddress2());
+        //Log.e("IP3: ", Utils.getLocalIpAddress3());
 
         Observable.create((ObservableOnSubscribe<List<Backup>>) lstBackups -> {
                     try {

@@ -65,8 +65,13 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                 // Восстанавливаем информацию об устройстве
                 // Меняем идентификатор устройства
                 Device device = MyApplication.getDatabase().deviceDao().getCurrentDevice();
-                device.setGuid(lstBackups.get(position).getDeviceguid());
-                MyApplication.getDatabase().deviceDao().update(device);
+
+                // Пока не понимаю, нужно ли восстанавливать полностью, включая устройство
+
+                //device.setGuid(lstBackups.get(position).getDeviceguid());
+                //MyApplication.getDatabase().deviceDao().update(device);
+
+                // ---------------------------------------------------------------------------
 
                 // Получаем справочники
                 // -------- Получаем справочник контекстов ------------------------
