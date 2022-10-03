@@ -1,8 +1,6 @@
 package ru.kau.mygtd2.fragments;
 
 
-
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -26,11 +22,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BackupAdapter;
-
 import ru.kau.mygtd2.objects.Backup;
-
 import ru.kau.mygtd2.utils.RemoteBackup;
-import ru.kau.mygtd2.utils.Utils;
 
 
 public class RestoreRemoteBackupsFragment extends Fragment {
@@ -52,7 +45,7 @@ public class RestoreRemoteBackupsFragment extends Fragment {
 
         //Log.e("IP1: ", Utils.getLocalIpAddress());
         //Log.e("IP2: ", Utils.getLocalIpAddress2());
-        //Log.e("IP3: ", Utils.getLocalIpAddress3());
+        //Log.e("IP3: ", Utils.getLocalIpAddress3());   // Вроде бы рабочий вариант
 
         Observable.create((ObservableOnSubscribe<List<Backup>>) lstBackups -> {
                     try {

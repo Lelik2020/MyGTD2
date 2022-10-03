@@ -225,6 +225,9 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                                 //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
                                 for(int i = 0; i < data.size(); i++){
                                     //MyApplication.getDatabase().taskDao().insert(data.get(i));
+                                    Task task = data.get(i);
+                                    task.setDeviceguid(device.getGuid());
+                                    MyApplication.getDatabase().taskDao().insert(task);
                                     //Log.e("TASKGUID", data.get(i).getGuid());
                                 }
 
