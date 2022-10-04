@@ -235,6 +235,18 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                                     //MyApplication.getDatabase().taskDao().insert(data.get(i));
                                     Task task = data.get(i);
                                     task.setDeviceguid(device.getGuid());
+                                    if (task.getDateBegin().getTime() == 0){
+                                        task.setDateBegin(null);
+                                        task.setDateBeginStr(null);
+                                    }
+                                    if (task.getDateEnd().getTime() == 0){
+                                        task.setDateEnd(null);
+                                        task.setDateEndStr(null);
+                                    }
+                                    if (task.getDateClose().getTime() == 0){
+                                        task.setDateClose(null);
+                                        task.setDateCloseStr(null);
+                                    }
                                     MyApplication.getDatabase().taskDao().insert(task);
                                     //Log.e("TASKGUID", data.get(i).getGuid());
                                 }
