@@ -223,6 +223,14 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
                                 List<Task> data = RemoteBackup.getListTask(lstBackups.get(position).getGuid());
                                 //Log.e("TASK SIZE: ", String.valueOf(data.size()));
                                 //BackupAdapter backupsAdapter = new BackupAdapter(getActivity(), data);
+
+                                // Удаляем таблицу tasks (удаляем все задачи)
+
+                                MyApplication.getDatabase().taskDao().deleteAll();
+
+                                // --------------------------------------------------------------------------------------
+
+
                                 for(int i = 0; i < data.size(); i++){
                                     //MyApplication.getDatabase().taskDao().insert(data.get(i));
                                     Task task = data.get(i);

@@ -85,6 +85,7 @@ public class Controller {
 
     public static BackupApi getCalApi(){
         Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Status.class, new StatusConverter())
                 .setLenient()
                 .create();
 

@@ -253,6 +253,9 @@ public interface TaskDao {
     @Delete
     void delete(Task task);
 
+    @Query("DELETE FROM tasks")
+    void deleteAll();
+
     @Query("SELECT * FROM tasks WHERE parenttask_id == null or parenttask_id = 0")
     List<Task> getAllTasksWithoutSubtask();
 
