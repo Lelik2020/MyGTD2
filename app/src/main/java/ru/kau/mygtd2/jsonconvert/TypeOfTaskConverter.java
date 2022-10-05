@@ -22,6 +22,9 @@ public class TypeOfTaskConverter implements JsonSerializer<TypeOfTask>, JsonDese
     @Override
     public TypeOfTask deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         //System.out.println(json.);
+        if (json.getAsInt() == 0) {
+            return TypeOfTask.TASK;
+        }
         return TypeOfTask.from(json.getAsInt());
     }
 }
