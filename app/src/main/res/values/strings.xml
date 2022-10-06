@@ -369,7 +369,7 @@
     <string name="favorites">Favorites</string>
     <string name="create_folder">New Folder</string>
     <string name="open_folder_as_a_book">Bind in a Book</string>
-    <string name="select">Select</string>
+    <string name="select">Выбрать</string>
     <string name="ascending">Ascending</string>
     <string name="descending">Descending</string>
     <string name="cd_sort_results">Sort results</string>

@@ -37,7 +37,7 @@ public class IO {
     }
 
     public static void writeObjAsync(File file, Object o) {
-        LOG.d("writeObjAsync", file.getPath());
+        //LOG.d("writeObjAsync", file.getPath());
         if (o instanceof LinkedJSONObject || o instanceof JSONArray) {
             LOG.d("writeObjAsync", "LinkedJSONObject");
             IO.writeString(file, o.toString());

@@ -227,7 +227,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTHSMALL, Const.DEFAULT_ICON_HEIGHTSMALL);
             lParamsrtv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_RTV_WIDTH, Const.DEFAULT_RTV_HEIGHT);
             lParamsiv.setMargins(5, 5, 0, 0);
-            viewHolder.parenttypeTask.setLayoutParams(lParamsiv);
+            //viewHolder.parenttypeTask.setLayoutParams(lParamsiv);
         } else {
             viewHolder.parenttaskll.setVisibility(View.GONE);
         }
@@ -433,7 +433,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             viewHolder.projectName.setText(project.getTitle());
             viewHolder.projectName.setVisibility(View.VISIBLE);
             LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
-            viewHolder.targeticon.setLayoutParams(lParams);
+            //viewHolder.targeticon.setLayoutParams(lParams);
 
             viewHolder.targetTitle.setTextSize(14);
             viewHolder.projectName.setTypeface(Typeface.DEFAULT_BOLD);
@@ -448,7 +448,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
         } else {
             viewHolder.targeticon.setVisibility(View.VISIBLE);
             LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
-            viewHolder.targeticon.setLayoutParams(lParams);
+            //viewHolder.targeticon.setLayoutParams(lParams);
 
             viewHolder.targetTitle.setTextSize(14);
             viewHolder.targetTitle.setText(target.getTitle());

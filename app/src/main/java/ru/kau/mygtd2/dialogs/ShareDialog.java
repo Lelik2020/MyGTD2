@@ -903,7 +903,7 @@ public class ShareDialog {
             @Override
             public boolean onResultRecive(String result1, Dialog result2) {
                 File toFile = new File(result1);
-                AppState.get().save(activity);
+                //AppState.get().save(activity);
 
                 new AsyncProgressResultToastTask(activity) {
                     @Override

@@ -362,7 +362,6 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
 
             case 3:
 
-
                 count = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstHIPRIORITY, lstALLPROJECTSID);
 
                 //setAllUnvisible(viewHolder);
@@ -685,6 +684,10 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
                     switch (getAdapterPosition()){
 
                         case 0:
+
+                            // Создать локальный бэкап
+
+
                             ShareDialog.exportDialog(((FragmentActivity)c));
                             break;
 
