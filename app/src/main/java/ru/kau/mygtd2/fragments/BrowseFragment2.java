@@ -814,7 +814,7 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
             return;
         }
 
-        //searchAdapter.clearItems();
+        searchAdapter.clearItems();
 
         /*try {
             if (AppState.get().sortByBrowse == AppState.BR_SORT_BY_PATH) {
@@ -853,6 +853,17 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                 break;
             }
         }*/
+
+        for (int i = 0; i < items.size(); i++) {
+            FileMeta m = items.get(i);
+            if (m.getCusType() == null) {// directory
+                LOG.d("DISPALY_TYPE_LAYOUT_TITLE_FOLDERS", i);
+                FileMeta it = new FileMeta();
+                it.setCusType(FileMetaAdapter.DISPALY_TYPE_LAYOUT_TITLE_NONE);
+                items.add(i, it);
+                break;
+            }
+        }
 
         searchAdapter.getItemsList().addAll(items);
         recyclerView.setAdapter(searchAdapter);
