@@ -211,24 +211,12 @@ public class AddInformationFragment extends Fragment implements DialogTypeOfInfo
         ImageView iv = new ImageView(getActivity());
         //iv.setImageResource(R.drawable.pririty);
         iv.setImageResource(getImageResourceInfoType(TypeOfInfo.from(infotype.getId())));
-        iv.setScaleType(ImageView.ScaleType.FIT_XY);
-
-        //iv.setMinimumWidth(25);
-        //iv.setMinimumHeight(25);
-        //iv.getLayoutParams().width = 25;
-        //iv.getLayoutParams().height = 25;
-        //iv.setMaxWidth(25);
-        //iv.setMaxHeight(25);
-        //iv.setla
+        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //iv.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
 
-        //int color = Color.parseColor("#fafafa");
-        //iv.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
-        //iv.setColorFilter(color);
-        //iv.set
-
-        lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH + 10, Const.DEFAULT_ICON_HEIGHT2 + 10);
+        lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT);
         iv.setLayoutParams(lParams);
         //iv.setForegroundGravity(Gravity.FILL);
         //iv.setGravity(Gravity.CENTER | Gravity.BOTTOM);

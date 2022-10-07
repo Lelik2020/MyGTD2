@@ -25,6 +25,7 @@ android {
         abortOnError false
     }
     buildToolsVersion '33.0.0'
+    namespace 'com.chivorn.smartmaterialspinner'
 }
 
 dependencies {

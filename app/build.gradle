@@ -154,6 +154,7 @@ android {
         preDexLibraries true
         javaMaxHeapSize "4G"
     }
+    namespace 'ru.kau.mygtd2'
 }
 
 dependencies {

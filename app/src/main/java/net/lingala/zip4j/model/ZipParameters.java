@@ -16,6 +16,7 @@
 
 package net.lingala.zip4j.model;
 
+import net.lingala.zip4j.model.enums.CompressionMethod;
 import net.lingala.zip4j.util.InternalZipConstants;
 import net.lingala.zip4j.util.Zip4jConstants;
 import net.lingala.zip4j.util.Zip4jUtil;
@@ -57,6 +58,9 @@ public class ZipParameters implements Cloneable {
 		this.compressionMethod = compressionMethod;
 	}
 
+	public void setCompressionMethod(CompressionMethod compressionMethod) {
+		//this.compressionMethod = compressionMethod;
+	}
 
 	public boolean isEncryptFiles() {
 		return encryptFiles;

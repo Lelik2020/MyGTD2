@@ -3,8 +3,14 @@ package ru.kau.mygtd2.utils;
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.model.enums.CompressionMethod;
+
+import org.json.JSONObject;
 
 import java.io.File;
+
+import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.objects.Project;
 
 public class ExportConverter {
 
@@ -180,16 +186,22 @@ public class ExportConverter {
 
         //parameters.setIncludeRootFolder(false);
         parameters.setCompressionMethod(1);
-        parameters.setCompressionLevel(2);
+        parameters.setCompressionLevel(5);
 
-        final File[] files = input.listFiles();
+        /*final File[] files = input.listFiles();
         if (files != null) {
             for (File file : files) {
                 if (file.getName().startsWith(AppProfile.PROFILE_PREFIX)) {
                     zipFile.addFolder(file, parameters);
                 }
             }
-        }
+        }*/
+
+        Project project = MyApplication.getDatabase().projectDao().getProjectById(3);
+
+        JSONObject jObj = new JSONObject(project);
+
+        zipFile.addStream();
 
 
         //zipFile.createZipFile(input, parameters);

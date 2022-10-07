@@ -28,6 +28,7 @@ android {
     buildConfig false
     viewBinding true
   }
+    namespace 'com.skydoves.colorpickerview'
 }
 
 dependencies {
