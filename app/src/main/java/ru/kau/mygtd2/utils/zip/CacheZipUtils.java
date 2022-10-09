@@ -5,6 +5,7 @@ import android.os.Environment;
 
 import androidx.core.util.Pair;
 
+import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.model.FileHeader;
 
 import java.io.BufferedOutputStream;
@@ -119,7 +120,7 @@ public class CacheZipUtils {
 
     public static Pair<Boolean, String> isSingleAndSupportEntry(String file) {
         try {
-            net.lingala.zip4j.core.ZipFile zp = new net.lingala.zip4j.core.ZipFile(file);
+            ZipFile zp = new ZipFile(file);
             List<FileHeader> fileHeaders = zp.getFileHeaders();
             int count = 0;
             FileHeader last = null;

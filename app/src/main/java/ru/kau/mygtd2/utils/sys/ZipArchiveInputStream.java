@@ -1,8 +1,12 @@
 package ru.kau.mygtd2.utils.sys;
 
-import net.lingala.zip4j.core.ZipFile;
+//import net.lingala.zip4j.core.ZipFile;
+
+import static ru.kau.mygtd2.utils.info.FileMetaComparators.naturalOrderComparator;
+
+import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
-import net.lingala.zip4j.io.ZipInputStream;
+import net.lingala.zip4j.io.inputstream.ZipInputStream;
 import net.lingala.zip4j.model.FileHeader;
 
 import java.io.File;
@@ -17,8 +21,6 @@ import java.util.List;
 import ru.kau.mygtd2.utils.IOUtils;
 import ru.kau.mygtd2.utils.LOG;
 import ru.kau.mygtd2.utils.zip.CacheZipUtils.CacheDir;
-
-import static ru.kau.mygtd2.utils.info.FileMetaComparators.naturalOrderComparator;
 
 public class ZipArchiveInputStream extends InputStream {
 
@@ -99,7 +101,8 @@ public class ZipArchiveInputStream extends InputStream {
     private void closeStream() {
         if (inputStream != null) {
             try {
-                inputStream.close(true);
+                //inputStream.close(true);
+                inputStream.close();
                 inputStream = null;
             } catch (Exception e) {
                 LOG.e(e);

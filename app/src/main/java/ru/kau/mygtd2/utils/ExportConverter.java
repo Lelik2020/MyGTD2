@@ -1,16 +1,23 @@
 package ru.kau.mygtd2.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.model.enums.CompressionLevel;
 import net.lingala.zip4j.model.enums.CompressionMethod;
 
-import org.json.JSONObject;
-
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Project;
+import ru.kau.mygtd2.objects.Target;
 
 public class ExportConverter {
 
@@ -178,6 +185,17 @@ public class ExportConverter {
 
     }*/
 
+    public static void backupAllDBtoZip(File input, File output) throws ZipException {
+        LOG.d("backupAllDBtoZip", input, output);
+
+        ZipFile zipFile = new ZipFile(output);
+        ZipParameters parameters = new ZipParameters();
+        parameters.setCompressionMethod(CompressionMethod.DEFLATE);
+        parameters.setCompressionLevel(CompressionLevel.NORMAL);
+
+
+    }
+
     public static void zipFolder(File input, File output) throws ZipException {
         LOG.d("ZipFolder", input, output);
         ZipFile zipFile = new ZipFile(output);
@@ -185,8 +203,13 @@ public class ExportConverter {
         ZipParameters parameters = new ZipParameters();
 
         //parameters.setIncludeRootFolder(false);
-        parameters.setCompressionMethod(1);
-        parameters.setCompressionLevel(5);
+        //parameters.setCompressionMethod(1);
+        //parameters.setCompressionLevel(5);
+        parameters.setCompressionMethod(CompressionMethod.DEFLATE);
+        parameters.setCompressionLevel(CompressionLevel.NORMAL);
+        parameters.setFileNameInZip("222.txt");
+
+        //parameters.setSourceExternalStream(true);
 
         /*final File[] files = input.listFiles();
         if (files != null) {
@@ -198,13 +221,48 @@ public class ExportConverter {
         }*/
 
         Project project = MyApplication.getDatabase().projectDao().getProjectById(3);
+        List<Project> lstPojects = MyApplication.getDatabase().projectDao().getAll();
 
-        JSONObject jObj = new JSONObject(project);
+        //Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        //DataItems dataItems = new DataItems();
+        String jsonString = gson.toJson(lstPojects);
 
-        zipFile.addStream();
+        /*try(FileOutputStream fileOutputStream =
+                    context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE)) {
+            fileOutputStream.write(jsonString.getBytes());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
 
+        //JSONObject jObj = new JSONObject(project);
 
-        //zipFile.createZipFile(input, parameters);
+        InputStream is = new ByteArrayInputStream(jsonString.getBytes(StandardCharsets.UTF_8));
+
+        parameters.setFileNameInZip("222.txt");
+        zipFile.addStream(is, parameters);
+
+        //Target target = MyApplication.getDatabase().projectDao().getProjectById(3);
+        List<Target> lstTargets = MyApplication.getDatabase().targetDao().getAll();
+
+        //Gson gson = new Gson();
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        //DataItems dataItems = new DataItems();
+        String jsonString2 = gson.toJson(lstTargets);
+
+        InputStream is2 = new ByteArrayInputStream(jsonString2.getBytes(StandardCharsets.UTF_8));
+
+        parameters.setFileNameInZip("333.txt");
+        zipFile.addStream(is2, parameters);
+
+        //zipFile.addFolder(new File("/storage/emulated/0/222/333"), parameters);
+        //zipFile.addStream(new ByteArrayInputStream("строка".getBytes(StandardCharsets.UTF_8)), parameters);
+        //File file = new File("/storage/emulated/0/222/tst.txt");
+        //zipFile.addFile(file);  // /storage/emulated/0/222/2022-10-08-11-23-40-export-backup.zip
+
+        //new ZipFile(output).addStream(is, parameters);
+        //zipFile.(input, parameters);
     }
 
     /*public static void unZipFolder(File input, File output) throws ZipException {

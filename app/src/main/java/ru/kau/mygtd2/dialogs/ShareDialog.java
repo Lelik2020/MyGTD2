@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -57,7 +58,6 @@ import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.utils.AppProfile;
-import ru.kau.mygtd2.utils.AppState;
 import ru.kau.mygtd2.utils.AsyncProgressResultToastTask;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.ExportConverter;
@@ -912,6 +912,7 @@ public class ShareDialog {
                             ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
                             return true;
                         } catch (ZipException e) {
+                            Log.e("ERROR: ", e.getMessage());
                             return false;
                         } finally {
                             activity.runOnUiThread(() -> result2.dismiss());

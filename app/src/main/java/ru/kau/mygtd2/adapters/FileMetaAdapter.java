@@ -13,17 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import ru.kau.mygtd2.AppDB;
 import ru.kau.mygtd2.R;
-import ru.kau.mygtd2.dialogs.Dialogs;
 import ru.kau.mygtd2.info.view.MyPopupMenu;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.interfaces.ResultResponse2;
@@ -32,7 +28,6 @@ import ru.kau.mygtd2.ui.FastScroller;
 import ru.kau.mygtd2.utils.AppData;
 import ru.kau.mygtd2.utils.AppState;
 import ru.kau.mygtd2.utils.Apps;
-import ru.kau.mygtd2.utils.Clouds;
 import ru.kau.mygtd2.utils.Dips;
 import ru.kau.mygtd2.utils.ExtUtils;
 import ru.kau.mygtd2.utils.IMG;
@@ -238,7 +233,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             holder.imageParent.setVisibility(AppState.get().isShowImages ? View.VISIBLE : View.GONE);
 
             String path = fileMeta.getPath();
-            Clouds.showHideCloudImage(holder.cloudImage, path);
+            //Clouds.showHideCloudImage(holder.cloudImage, path);
 
         } else if (holderAll instanceof TagViewHolder) {
             final TagViewHolder holder = (TagViewHolder) holderAll;
