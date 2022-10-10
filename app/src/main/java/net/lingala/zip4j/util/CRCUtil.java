@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.CRC32;
 
-public class CrcUtil {
+public class CRCUtil {
 
   private static final int BUF_SIZE = 1 << 14; //16384
 

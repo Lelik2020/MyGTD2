@@ -909,7 +909,8 @@ public class ShareDialog {
                     @Override
                     protected Boolean doInBackground(Object... objects) {
                         try {
-                            ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
+                            //ExportConverter.zipFolder(AppProfile.SYNC_FOLDER_ROOT, toFile);
+                            ExportConverter.backupAllDBtoZip(AppProfile.SYNC_FOLDER_ROOT, toFile);
                             return true;
                         } catch (ZipException e) {
                             Log.e("ERROR: ", e.getMessage());

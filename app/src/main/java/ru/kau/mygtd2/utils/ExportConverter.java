@@ -16,6 +16,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.Target;
 
@@ -193,6 +195,23 @@ public class ExportConverter {
         parameters.setCompressionMethod(CompressionMethod.DEFLATE);
         parameters.setCompressionLevel(CompressionLevel.NORMAL);
 
+        // Бэкапируем справочники
+
+        // Справочник контекстов (contexts)
+        parameters.setFileNameInZip("contexts.json");
+        List<Contekst> lstContekst = MyApplication.getDatabase().contextDao().getAll();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonConteksts = gson.toJson(lstContekst);
+        InputStream isConteksts = new ByteArrayInputStream(jsonConteksts.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isConteksts, parameters);
+
+        // Справочник устройств (devices)
+        parameters.setFileNameInZip("devices.json");
+        List<Device> lstDevices = MyApplication.getDatabase().deviceDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonDevices = gson.toJson(lstDevices);
+        InputStream isDevices = new ByteArrayInputStream(jsonDevices.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isDevices, parameters);
 
     }
 

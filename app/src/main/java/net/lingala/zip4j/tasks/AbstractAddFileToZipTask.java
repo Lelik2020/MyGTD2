@@ -36,7 +36,7 @@ import static net.lingala.zip4j.model.enums.EncryptionMethod.ZIP_STANDARD;
 import static net.lingala.zip4j.progress.ProgressMonitor.Task.ADD_ENTRY;
 import static net.lingala.zip4j.progress.ProgressMonitor.Task.CALCULATE_CRC;
 import static net.lingala.zip4j.progress.ProgressMonitor.Task.REMOVE_ENTRY;
-import static net.lingala.zip4j.util.CrcUtil.computeFileCrc;
+import static net.lingala.zip4j.util.CRCUtil.computeFileCrc;
 import static net.lingala.zip4j.util.FileUtils.assertFilesExist;
 import static net.lingala.zip4j.util.FileUtils.getRelativeFileName;
 
