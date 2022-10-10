@@ -29,6 +29,9 @@ import ru.kau.mygtd2.objects.Task;
 @Dao
 public interface TaskDao {
 
+    @Query(HIERARCHY_TASKS)
+    List<Task> getAll();
+
     @Query(HIERARCHY_TASKS + " ORDER BY status")
     List<Task> getAllTasks();
 

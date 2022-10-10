@@ -19,7 +19,9 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Project;
+import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
+import ru.kau.mygtd2.objects.Task;
 
 public class ExportConverter {
 
@@ -212,6 +214,34 @@ public class ExportConverter {
         String jsonDevices = gson.toJson(lstDevices);
         InputStream isDevices = new ByteArrayInputStream(jsonDevices.getBytes(StandardCharsets.UTF_8));
         zipFile.addStream(isDevices, parameters);
+
+        // Справочник тэгов (tags)
+        parameters.setFileNameInZip("tags.json");
+        List<Tag> lstTags = MyApplication.getDatabase().tagDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonTags = gson.toJson(lstTags);
+        InputStream isTags = new ByteArrayInputStream(jsonTags.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isTags, parameters);
+
+        // Справочник целей (targets)
+        parameters.setFileNameInZip("tags.json");
+        List<Target> lstTargets = MyApplication.getDatabase().targetDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonTargets = gson.toJson(lstTargets);
+        InputStream isTargets = new ByteArrayInputStream(jsonTargets.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isTargets, parameters);
+
+
+
+        // Бэкапируем задачи (tasks)
+        parameters.setFileNameInZip("tags.json");
+        List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonTasks = gson.toJson(lstTasks);
+        InputStream isTasks = new ByteArrayInputStream(jsonTasks.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isTasks, parameters);
+
+
 
     }
 
