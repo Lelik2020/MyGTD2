@@ -292,7 +292,9 @@
     <string name="what_is_new_in">What is new in</string>
     <string name="write_feedback">Feedback</string>
     <string name="new_beta_version_available">New Beta version is available</string>
-    <string name="success">Success</string>
+    <string name="success">Успех</string>
+    <string name="file_created">Файл создан</string>
+    <string name="file_not_created">Файл не создан</string>
     <string name="fail">Error</string>
     <string name="download">Download</string>
     <string name="do_you_want_to_delete_">Delete this entry?</string>

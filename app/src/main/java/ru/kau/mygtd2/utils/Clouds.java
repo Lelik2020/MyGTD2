@@ -447,7 +447,7 @@ public class Clouds {
                     Toast.makeText(a, R.string.msg_unexpected_error, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(a, R.string.success, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(a, R.string.success, Toast.LENGTH_SHORT).show();
                 runSync(a);
             }
         }.execute();

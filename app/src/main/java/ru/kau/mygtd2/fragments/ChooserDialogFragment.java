@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
+import es.dmoral.toasty.Toasty;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.interfaces.ResultResponse2;
@@ -92,6 +94,7 @@ public class ChooserDialogFragment extends DialogFragment {
             public boolean onResultRecive(String result) {
                 if (onSelectListener != null && result != null && getDialog() != null) {
                     onSelectListener.onResultRecive(result, getDialog());
+                    //Toasty.success(getContext(), R.string.file_created, Toast.LENGTH_SHORT, true).show();
                 }
                 return false;
             }

@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/pathContainer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/wh_button"
+        android:layout_height="@dimen/wh_button2"
         android:layout_margin="4dp"
         android:background="@drawable/bg_search_second"
         android:gravity="center_vertical"
@@ -20,8 +20,8 @@
         <ImageView
             android:id="@+id/onBack"
             style="@style/buttonWhite"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0"
             android:contentDescription="@string/back"
             android:src="@drawable/glyphicons_225_chevron_left" />
@@ -52,7 +52,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/msg_loading"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dialog_text_size"/>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -60,8 +61,8 @@
             android:id="@+id/MyProgressBarBrowse"
                     android:saveEnabled="false"
             
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0" />
 
         <View
@@ -71,8 +72,8 @@
 
         <ImageView
             android:id="@+id/createFolder"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0"
             android:contentDescription="@string/create_folder"
             android:background="?android:attr/selectableItemBackground"
@@ -104,8 +105,8 @@
         <ImageView
             android:id="@+id/onSort"
             style="@style/buttonWhite"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0"
             android:contentDescription="@string/cd_sort_order"
             android:src="@drawable/glyphicons_409_sort_by_attributes" />
@@ -113,8 +114,8 @@
         <ImageView
                 android:contentDescription="@string/cd_sort_order"
                 android:id="@+id/sortOrder"
-                android:layout_width="@dimen/wh_button"
-                android:layout_height="@dimen/wh_button"
+                android:layout_width="@dimen/wh_button2"
+                android:layout_height="@dimen/wh_button2"
                 android:layout_weight="0"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
@@ -130,8 +131,8 @@
         <ImageView
             android:id="@+id/onHome"
             style="@style/buttonWhite"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0"
             android:contentDescription="@string/favorites"
             android:padding="6dip"
@@ -145,8 +146,8 @@
         <ImageView
             android:id="@+id/onListGrid"
             style="@style/buttonWhite"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
+            android:layout_height="@dimen/wh_button2"
             android:layout_weight="0"
             android:contentDescription="@string/menu"
             android:src="@drawable/glyphicons_114_justify" />
@@ -262,7 +263,8 @@
             android:layout_margin="4dip"
             android:layout_weight="1"
             android:background="@drawable/bg_search_second_clickable"
-            android:text="@string/close" />
+            android:text="@string/close"
+            android:textSize="@dimen/dialog_text_size"/>
 
         <Button
             android:id="@+id/onAction"
@@ -272,7 +274,8 @@
             android:layout_margin="4dip"
             android:layout_weight="1"
             android:background="@drawable/bg_search_second_clickable"
-            android:text="@string/select" />
+            android:text="@string/select"
+            android:textSize="@dimen/dialog_text_size"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
 import ru.kau.mygtd2.AppDB;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.adapters.FileMetaAdapter;
@@ -117,6 +118,7 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                     onPositiveAction.onResultRecive(BookCSS.get().dirLastPath);
                 } else {
                     Toast.makeText(getContext(), R.string.incorrect_value, Toast.LENGTH_SHORT).show();
+                    //Toasty.error(getContext(), getString(R.string.incorrect_value), Toast.LENGTH_SHORT, true).show();
                 }
             } else if (fragmentType == TYPE_SELECT_FILE) {
                 onPositiveAction.onResultRecive(BookCSS.get().dirLastPath + "/" + editPath.getText());
@@ -681,10 +683,11 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                                 LOG.d("create_folder", folder);
                                 if (!folder.mkdirs()) {
                                     Toast.makeText(getContext(), R.string.fail, Toast.LENGTH_SHORT).show();
-
+                                    //Toasty.error(getContext(), getString(R.string.taskupdated), Toast.LENGTH_SHORT, true).show();
                                     return false;
                                 }
                                 Toast.makeText(getContext(), R.string.success, Toast.LENGTH_SHORT).show();
+                                //Toasty.success(getContext(), getString(R.string.taskupdated), Toast.LENGTH_SHORT, true).show();
                                 populate();
                                 return true;
                             }

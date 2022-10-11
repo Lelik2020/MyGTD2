@@ -15,13 +15,17 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import kotlinx.coroutines.scheduling.TaskContext;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
+import ru.kau.mygtd2.objects.Information;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
+import ru.kau.mygtd2.objects.TaskContextJoin;
+import ru.kau.mygtd2.objects.TaskTagJoin;
 
 public class ExportConverter {
 
@@ -224,24 +228,44 @@ public class ExportConverter {
         zipFile.addStream(isTags, parameters);
 
         // Справочник целей (targets)
-        parameters.setFileNameInZip("tags.json");
+        parameters.setFileNameInZip("targets.json");
         List<Target> lstTargets = MyApplication.getDatabase().targetDao().getAll();
         gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonTargets = gson.toJson(lstTargets);
         InputStream isTargets = new ByteArrayInputStream(jsonTargets.getBytes(StandardCharsets.UTF_8));
         zipFile.addStream(isTargets, parameters);
 
-
-
         // Бэкапируем задачи (tasks)
-        parameters.setFileNameInZip("tags.json");
+        parameters.setFileNameInZip("tasks.json");
         List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAll();
         gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonTasks = gson.toJson(lstTasks);
         InputStream isTasks = new ByteArrayInputStream(jsonTasks.getBytes(StandardCharsets.UTF_8));
         zipFile.addStream(isTasks, parameters);
 
+        // Бэкапируем свякзу задач и контекстов (taskcontexts)
+        parameters.setFileNameInZip("taskcontexts.json");
+        List<TaskContextJoin> lstTaskContextJoins = MyApplication.getDatabase().taskContextJoinDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonTaskContextJoin = gson.toJson(lstTaskContextJoins);
+        InputStream isTaskContextJoins = new ByteArrayInputStream(jsonTaskContextJoin.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isTaskContextJoins, parameters);
 
+        // Бэкапируем свякзу задач и тэгов (tasktags)
+        parameters.setFileNameInZip("tasktags.json");
+        List<TaskTagJoin> lstTaskTagJoins = MyApplication.getDatabase().taskTagJoinDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonTaskTagJoin = gson.toJson(lstTaskTagJoins);
+        InputStream isTaskTagJoins = new ByteArrayInputStream(jsonTaskTagJoin.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isTaskTagJoins, parameters);
+
+        // Бэкапируем информацию (informations)
+        parameters.setFileNameInZip("informations.json");
+        List<Information> lstInformations = MyApplication.getDatabase().informationDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonInformations = gson.toJson(lstInformations);
+        InputStream isInformations = new ByteArrayInputStream(jsonInformations.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isInformations, parameters);
 
     }
 

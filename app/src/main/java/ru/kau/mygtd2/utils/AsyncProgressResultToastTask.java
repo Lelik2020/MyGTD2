@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import es.dmoral.toasty.Toasty;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 
@@ -52,7 +53,9 @@ public abstract class AsyncProgressResultToastTask extends AsyncTask<Object, Obj
         }
 
         if (result) {
-            Toast.makeText(c, R.string.success, Toast.LENGTH_LONG).show();
+            //Toast.makeText(c, R.string.success, Toast.LENGTH_LONG).show();
+            Toasty.success(c, R.string.success, Toast.LENGTH_SHORT, true).show();
+            //Toasty.error(c, R.string.file_created, Toast.LENGTH_SHORT, true).show();
         } else {
             Toast.makeText(c, R.string.fail, Toast.LENGTH_LONG).show();
         }
