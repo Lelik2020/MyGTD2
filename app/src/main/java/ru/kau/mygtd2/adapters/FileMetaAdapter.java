@@ -29,7 +29,6 @@ import ru.kau.mygtd2.utils.AppData;
 import ru.kau.mygtd2.utils.AppState;
 import ru.kau.mygtd2.utils.Apps;
 import ru.kau.mygtd2.utils.Dips;
-import ru.kau.mygtd2.utils.ExtUtils;
 import ru.kau.mygtd2.utils.IMG;
 import ru.kau.mygtd2.utils.LOG;
 import ru.kau.mygtd2.utils.Playlists;
@@ -146,7 +145,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             //ImageLoader.getInstance().cancelDisplayTask(holder.image);
             //ImageLoader.getInstance().cancelDisplayTask(holder.image);
             //LOG.d("onViewRecycled");
-            IMG.clear(holder.image);
+            //IMG.clear(holder.image);
         }
 
     }
@@ -230,9 +229,9 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 }
             });*/
 
-            holder.imageParent.setVisibility(AppState.get().isShowImages ? View.VISIBLE : View.GONE);
+            //holder.imageParent.setVisibility(AppState.get().isShowImages ? View.VISIBLE : View.GONE);
 
-            String path = fileMeta.getPath();
+            //String path = fileMeta.getPath();
             //Clouds.showHideCloudImage(holder.cloudImage, path);
 
         } else if (holderAll instanceof TagViewHolder) {
@@ -285,8 +284,8 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }*/
 
             if (new File(fileMeta.getPath(), "Fonts").isDirectory()) {
-                holder.image.setImageDrawable(Apps.getApplicationImage(holder.image.getContext()));
-                TintUtil.setNoTintImage(holder.image);
+                //holder.image.setImageDrawable(Apps.getApplicationImage(holder.image.getContext()));
+                //TintUtil.setNoTintImage(holder.image);
             } else {
                 holder.image.setImageResource(R.drawable.glyphicons_441_folder_closed);
                 //TintUtil.setTintImageWithAlpha(holder.image, holder.image.getContext() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
@@ -649,15 +648,15 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             holder.browserExt.setVisibility(View.VISIBLE);
         }
 
-        if (fileMeta.getIsStar() == null || fileMeta.getIsStar() == false) {
+        /*if (fileMeta.getIsStar() == null || fileMeta.getIsStar() == false) {
             holder.star.setImageResource(R.drawable.star_2);
         } else {
             holder.star.setImageResource(R.drawable.star_1);
-        }
+        }*/
         //TintUtil.setTintImageWithAlpha(holder.star, holder.parent.getContext() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
-        TintUtil.setTintImageWithAlpha(holder.star, TintUtil.getColorInDayNighth());
+        //TintUtil.setTintImageWithAlpha(holder.star, TintUtil.getColorInDayNighth());
 
-        if (onStarClickListener != null) {
+        /*if (onStarClickListener != null) {
             holder.star.setContentDescription(holder.c.getString(fileMeta.getIsStar()!=null && fileMeta.getIsStar() ? R.string.remove_from_favorites : R.string.add_to_favorites));
             holder.star.setOnClickListener(new View.OnClickListener() {
 
@@ -671,18 +670,18 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
 
                 @Override
                 public boolean onLongClick(View v) {
-                    /*Dialogs.showTagsDialog((FragmentActivity) v.getContext(), new File(fileMeta.getPath()), false, new Runnable() {
+                    *//*Dialogs.showTagsDialog((FragmentActivity) v.getContext(), new File(fileMeta.getPath()), false, new Runnable() {
 
                         @Override
                         public void run() {
                             notifyDataSetChanged();
                         }
-                    });*/
+                    });*//*
                     return true;
                 }
             });
         }
-        holder.star.setVisibility(ExtUtils.isExteralSD(fileMeta.getPath()) ? View.GONE : View.VISIBLE);
+        holder.star.setVisibility(ExtUtils.isExteralSD(fileMeta.getPath()) ? View.GONE : View.VISIBLE);*/
 
         if (holder.signIcon != null) {
             holder.signIcon.setOnClickListener(new View.OnClickListener() {
@@ -729,18 +728,18 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }
 
         } else {
-            holder.path.setVisibility(View.VISIBLE);
+            //holder.path.setVisibility(View.VISIBLE);
             holder.size.setVisibility(View.VISIBLE);
 
             IMG.updateImageSizeSmall(holder.imageParent);
 
-            ViewGroup.LayoutParams lp = holder.image.getLayoutParams();
+            /*ViewGroup.LayoutParams lp = holder.image.getLayoutParams();
             lp.width = Dips.dpToPx(AppState.get().coverSmallSize);
             if (AppState.get().isCropBookCovers) {
                 lp.height = (int) (lp.width * IMG.WIDTH_DK);
             } else {
                 lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            }
+            }*/
         }
         if (holder.date != null) {
             holder.date.setVisibility(View.VISIBLE);
@@ -751,18 +750,18 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }
         }
 
-        if (AppState.get().isBorderAndShadow || !AppState.get().isCropBookCovers) {
-            holder.imageParent.setBackgroundColor(Color.TRANSPARENT);
+        /*if (AppState.get().isBorderAndShadow || !AppState.get().isCropBookCovers) {
+            //holder.imageParent.setBackgroundColor(Color.TRANSPARENT);
             // LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)
             // holder.imageParent.getLayoutParams();
             // layoutParams.setMargins(0, 0, 0, 0);
-        }
+        }*/
 
-        if (AppState.get().isCropBookCovers) {
+        /*if (AppState.get().isCropBookCovers) {
             holder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         } else {
             holder.image.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        }
+        }*/
 
         if (holder.layoutBootom != null) {
             if (adapterType == ADAPTER_COVERS) {
@@ -778,21 +777,21 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             if (AppState.get().coverSmallSize >= IMG.TWO_LINE_COVER_SIZE) {
                 holder.title.setSingleLine(false);
                 holder.title.setLines(2);
-                holder.path.setVisibility(View.VISIBLE);
+                //holder.path.setVisibility(View.VISIBLE);
                 holder.title.setTextSize(16);
             } else {
                 holder.title.setSingleLine(false);
                 holder.title.setLines(2);
                 holder.title.setTextSize(14);
                 holder.authorParent.setVisibility(View.GONE);
-                holder.path.setVisibility(View.GONE);
+                //holder.path.setVisibility(View.GONE);
                 holder.infoLayout.setVisibility(View.VISIBLE);
                 holder.title.setText(fileMeta.getPathTxt());
             }
         }
 
         //TintUtil.setTintImageWithAlpha(holder.menu, holder.parent.getContext() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
-        TintUtil.setTintImageWithAlpha(holder.menu, TintUtil.getColorInDayNighth());
+        //TintUtil.setTintImageWithAlpha(holder.menu, TintUtil.getColorInDayNighth());
 
         if (holder.remove != null) {
             holder.remove.setOnClickListener(new View.OnClickListener() {
@@ -808,7 +807,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }
         }
 
-        holder.menu.setOnClickListener(new View.OnClickListener() {
+        /*holder.menu.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -817,7 +816,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 }
             }
 
-        });
+        });*/
         holder.parent.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -952,12 +951,12 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             title = (TextView) view.findViewById(R.id.title1);
             author = (TextView) view.findViewById(R.id.title2);
             authorParent = view.findViewById(R.id.title2Parent);
-            path = (TextView) view.findViewById(R.id.browserPath);
+            //path = (TextView) view.findViewById(R.id.browserPath);
             tags = (LinearLayout) view.findViewById(R.id.browserTags);
             size = (TextView) view.findViewById(R.id.browserSize);
             browserExt = (TextView) view.findViewById(R.id.browserExt);
             date = (TextView) view.findViewById(R.id.browseDate);
-            series = (TextView) view.findViewById(R.id.series);
+            //series = (TextView) view.findViewById(R.id.series);
             idPercentText = (TextView) view.findViewById(R.id.idPercentText);
 
             image = (ImageView) view.findViewById(R.id.browserItemIcon);

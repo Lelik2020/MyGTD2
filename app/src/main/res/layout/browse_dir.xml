@@ -18,7 +18,7 @@
         android:padding="4dip" >
 
        <RelativeLayout
-            android:layout_width="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button2"
             android:layout_height="wrap_content" >
 
            <ImageView
@@ -26,7 +26,6 @@
                android:layout_width="@dimen/wh_button2"
                android:layout_height="@dimen/wh_button2"
                android:layout_marginStart="4dip"
-               android:layout_marginTop="4dip"
                android:layout_marginEnd="4dip"
                android:layout_marginBottom="4dip"
                android:layout_weight="0"

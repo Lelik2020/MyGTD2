@@ -28,7 +28,7 @@
 
     <dimen name="corner">16dp</dimen>
 
-    <dimen name="text_subtitle">10dp</dimen>
+    <dimen name="text_subtitle">18dp</dimen>
 
     <dimen name="wh_button_big">38dp</dimen>
 
