@@ -896,6 +896,54 @@ public class ShareDialog {
 
     }
 
+    public static void importDialog(final FragmentActivity activity) {
+        String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
+        ChooserDialogFragment.chooseFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
+            @Override
+            public boolean onResultRecive(String result1, Dialog result2) {
+
+                new AsyncProgressResultToastTask(activity) {
+
+                    @Override
+                    protected Boolean doInBackground(Object... objects) {
+                        try {
+                            if (result1.endsWith(".json") || result1.endsWith(".txt")) {
+                                ExportConverter.covertJSONtoNew(activity, new File(result1));
+                            } else if (result1.endsWith(EXPORT_BACKUP_ZIP)) {
+                                ExportConverter.unZipFolder(new File(result1), AppProfile.SYNC_FOLDER_ROOT);
+                            } else {
+                                return false;
+                            }
+                            return true;
+                        } catch (Exception e) {
+                            LOG.e(e);
+                            return false;
+
+                        }
+
+                    }
+
+                    @Override
+                    protected void onPostExecute(Boolean result) {
+                        super.onPostExecute(result);
+                        result2.dismiss();
+                        if (result) {
+                            AppProfile.clear();
+                            //AppProfile.init(activity);
+                            activity.finish();
+                            MainTabs2.startActivity(activity, TempHolder.get().currentTab);
+                        }
+
+                    }
+                }.execute();
+
+
+                return false;
+            }
+
+        });
+    }
+
     public static void exportDialog(final FragmentActivity activity) {
         String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
         ChooserDialogFragment.createFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {

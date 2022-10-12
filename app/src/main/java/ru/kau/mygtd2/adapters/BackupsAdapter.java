@@ -696,6 +696,11 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
                             fragment = new AddRemoteBackupFragment();
                             ((FragmentActivity)c).getSupportFragmentManager().beginTransaction().addToBackStack("AddRemoteBackupFragment").replace(R.id.frame_container, fragment, "AddRemoteBackupFragment").commit();
 
+                        case 2:
+                            ShareDialog.importDialog(((FragmentActivity)c));
+                            break;
+
+
                     }
                 }
             });
