@@ -77,6 +77,7 @@ public class ShareDialog {
 
     public static final String EXPORT_BACKUP_ZIP = "-export-backup.zip";
 
+
     public static void show(final Activity a, final Runnable onDeleteAction, final Information information) {
         List<String> items = new ArrayList<String>();
         //Log.e("333333333333", "44444444444");
@@ -908,7 +909,7 @@ public class ShareDialog {
                     protected Boolean doInBackground(Object... objects) {
                         try {
                             if (result1.endsWith(".json") || result1.endsWith(".txt")) {
-                                ExportConverter.covertJSONtoNew(activity, new File(result1));
+                                //ExportConverter.covertJSONtoNew(activity, new File(result1));
                             } else if (result1.endsWith(EXPORT_BACKUP_ZIP)) {
                                 ExportConverter.unZipFolder(new File(result1), AppProfile.SYNC_FOLDER_ROOT);
                             } else {
@@ -931,7 +932,7 @@ public class ShareDialog {
                             AppProfile.clear();
                             //AppProfile.init(activity);
                             activity.finish();
-                            MainTabs2.startActivity(activity, TempHolder.get().currentTab);
+                            //MainTabs2.startActivity(activity, TempHolder.get().currentTab);
                         }
 
                     }

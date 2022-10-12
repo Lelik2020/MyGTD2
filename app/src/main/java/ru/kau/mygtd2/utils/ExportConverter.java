@@ -1,21 +1,27 @@
 package ru.kau.mygtd2.utils;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.io.inputstream.ZipInputStream;
+import net.lingala.zip4j.model.LocalFileHeader;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.model.enums.CompressionLevel;
 import net.lingala.zip4j.model.enums.CompressionMethod;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import kotlinx.coroutines.scheduling.TaskContext;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
@@ -338,10 +344,35 @@ public class ExportConverter {
         //zipFile.(input, parameters);
     }
 
-    /*public static void unZipFolder(File input, File output) throws ZipException {
+    public static void unZipFolder(File input, File output) throws ZipException, FileNotFoundException {
+
+        //zipFile.extractAll(output.getPath());
+        LOG.d("UnZipFolder", input);
         ZipFile zipFile = new ZipFile(input);
-        zipFile.extractAll(output.getPath());
-        LOG.d("UnZipFolder", input, output);
-    }*/
+        /*for( int i = 0; i < zipFile.getSplitZipFiles().size(); i++) {
+            Log.d("FILENAME", zipFile.getSplitZipFiles().get(i).getAbsolutePath());
+        }*/
+
+        LocalFileHeader localFileHeader;
+        int readLen;
+        byte[] readBuffer = new byte[4096];
+
+        InputStream inputStream = new FileInputStream(input);
+        try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+            while ((localFileHeader = zipInputStream.getNextEntry()) != null) {
+                File extractedFile = new File(localFileHeader.getFileName());
+                Log.d("FILENAME", extractedFile.getAbsolutePath());
+                /*try (OutputStream outputStream = new FileOutputStream(extractedFile)) {
+                    while ((readLen = zipInputStream.read(readBuffer)) != -1) {
+                        outputStream.write(readBuffer, 0, readLen);
+                    }
+                }*/
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
 }
