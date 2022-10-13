@@ -1,9 +1,9 @@
 package ru.kau.mygtd2.utils;
 
+import static ru.kau.mygtd2.common.MyApplication.context;
+
 import android.util.Log;
 
-import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.JSONParser;
-import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.ParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,9 +19,10 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -35,7 +36,6 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskTagJoin;
-import ru.kau.mygtd2.utils.json.JSONArray;
 
 public class ExportConverter {
 
@@ -352,10 +352,6 @@ public class ExportConverter {
 
         //zipFile.extractAll(output.getPath());
         LOG.d("UnZipFolder", input);
-        ZipFile zipFile = new ZipFile(input);
-        /*for( int i = 0; i < zipFile.getSplitZipFiles().size(); i++) {
-            Log.d("FILENAME", zipFile.getSplitZipFiles().get(i).getAbsolutePath());
-        }*/
 
         LocalFileHeader localFileHeader;
         int readLen;
@@ -365,20 +361,48 @@ public class ExportConverter {
         try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
             while ((localFileHeader = zipInputStream.getNextEntry()) != null) {
                 File extractedFile = new File(localFileHeader.getFileName());
-                Log.d("FILENAME", extractedFile.getAbsolutePath());
-                InputStream is = new FileInputStream(extractedFile);
-                JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(is));
-                /*try (OutputStream outputStream = new FileOutputStream(extractedFile)) {
+                Log.d("FILENAME", extractedFile.getPath());
+                try (OutputStream outputStream = new FileOutputStream(context.getCacheDir() + "/" + extractedFile)) {
                     while ((readLen = zipInputStream.read(readBuffer)) != -1) {
                         outputStream.write(readBuffer, 0, readLen);
+                        //System.out.println(readBuffer);
                     }
-                }*/
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         }
+        /*ZipFile zipFile = new ZipFile(input);
+        for( int i = 0; i < zipFile.getSplitZipFiles().size(); i++) {
+            Log.d("FILENAME", zipFile.getSplitZipFiles().get(i).getAbsolutePath());
+            Log.d("FILENAME", zipFile.getSplitZipFiles().get(i).getName());
+        }
+
+        LocalFileHeader localFileHeader;
+        int readLen;
+        byte[] readBuffer = new byte[4096];*/
+
+        /*InputStream inputStream = new FileInputStream(input);
+        try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+            while ((localFileHeader = zipInputStream.getNextEntry()) != null) {
+                File extractedFile = new File(localFileHeader.getFileName());
+                Log.d("FILENAME", extractedFile.getAbsolutePath());
+                Log.d("FILENAME", extractedFile.getPath() + "  999  " + extractedFile.getName());
+                //InputStream is = new FileInputStream(extractedFile);
+                //JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(is));
+                try (OutputStream outputStream = new FileOutputStream(extractedFile)) {
+                    while ((readLen = zipInputStream.read(readBuffer)) != -1) {
+                        //outputStream.write(readBuffer, 0, readLen);
+                        System.out.println(readBuffer);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
+        /*catch (ParseException e) {
+            throw new RuntimeException(e);
+        }*/
 
 
     }
