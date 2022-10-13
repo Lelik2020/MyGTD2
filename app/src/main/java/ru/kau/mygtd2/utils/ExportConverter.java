@@ -2,6 +2,8 @@ package ru.kau.mygtd2.utils;
 
 import android.util.Log;
 
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.JSONParser;
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.ParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -32,6 +35,7 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskTagJoin;
+import ru.kau.mygtd2.utils.json.JSONArray;
 
 public class ExportConverter {
 
@@ -362,6 +366,8 @@ public class ExportConverter {
             while ((localFileHeader = zipInputStream.getNextEntry()) != null) {
                 File extractedFile = new File(localFileHeader.getFileName());
                 Log.d("FILENAME", extractedFile.getAbsolutePath());
+                InputStream is = new FileInputStream(extractedFile);
+                JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(is));
                 /*try (OutputStream outputStream = new FileOutputStream(extractedFile)) {
                     while ((readLen = zipInputStream.read(readBuffer)) != -1) {
                         outputStream.write(readBuffer, 0, readLen);
@@ -369,6 +375,8 @@ public class ExportConverter {
                 }*/
             }
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
 
