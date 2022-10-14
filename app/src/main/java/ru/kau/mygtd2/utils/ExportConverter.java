@@ -4,6 +4,7 @@ import static ru.kau.mygtd2.common.MyApplication.context;
 
 import android.util.Log;
 
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.JSONParser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -36,6 +38,7 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskTagJoin;
+import ru.kau.mygtd2.utils.json.JSONArray;
 
 public class ExportConverter {
 
@@ -362,6 +365,9 @@ public class ExportConverter {
             while ((localFileHeader = zipInputStream.getNextEntry()) != null) {
                 File extractedFile = new File(localFileHeader.getFileName());
                 Log.d("FILENAME", extractedFile.getPath());
+
+                JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(extractedFile.));
+
                 try (OutputStream outputStream = new FileOutputStream(context.getCacheDir() + "/" + extractedFile)) {
                     while ((readLen = zipInputStream.read(readBuffer)) != -1) {
                         outputStream.write(readBuffer, 0, readLen);
