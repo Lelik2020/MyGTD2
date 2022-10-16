@@ -4,7 +4,10 @@ import static ru.kau.mygtd2.common.MyApplication.context;
 
 import android.util.Log;
 
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.JSONArray;
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.JSONObject;
 import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.JSONParser;
+import com.cloudrail.si.servicecode.commands.json.jsonsimple.parser.ParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -16,17 +19,21 @@ import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.model.enums.CompressionLevel;
 import net.lingala.zip4j.model.enums.CompressionMethod;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
 
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.objects.Contekst;
@@ -38,7 +45,6 @@ import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskContextJoin;
 import ru.kau.mygtd2.objects.TaskTagJoin;
-import ru.kau.mygtd2.utils.json.JSONArray;
 
 public class ExportConverter {
 
@@ -352,6 +358,63 @@ public class ExportConverter {
     }
 
     public static void unZipFolder(File input, File output) throws ZipException, FileNotFoundException {
+        LOG.d("UnZipFolder", input);
+        java.util.zip.ZipFile zf;
+        try {
+            zf = new java.util.zip.ZipFile(input);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (FileInputStream fis = new FileInputStream(input);
+             BufferedInputStream bis = new BufferedInputStream(fis);
+             java.util.zip.ZipInputStream zis = new java.util.zip.ZipInputStream(bis)) {
+
+            ZipEntry ze;
+
+            while ((ze = zis.getNextEntry()) != null) {
+
+                //FileReader reader = new FileReader(context.getCacheDir() + "/" + "contexts.json");
+                //InputStreamReader reader = new InputStreamReader(ze.);
+                //String jsonString = reader.;
+                InputStream is = zf.getInputStream(ze);
+                Object obj = new JSONParser().parse(new InputStreamReader(is));
+                //JSONArray obj = new JSONParser().parse(new InputStreamReader(is));
+                if (obj instanceof JSONArray){
+                    System.out.println("!!!!!!!!!!!!!!!!!");
+                    switch (ze.getName()){
+                        case "contexts.json":
+                            List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                lstContext.add((Contekst) ((JSONArray)obj).get(i));
+                            }
+                            break;
+                    }
+                }
+                /*for(Iterator iterator = ((JSONObject)obj).keySet().iterator(); iterator.hasNext();) {
+                    String key = (String) iterator.next();
+                    System.out.println(((JSONObject)obj).get(key));
+                }*/
+
+                //JSONObject jsonObject = (JSONObject) obj;
+                //JSONArray jsonarr = (JSONArray) obj;
+                //JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(is));
+                //for (int i = 0; i)
+
+                System.out.format("FILENAME AND SIZE: ",
+                        ze.getName(), ze.getSize());
+                        /*,
+                        LocalDate.ofEpochDay(ze.getTime() / MILLS_IN_DAY));*/
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void unZipFolder_old(File input, File output) throws ZipException, FileNotFoundException {
 
         //zipFile.extractAll(output.getPath());
         LOG.d("UnZipFolder", input);
@@ -366,7 +429,7 @@ public class ExportConverter {
                 File extractedFile = new File(localFileHeader.getFileName());
                 Log.d("FILENAME", extractedFile.getPath());
 
-                JSONArray jsonarr = (JSONArray) new JSONParser().parse(new InputStreamReader(extractedFile.));
+                //JSONArray jsonarr = (JSONArray) new JSONParser().parse();
 
                 try (OutputStream outputStream = new FileOutputStream(context.getCacheDir() + "/" + extractedFile)) {
                     while ((readLen = zipInputStream.read(readBuffer)) != -1) {
@@ -374,10 +437,29 @@ public class ExportConverter {
                         //System.out.println(readBuffer);
                     }
                 }
+
+                //InputStreamReader isr = new InputStreamReader( localFileHeader.getFileName());
+                //ZipEntry zipEntry = zipFile.getEntry("fileName.txt");
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        try {
+            //InputStream is = new FileInputStream(context.getCacheDir() + "/" + "contexts.json");
+            FileReader reader = new FileReader(context.getCacheDir() + "/" + "contexts.json");
+            //String jsonString = reader.;
+            Object obj = new JSONParser().parse(reader);
+            JSONObject jsonObject = (JSONObject) obj;
+            //JSONArray jsonarr = (JSONArray) new JSONParser().parse(reader);
+            System.out.println("123123123");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         /*ZipFile zipFile = new ZipFile(input);
         for( int i = 0; i < zipFile.getSplitZipFiles().size(); i++) {
             Log.d("FILENAME", zipFile.getSplitZipFiles().get(i).getAbsolutePath());
