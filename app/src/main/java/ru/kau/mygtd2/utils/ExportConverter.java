@@ -381,14 +381,47 @@ public class ExportConverter {
                 Object obj = new JSONParser().parse(new InputStreamReader(is));
                 //JSONArray obj = new JSONParser().parse(new InputStreamReader(is));
                 if (obj instanceof JSONArray){
-                    System.out.println("!!!!!!!!!!!!!!!!!");
+                    //System.out.println("!!!!!!!!!!!!!!!!!");
                     switch (ze.getName()){
                         case "contexts.json":
-                            List<Contekst> lstContext = new ArrayList<>();
+                            //List<Contekst> lstContext = new ArrayList<>();
                             for (int i = 0; i < ((JSONArray)obj).size(); i++){
-                                lstContext.add((Contekst) ((JSONArray)obj).get(i));
+                                Gson gson = new GsonBuilder().create();
+                                Contekst contekst = gson.fromJson(((JSONArray)obj).get(i).toString(), Contekst.class);
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().contextDao().insert(contekst);
+                                // --------------------------------------------------
                             }
                             break;
+
+                        case "devices.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Device device = gson.fromJson(((JSONArray)obj).get(i).toString(), Device.class);
+                                // Обновляем в базе данных
+                                Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().deviceDao().update(currentDevice);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "informations.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Information information = gson.fromJson(((JSONArray)obj).get(i).toString(), Information.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().informationDao().insert(information);
+                                // --------------------------------------------------
+                            }
+                            break;
+
                     }
                 }
                 /*for(Iterator iterator = ((JSONObject)obj).keySet().iterator(); iterator.hasNext();) {

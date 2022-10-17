@@ -38,7 +38,7 @@ public interface InformationDao {
     @Query("SELECT * FROM informations WHERE id = :id")
     Information getById(long id);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Information information);
 
     @Update
