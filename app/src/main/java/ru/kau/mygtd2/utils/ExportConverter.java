@@ -31,7 +31,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -478,7 +477,11 @@ public class ExportConverter {
                         case "tasks.json":
                             //List<Contekst> lstContext = new ArrayList<>();
                             for (int i = 0; i < ((JSONArray)obj).size(); i++){
-                                Gson gson = new GsonBuilder().create();
+                                Gson gson = new GsonBuilder()
+                                        .registerTypeAdapter(Date.class, new DateConverter())
+                                        .registerTypeAdapter(Status.class, new StatusConverter())
+                                        .registerTypeAdapter(TypeOfTask.class, new TypeOfTaskConverter())
+                                        .create();
                                 Task task = gson.fromJson(((JSONArray)obj).get(i).toString(), Task.class);
                                 // Обновляем в базе данных
                                 //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
