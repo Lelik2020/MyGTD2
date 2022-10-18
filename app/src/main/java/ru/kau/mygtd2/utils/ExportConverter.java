@@ -32,10 +32,16 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 
 import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.common.enums.Status;
+import ru.kau.mygtd2.common.enums.TypeOfTask;
+import ru.kau.mygtd2.jsonconvert.DateConverter;
+import ru.kau.mygtd2.jsonconvert.StatusConverter;
+import ru.kau.mygtd2.jsonconvert.TypeOfTaskConverter;
 import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.Device;
 import ru.kau.mygtd2.objects.Information;
@@ -257,7 +263,12 @@ public class ExportConverter {
         // Бэкапируем задачи (tasks)
         parameters.setFileNameInZip("tasks.json");
         List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAll();
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Date.class, new DateConverter())
+                .registerTypeAdapter(Status.class, new StatusConverter())
+                .registerTypeAdapter(TypeOfTask.class, new TypeOfTaskConverter())
+                .create();
         String jsonTasks = gson.toJson(lstTasks);
         InputStream isTasks = new ByteArrayInputStream(jsonTasks.getBytes(StandardCharsets.UTF_8));
         zipFile.addStream(isTasks, parameters);
@@ -418,6 +429,62 @@ public class ExportConverter {
                                 //currentDevice.setGuid(device.getGuid());
                                 // Обновляем в базе данных
                                 MyApplication.getDatabase().informationDao().insert(information);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "tags.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Tag tag = gson.fromJson(((JSONArray)obj).get(i).toString(), Tag.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().tagDao().insert(tag);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "targets.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Target target = gson.fromJson(((JSONArray)obj).get(i).toString(), Target.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().targetDao().insert(target);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "taskcontexts.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                TaskContextJoin taskContextJoin = gson.fromJson(((JSONArray)obj).get(i).toString(), TaskContextJoin.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().taskContextJoinDao().insert(taskContextJoin);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "tasks.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Task task = gson.fromJson(((JSONArray)obj).get(i).toString(), Task.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().taskDao().insert(task);
                                 // --------------------------------------------------
                             }
                             break;
