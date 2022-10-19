@@ -1,9 +1,11 @@
 package ru.kau.mygtd2.adapters;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +25,6 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.objects.Category;
 import ru.kau.mygtd2.utils.Const;
-
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
 
 public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
@@ -329,7 +328,31 @@ public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
             case 6:
 
+                count = MyApplication.getDatabase().contextDao().countOfcontexts();
+
+                viewHolder.rtv4.setCorner(16, 16, 16, 16);
+
+                viewHolder.rtv4.setBgColor(Color.parseColor(Const.DEFAULT_RTV_COLOR));
+                viewHolder.iv4.setColorFilter(Color.parseColor(Const.DEFAULT_RTV_COLOR));
+                viewHolder.txtv1.setText(R.string.contexts);
+
+                viewHolder.rtv4.setText(" " + Long.toString(count) + " ");
+                viewHolder.rtv4.setVisibility(View.VISIBLE);
+
+                viewHolder.iv2.setVisibility(View.INVISIBLE);
+                viewHolder.iv3.setVisibility(View.INVISIBLE);
+                viewHolder.iv4.setVisibility(View.INVISIBLE);
+
+
+                viewHolder.txtv2.setVisibility(View.INVISIBLE);
+                viewHolder.txtv3.setVisibility(View.INVISIBLE);
+                viewHolder.txtv4.setVisibility(View.INVISIBLE);
+
+                //viewHolder.expandedIcon.setVisibility(View.INVISIBLE);
+
                 viewHolder.expandedIcon.setVisibility(View.INVISIBLE);
+
+                777
 
                 return;
         }
