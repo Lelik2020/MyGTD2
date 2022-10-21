@@ -147,6 +147,7 @@
     <string name="targets">Цели</string>
     <string name="tags">Тэги</string>
     <string name="contexts">Контексты</string>
+    <string name="typetask">Типы задач</string>
 
     <!--  Строки для пункта "Сегодня"     -->
     <string name="todaytask">Сделать сегодня</string>

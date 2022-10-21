@@ -29,5 +29,8 @@ public interface TaskTypesDao {
     @Query("SELECT * FROM tasktypes WHERE id = :tasktype_id")
     TaskTypes getById(long tasktype_id);
 
+    @Query("SELECT count() FROM tasktypes")
+    int countOftypetask();
+
 
 }

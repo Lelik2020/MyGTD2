@@ -328,13 +328,13 @@ public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
             case 6:
 
-                count = MyApplication.getDatabase().contextDao().countOfcontexts();
+                count = MyApplication.getDatabase().taskTypesDao().countOftypetask();
 
                 viewHolder.rtv4.setCorner(16, 16, 16, 16);
 
                 viewHolder.rtv4.setBgColor(Color.parseColor(Const.DEFAULT_RTV_COLOR));
                 viewHolder.iv4.setColorFilter(Color.parseColor(Const.DEFAULT_RTV_COLOR));
-                viewHolder.txtv1.setText(R.string.contexts);
+                viewHolder.txtv1.setText(R.string.typetask);
 
                 viewHolder.rtv4.setText(" " + Long.toString(count) + " ");
                 viewHolder.rtv4.setVisibility(View.VISIBLE);
@@ -350,9 +350,9 @@ public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
                 //viewHolder.expandedIcon.setVisibility(View.INVISIBLE);
 
-                viewHolder.expandedIcon.setVisibility(View.INVISIBLE);
+                //viewHolder.expandedIcon.setVisibility(View.VISIBLE);
 
-                777
+
 
                 return;
         }

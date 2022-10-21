@@ -9,7 +9,7 @@ import ru.kau.mygtd2.enums.TypeSetting;
 
 public class Settings {
 
-    static SharedPreferences settings = MyApplication.getContext().getSharedPreferences("MyGTD3",MODE_PRIVATE);
+    static SharedPreferences settings = MyApplication.getContext().getSharedPreferences("MyGTD4",MODE_PRIVATE);
     static SharedPreferences.Editor prefEditor;
 
     public static String getStringSetting(TypeSetting type){
