@@ -11,20 +11,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
-import ru.kau.mygtd2.adapters.CommonAdapter;
-import ru.kau.mygtd2.adapters.ContextsAdapter;
+import ru.kau.mygtd2.adapters.TaskTypesAdapter;
 import ru.kau.mygtd2.common.MyApplication;
-import ru.kau.mygtd2.common.enums.CommonType;
-import ru.kau.mygtd2.objects.Contekst;
 import ru.kau.mygtd2.objects.TaskTypes;
 
 public class TypeOfTaskFragment extends Fragment {
 
-    private ContextsAdapter contextsAdapter;
+    private TaskTypesAdapter tskTypesAdapter;
 
     @SuppressLint("ResourceAsColor")
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,9 +45,9 @@ public class TypeOfTaskFragment extends Fragment {
         lvTaskTypes.setBackground(drawable);
 
         lvTaskTypes.setLayoutManager(new LinearLayoutManager(getActivity()));
-        contextsAdapter = new ContextsAdapter( getActivity(), lstContekst);
+        tskTypesAdapter = new TaskTypesAdapter( getActivity(), lstTaskTypes);
 
-        lvContexts.setAdapter(contextsAdapter);
+        lvTaskTypes.setAdapter(tskTypesAdapter);
 
         return rootView;
     }

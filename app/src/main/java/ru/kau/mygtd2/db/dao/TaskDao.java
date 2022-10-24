@@ -389,5 +389,16 @@ public interface TaskDao {
     @Query("SELECT COUNT() FROM tasks WHERE dateClose >= :d1 AND dateClose <= :d2 AND status IN (:lstStatus) AND category IN (:lstCategory)")
     long getCountTasks(long d1, long d2, List<Integer> lstStatus, List<Integer> lstCategory);
 
+    @Query("SELECT count(*) FROM tasks WHERE typeOfTask = :typeTask")
+    long getCountAllTasksByTypeTask(long typeTask);
+
+    @Query("SELECT count(*) FROM tasks WHERE status in (:idStatus) AND typeOfTask = :typeTask")
+    long getCountAllActiveTasksByTypeTask(long typeTask, List<Integer> idStatus);
+
+    @Query("SELECT count(*) FROM tasks WHERE (dateEnd = :dateEnd OR dateEndStr = :dateEndStr) AND status IN (:lstStatus) " +
+            "AND isFavourite IN (:lstFavour) AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets) " +
+            "AND guid IN (SELECT taskguid FROM taskcontexts WHERE idcontext IN (:lstContext))")
+    long getCountByDateWithContext(long dateEnd, String dateEndStr, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
+                                   List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstContext);
 
 }

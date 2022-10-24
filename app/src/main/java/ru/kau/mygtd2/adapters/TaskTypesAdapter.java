@@ -27,17 +27,17 @@ import java.util.List;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.common.MyApplication;
-import ru.kau.mygtd2.objects.Contekst;
+import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Utils;
 
 public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.ViewHolder>{
 
     private Context c;
-    private List<Contekst> lstContekst;
+    private List<TaskTypes> lstTaskTypes;
 
-    public TaskTypesAdapter(Context c, List<Contekst> lstContekst) {
+    public TaskTypesAdapter(Context c, List<TaskTypes> lstTaskTypes) {
         this.c = c;
-        this.lstContekst = lstContekst;
+        this.lstTaskTypes = lstTaskTypes;
     }
 
     @NonNull
@@ -48,23 +48,23 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
         return new ViewHolder(v);
     }
 
-    public Contekst getItem(int pos) {
-        if (lstContekst == null || lstContekst.isEmpty()) {
+    public TaskTypes getItem(int pos) {
+        if (lstTaskTypes == null || lstTaskTypes.isEmpty()) {
             return null;
         }
-        if (lstContekst.size() - 1 >= pos) {
-            return lstContekst.get(pos);
+        if (lstTaskTypes.size() - 1 >= pos) {
+            return lstTaskTypes.get(pos);
         } else {
-            return lstContekst.get(0);
+            return lstTaskTypes.get(0);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Contekst contekst = getItem(position);
-        holder.title.setText(contekst.getTitle());
+        final TaskTypes taskTypes = getItem(position);
+        holder.title.setText(taskTypes.getTitle());
         try {
-            holder.tagImage.setColorFilter(Color.parseColor(contekst.getColor()));
+            holder.tagImage.setColorFilter(Color.parseColor(taskTypes.getColor()));
         } catch (Exception e) {
             holder.tagImage.setColorFilter(Color.parseColor(DEFAULT_CONTEXT_COLOR));
         }
@@ -73,15 +73,15 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
         long count3 = 0L;
         long count4 = 0L;
 
-        count = MyApplication.getDatabase().taskDao().getCountAllTasksByContekst(contekst.getId());
-        count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByContekst(contekst.getId(), lstStatus);
+        count = MyApplication.getDatabase().taskDao().getCountAllTasksByTypeTask(taskTypes.getId());
+        count2 = MyApplication.getDatabase().taskDao().getCountAllActiveTasksByTypeTask(taskTypes.getId(), lstStatus);
         //count3 = MyApplication.getDatabase().taskDao().getCountByDateByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
 
         count3 = MyApplication.getDatabase().taskDao().getCountByDateWithContext(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
                 lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
                     {
-                        add((int) contekst.getId());
+                        add((int) taskTypes.getId());
                     }
                 });
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
@@ -89,7 +89,7 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
         count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithContext(new Date().getTime(),
                 lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
                     {
-                        add((int) contekst.getId());
+                        add((int) taskTypes.getId());
                     }
                 });
 
@@ -121,7 +121,7 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
 
     @Override
     public int getItemCount() {
-        return lstContekst.size();
+        return lstTaskTypes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
