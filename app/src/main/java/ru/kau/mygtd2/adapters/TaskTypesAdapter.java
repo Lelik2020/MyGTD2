@@ -1,6 +1,5 @@
 package ru.kau.mygtd2.adapters;
 
-import static ru.kau.mygtd2.utils.Const.DEFAULT_CONTEXT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
@@ -21,12 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.common.enums.TypeOfTask;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Utils;
 
@@ -63,11 +62,12 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final TaskTypes taskTypes = getItem(position);
         holder.title.setText(taskTypes.getTitle());
-        try {
+        holder.tagImage.setImageResource(Utils.getImageResourceTaskType(TypeOfTask.from(taskTypes.getId())));
+        /*try {
             holder.tagImage.setColorFilter(Color.parseColor(taskTypes.getColor()));
         } catch (Exception e) {
             holder.tagImage.setColorFilter(Color.parseColor(DEFAULT_CONTEXT_COLOR));
-        }
+        }*/
         long count = 0L;
         long count2 = 0L;
         long count3 = 0L;
@@ -83,12 +83,8 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
                         (int) taskTypes.getId());
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
 
-        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithContext(new Date().getTime(),
-                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
-                    {
-                        add((int) taskTypes.getId());
-                    }
-                });
+        count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithTypeTask(new Date().getTime(),
+                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, (int) taskTypes.getId());
 
 
         holder.roundTextView.setCorner(16, 0, 0, 16);

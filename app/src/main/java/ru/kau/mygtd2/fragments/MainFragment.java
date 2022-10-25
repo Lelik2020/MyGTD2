@@ -294,8 +294,8 @@ public class MainFragment extends Fragment implements ClickListener {
 
             if (position == 6){
                 Fragment fragment;
-                fragment = new ContextsFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("ContextsFragment").replace(R.id.frame_container, fragment, "ContextsFragment").commit();
+                fragment = new TypeOfTaskFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("TypeOfTaskFragment").replace(R.id.frame_container, fragment, "TypeOfTaskFragment").commit();
             }
 
 

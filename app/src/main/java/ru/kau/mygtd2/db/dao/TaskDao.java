@@ -402,12 +402,12 @@ public interface TaskDao {
     long getCountByDateWithTypeTask(long dateEnd, String dateEndStr, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
                                    List<Integer> lstProjects, List<Integer> lstTargets, long typeTask);
 
-    77
+
     @Query("SELECT count(*) FROM tasks WHERE (dateEnd < :date) AND status IN (:lstStatus) AND isFavourite IN (:lstFavour) " +
             "AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets) " +
-            "AND guid IN (SELECT taskguid FROM taskcontexts WHERE idcontext IN (:lstContexts))")
+            "AND typeOfTask = :typeTask")
     long getCountOutstandingWithTypeTask(long date, List<Integer> lstStatus, List<Integer> lstFavour, List<Integer> lstPriority,
-                                        List<Integer> lstProjects, List<Integer> lstTargets, List<Integer> lstContexts);
+                                        List<Integer> lstProjects, List<Integer> lstTargets, long typeTask);
 
 
 }
