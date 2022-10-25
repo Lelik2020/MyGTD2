@@ -125,6 +125,14 @@ public class Const {
 
     };
 
+    static final public List<Integer> lstALLCONTEXTSID = new ArrayList<Integer>() {
+        {
+            //add(0);
+            addAll(MyApplication.getDatabase().contextDao().getAllId());
+        }
+
+    };
+
     static final public List<Integer> lstTARGETSSID = new ArrayList<Integer>() {
         {
             //add(0);

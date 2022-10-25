@@ -78,12 +78,9 @@ public class TaskTypesAdapter extends RecyclerView.Adapter<TaskTypesAdapter.View
         //count3 = MyApplication.getDatabase().taskDao().getCountByDateByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
 
-        count3 = MyApplication.getDatabase().taskDao().getCountByDateWithContext(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
-                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, new ArrayList<Integer>() {
-                    {
-                        add((int) taskTypes.getId());
-                    }
-                });
+        count3 = MyApplication.getDatabase().taskDao().getCountByDateWithTypeTask(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
+                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID,
+                        (int) taskTypes.getId());
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByTarget(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), target.getId());
 
         count4 = MyApplication.getDatabase().taskDao().getCountOutstandingWithContext(new Date().getTime(),

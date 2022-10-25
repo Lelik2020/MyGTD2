@@ -53,4 +53,10 @@ public interface ContextDao {
 
     @Delete
     void delete(Contekst contekst);
+
+    @Query("SELECT id FROM contexts")
+    List<Integer> getAllId();
+
+
+
 }
