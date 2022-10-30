@@ -46,6 +46,7 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.dialogs.ShareDialog;
 import ru.kau.mygtd2.fragments.AddRemoteBackupFragment;
+import ru.kau.mygtd2.fragments.RestoreRemoteBackupsFragment;
 import ru.kau.mygtd2.objects.Category;
 import ru.kau.mygtd2.objects.InfoStatus;
 import ru.kau.mygtd2.objects.TaskStatus;
@@ -699,6 +700,12 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
                         case 2:
                             ShareDialog.importDialog(((FragmentActivity)c));
                             break;
+
+                        case 3:
+                            fragment = new RestoreRemoteBackupsFragment();
+                            getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("RestoreRemoteBackupsFragment").replace(R.id.frame_container, fragment, "RestoreRemoteBackupsFragment").commit();
+
+
 
 
                     }
