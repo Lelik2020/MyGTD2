@@ -88,11 +88,11 @@ public class BackupsAdapter extends RecyclerView.Adapter<BackupsAdapter.ViewHold
 
         View v= LayoutInflater.from(c).inflate(R.layout.backup_cardview,viewGroup,false);
 
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setStroke(4, R.color.black);
-        drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setCornerRadius(20);
-        v.setBackground(drawable);
+        //GradientDrawable drawable = new GradientDrawable();
+        //drawable.setStroke(4, R.color.black);
+        //drawable.setShape(GradientDrawable.RECTANGLE);
+        //drawable.setCornerRadius(20);
+        //v.setBackground(drawable);
         position = i;
 
         return new BackupsAdapter.ViewHolder(v);

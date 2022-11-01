@@ -430,7 +430,7 @@
     <string name="show_hidden">Show hidden</string>
 
     <string name="btnallbackups">Все бэкапы</string>
-    <string name="btndevicebackups">Бэкапы устройства</string>
+    <string name="btndevicebackups">Бэкапы этого устройства</string>
 
 
 </resources>
