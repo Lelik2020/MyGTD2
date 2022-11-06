@@ -786,56 +786,13 @@ public class Dialogs {
 
         builder.setTitle(R.string.choisetags);
 
-        //LayoutInflater inflater = a.getLayoutInflater();
-
-        //View titleView = LayoutInflater.from(a).inflate(R.layout.dialog_title, null, false);
-
-        //TextView title = (TextView)titleView.findViewById(R.id.choicetagtitle);
-
-        //builder.setCustomTitle(title);
-
-
-        //ContextThemeWrapper wrappedContext = new ContextThemeWrapper(a, R.style.dialogTitle);
-        //TextView title = new TextView(a);
-        //title.setText(R.string.choisetags);
-        //title.setTextAppearance(a, R.style.dialogTitle);
-
-        //title.setBackgroundColor(R.color.half_black);
-        //title.setPadding(10, 10, 10, 10);
-        //title.setGravity(Gravity.LEFT);
-        //title.setTextColor(Color.WHITE);
-        //title.setTextSize(15);
-
-
-
-
-        //builder.setCustomTitle(title);
-
         callback2 = (DialogTagsChoice) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_tags, null, false);
 
         list = (ListView) inflate.findViewById(R.id.listView1);
 
-        //final TextView addtag = (TextView) inflate.findViewById(R.id.addTag);
-        //TxtUtils.underline(add, "+ " + a.getString(R.string.add_tag));
-
-        //final List<String> tags = StringDB.asList(AppState.get().bookTags);
-        //final List<String> tags = DbItemCreator.getTagDb().getListStringItems();
-        //final List<Tag> tags = MyApplication.getDatabase().tagDao().getAll();
         final List<Tag> tags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
-
-
-        //final List<MyTag> tags = DbItemCreator.getTagDb().getListItems();    //StringDB.asList(AppState.get().bookTags);
-        //final List<String> fileTags = DbItemCreator.getTagDb().getListStringItemsByBook(book.getId());
-        /*
-        for (String fileTag : fileTags) {
-            if (!StringDB.contains(AppState.get().bookTags, fileTag)) {
-                tags.add(fileTag);
-            }
-        }
-        */
-        //Collections.sort(tags);
 
         Iterator<Tag> iterator = tags.iterator();
         while (iterator.hasNext()) {
