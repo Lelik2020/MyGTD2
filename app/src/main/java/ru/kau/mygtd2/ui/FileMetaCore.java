@@ -15,6 +15,8 @@ public class FileMetaCore {
     public static int STATE_BASIC = 1;
     public static int STATE_FULL = 2;
 
+    //public static int STATE_FULL = 2;
+
     private static FileMetaCore in = new FileMetaCore();
 
     public static FileMetaCore get() {
