@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import ru.kau.mygtd2.BuildConfig;
+//import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.dialogs.AlertDialogs;
 import ru.kau.mygtd2.utils.AppProfile;
@@ -88,7 +88,7 @@ public class AndroidWhatsNew {
         url += "?utm_p=" + Apps.getPackageName(c);
         url += "&utm_v=" + Apps.getVersionName(c);
         url += "&utm_ln=" + appLang;
-        url += "&utm_beta=" + BuildConfig.IS_BETA;
+        //url += "&utm_beta=" + BuildConfig.IS_BETA;
 
         url += "#" + shortVersion.replace(".", "");
 
@@ -241,9 +241,9 @@ public class AndroidWhatsNew {
     }
 
     public static void checkForNewBeta(final Activity c) {
-        if (!BuildConfig.IS_BETA) {
+        /*if (!BuildConfig.IS_BETA) {
             return;
-        }
+        }*/
 
 
         final String url = "https://t.me/s/LibreraBeta";

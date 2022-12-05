@@ -6,7 +6,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-import ru.kau.mygtd2.BuildConfig;
+//import ru.kau.mygtd2.BuildConfig;
 
 public class AppSP {
 
@@ -39,7 +39,7 @@ public class AppSP {
     public boolean isEnableSync;
     public String syncRootID;
 
-    public String currentProfile = BuildConfig.IS_BETA ? "MyGTDBeta" : "MyGTD";
+    //public String currentProfile = BuildConfig.IS_BETA ? "MyGTDBeta" : "MyGTD";
     public String rootPath = new File(Environment.getExternalStorageDirectory(), "Librera").toString();
 
     transient SharedPreferences sp;

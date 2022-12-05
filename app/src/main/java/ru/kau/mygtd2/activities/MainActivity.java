@@ -17,7 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import ru.kau.mygtd2.BuildConfig;
+//import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.fragments.MainFragment;
 import ru.kau.mygtd2.utils.Dips;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
+        //LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

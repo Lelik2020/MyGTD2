@@ -16,7 +16,7 @@ import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import ru.kau.mygtd2.BuildConfig;
+//import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.db.dao.CategoryDao;
 import ru.kau.mygtd2.db.dao.CommentDao;
 import ru.kau.mygtd2.db.dao.ContextDao;
@@ -80,7 +80,7 @@ import ru.kau.mygtd2.utils.Converters;
                         , TaskTemplateTagJoin.class
                         },
                         //version = 1,
-                        version = BuildConfig.DB,
+                        version = 4,
                         autoMigrations = {
                                 //@AutoMigration(from = 1, to = 2),
                                 //@AutoMigration(from = 2, to = 3)

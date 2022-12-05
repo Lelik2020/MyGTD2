@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.kau.mygtd2.BuildConfig;
+//import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.MainAdapter;
@@ -46,7 +46,7 @@ public class MainFragment extends Fragment implements ClickListener {
 
         View rootView = inflater.inflate(R.layout.main_fragment, null);
 
-        LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
+        //LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
 
