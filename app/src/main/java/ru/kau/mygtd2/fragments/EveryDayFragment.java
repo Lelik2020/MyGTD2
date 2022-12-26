@@ -43,7 +43,7 @@ public class EveryDayFragment extends Fragment implements DatePickerDialog.OnDat
             public void onClick(View v) {
                 RadioButton rb = (RadioButton)v;
                 FragmentTransaction transaction;
-                switch (rb.getId()) {
+                /*switch (rb.getId()) {
                     case R.id.rBoneveryday:
                         //mInfoTextView.setBackgroundColor(Color.parseColor("#ff0000"));
 
@@ -57,7 +57,7 @@ public class EveryDayFragment extends Fragment implements DatePickerDialog.OnDat
 
                     default:
                         break;
-                }
+                }*/
             }
         };
 

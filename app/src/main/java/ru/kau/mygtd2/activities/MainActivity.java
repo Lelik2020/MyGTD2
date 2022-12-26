@@ -94,18 +94,18 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                        switch (menuItem.getItemId()){
+                        /*switch (menuItem.getItemId()){
                             case R.id.drawer_item_settings:
                                 //Log.e("ОШИБКА", menuItem.getTitle().toString() + "  " + menuItem.getItemId());
                                 return true;
                             default:
                                 return false;
-                        }
+                        }*/
 
                         //Toast.makeText(getApplicationContext(), menuItem.getTitle().toString(), Toast.LENGTH_LONG);
                         //Log.e("ОШИБКА", menuItem.getTitle().toString() + "  " + menuItem.getItemId());
                         //selectDrawerItem(menuItem);
-
+                        return false;
                     }
                 });
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

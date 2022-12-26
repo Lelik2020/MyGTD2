@@ -151,7 +151,7 @@ public class AddMeetingFragment extends Fragment implements DatePickerDialog.OnD
             public void onClick(View v) {
                 RadioButton rb = (RadioButton)v;
                 FragmentTransaction transaction;
-                switch (rb.getId()) {
+                /*switch (rb.getId()) {
                     case R.id.rBeveryday:
                         //mInfoTextView.setBackgroundColor(Color.parseColor("#ff0000"));
                         EveryDayFragment everyDayFragment = new EveryDayFragment();
@@ -174,7 +174,7 @@ public class AddMeetingFragment extends Fragment implements DatePickerDialog.OnD
 
                     default:
                         break;
-                }
+                }*/
             }
         };
 
