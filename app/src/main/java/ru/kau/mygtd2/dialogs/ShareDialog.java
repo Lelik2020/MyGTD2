@@ -964,7 +964,7 @@ public class ShareDialog {
                             return true;
                         } catch (ZipException e) {
                             Log.e("ERROR: ", e.getMessage());
-                            Toasty.error(activity, activity.getString(R.string.file_not_created), Toast.LENGTH_SHORT, true).show();
+                            //Toasty.error(activity, activity.getString(R.string.file_not_created), Toast.LENGTH_SHORT, true).show();
                             return false;
                         } finally {
                             activity.runOnUiThread(() -> result2.dismiss());
