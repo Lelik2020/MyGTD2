@@ -177,7 +177,7 @@ dependencies {
 
     //implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-android'
 
-    implementation('com.google.api-client:google-api-client-android:2.1.1') {
+    implementation('com.google.api-client:google-api-client-android:2.1.2') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev99-1.23.0') {

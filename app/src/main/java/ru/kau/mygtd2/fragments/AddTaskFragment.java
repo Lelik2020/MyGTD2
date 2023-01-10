@@ -617,6 +617,7 @@ public class AddTaskFragment extends Fragment
                         //TagDaoAbs.deleteTag(tagName);
                         //tagsRunnable.run();
                         //EventBus.getDefault().post(new NotifyAllFragments());
+
                     }
                 });
             }
