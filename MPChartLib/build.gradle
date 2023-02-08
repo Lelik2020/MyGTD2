@@ -27,10 +27,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-task sourcesJar(type: Jar) {
+/*task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
-}
+}*/
 
 task javadoc(type: Javadoc) {
     options.charSet = 'UTF-8'
@@ -39,12 +39,12 @@ task javadoc(type: Javadoc) {
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+/*task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
-}
+}*/
 
 artifacts {
-    archives sourcesJar
-    archives javadocJar
+    //archives sourcesJar
+    //archives javadocJar
 }

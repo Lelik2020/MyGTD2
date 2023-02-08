@@ -36,4 +36,4 @@ dependencies {
 }
 
 apply plugin: "com.vanniktech.maven.publish"
-apply from: "$rootDir/spotless.gradle"
+//apply from: "$rootDir/spotless.gradle"

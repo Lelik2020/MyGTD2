@@ -1,4 +1,5 @@
-apply plugin: "com.diffplug.gradle.spotless"
+//apply plugin: "com.diffplug.gradle.spotless"
+/*
 spotless {
     java {
         target "**/*.java"
@@ -9,3 +10,4 @@ spotless {
         endWithNewline()
     }
 }
+*/
