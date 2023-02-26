@@ -88,7 +88,6 @@ public class MainBackupsFragment extends Fragment implements ClickListener {
         category.setGrp(0);
         lstCategories.add(category);
 
-
         mainAdapter = new BackupsAdapter(getActivity(), lstCategories);
         mainAdapter.setClickListener(this);
 
