@@ -5,7 +5,7 @@ group='com.github.philjay'
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '34.0.0-rc1'
+    buildToolsVersion '33.0.1'
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 33
@@ -28,8 +28,8 @@ dependencies {
 }
 
 task sourcesJar(type: Jar) {
-    //from android.sourceSets.main.java.srcDirs
-    //classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
 }
 
 task javadoc(type: Javadoc) {
@@ -40,8 +40,8 @@ task javadoc(type: Javadoc) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    //classifier = 'javadoc'
-    //from javadoc.destinationDir
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 artifacts {
