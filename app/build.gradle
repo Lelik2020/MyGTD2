@@ -170,14 +170,14 @@ dependencies {
     implementation project(path: ':MaterialDialogLibrary')
     //implementation project(path: ':progresslibrary')
     //implementation project(path: ':sadlibrary')
-    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
     /*implementation ('com.google.apis:google-api-services-youtube:v3-rev204-1.23.0'){
         exclude group:'com.google.guava'
     }*/
 
     //implementation group: 'com.google.guava', name: 'guava', version: '27.0.1-android'
 
-    implementation('com.google.api-client:google-api-client-android:2.1.2') {
+    implementation('com.google.api-client:google-api-client-android:2.2.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev99-1.23.0') {
@@ -189,14 +189,14 @@ dependencies {
     implementation 'com.cloudrail:cloudrail-si-android:2.22.4'
 
     //implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'org.jsoup:jsoup:1.15.3'
+    implementation 'org.jsoup:jsoup:1.15.4'
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.9'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.42.3'
+    implementation 'com.google.http-client:google-http-client-gson:1.43.0'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     //implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10'
@@ -209,7 +209,7 @@ dependencies {
     //def room_version2 = "2.1.0"
     //def room_version = "1.1.1"
     //def room_version2 = '2.4.3'
-    def room_version2 = '2.5.0-rc01'
+    def room_version2 = '2.5.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -219,14 +219,14 @@ dependencies {
     //implementation 'com.android.support:design:28.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.8.0'
 
     implementation "androidx.room:room-runtime:$room_version2"
 
     annotationProcessor "androidx.room:room-compiler:$room_version2"
     implementation "androidx.room:room-rxjava3:$room_version2"
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
-    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.6'
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -240,10 +240,10 @@ dependencies {
     //implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
     //implementation 'io.reactivex:rxandroid:1.2.1'
 
-    implementation 'net.lingala.zip4j:zip4j:2.11.2'
+    implementation 'net.lingala.zip4j:zip4j:2.11.5'
 
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
 
 
     implementation project(path: ':roundtextview')
