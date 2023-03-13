@@ -109,6 +109,11 @@ def gitUrl = 'https://github.com/PatilShreyas/MaterialDialog-Android.git'   // G
     }
 }*/
 
+/*task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}*/
+
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -116,6 +121,15 @@ task javadoc(type: Javadoc) {
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
 }
+
+/*task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}*/
+/*artifacts {
+    archives javadocJar
+    archives sourcesJar
+}*/
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())

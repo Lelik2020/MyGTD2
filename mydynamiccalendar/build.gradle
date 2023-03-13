@@ -6,7 +6,7 @@ version = '1.0.1'
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '33.0.1'
+    buildToolsVersion '34.0.0-rc2'
 
     defaultConfig {
         minSdkVersion 26
@@ -38,6 +38,10 @@ dependencies {
 }
 
 // build a jar with source files
+/*task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}*/
 
 task javadoc(type: Javadoc) {
     failOnError false
@@ -47,4 +51,12 @@ task javadoc(type: Javadoc) {
 }
 
 // build a jar with javadoc
+/*task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}*/
 
+/*artifacts {
+    archives sourcesJar
+    archives javadocJar
+}*/
