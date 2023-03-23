@@ -197,7 +197,7 @@ dependencies {
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.9'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.43.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.43.1'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -246,8 +246,8 @@ dependencies {
 
     implementation 'net.lingala.zip4j:zip4j:2.11.5'
 
-    implementation 'com.github.bumptech.glide:glide:4.15.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 
 
     implementation project(path: ':roundtextview')
