@@ -55,7 +55,9 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
         holder.title.setText(lstBackups.get(position).getGuid());
         holder.backupbegin.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateBegin())));
         holder.backupend.setText(Utils.dateToString(new Date(lstBackups.get(position).getDateEnd())));
-
+        //Log.e("ERROR: ", String.valueOf(holder.countTasks.getText()));
+        holder.countTasks.setText(String.valueOf(lstBackups.get(position).getCountOfTask()));
+        //holder.countTasks.setText("ТЕСТ");
         Log.e("ERROR: ", lstBackups.get(position).getGuid() + "  " + lstBackups.get(position).getDateBegin());
 
         holder.btnRestore.setOnClickListener(new View.OnClickListener() {
@@ -307,6 +309,8 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
         TextView backupbegin;
         TextView backupend;
 
+        TextView countTasks;
+
         CustomButton btnRestore;
 
         public ViewHolder(@NonNull View itemView) {
@@ -315,6 +319,8 @@ public class BackupAdapter extends RecyclerView.Adapter<BackupAdapter.ViewHolder
             btnRestore = itemView.findViewById(R.id.btnrestore);
             backupbegin = (TextView) itemView.findViewById(R.id.backupbegin);
             backupend = (TextView) itemView.findViewById(R.id.backupend);
+            countTasks = (TextView) itemView.findViewById(R.id.countTasks);
+
         }
     }
 

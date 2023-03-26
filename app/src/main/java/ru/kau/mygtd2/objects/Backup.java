@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.objects;
 
+import androidx.room.Ignore;
+
 public class Backup {
 
 
@@ -60,5 +62,16 @@ public class Backup {
 
     public void setDateEndStr(String dateEndStr) {
         this.dateendstr = dateEndStr;
+    }
+
+    @Ignore
+    private int countOfTask;
+
+    public int getCountOfTask() {
+        return countOfTask;
+    }
+
+    public void setCountOfTask(int countOfTask) {
+        this.countOfTask = countOfTask;
     }
 }
