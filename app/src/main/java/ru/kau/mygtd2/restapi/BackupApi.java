@@ -23,6 +23,9 @@ public interface BackupApi {
     @POST("backup/new")
     Call<Backup> create2(@Body Backup backup);
 
+    @POST("backup/finish")
+    Call finish(String backupGuid);
+
     @GET("backup/getlstbackups")
     Call<List<Backup>> getlstbackupsdevice(@Query("deviceGuid") String deviceGuid);
 

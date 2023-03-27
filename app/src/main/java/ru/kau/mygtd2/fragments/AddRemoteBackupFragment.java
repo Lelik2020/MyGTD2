@@ -327,6 +327,19 @@ public class AddRemoteBackupFragment extends Fragment {
             }
         });
 
+        Call call2 = calApi.finish(backupGuid);
+        call2.enqueue(new Callback() {
+
+            @Override
+            public void onResponse(Call call, Response response) {
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
 
 
 
