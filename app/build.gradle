@@ -213,7 +213,7 @@ dependencies {
     //def room_version2 = "2.1.0"
     //def room_version = "1.1.1"
     //def room_version2 = '2.4.3'
-    def room_version2 = '2.5.0'
+    def room_version2 = '2.5.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
