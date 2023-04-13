@@ -5,7 +5,7 @@ group='com.github.philjay'
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '34.0.0-rc2'
+    buildToolsVersion '34.0.0 rc3'
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 33
@@ -20,6 +20,10 @@ android {
         unitTests.returnDefaultValues = true // this prevents "not mocked" error
     }
     namespace 'com.github.mikephil.charting'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
+    }
 }
 
 dependencies {
