@@ -16,7 +16,6 @@ import static ru.kau.mygtd2.utils.LOG.TAG;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -30,14 +29,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.sqlite.db.SimpleSQLiteQuery;
 
-import net.lingala.zip4j.exception.ZipException;
-
-import java.io.File;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -587,7 +581,7 @@ public class Utils {
         tt.setBgColor(t.getBgColor());
         tt.setPreviousStatus(t.getPreviousStatus());
         tt.setStatus(t.getStatus());
-        tt.setTypeOfTask(t.getTypeOfTask());
+        tt.setTypeoftask(t.getTypeoftask());
         tt.setDateCreate(t.getDateCreate());
         tt.setDateBegin(t.getDateBegin());
         tt.setDateEnd(t.getDateEnd());

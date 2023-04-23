@@ -79,9 +79,9 @@ public class TasksAdapter3 extends RecyclerView.Adapter<TasksAdapter3.ViewHolder
     public void onBindViewHolder(@NonNull TasksAdapter3.ViewHolder viewHolder, int i) {
 
         lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
-        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + " - " + lstTask.get(i).getId());
-        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
-        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask()));
+        viewHolder.title.setText(lstTask.get(i).getTypeoftask().name() + " - " + lstTask.get(i).getId());
+        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
+        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask()));
         viewHolder.typeTask.setLayoutParams(lParamsiv);
         viewHolder.title.setTextColor(Color.parseColor(taskTypes.getColor()));
         viewHolder.title2.setText(lstTask.get(i).getTitle());

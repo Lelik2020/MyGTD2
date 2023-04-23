@@ -375,7 +375,7 @@ public class AddTaskFragment extends Fragment
             if (projectId > 0) {
                 getProject(MyApplication.getDatabase().projectDao().getProjectById(projectId));
             }
-            taskTypeId = taskUpdate.getTypeOfTask().Value;
+            taskTypeId = taskUpdate.getTypeoftask().Value;
             getTypeOfTask(MyApplication.getDatabase().taskTypesDao().getById(taskTypeId));
 
             // Собираем тэги
@@ -482,7 +482,7 @@ public class AddTaskFragment extends Fragment
 
 
             lstConteksts =  MyApplication.getDatabase().contextDao().getAllByTaskGuid(task.getGuid());
-            taskTypeId = task.getTypeOfTask().Value;
+            taskTypeId = task.getTypeoftask().Value;
 
             getContexts(lstConteksts);
             if (task.getDateBegin() != null) {
@@ -792,7 +792,7 @@ public class AddTaskFragment extends Fragment
                     taskUpdate.setProject_id(projectId);
                     taskUpdate.setParenttask_id(parentTaskId);
                     taskUpdate.setParenttaskguid(parentTaskGuid);
-                    taskUpdate.setTypeOfTask(TypeOfTask.from(taskTypes.getId()));
+                    taskUpdate.setTypeoftask(TypeOfTask.from(taskTypes.getId()));
 
                     //taskUpdate.
 
@@ -824,7 +824,7 @@ public class AddTaskFragment extends Fragment
                     task.setDescription(txtTaskInfoTitle.getText().toString());
                     task.setStatus(Status.from(taskStatus.getId()));
                     //task.setStatus(taskStatus.getId());
-                    task.setTypeOfTask(TypeOfTask.from(taskTypes.getId()));
+                    task.setTypeoftask(TypeOfTask.from(taskTypes.getId()));
                     task.setParenttask_id(parentTaskId);
                     task.setParenttaskguid(parentTaskGuid);
                     task.setProject_id(projectId);
@@ -1509,7 +1509,7 @@ public class AddTaskFragment extends Fragment
 
         if (task != null) {
 
-            TaskTypes tasktype = MyApplication.getDatabase().taskTypesDao().getById(task.getTypeOfTask().Value);
+            TaskTypes tasktype = MyApplication.getDatabase().taskTypesDao().getById(task.getTypeoftask().Value);
 
             lparenttasktype.removeAllViews();
 
@@ -1545,7 +1545,7 @@ public class AddTaskFragment extends Fragment
             lparenttasktype.addView(iv);
 
             TextView tv1 = new TextView(getActivity());
-            tv1.setText(task.getTypeOfTask().name() + " - " + task.getId());
+            tv1.setText(task.getTypeoftask().name() + " - " + task.getId());
             TxtUtils.underlineTextView(tv1);
             tv1.setTextColor(Color.parseColor(tasktype.getColor()));
             tv1.setGravity(Gravity.CENTER_HORIZONTAL);

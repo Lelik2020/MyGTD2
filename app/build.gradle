@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 ext {
-        db = 4
-        codeNumber = 10000 * db + 9001
+        db = 1
+        codeNumber = 10000 * db + 1
 
-        major = "90"
+        major = "00"
         minor = "01"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
@@ -16,7 +16,7 @@ ext {
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '34.0.0-rc2'
+    buildToolsVersion '34.0.0-rc3'
 
     defaultConfig {
         applicationId "ru.kau.mygtd4"
@@ -174,7 +174,7 @@ dependencies {
     implementation project(path: ':MaterialDialogLibrary')
     //implementation project(path: ':progresslibrary')
     //implementation project(path: ':sadlibrary')
-    implementation 'com.google.android.gms:play-services-auth:20.4.1'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
     /*implementation ('com.google.apis:google-api-services-youtube:v3-rev204-1.23.0'){
         exclude group:'com.google.guava'
     }*/

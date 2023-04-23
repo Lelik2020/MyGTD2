@@ -57,6 +57,8 @@ public class DbCreator {
         firstInitSpr7();
 
         taskUpdate22();
+
+        firstInitSpr8();
     }
 
     public static void firstInit2(){
@@ -202,6 +204,19 @@ public class DbCreator {
         taskCategory.setDescription("Коричневая категория");
         taskCategory.setColor("#8B4513");
         MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
+
+    }
+
+    public static void firstInitSpr8() {
+
+        Category category;
+
+        category = new Category();
+        category.setId(25);
+        category.setTitle("Все задачи (общий список)");
+        category.setDescription("Все задачи (общий список)");
+        category.setGrp(1);
+        MyApplication.getDatabase().categoryDao().insert(category);
 
     }
 

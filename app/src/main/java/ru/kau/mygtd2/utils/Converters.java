@@ -35,10 +35,14 @@ public class Converters {
     }
 
     @TypeConverter
-    public static TypeOfTask intToTypeOfTask(int typeOfTask) {return TypeOfTask.from(typeOfTask); }
+    public static TypeOfTask intToTypeOfTask(int typeOfTask) {
+        return TypeOfTask.from(typeOfTask);
+    }
 
     @TypeConverter
-    public static int typeOfTaskToInt(TypeOfTask typeOfTask) {return TypeOfTask.to(typeOfTask); }
+    public static int typeOfTaskToInt(TypeOfTask typeOfTask) {
+        return TypeOfTask.to(typeOfTask);
+    }
 
     @TypeConverter
     public static TypeOfInfo intToTypeOfInfo(int typeOfInfo) {return TypeOfInfo.from(typeOfInfo); }

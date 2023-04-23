@@ -552,10 +552,10 @@ public class ShareDialog {
         TextView tasktitle2 = (TextView) dialog.findViewById(R.id.tasktitle2);
         TextView taskdetail = (TextView) dialog.findViewById(R.id.taskdetail);
         ImageView typeTask = (ImageView) dialog.findViewById(R.id.tasktype);
-        typeTask.setImageResource(Utils.getImageResourceTaskType(task.getTypeOfTask()));
+        typeTask.setImageResource(Utils.getImageResourceTaskType(task.getTypeoftask()));
         tasktitle2.setText(task.getTitle());
         taskdetail.setText(task.getDescription());
-        tasktitle.setText(task.getTypeOfTask().name() + "-" + task.getId());
+        tasktitle.setText(task.getTypeoftask().name() + "-" + task.getId());
         TxtUtils.underlineTextView(tasktitle);
 
         builder.setView(dialog);

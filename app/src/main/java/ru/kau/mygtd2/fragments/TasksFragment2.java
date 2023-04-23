@@ -41,6 +41,8 @@ public class TasksFragment2 extends Fragment {
 
         onSort = (ImageView) rootView.findViewById(R.id.onSort);
 
+        TasksAdapter2 tasksAdapterall;
+
         Bundle arguments = getArguments();
 
         if (arguments != null && arguments.containsKey("menunumber")) {
@@ -57,12 +59,28 @@ public class TasksFragment2 extends Fragment {
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     //Log.e("TIME: ", String.valueOf(new Date().getTime()));
-                    TasksAdapter2 tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasks());
+                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasks());
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
                     bindAdapter(tasksAdapterall);
                     recyclerView.setAdapter(tasksAdapterall);
                     break;
+
+                case 11:
+
+                    tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
+                    tv1.setText(getResources().getString(R.string.alltasks3));
+                    recyclerView = (RecyclerView) rootView.findViewById(R.id.tasks_recyclerview_overdue);
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    //Log.e("TIME: ", String.valueOf(new Date().getTime()));
+                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById());
+                    //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
+                    //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
+                    bindAdapter(tasksAdapterall);
+                    recyclerView.setAdapter(tasksAdapterall);
+                    break;
+
             }
 
         }

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "312d7644d533edd2de86bb796fba1819",
+    "identityHash": "b40da1eee4fa94fc001f0d0b5c1381fe",
     "entities": [
       {
         "tableName": "tasks",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `searchtitle` TEXT, `description` TEXT, `info_id` INTEGER NOT NULL, `meeting_id` INTEGER NOT NULL, `project_id` INTEGER NOT NULL, `target_id` INTEGER NOT NULL, `priority_id` INTEGER NOT NULL, `parenttask_id` INTEGER NOT NULL, `isFavourite` INTEGER NOT NULL, `bgColor` TEXT, `previousStatus` INTEGER, `status` INTEGER, `typeOfTask` INTEGER, `dateCreate` INTEGER, `dateBegin` INTEGER, `dateEnd` INTEGER, `dateClose` INTEGER, `dateEdit` INTEGER, `dateCreateStr` TEXT, `dateBeginStr` TEXT, `dateEndStr` TEXT, `dateCloseStr` TEXT, `dateEditStr` TEXT, `guid` TEXT NOT NULL, `deviceguid` TEXT NOT NULL, `category` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `searchtitle` TEXT, `description` TEXT, `info_id` INTEGER NOT NULL, `meeting_id` INTEGER NOT NULL, `project_id` INTEGER NOT NULL, `target_id` INTEGER NOT NULL, `priority_id` INTEGER NOT NULL, `parenttask_id` INTEGER NOT NULL, `isFavourite` INTEGER NOT NULL, `bgColor` TEXT, `previousStatus` INTEGER, `status` INTEGER, `typeoftask` INTEGER, `dateCreate` INTEGER, `dateBegin` INTEGER, `dateEnd` INTEGER, `dateClose` INTEGER, `dateEdit` INTEGER, `dateCreateStr` TEXT, `dateBeginStr` TEXT, `dateEndStr` TEXT, `dateCloseStr` TEXT, `dateEditStr` TEXT, `parenttaskguid` TEXT, `guid` TEXT NOT NULL, `deviceguid` TEXT NOT NULL, `category` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -93,8 +93,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "typeOfTask",
-            "columnName": "typeOfTask",
+            "fieldPath": "typeoftask",
+            "columnName": "typeoftask",
             "affinity": "INTEGER",
             "notNull": false
           },
@@ -159,6 +159,12 @@
             "notNull": false
           },
           {
+            "fieldPath": "parenttaskguid",
+            "columnName": "parenttaskguid",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "guid",
             "columnName": "guid",
             "affinity": "TEXT",
@@ -178,10 +184,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "guid"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -262,10 +268,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "guid"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -340,10 +346,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -397,10 +403,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -445,10 +451,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -493,10 +499,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -541,10 +547,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -589,10 +595,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -631,11 +637,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "taskguid",
             "idcontext"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -698,11 +704,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "infoguid",
             "idproject"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -773,11 +779,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "taskguid",
             "idtag"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -846,10 +852,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -906,10 +912,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -974,10 +980,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -1012,10 +1018,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1060,10 +1066,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1108,10 +1114,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1156,10 +1162,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1176,7 +1182,7 @@
       },
       {
         "tableName": "devices",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `guid` TEXT NOT NULL, `iscurrent` INTEGER NOT NULL, `devicetype` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `guid` TEXT NOT NULL, `iscurrent` INTEGER NOT NULL, `devicetype` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -1210,10 +1216,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
-            "id"
-          ],
-          "autoGenerate": false
+            "guid"
+          ]
         },
         "indices": [
           {
@@ -1252,11 +1258,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "deviceid",
             "key"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -1291,10 +1297,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1308,12 +1314,230 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "tasktemplate",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT NOT NULL, `searchtitle` TEXT, `description` TEXT, `project_id` INTEGER NOT NULL, `target_id` INTEGER NOT NULL, `priority_id` INTEGER NOT NULL, `bgColor` TEXT, `status` INTEGER, `typeOfTask` INTEGER, `templateguid` TEXT NOT NULL, `deviceguid` TEXT NOT NULL, `category` INTEGER NOT NULL, PRIMARY KEY(`templateguid`))",
+        "fields": [
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "searchtitle",
+            "columnName": "searchtitle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "project_id",
+            "columnName": "project_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "target_id",
+            "columnName": "target_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priority_id",
+            "columnName": "priority_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bgColor",
+            "columnName": "bgColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "typeOfTask",
+            "columnName": "typeOfTask",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "templateguid",
+            "columnName": "templateguid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceguid",
+            "columnName": "deviceguid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "templateguid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tasktemplate_guid",
+            "unique": true,
+            "columnNames": [
+              "templateguid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_tasktemplate_guid` ON `${TABLE_NAME}` (`templateguid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "tasktemplatecontexts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idcontext` INTEGER NOT NULL, `tasktemplateguid` TEXT NOT NULL, PRIMARY KEY(`tasktemplateguid`, `idcontext`), FOREIGN KEY(`tasktemplateguid`) REFERENCES `tasktemplate`(`templateguid`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`idcontext`) REFERENCES `contexts`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idcontext",
+            "columnName": "idcontext",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tasktemplateguid",
+            "columnName": "tasktemplateguid",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "tasktemplateguid",
+            "idcontext"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tasktemplatecontexts_tasktemplateguid_idcontext",
+            "unique": true,
+            "columnNames": [
+              "tasktemplateguid",
+              "idcontext"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_tasktemplatecontexts_tasktemplateguid_idcontext` ON `${TABLE_NAME}` (`tasktemplateguid`, `idcontext`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tasktemplate",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "tasktemplateguid"
+            ],
+            "referencedColumns": [
+              "templateguid"
+            ]
+          },
+          {
+            "table": "contexts",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idcontext"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "tasktemplatetags",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idtag` INTEGER NOT NULL, `tasktemplateguid` TEXT NOT NULL, PRIMARY KEY(`tasktemplateguid`, `idtag`), FOREIGN KEY(`tasktemplateguid`) REFERENCES `tasktemplate`(`templateguid`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`idtag`) REFERENCES `tags`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idtag",
+            "columnName": "idtag",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tasktemplateguid",
+            "columnName": "tasktemplateguid",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "tasktemplateguid",
+            "idtag"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tasktemplatetags_tasktemplateguid_idtag",
+            "unique": true,
+            "columnNames": [
+              "tasktemplateguid",
+              "idtag"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_tasktemplatetags_tasktemplateguid_idtag` ON `${TABLE_NAME}` (`tasktemplateguid`, `idtag`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tasktemplate",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "tasktemplateguid"
+            ],
+            "referencedColumns": [
+              "templateguid"
+            ]
+          },
+          {
+            "table": "tags",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idtag"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '312d7644d533edd2de86bb796fba1819')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b40da1eee4fa94fc001f0d0b5c1381fe')"
     ]
   }
 }

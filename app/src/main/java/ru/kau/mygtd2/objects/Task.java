@@ -22,8 +22,6 @@ import java.util.Date;
 import ru.kau.mygtd2.common.enums.Status;
 import ru.kau.mygtd2.common.enums.TypeOfTask;
 import ru.kau.mygtd2.jsonconvert.DateConverter;
-import ru.kau.mygtd2.jsonconvert.StatusConverter;
-import ru.kau.mygtd2.jsonconvert.TypeOfTaskConverter;
 import ru.kau.mygtd2.utils.Converters;
 // https://stackoverflow.com/questions/44498616/android-architecture-components-using-enums
 
@@ -167,17 +165,17 @@ public class Task implements Serializable{  //Parcelable {
     /*@NonNull
     private int status = 2;*/
 
-    public TypeOfTask getTypeOfTask() {
-        return typeOfTask;
+    public TypeOfTask getTypeoftask() {
+        return typeoftask;
     }
 
-    public void setTypeOfTask(TypeOfTask typeOfTask) {
-        this.typeOfTask = typeOfTask;
+    public void setTypeoftask(TypeOfTask typeoftask) {
+        this.typeoftask = typeoftask;
     }
 
     @TypeConverters(Converters.class)
-    @JsonAdapter(TypeOfTaskConverter.class)
-    private TypeOfTask typeOfTask = TypeOfTask.TASK;
+    //@JsonAdapter(TypeOfTaskConverter.class)
+    private TypeOfTask typeoftask = TypeOfTask.TASK;
 
 
     @TypeConverters(Converters.class)
