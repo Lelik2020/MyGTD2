@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.adapters;
 
+import static ru.kau.mygtd2.utils.Const.TASK_LEVEL_OFFSET2;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -26,8 +28,6 @@ import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Const;
 import ru.kau.mygtd2.utils.TxtUtils;
 import ru.kau.mygtd2.utils.Utils;
-
-import static ru.kau.mygtd2.utils.Const.TASK_LEVEL_OFFSET2;
 
 public class TasksAdapter4 extends RecyclerView.Adapter<TasksAdapter4.ViewHolder>{
 
@@ -116,9 +116,9 @@ public class TasksAdapter4 extends RecyclerView.Adapter<TasksAdapter4.ViewHolder
 
         lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
         lParamscb = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH3, Const.DEFAULT_LAYOUT_HEIGHT3);
-        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + "-" + lstTask.get(i).getId());
-        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
-        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask()));
+        viewHolder.title.setText(lstTask.get(i).getTypeoftask().name() + "-" + lstTask.get(i).getId());
+        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
+        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask()));
         viewHolder.typeTask.setLayoutParams(lParamsiv);
 
         //Drawable d = viewHolder.checkBoxTask.getCompoundDrawables()[0];

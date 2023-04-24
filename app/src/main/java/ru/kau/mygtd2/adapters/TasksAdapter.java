@@ -219,8 +219,8 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder>{
         //card.setContentPadding(Utils.getLevelTask(lstTask.get(i)) * TASK_LEVEL_OFFSET, 0, 0, 0);
         //card.setPadding(Utils.getLevelTask(lstTask.get(i)) * TASK_LEVEL_OFFSET, 0, 0, 0);
 
-        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + "-" + lstTask.get(i).getId());
-        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
+        viewHolder.title.setText(lstTask.get(i).getTypeoftask().name() + "-" + lstTask.get(i).getId());
+        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
         viewHolder.title.setTextColor(Color.parseColor(taskTypes.getColor()));
         viewHolder.tv_datedone.setText((lstTask.get(i).getDateEndStr() == null || "".equals(lstTask.get(i).getDateEndStr())) ? "" : lstTask.get(i).getDateEndStr());
         viewHolder.tv_datedone.setTextColor(Color.parseColor(Utils.getColorByEndDate(lstTask.get(i).getDateEnd())));
@@ -257,7 +257,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder>{
         viewHolder.rtvstatus.setText(taskStatus.getTitle());
         viewHolder.rtvstatus.setVisibility(View.VISIBLE);
         viewHolder.rtvstatus.setLayoutParams(lParamsrtv);
-        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask()));
+        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask()));
         viewHolder.typeTask.setLayoutParams(lParamsiv);
 
         bindTaskView(viewHolder, i);

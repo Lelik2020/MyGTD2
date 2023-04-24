@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import ru.kau.mygtd2.BuildConfig;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.MainAdapter;
@@ -23,7 +22,6 @@ import ru.kau.mygtd2.adapters.MainAdapter3;
 import ru.kau.mygtd2.adapters.MainAdapter4;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
-import ru.kau.mygtd2.utils.LOG;
 
 // https://caster.io/lessons/adding-a-new-fragment-with-a-recyclerview
 
@@ -264,6 +262,17 @@ public class MainFragment extends Fragment implements ClickListener {
                 fragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("TasksFragment2").replace(R.id.frame_container, fragment, "TasksFragment2").commit();
             }
+            //Log.e("ПОЗИЦИЯ: ", String.valueOf(position));
+            if (position == 11) {
+                bundle = new Bundle();
+                bundle.putInt("menunumber", position);
+
+                Fragment fragment;
+                fragment = new TasksFragment2();
+                fragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("TasksFragment2").replace(R.id.frame_container, fragment, "TasksFragment2").commit();
+            }
+
         }
 
         if (grp == 2) {

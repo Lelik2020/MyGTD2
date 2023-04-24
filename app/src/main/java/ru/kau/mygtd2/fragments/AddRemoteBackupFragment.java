@@ -327,7 +327,7 @@ public class AddRemoteBackupFragment extends Fragment {
             }
         });
 
-        Call call2 = calApi.finish(backupGuid);
+        /*Call call2 = calApi.finish(backupGuid);
         call2.enqueue(new Callback() {
 
             @Override
@@ -339,10 +339,7 @@ public class AddRemoteBackupFragment extends Fragment {
             public void onFailure(Call call, Throwable t) {
 
             }
-        });
-
-
-
+        });*/
 
         return rootView;
     }

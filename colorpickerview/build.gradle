@@ -18,10 +18,9 @@ apply plugin: 'org.jetbrains.dokka'
 apply from: "$rootDir/dependencies.gradle"
 
 android {
-    compileSdkVersion versions.compileSdk
-
-    //compileSdkVersion versions.compileSdk
-    defaultConfig {
+  //compileSdkVersion versions.compileSdk
+  compileSdkVersion versions.compileSdk
+  defaultConfig {
     minSdkVersion versions.minSdk
     targetSdkVersion versions.compileSdk
   }
@@ -30,7 +29,7 @@ android {
     viewBinding true
   }
     namespace 'com.skydoves.colorpickerview'
-    buildToolsVersion '34.0.0 rc3'
+    buildToolsVersion '34.0.0-rc3'
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_18

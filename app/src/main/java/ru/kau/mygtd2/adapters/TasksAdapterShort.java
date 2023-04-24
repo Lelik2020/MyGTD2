@@ -205,13 +205,13 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
 
         viewHolder.taskinformation.setVisibility(View.GONE);
 
-        viewHolder.title.setText(lstTask.get(i).getTypeOfTask().name() + " - " + lstTask.get(i).getId());
-        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeOfTask().Value);
+        viewHolder.title.setText(lstTask.get(i).getTypeoftask().name() + " - " + lstTask.get(i).getId());
+        TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
         viewHolder.title.setTextColor(Color.parseColor(taskTypes.getColor()));
         viewHolder.title2.setText(lstTask.get(i).getTitle());
         viewHolder.taskdetail.setText(lstTask.get(i).getDescription());
         TxtUtils.underlineTextView(viewHolder.title);
-        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeOfTask(), lstTask.get(i).getParenttaskguid()));
+        viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask(), lstTask.get(i).getParenttaskguid()));
         //viewHolder.typeTask.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
         lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -223,12 +223,12 @@ public class TasksAdapterShort extends RecyclerView.Adapter<TasksAdapterShort.Vi
 
         Task parenttask = MyApplication.getDatabase().taskDao().getById(lstTask.get(i).getParenttask_id());
         if (parenttask != null){
-            viewHolder.parenttitle.setText(parenttask.getTypeOfTask().name() + "-" + parenttask.getId());
-            taskTypes = MyApplication.getDatabase().taskTypesDao().getById(parenttask.getTypeOfTask().Value);
+            viewHolder.parenttitle.setText(parenttask.getTypeoftask().name() + "-" + parenttask.getId());
+            taskTypes = MyApplication.getDatabase().taskTypesDao().getById(parenttask.getTypeoftask().Value);
             viewHolder.parenttitle.setTextColor(Color.parseColor(taskTypes.getColor()));
             viewHolder.parenttitle2.setText(parenttask.getTitle());
             TxtUtils.underlineTextView(viewHolder.parenttitle);
-            viewHolder.parenttypeTask.setImageResource(Utils.getImageResourceTaskType(parenttask.getTypeOfTask(), parenttask.getParenttaskguid()));
+            viewHolder.parenttypeTask.setImageResource(Utils.getImageResourceTaskType(parenttask.getTypeoftask(), parenttask.getParenttaskguid()));
             //lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_layout_big2), (int) c.getResources().getDimension(R.dimen.wh_layout_big2));
             lParamsll = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_small2), ViewGroup.LayoutParams.WRAP_CONTENT);
             lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTHSMALL, Const.DEFAULT_ICON_HEIGHTSMALL);

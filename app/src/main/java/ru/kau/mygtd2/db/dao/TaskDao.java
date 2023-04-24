@@ -35,6 +35,9 @@ public interface TaskDao {
     @Query(HIERARCHY_TASKS + " ORDER BY status")
     List<Task> getAllTasks();
 
+    @Query(HIERARCHY_TASKS + " ORDER BY id")
+    List<Task> getAllTasksOrderById();
+
     @Query("SELECT * FROM tasks")
     List<Task> getAllTasks2();
 
