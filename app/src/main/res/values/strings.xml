@@ -436,8 +436,9 @@
 
     <string name="cd_view_menu">View menu</string>
     <string name="update_library">Update library</string>
-
-
+    <string name="cd_application_menu">Application menu</string>
+    <string name="searchline">Строка поиска</string>
+    <string name="cd_clear_search_reasult">Clear search results</string>
 
 
 </resources>
