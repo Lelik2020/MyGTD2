@@ -72,5 +72,7 @@
     <dimen name="brigtness">15dip</dimen>
     <dimen name="progress">2dip</dimen>
 
+    <dimen name="sort_by_size">80dip</dimen>
+
 
 </resources>

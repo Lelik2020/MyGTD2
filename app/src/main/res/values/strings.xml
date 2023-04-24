@@ -433,4 +433,11 @@
     <string name="btndevicebackups">Бэкапы этого устройства</string>
 
 
+
+    <string name="cd_view_menu">View menu</string>
+    <string name="update_library">Update library</string>
+
+
+
+
 </resources>

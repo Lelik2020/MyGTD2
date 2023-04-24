@@ -20,6 +20,10 @@ android {
         unitTests.returnDefaultValues = true // this prevents "not mocked" error
     }
     namespace 'com.github.mikephil.charting'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
+    }
 }
 
 dependencies {
