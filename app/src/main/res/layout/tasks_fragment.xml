@@ -188,14 +188,14 @@
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/containerOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1sp"
-                android:layout_weight="1"
-                android:background="@drawable/roundrect_1"
-                android:orientation="horizontal"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/containerOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundrect_1"
+                    android:orientation="horizontal"
                 >
 
                     <TextView

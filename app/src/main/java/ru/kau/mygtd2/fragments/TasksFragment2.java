@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,8 @@ public class TasksFragment2 extends Fragment {
 
     private TextView tv1;
     private RecyclerView recyclerView;
+
+    LinearLayoutCompat linearLayoutCompat;
 
 
 
@@ -68,9 +71,28 @@ public class TasksFragment2 extends Fragment {
 
                 case 11:
 
-                    tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerOut);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerToday);
+                    linearLayoutCompat.setVisibility(View.GONE);
+
+                    linearLayoutCompat = rootView.findViewById(R.id.containerTomorrow);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerNextSevenDays);
+                    linearLayoutCompat.setVisibility(View.GONE);
+
+                    linearLayoutCompat = rootView.findViewById(R.id.containerAfterWeek);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerAfterTwoWeek);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerInFuture);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = rootView.findViewById(R.id.containerClosed);
+                    linearLayoutCompat.setVisibility(View.GONE);
+
+                    tv1 = (TextView) rootView.findViewById(R.id.tv_noenddate_tasks);
                     tv1.setText(getResources().getString(R.string.alltasks3));
-                    recyclerView = (RecyclerView) rootView.findViewById(R.id.tasks_recyclerview_overdue);
+                    recyclerView = (RecyclerView) rootView.findViewById(R.id.tasks_recyclerview_noenddate);
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     //Log.e("TIME: ", String.valueOf(new Date().getTime()));
