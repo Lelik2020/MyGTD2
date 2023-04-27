@@ -151,7 +151,7 @@ public class TasksFragment2 extends Fragment {
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     //Log.e("TIME: ", String.valueOf(new Date().getTime()));
-                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById());
+                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById("%А%"));
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
                     bindAdapter(tasksAdapterall);

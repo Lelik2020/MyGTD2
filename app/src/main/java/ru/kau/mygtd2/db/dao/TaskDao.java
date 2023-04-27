@@ -13,6 +13,7 @@ package ru.kau.mygtd2.db.dao;
 //import android.arch.persistence.room.Update;
 
 import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS;
+import static ru.kau.mygtd2.utils.Const.HIERARCHY_TASKS2;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -35,8 +36,13 @@ public interface TaskDao {
     @Query(HIERARCHY_TASKS + " ORDER BY status")
     List<Task> getAllTasks();
 
-    @Query(HIERARCHY_TASKS + " ORDER BY id")
-    List<Task> getAllTasksOrderById();
+    @Query( "SELECT DISTINCT * FROM ( "
+            + HIERARCHY_TASKS2 + ") "
+
+            + "WHERE title LIKE :txt OR searchtitle LIKE :txt "
+            + "ORDER BY id"
+    )
+    List<Task> getAllTasksOrderById(String txt);
 
     @Query("SELECT * FROM tasks")
     List<Task> getAllTasks2();
