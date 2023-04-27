@@ -1,6 +1,9 @@
 package ru.kau.mygtd2.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,8 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.adapters.TasksAdapter2;
@@ -29,11 +34,57 @@ public class TasksFragment2 extends Fragment {
 
     LinearLayoutCompat linearLayoutCompat;
 
+    private TextInputEditText searchEditText;
+
+    Handler handler;
+
+    String txt = "";
+
+    private final TextWatcher filterTextWatcher = new TextWatcher() {
+
+        @Override
+        public void afterTextChanged(final Editable s) {
+            //AppState.get().searchQuery = s.toString();
+
+        }
+
+        @Override
+        public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+        }
+
+        @Override
+        public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+
+            //handler.removeCallbacks(sortAndSeach);
+            txt = searchEditText.getText().toString().trim();
+
+
+
+            handler.removeCallbacks(sortAndSeach);
+            handler.removeCallbacks(hideKeyboard);
+            if (s.toString().trim().length() == 0) {
+                //handler.postDelayed(sortAndSeach, 750);
+                handler.postDelayed(sortAndSeach, Integer.parseInt(Settings.getStringSetting(DELAY1)));
+                handler.postDelayed(hideKeyboard, Integer.parseInt(Settings.getStringSetting(DELAY3)));
+            } else {
+                //handler.postDelayed(sortAndSeach, 2000);
+                handler.postDelayed(sortAndSeach, Integer.parseInt(Settings.getStringSetting(DELAY2)));
+            }
+
+
+            //recyclerView.scrollToPosition(0);
+            searchAndOrderAsync();
+
+        }
+
+    };
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tasks_fragment, null);
+
+        handler = new Handler();
 
         toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         toolbar.setTitle("Задачи");
@@ -43,6 +94,10 @@ public class TasksFragment2 extends Fragment {
         ImageView onSorting = (ImageView) rootView.findViewById(R.id.onSorting);
 
         onSort = (ImageView) rootView.findViewById(R.id.onSort);
+
+
+        searchEditText = rootView.findViewById(R.id.filterLine);
+        searchEditText.addTextChangedListener(filterTextWatcher);
 
         TasksAdapter2 tasksAdapterall;
 
@@ -106,6 +161,20 @@ public class TasksFragment2 extends Fragment {
             }
 
         }
+
+        Handler handler = new Handler(getContext().getMainLooper());
+        handler.post( new Runnable() {
+            @Override
+            public void run() {
+                tasksCount = dataSource.getBooksCount();
+                /*if (booksCount == 0){
+                    outlinedTextField.setError("Книги не найдены");
+                } else {
+                    //outlinedTextField.setError(null);
+                }*/
+                showBookCount();
+            }
+        } );
 
 
         return rootView;
