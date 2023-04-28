@@ -1,5 +1,6 @@
 package ru.kau.mygtd2.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +21,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.concurrent.Executors;
+
+import es.dmoral.toasty.Toasty;
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.adapters.TasksAdapter2;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.listeners.DefaultListeners;
+import ru.kau.mygtd2.utils.Keyboards;
+import ru.kau.mygtd2.utils.Settings;
 
 public class TasksFragment2 extends Fragment {
 
@@ -38,7 +45,56 @@ public class TasksFragment2 extends Fragment {
 
     Handler handler;
 
-    String txt = "";
+    String txt = "%%";
+    long tasksCount;
+
+    TextView countTasks;
+
+    TasksAdapter2 tasksAdapterall;
+
+    Runnable hideKeyboard = new Runnable() {
+
+        @Override
+        public void run() {
+            Keyboards.close(searchEditText);
+            //Keyboards.hideNavigation(getActivity());
+        }
+    };
+
+    Runnable sortAndSeach = new Runnable() {
+
+        @Override
+        public void run() {
+            recyclerView.scrollToPosition(0);
+            searchAndOrderAsync();
+        }
+    };
+
+    public void searchAndOrderAsync() {
+
+
+        tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById(txt));
+        //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
+        //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
+        bindAdapter(tasksAdapterall);
+        recyclerView.setAdapter(tasksAdapterall);
+
+
+
+        handler.post( new Runnable() {
+            @Override
+            public void run() {
+
+                showTasksCount();
+            }
+        } );
+
+        //booksCount = dataSource.getBooksCount();
+        //showBookCount();
+
+        //populate();
+
+    }
 
     private final TextWatcher filterTextWatcher = new TextWatcher() {
 
@@ -64,11 +120,11 @@ public class TasksFragment2 extends Fragment {
             handler.removeCallbacks(hideKeyboard);
             if (s.toString().trim().length() == 0) {
                 //handler.postDelayed(sortAndSeach, 750);
-                handler.postDelayed(sortAndSeach, Integer.parseInt(Settings.getStringSetting(DELAY1)));
-                handler.postDelayed(hideKeyboard, Integer.parseInt(Settings.getStringSetting(DELAY3)));
+                handler.postDelayed(sortAndSeach, 1000);
+                handler.postDelayed(hideKeyboard, 1000);
             } else {
                 //handler.postDelayed(sortAndSeach, 2000);
-                handler.postDelayed(sortAndSeach, Integer.parseInt(Settings.getStringSetting(DELAY2)));
+                handler.postDelayed(sortAndSeach, 1000);
             }
 
 
@@ -99,7 +155,9 @@ public class TasksFragment2 extends Fragment {
         searchEditText = rootView.findViewById(R.id.filterLine);
         searchEditText.addTextChangedListener(filterTextWatcher);
 
-        TasksAdapter2 tasksAdapterall;
+        countTasks = (TextView) rootView.findViewById(R.id.countTasks);
+
+
 
         Bundle arguments = getArguments();
 
@@ -151,11 +209,12 @@ public class TasksFragment2 extends Fragment {
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     //Log.e("TIME: ", String.valueOf(new Date().getTime()));
-                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById("%А%"));
+                    tasksAdapterall = new TasksAdapter2(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOrderById(txt));
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getOverdueTasksWithoutSubtask(new Date().getTime()));
                     //TasksAdapter tasksAdapter1 = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksWithoutSubtask());
                     bindAdapter(tasksAdapterall);
                     recyclerView.setAdapter(tasksAdapterall);
+                    showTasksCount();
                     break;
 
             }
@@ -166,13 +225,13 @@ public class TasksFragment2 extends Fragment {
         handler.post( new Runnable() {
             @Override
             public void run() {
-                tasksCount = dataSource.getBooksCount();
+
                 /*if (booksCount == 0){
                     outlinedTextField.setError("Книги не найдены");
                 } else {
                     //outlinedTextField.setError(null);
                 }*/
-                showBookCount();
+                showTasksCount();
             }
         } );
 
@@ -184,6 +243,10 @@ public class TasksFragment2 extends Fragment {
         DefaultListeners.bindAdapter5(getActivity(), tasksAdapter);
     }
 
-
+    public void showTasksCount() {
+        //countBooks.setText("" + (recyclerView.getAdapter().getItemCount() - countTitles));
+        tasksCount = MyApplication.getDatabase().taskDao().getCountTasks(txt);
+        countTasks.setText("" + tasksCount);
+    }
 
 }

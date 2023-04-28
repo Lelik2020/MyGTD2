@@ -652,14 +652,19 @@
 
     </style>
 
-    <style name="Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="Rounded">
         <item name="cornerFamily">rounded</item>
         <item name="color">@color/colorPrimary</item>
-        <item name="cornerSize">9dp</item>
+        <item name="cornerSize">18dp</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="background">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
     <style name="HintText" parent="TextAppearance.Design.Hint">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 

@@ -44,6 +44,16 @@ public interface TaskDao {
     )
     List<Task> getAllTasksOrderById(String txt);
 
+    @Query( "SELECT COUNT(*) FROM ( "
+            + "SELECT DISTINCT * FROM ( "
+            + HIERARCHY_TASKS2 + ") "
+
+            + "WHERE title LIKE :txt OR searchtitle LIKE :txt "
+            + "ORDER BY id "
+            + ")"
+    )
+    long getCountTasks(String txt);
+
     @Query("SELECT * FROM tasks")
     List<Task> getAllTasks2();
 
