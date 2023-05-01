@@ -112,7 +112,7 @@ public class TasksFragment2 extends Fragment {
         public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
 
             //handler.removeCallbacks(sortAndSeach);
-            txt = searchEditText.getText().toString().trim();
+            txt = "%" + searchEditText.getText().toString().trim() + "%";
 
 
 

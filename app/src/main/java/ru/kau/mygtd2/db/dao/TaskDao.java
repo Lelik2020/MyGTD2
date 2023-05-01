@@ -39,7 +39,8 @@ public interface TaskDao {
     @Query( "SELECT DISTINCT * FROM ( "
             + HIERARCHY_TASKS2 + ") "
 
-            + "WHERE title LIKE :txt OR searchtitle LIKE :txt "
+            + "WHERE title LIKE :txt OR searchtitle LIKE UPPER(:txt) "
+            + ""
             + "ORDER BY id"
     )
     List<Task> getAllTasksOrderById(String txt);

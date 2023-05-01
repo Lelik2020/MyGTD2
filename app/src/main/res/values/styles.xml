@@ -644,7 +644,6 @@
         <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeWidthFocused">2dp</item>
         <item name="background">@color/colorPrimary</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
@@ -655,9 +654,9 @@
     <style name="Rounded">
         <item name="cornerFamily">rounded</item>
         <item name="color">@color/colorPrimary</item>
-        <item name="cornerSize">18dp</item>
         <item name="boxStrokeColor">@color/colorPrimary</item>
-        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="cornerRadius">5dp</item>
         <item name="background">@color/colorPrimary</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
@@ -666,6 +665,27 @@
     <style name="HintText" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="ErrorTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/holo_orange_dark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="HelperTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="HintTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="EditTextThemeOverlay" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/holo_blue_light</item>
     </style>
 
 

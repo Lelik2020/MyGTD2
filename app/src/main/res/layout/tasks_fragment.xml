@@ -11,33 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dip"
 
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
 
-        <ImageView
-            android:contentDescription="@string/cd_application_menu"
-            android:id="@+id/menu2"
-            android:padding="4dip"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:layout_margin="0dip"
-            android:tint="@color/foobnix_light_blue"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
-            android:src="@drawable/glyphicons_600_menu"
-            android:visibility="gone"
-            />
+        android:orientation="horizontal" >
 
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="54dp"
             android:layout_weight="1"
             android:focusableInTouchMode="true"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            app:shapeAppearance="@style/Rounded"
+
             >
 
 
@@ -48,12 +34,11 @@
                 android:id="@+id/outlinedTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/MyInputFindBookStyle"
+                android:layout_centerVertical="true"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
+                android:hint="@string/searchline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/EditTextThemeOverlay"
 
                 >
 
@@ -63,8 +48,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:hint="@string/searchline"
-                    app:hintTextAppearance="@style/HintText"
+
+                    android:textColorHighlight="@color/textColorHighlight"
+
 
                     />
 

@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10000 * db + 1
+        codeNumber = 10000 * db + 2
 
         major = "00"
-        minor = "01"
+        minor = "02"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -184,7 +184,7 @@ dependencies {
     implementation('com.google.api-client:google-api-client-android:2.2.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-    implementation('com.google.apis:google-api-services-drive:v3-rev20230413-2.0.0') {
+    implementation('com.google.apis:google-api-services-drive:v3-rev20230423-2.0.0') {
         exclude group: 'org.apache.httpcomponents'
         exclude group: 'com.google.guava'
     }
