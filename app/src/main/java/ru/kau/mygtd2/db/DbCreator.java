@@ -781,6 +781,51 @@ public class DbCreator {
         project.setPrStatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
+        project = new Project();
+        project.setId(5L);
+        project.setTitle("Потребительское кредитование");
+        project.setSearchtitle(project.getTitle());
+        project.setDescription("Потребительское кредитование");
+        project.setParentid(1L);
+        project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);
+
+        project = new Project();
+        project.setId(6L);
+        project.setTitle("POS-кредитование");
+        project.setSearchtitle(project.getTitle());
+        project.setDescription("POS-кредитование");
+        project.setParentid(1L);
+        project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);
+
+        project = new Project();
+        project.setId(7L);
+        project.setTitle("Мониторинг АС трайба CBP");
+        project.setSearchtitle(project.getTitle());
+        project.setDescription("Мониторинг АС трайба CBP");
+        project.setParentid(1L);
+        project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);
+
+        project = new Project();
+        project.setId(10L);
+        project.setTitle("Лояльность");
+        project.setSearchtitle(project.getTitle());
+        project.setDescription("Лояльность");
+        project.setParentid(5L);
+        project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);
+
+        project = new Project();
+        project.setId(11L);
+        project.setTitle("BNPL");
+        project.setSearchtitle(project.getTitle());
+        project.setDescription("BNPL");
+        project.setParentid(1L);
+        project.setPrStatus(PrStatus.ACTIVE);
+        MyApplication.getDatabase().projectDao().insert(project);
+
         /*project = new Project();
         project.setId(8L);
         project.setTitle("Маркетинговый оптимизатор");
