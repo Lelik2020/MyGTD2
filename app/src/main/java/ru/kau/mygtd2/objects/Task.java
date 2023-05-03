@@ -166,7 +166,7 @@ public class Task implements Serializable{  //Parcelable {
     private int status = 2;*/
 
     public TypeOfTask getTypeoftask() {
-        return typeoftask;
+        return (typeoftask == null) ? TypeOfTask.TASK : typeoftask;
     }
 
     public void setTypeoftask(TypeOfTask typeoftask) {
@@ -175,7 +175,8 @@ public class Task implements Serializable{  //Parcelable {
 
     @TypeConverters(Converters.class)
     //@JsonAdapter(TypeOfTaskConverter.class)
-    private TypeOfTask typeoftask = TypeOfTask.TASK;
+    //private TypeOfTask typeoftask = TypeOfTask.TASK;
+    private TypeOfTask typeoftask;
 
 
     @TypeConverters(Converters.class)

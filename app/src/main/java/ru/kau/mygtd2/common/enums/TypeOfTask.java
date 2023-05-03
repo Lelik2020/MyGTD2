@@ -8,7 +8,13 @@ public enum TypeOfTask {
     STORY(2),
     TASK(3),
     BUG(4),
-    QUESTION(5);
+    QUESTION(5),
+
+    NEWFEATURE(6),
+
+    IMPROVEMENT(7);
+
+
 
     public final int Value;
     TypeOfTask(int value)
@@ -32,6 +38,7 @@ public enum TypeOfTask {
     }
 
     public static int to(TypeOfTask typeOfTask){
+
         return _map2.get(typeOfTask);
     }
 

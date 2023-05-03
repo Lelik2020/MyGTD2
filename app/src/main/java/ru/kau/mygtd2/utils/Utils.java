@@ -177,6 +177,10 @@ public class Utils {
                 return (ImageView) ((Activity) c).findViewById(R.drawable.bug);
             case 5:
                 return (ImageView) ((Activity) c).findViewById(R.drawable.question);
+            case 6:
+                return (ImageView) ((Activity) c).findViewById(R.drawable.newfeature);
+            case 7:
+                return (ImageView) ((Activity) c).findViewById(R.drawable.improvement);
             default:
                 return (ImageView) ((Activity) c).findViewById(R.drawable.task);
         }
@@ -201,6 +205,10 @@ public class Utils {
                 return R.drawable.bug;
             case 5:
                 return R.drawable.question;
+            case 6:
+                return R.drawable.newfeature;
+            case 7:
+                return R.drawable.improvement;
             default:
                 return R.drawable.task;
         }
@@ -220,6 +228,10 @@ public class Utils {
                 return R.drawable.bug;
             case 5:
                 return R.drawable.question;
+            case 6:
+                return R.drawable.newfeature;
+            case 7:
+                return R.drawable.improvement;
             default:
                 return R.drawable.task;
         }

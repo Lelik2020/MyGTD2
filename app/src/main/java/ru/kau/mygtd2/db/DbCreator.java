@@ -423,6 +423,22 @@ public class DbCreator {
 
         MyApplication.getDatabase().taskTypesDao().insert(taskType);
 
+        taskType = new TaskTypes();
+        taskType.setId(6);
+        taskType.setTitle("Новая фича");
+        taskType.setVusualTitle("NEW FEATURE");
+        taskType.setColor("#FF2E8B57");
+
+        MyApplication.getDatabase().taskTypesDao().insert(taskType);
+
+        taskType = new TaskTypes();
+        taskType.setId(7);
+        taskType.setTitle("Улучшение");
+        taskType.setVusualTitle("IMPROVEMENT");
+        taskType.setColor("#FF008080");
+
+        MyApplication.getDatabase().taskTypesDao().insert(taskType);
+
         // ----------------------------------------------------------
 
 
