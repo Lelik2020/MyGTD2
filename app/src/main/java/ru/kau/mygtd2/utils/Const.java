@@ -393,11 +393,11 @@ public class Const {
             "    WHERE level > 0 ";*/
 
     static final public String HIERARCHY_TASKS = "WITH RECURSIVE tree(id, title, searchtitle, description, info_id, meeting_id, project_id, target_id, priority_id, parenttask_id, isFavourite, bgColor, previousStatus,\n" +
-            "        status, typeOfTask, dateCreate, dateBegin, dateEnd, dateClose, dateCreateStr, dateBeginStr, dateEndStr, dateCloseStr, guid, deviceguid, category, dateEdit, dateEditStr, parenttaskguid, level) AS (\n" +
+            "        status, typeoftask, dateCreate, dateBegin, dateEnd, dateClose, dateCreateStr, dateBeginStr, dateEndStr, dateCloseStr, guid, deviceguid, category, dateEdit, dateEditStr, parenttaskguid, level) AS (\n" +
             "        VALUES (0, '', '', '', 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, 0, '', '', 0)\n" +
             "        UNION ALL\n" +
             "        SELECT t2.id, t2.title, t2.searchtitle, t2.description, t2.info_id, t2.meeting_id, t2.project_id, t2.target_id, t2.priority_id, t2.parenttask_id, t2.isFavourite, t2.bgColor, t2.previousStatus, " +
-            "        t2.status, t2.typeOfTask, t2.dateCreate, t2.dateBegin, t2.dateEnd, t2.dateClose, t2.dateCreateStr, t2.dateBeginStr, t2.dateEndStr, t2.dateCloseStr, t2.guid, t2.deviceguid, " +
+            "        t2.status, t2.typeoftask, t2.dateCreate, t2.dateBegin, t2.dateEnd, t2.dateClose, t2.dateCreateStr, t2.dateBeginStr, t2.dateEndStr, t2.dateCloseStr, t2.guid, t2.deviceguid, " +
             "        t2.category, t2.dateEdit, t2.dateEditStr, t2.parenttaskguid, tree.level + 1 \n" +
             "        FROM tasks t2 \n" +
             //"                 JOIN tree ON t2.parenttask_id = tree.id\n" +
@@ -413,11 +413,11 @@ public class Const {
             "        where 1 = 1 ";*/
 
     static final public String HIERARCHY_TASKS2 = "WITH RECURSIVE tree(id, title, searchtitle, description, info_id, meeting_id, project_id, target_id, priority_id, parenttask_id, isFavourite, bgColor, previousStatus,\n" +
-            "        status, typeOfTask, dateCreate, dateBegin, dateEnd, dateClose, dateCreateStr, dateBeginStr, dateEndStr, dateCloseStr, guid, deviceguid, category, dateEdit, dateEditStr, parenttaskguid, level) AS (\n" +
+            "        status, typeoftask, dateCreate, dateBegin, dateEnd, dateClose, dateCreateStr, dateBeginStr, dateEndStr, dateCloseStr, guid, deviceguid, category, dateEdit, dateEditStr, parenttaskguid, level) AS (\n" +
             "        VALUES (0, '', '', '', 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, 0, '', '', 0)\n" +
             "        UNION ALL\n" +
             "        SELECT t2.id, t2.title, t2.searchtitle, t2.description, t2.info_id, t2.meeting_id, t2.project_id, t2.target_id, t2.priority_id, t2.parenttask_id, t2.isFavourite, t2.bgColor, t2.previousStatus, " +
-            "        t2.status, t2.typeOfTask, t2.dateCreate, t2.dateBegin, t2.dateEnd, t2.dateClose, t2.dateCreateStr, t2.dateBeginStr, t2.dateEndStr, t2.dateCloseStr, t2.guid, t2.deviceguid, " +
+            "        t2.status, t2.typeoftask, t2.dateCreate, t2.dateBegin, t2.dateEnd, t2.dateClose, t2.dateCreateStr, t2.dateBeginStr, t2.dateEndStr, t2.dateCloseStr, t2.guid, t2.deviceguid, " +
             "        t2.category, t2.dateEdit, t2.dateEditStr, t2.parenttaskguid, tree.level + 1 \n" +
             "        FROM tasks t2 \n" +
             //"                 JOIN tree ON t2.parenttask_id = tree.id\n" +

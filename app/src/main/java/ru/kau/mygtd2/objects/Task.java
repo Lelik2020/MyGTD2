@@ -175,8 +175,8 @@ public class Task implements Serializable{  //Parcelable {
 
     @TypeConverters(Converters.class)
     //@JsonAdapter(TypeOfTaskConverter.class)
-    //private TypeOfTask typeoftask = TypeOfTask.TASK;
-    private TypeOfTask typeoftask;
+    private TypeOfTask typeoftask = TypeOfTask.TASK;
+    //private TypeOfTask typeoftask;
 
 
     @TypeConverters(Converters.class)
