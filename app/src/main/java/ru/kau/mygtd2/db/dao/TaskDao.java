@@ -40,7 +40,7 @@ public interface TaskDao {
             + HIERARCHY_TASKS2 + ") "
 
             + "WHERE title LIKE :txt OR searchtitle LIKE UPPER(:txt) "
-            + ""
+            + "OR (cast(id as text) LIKE :txt) "
             + "ORDER BY id"
     )
     List<Task> getAllTasksOrderById(String txt);

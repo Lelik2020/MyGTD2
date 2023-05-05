@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10000 * db + 3
+        codeNumber = 10000 * db + 4
 
         major = "00"
-        minor = "03"
+        minor = "04"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -223,7 +223,7 @@ dependencies {
     //implementation 'com.android.support:design:28.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
 
     implementation "androidx.room:room-runtime:$room_version2"
 
