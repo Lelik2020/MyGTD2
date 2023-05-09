@@ -1034,7 +1034,8 @@ public class DbCreator {
         String deviceId = deviceUuid.toString();
         device.setId(1);
         device.setTitle(android.os.Build.MODEL);
-        device.setGuid(deviceId);
+        //device.setGuid(deviceId);
+        device.setGuid("00000000-0465-3ec4-0465-3ec400000000");
         device.setIscurrent(1);
         MyApplication.getDatabase().deviceDao().insert(device);
 

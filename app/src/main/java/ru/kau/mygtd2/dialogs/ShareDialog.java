@@ -75,8 +75,8 @@ public class ShareDialog {
 
     static AlertDialog infoDialog;
 
-    public static final String EXPORT_BACKUP_ZIP = "-export-backup.zip";
-
+    //public static final String EXPORT_BACKUP_ZIP = "-export-backup.zip";
+    public static final String EXPORT_BACKUP_ZIP = ".zip";
 
     public static void show(final Activity a, final Runnable onDeleteAction, final Information information) {
         List<String> items = new ArrayList<String>();
@@ -898,7 +898,9 @@ public class ShareDialog {
     }
 
     public static void importDialog(final FragmentActivity activity) {
-        String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
+        //String sampleName = ExportSettingsManager.getSampleJsonConfigName(activity, EXPORT_BACKUP_ZIP);
+        String sampleName = "";
+        //ChooserDialogFragment.chooseFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
         ChooserDialogFragment.chooseFile(activity, sampleName).setOnSelectListener(new ResultResponse2<String, Dialog>() {
             @Override
             public boolean onResultRecive(String result1, Dialog result2) {

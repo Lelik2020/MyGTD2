@@ -50,4 +50,10 @@ public interface DeviceDao {
     @Delete
     void delete(Device device);
 
+    @Query("DELETE FROM devices")
+    int deleteAll();
+
+    @Query("DELETE FROM devices WHERE iscurrent = 1")
+    int deleteCorrentDevices();
+
 }

@@ -132,6 +132,7 @@ public class SearchCore {
             listFiles = file.listFiles();
         } else {
             listFiles = file.listFiles(SUPPORTED_EXT_AND_DIRS_FILTER);
+            //listFiles = file.listFiles();
         }
 
         if (listFiles == null || listFiles.length == 0) {

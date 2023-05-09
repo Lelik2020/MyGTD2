@@ -128,6 +128,13 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             }
         });
 
+        holder.tag_edit_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+            }
+        });
+
 
     }
 
@@ -145,6 +152,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         RoundTextView roundTextView4;
         ImageView tagImage;
 
+        ImageView tag_edit_icon;
+
         LinearLayoutCompat lnlmain;
 
 
@@ -159,6 +168,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             roundTextView3 = (RoundTextView) itemView.findViewById(R.id.tagcount3);
             roundTextView4 = (RoundTextView) itemView.findViewById(R.id.tagcount4);
             lnlmain = itemView.findViewById(R.id.lltitle);
+            tag_edit_icon = itemView.findViewById(R.id.tag_edit_icon);
 
         }
     }
