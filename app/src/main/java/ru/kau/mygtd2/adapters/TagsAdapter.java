@@ -138,6 +138,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
                     }
                 }, tag);
+                notifyItemChanged(position);
+                //notifyAll();
             }
         });
 

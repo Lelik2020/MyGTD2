@@ -491,13 +491,13 @@ public class Dialogs {
 
         //RelativeLayout view1 = new RelativeLayout(a);
 
-        EditText edit = (EditText) inflate.findViewById(R.id.editTagName);
+        //EditText edit = (EditText) inflate.findViewById(R.id.editTagName);
         TextInputEditText editTagName2 = inflate.findViewById(R.id.editTagName2);
 
         iv = (ImageView) inflate.findViewById(R.id.choiseColor);
 
         if (tag != null){
-            edit.setText(tag.getTitle());
+            //edit.setText(tag.getTitle());
             editTagName2.setText(tag.getTitle());
             iv.setColorFilter(Color.parseColor(tag.getColor()));
             builder.setTitle(R.string.edit_tag);
