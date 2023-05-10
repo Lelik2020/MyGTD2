@@ -24,6 +24,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.multilevel.treelist.Node;
 import com.multilevel.treelist.TreeListViewAdapter;
 import com.skydoves.colorpickerview.ColorEnvelope;
@@ -483,7 +484,7 @@ public class Dialogs {
 
     public static void addTagsDialog(final Context a, final Runnable onRefresh, Tag tag) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
-        builder.setTitle(R.string.add_tag);
+
 
 
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_add_tag, null, false);
@@ -491,8 +492,18 @@ public class Dialogs {
         //RelativeLayout view1 = new RelativeLayout(a);
 
         EditText edit = (EditText) inflate.findViewById(R.id.editTagName);
+        TextInputEditText editTagName2 = inflate.findViewById(R.id.editTagName2);
 
         iv = (ImageView) inflate.findViewById(R.id.choiseColor);
+
+        if (tag != null){
+            edit.setText(tag.getTitle());
+            editTagName2.setText(tag.getTitle());
+            iv.setColorFilter(Color.parseColor(tag.getColor()));
+            builder.setTitle(R.string.edit_tag);
+        } else {
+            builder.setTitle(R.string.add_tag);
+        }
 
         builder.setView(inflate);
 
@@ -531,7 +542,10 @@ public class Dialogs {
 
                 //notifyDataSetChanged();
                 //notifyItemChanged(i);
-
+                /*if (tag != null){
+                    tag.setTitle(edit.getText().toString());
+                    tag.setColor(iv.getSolidColor());
+                }*/
 
 
 
@@ -557,14 +571,18 @@ public class Dialogs {
 
                 if (tag == null){
                     Tag tag1 = new Tag();
-                    tag1.setTitle(edit.getText().toString());
+                    //tag1.setTitle(edit.getText().toString());
+                    tag1.setTitle(editTagName2.getText().toString());
                     tag1.setColor("#" + colorChoice);
-                    tag1.setDescription(edit.getText().toString());
+                    //tag1.setDescription(edit.getText().toString());
+                    tag1.setDescription(editTagName2.getText().toString());
                     MyApplication.getDatabase().tagDao().insert(tag1);
                 } else {
-                    tag.setTitle(edit.getText().toString());
+                    //tag.setTitle(edit.getText().toString());
+                    tag.setTitle(editTagName2.getText().toString());
                     tag.setColor("#" + colorChoice);
-                    tag.setDescription(edit.getText().toString());
+                    //tag.setDescription(edit.getText().toString());
+                    tag.setDescription(editTagName2.getText().toString());
                     MyApplication.getDatabase().tagDao().update(tag);
                 }
 

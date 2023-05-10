@@ -28,6 +28,7 @@ import ru.kau.mygtd2.fragments.TasksFragment;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.utils.Utils;
 
+import static ru.kau.mygtd2.dialogs.Dialogs.addTagsDialog;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
 import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
@@ -131,7 +132,12 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         holder.tag_edit_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                addTagsDialog(c, new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }, tag);
             }
         });
 
