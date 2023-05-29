@@ -5,6 +5,10 @@ public enum TypeSetting {
     IPSERVERBACKUP,
     IPSERVERSYNC,
 
-    TYPEDEVICE
+    TYPEDEVICE,
+
+    CURRENTDATE,
+
+    USECURRENTSYSTEMDATE
 
 }

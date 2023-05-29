@@ -22,6 +22,8 @@ public class Tag implements Serializable {
     private String description;
     private String color;
 
+    private int isarchive;
+
     public String getColor() {
         return color;
     }
@@ -55,4 +57,11 @@ public class Tag implements Serializable {
         this.title = title;
     }
 
+    public int getIsarchive() {
+        return isarchive;
+    }
+
+    public void setIsarchive(int isarchive) {
+        this.isarchive = isarchive;
+    }
 }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <color name="colorPrimaryLight">#7d93cd</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -37,6 +41,8 @@
     <color name="black_1">#333333</color>
 
     <color name="active_meeting">#33FF99</color>
+
+    <color name="gray_light">#888888</color>
 
     <color name="past_meeting">#999999</color>
 
@@ -108,5 +114,6 @@
     <color name="purple">#673AB7</color>
     <color name="purpleAlpha15">#26673AB7</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#673AB7</color>
+
 
 </resources>

@@ -688,5 +688,19 @@
         <item name="colorAccent">@android:color/holo_blue_light</item>
     </style>
 
+    <style name="MySwitchMaterial" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="colorOnSurface">@color/gray</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="thumbTint">@color/custom_thumb_selector</item>
+        <item name="trackTint">@color/custom_thumb_selector</item>
+    </style>
+
+    <style name="MySwitchMaterial2" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/custom_thumb_selector</item>
+        <item name="trackTint">@color/custom_thumb_selector2</item>
+
+    </style>
+
 
 </resources>

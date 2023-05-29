@@ -67,6 +67,15 @@ public class Utils {
         return dateToString(null, date);
     }
 
+    public static long getCurrentApplicationDate(){
+        long ret = 0;
+
+        // Пока делаю заглушку, возвращающую текущую дату и текущее время
+        ret = new Date().getTime();
+
+        return ret;
+    }
+
 
     public static String dateToString(SimpleDateFormat format, Date date) {
         if (format == null || format.equals("")) {

@@ -221,21 +221,24 @@ public class AddTaskFragment extends Fragment
         dbtodotoday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDateBegin(Utils.dateToString(Utils.getStartOfDay(new Date())), Utils.getStartOfDay(new Date()).getTime());
+                //getDateBegin(Utils.dateToString(Utils.getStartOfDay(new Date())), Utils.getStartOfDay(new Date()).getTime());
+                getDateBegin(Utils.dateToString(Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate()))), Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime());
             }
         });
 
         detodotoday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDateEnd(Utils.dateToString(Utils.getEndOfDay(new Date(), 0)), Utils.getEndOfDay(new Date(), 0).getTime());
+                //getDateEnd(Utils.dateToString(Utils.getEndOfDay(new Date(), 0)), Utils.getEndOfDay(new Date(), 0).getTime());
+                getDateEnd(Utils.dateToString(Utils.getEndOfDay(new Date(Utils.getCurrentApplicationDate()), 0)), Utils.getEndOfDay(new Date(Utils.getCurrentApplicationDate()), 0).getTime());
             }
         });
 
         dbtodotomorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date dt = new Date();
+                //Date dt = new Date();
+                Date dt = new Date(Utils.getCurrentApplicationDate());
                 Calendar c = Calendar.getInstance();
                 c.setTime(dt);
                 c.add(Calendar.DATE, 1);
@@ -247,7 +250,8 @@ public class AddTaskFragment extends Fragment
         detodotomorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date dt = new Date();
+                //Date dt = new Date();
+                Date dt = new Date(Utils.getCurrentApplicationDate());
                 Calendar c = Calendar.getInstance();
                 c.setTime(dt);
                 c.add(Calendar.DATE, 1);
@@ -808,7 +812,8 @@ public class AddTaskFragment extends Fragment
                     taskUpdate.setGuid(guid);
                     taskUpdate.setDeviceguid(deviceID);
                     taskUpdate.setCategory(taskCategoryId);
-                    Date date = new Date();
+                    //Date date = new Date();
+                    Date date = new Date(Utils.getCurrentApplicationDate());
                     taskUpdate.setDateEdit(date);
                     taskUpdate.setDateEditStr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHSECONDS, date));
                     TaskDaoAbs.updateTask(taskUpdate, lsttags, lstConteksts);
@@ -834,7 +839,8 @@ public class AddTaskFragment extends Fragment
                     task.setDateEnd(dateEnd);
                     task.setDateEndStr(dateEndTitle.getText().toString());
                     task.setTarget_id(targetId);
-                    task.setDateCreate(new Date());
+                    //task.setDateCreate(new Date());
+                    task.setDateCreate(new Date(Utils.getCurrentApplicationDate()));
                     task.setDateCreateStr(Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), task.getDateCreate()));
                     task.setDateBegin(dateBegin);
                     task.setDateBeginStr(dateBeginTitle.getText().toString());
@@ -845,7 +851,8 @@ public class AddTaskFragment extends Fragment
                     task.setGuid(guid);
                     task.setCategory(taskCategoryId);
 
-                    Date date = new Date();
+                    //Date date = new Date();
+                    Date date = new Date(Utils.getCurrentApplicationDate());
                     task.setDateEdit(date);
                     task.setDateEditStr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHSECONDS, date));
                     //task.setBgColor(iv.getSolidColor().);

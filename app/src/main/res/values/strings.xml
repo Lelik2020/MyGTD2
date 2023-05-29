@@ -44,6 +44,7 @@
     <string name="date_done">Дата исполнения:</string>
     <string name="datedone">Сделать до:</string>
     <string name="taskdetail">Детальное описание:</string>
+    <string name="currdate">Текущая дата: </string>
     <string name="status">Статус:</string>
     <string name="dateCreate">Дата создания:</string>
     <string name="type">Тип:</string>
@@ -262,6 +263,9 @@
     <string name="confirm">select</string>
 
     <string name="choiceColor">Выбрать цвет: </string>
+    <string name="isarchivetag">Тэг в архиве</string>
+    <string name="isnotclosetasks">Тэг в архиве</string>
+    <string name="showarchivetag">Показывать архивные тэги</string>
 
     <string name="more">Подробнее</string>
     <string name="fullread">Читать полностью</string>

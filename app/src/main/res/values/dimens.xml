@@ -52,6 +52,7 @@
     <dimen name="rtvradius2">7dp</dimen>
     <dimen name="rtvpagging">7dp</dimen>
     <dimen name="iconsize">30dp</dimen>
+    <dimen name="iconsize2">27dp</dimen>
     <dimen name="iconmargin">3dp</dimen>
 
     <dimen name="fastscroll_bubble_radius">44dp</dimen>

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b40da1eee4fa94fc001f0d0b5c1381fe",
+    "identityHash": "2c6feb0cafa4a30fff0e47d2252ad7ad",
     "entities": [
       {
         "tableName": "tasks",
@@ -519,7 +519,7 @@
       },
       {
         "tableName": "tags",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT, `color` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT, `color` TEXT, `isarchive` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -544,6 +544,12 @@
             "columnName": "color",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "isarchive",
+            "columnName": "isarchive",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -1537,7 +1543,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b40da1eee4fa94fc001f0d0b5c1381fe')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2c6feb0cafa4a30fff0e47d2252ad7ad')"
     ]
   }
 }

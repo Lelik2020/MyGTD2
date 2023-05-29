@@ -1,5 +1,14 @@
 package ru.kau.mygtd2.adapters;
 
+import static ru.kau.mygtd2.dialogs.Dialogs.addTagsDialog;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
+import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
+import static ru.kau.mygtd2.utils.Const.lstStatus;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -16,7 +25,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,14 +35,6 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.fragments.TasksFragment;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.utils.Utils;
-
-import static ru.kau.mygtd2.dialogs.Dialogs.addTagsDialog;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
-import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
-import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
-import static ru.kau.mygtd2.utils.Const.lstStatus;
 
 public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
@@ -66,7 +66,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         final Tag tag = getItem(position);
         holder.title.setText(tag.getTitle());
         //holder.title.setTextColor(Color.parseColor(tag.getColor()));
-        holder.tagImage.setColorFilter(Color.parseColor(tag.getColor()));
+        holder.tagImage.setColorFilter(Utils.parseColor(tag.getColor(), DEFAULT_TAG_COLOR));
         //holder.tagImage.set
 
         long count = 0L;

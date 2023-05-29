@@ -890,7 +890,7 @@ public class TasksFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        inflater.inflate(R.menu.toolbar_menu3, menu);
+        inflater.inflate(R.menu.toolbar_menu4, menu);
 
 
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);

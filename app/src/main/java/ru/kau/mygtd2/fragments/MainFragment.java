@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.fragments;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +16,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Date;
+
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.MainAdapter;
@@ -22,6 +28,7 @@ import ru.kau.mygtd2.adapters.MainAdapter3;
 import ru.kau.mygtd2.adapters.MainAdapter4;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
+import ru.kau.mygtd2.utils.Utils;
 
 // https://caster.io/lessons/adding-a-new-fragment-with-a-recyclerview
 
@@ -35,6 +42,8 @@ public class MainFragment extends Fragment implements ClickListener {
     private MainAdapter2 mainAdapter2;
     private MainAdapter3 mainAdapter3;
     private MainAdapter4 mainAdapter4;
+
+    private TextInputEditText txtcurrdate;
     //private Toolbar toolbar;
 
 
@@ -45,6 +54,10 @@ public class MainFragment extends Fragment implements ClickListener {
         View rootView = inflater.inflate(R.layout.main_fragment, null);
 
         //LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
+
+        txtcurrdate = rootView.findViewById(R.id.txtcurrdate);
+
+        txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
 

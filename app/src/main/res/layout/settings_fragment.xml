@@ -125,4 +125,49 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:text="Текущя дата"
+        android:background="@color/tint_gray"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+
+        <EditText
+            android:id="@+id/txteditcurrentdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="___"
+
+            android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/cbusesystemdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/toggle"
+            android:layout_weight="1"
+
+            android:singleLine="true"
+            android:layout_below="@+id/txteditcurrentdate"
+            android:text="Использовать текущую дату"
+            style="@style/textSection2"
+            android:theme="@style/MyCheckBox"/>
+
+    </RelativeLayout>
+
 </LinearLayout>

@@ -5,7 +5,6 @@ import static ru.kau.mygtd2.utils.Const.TASK_LEVEL_OFFSET2;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,25 +114,27 @@ public class TasksAdapter4 extends RecyclerView.Adapter<TasksAdapter4.ViewHolder
         card.setLayoutParams(lParamscv);*/
 
         lParamsiv = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
-        lParamscb = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH3, Const.DEFAULT_LAYOUT_HEIGHT3);
+        //lParamscb = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH3, Const.DEFAULT_LAYOUT_HEIGHT3);
+        lParamscb = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH4, Const.DEFAULT_ICON_HEIGHT4);
         viewHolder.title.setText(lstTask.get(i).getTypeoftask().name() + "-" + lstTask.get(i).getId());
         TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
         viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask()));
-        viewHolder.typeTask.setLayoutParams(lParamsiv);
+        //viewHolder.typeTask.setLayoutParams(lParamsiv);
 
         //Drawable d = viewHolder.checkBoxTask.getCompoundDrawables()[0];
         Drawable d = ContextCompat.getDrawable(c, R.drawable.toggle);
         d.setBounds(0, 0, Const.DEFAULT_CB_WIDTH, Const.DEFAULT_CB_HEIGHT2);
         viewHolder.checkBoxTask.setCompoundDrawables(d, null, null, null);
+        //viewHolder.checkBoxTask.setLayoutParams(lParamscb);
 
         //viewHolder.checkBoxTask.setLayoutParams(lParamsiv);
         viewHolder.title.setTextColor(Color.parseColor(taskTypes.getColor()));
         viewHolder.title2.setText(lstTask.get(i).getTitle());
         TxtUtils.underlineTextView(viewHolder.title);
-        ViewGroup.LayoutParams lp = new LinearLayoutCompat.LayoutParams(25, 25);
+        //ViewGroup.LayoutParams lp = new LinearLayoutCompat.LayoutParams(25, 25);
         //lp.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        viewHolder.title.setGravity(Gravity.CENTER_VERTICAL);
-        viewHolder.title2.setGravity(Gravity.CENTER_VERTICAL);
+        //viewHolder.title.setGravity(Gravity.CENTER_VERTICAL);
+        //viewHolder.title2.setGravity(Gravity.CENTER_VERTICAL);
 
         viewHolder.checkBoxTask.setChecked(i == checkedPosition);
 

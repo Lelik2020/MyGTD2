@@ -37,6 +37,10 @@ import ru.kau.mygtd2.utils.Utils;
 
 public class DbCreator {
 
+    public static void first_Init(){
+        firstInit();
+    }
+
     public static void firstInit(){
 
 
@@ -427,7 +431,7 @@ public class DbCreator {
         taskType.setId(6);
         taskType.setTitle("Новая фича");
         taskType.setVusualTitle("NEW FEATURE");
-        taskType.setColor("#FF2E8B57");
+        taskType.setColor("#7e7ef4");
 
         MyApplication.getDatabase().taskTypesDao().insert(taskType);
 
@@ -435,7 +439,7 @@ public class DbCreator {
         taskType.setId(7);
         taskType.setTitle("Улучшение");
         taskType.setVusualTitle("IMPROVEMENT");
-        taskType.setColor("#FF008080");
+        taskType.setColor("#40dfff");
 
         MyApplication.getDatabase().taskTypesDao().insert(taskType);
 

@@ -80,17 +80,26 @@ import ru.kau.mygtd2.utils.Converters;
                         , TaskTemplateTagJoin.class
                         },
                         //version = 1,
-                        version = 1,
-                        //autoMigrations = {
-                                //@AutoMigration(from = 1, to = 2),
+                        version = 2,
+                        autoMigrations = {
+                                @AutoMigration(from = 1, to = 2)
                                 //@AutoMigration(from = 2, to = 3)
                                 //@AutoMigration(from = 3, to = 4)
-                        //},
+                        },
                         //exportSchema = false
                         exportSchema = true
                         )
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
+
+    public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(final SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE tags ADD COLUMN isarchive INTEGER NOT NULL DEFAULT 0");
+            //database.execSQL("ALTER TABLE tasks ADD COLUMN deviceguid TEXT NOT NULL DEFAULT ''");
+            //DbCreator.tasksUpdate();
+        }
+    };
 
     public static final Migration MIGRATION_2_3n = new Migration(2, 3) {
         @Override
@@ -605,7 +614,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
-    public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    public static final Migration MIGRATION_1_2old = new Migration(1, 2) {
         @Override
         public void migrate(final SupportSQLiteDatabase database) {
             String SQL1 = "CREATE TABLE [devices](\n" +

@@ -25,11 +25,50 @@ public class Settings {
             case TYPEDEVICE:
                 ret = settings.getString("typedevice", "Не установлен");
                 break;
+            /*case CURRENTDATE:
+                ret = Utils.dateToString(DEFAULT_DATEFORMAT, new Date(settings.getLong("currentdate", (new Date()).getTime())));
+                break;
+            case USECURRENTSYSTEMDATE:
+                ret = settings.getBoolean("usecurrentsystemdate", true) ? "TRUE" : "FALSE";
+                break;*/
         }
 
 
         return ret;
     }
+
+    public static Long getLongSetting(TypeSetting type){
+        Long ret = null;
+
+        switch (type){
+
+            case CURRENTDATE:
+                //ret = settings.getLong("currentdate", (new Date()).getTime());
+                ret = settings.getLong("currentdate", 0);
+                break;
+
+        }
+
+
+        return ret;
+    }
+
+    public static Boolean getBooleanSetting(TypeSetting type){
+        Boolean ret = null;
+
+        switch (type){
+
+            case USECURRENTSYSTEMDATE:
+                //ret = settings.getLong("currentdate", (new Date()).getTime());
+                ret = settings.getBoolean("usecurrentsystemdate", true);
+                break;
+
+        }
+
+
+        return ret;
+    }
+
 
     public static void setStringSettings(TypeSetting type, String value){
         prefEditor = settings.edit();
@@ -44,9 +83,35 @@ public class Settings {
             case TYPEDEVICE:
                 prefEditor.putString("typedevice", value);
                 break;
+
+
         }
         prefEditor.apply();
 
+
+    }
+
+    public static void setLongSettings(TypeSetting type, Long value){
+        prefEditor = settings.edit();
+
+        switch (type){
+            case CURRENTDATE:
+                prefEditor.putLong("currentdate", value);
+                break;
+        }
+        prefEditor.apply();
+    }
+
+    public static void setBooleanSettings(TypeSetting type, Boolean value){
+
+        prefEditor = settings.edit();
+
+        switch (type) {
+            case USECURRENTSYSTEMDATE:
+                prefEditor.putBoolean("usecurrentsystemdate", value);
+                break;
+        }
+        prefEditor.apply();
 
     }
 

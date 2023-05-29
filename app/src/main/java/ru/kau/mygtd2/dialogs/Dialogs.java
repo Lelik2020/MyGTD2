@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.dialogs;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -24,6 +26,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.multilevel.treelist.Node;
 import com.multilevel.treelist.TreeListViewAdapter;
@@ -131,7 +134,17 @@ public class Dialogs {
 
     static ListView list;
 
+    static List<Tag> tags;
+
+    static Set<Integer> checked;
+
+    static Iterator<Tag> iterator;
+
     static ImageView iv;
+
+    static SwitchMaterial cbIsArchive;
+
+    static SwitchMaterial cbWhowArchive;
 
     //private ProjectListAdapter adapter;
 
@@ -495,11 +508,14 @@ public class Dialogs {
         TextInputEditText editTagName2 = inflate.findViewById(R.id.editTagName2);
 
         iv = (ImageView) inflate.findViewById(R.id.choiseColor);
+        cbIsArchive = inflate.findViewById(R.id.cbIsArchive);
+
 
         if (tag != null){
             //edit.setText(tag.getTitle());
             editTagName2.setText(tag.getTitle());
-            iv.setColorFilter(Color.parseColor(tag.getColor()));
+            iv.setColorFilter(Utils.parseColor(tag.getColor(), DEFAULT_TAG_COLOR));
+            cbIsArchive.setChecked(tag.getIsarchive() == 0 ? false : true);
             builder.setTitle(R.string.edit_tag);
         } else {
             builder.setTitle(R.string.add_tag);
@@ -576,6 +592,7 @@ public class Dialogs {
                     tag1.setColor("#" + colorChoice);
                     //tag1.setDescription(edit.getText().toString());
                     tag1.setDescription(editTagName2.getText().toString());
+                    tag1.setIsarchive(cbIsArchive.isChecked() ? 1 : 0);
                     MyApplication.getDatabase().tagDao().insert(tag1);
                 } else {
                     //tag.setTitle(edit.getText().toString());
@@ -583,6 +600,7 @@ public class Dialogs {
                     tag.setColor("#" + colorChoice);
                     //tag.setDescription(edit.getText().toString());
                     tag.setDescription(editTagName2.getText().toString());
+                    tag.setIsarchive(cbIsArchive.isChecked() ? 1 : 0);
                     MyApplication.getDatabase().tagDao().update(tag);
                 }
 
@@ -810,16 +828,18 @@ public class Dialogs {
 
         list = (ListView) inflate.findViewById(R.id.listView1);
 
-        final List<Tag> tags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
+        cbWhowArchive = inflate.findViewById(R.id.cbWhowArchive);
 
-        Iterator<Tag> iterator = tags.iterator();
+        tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle() : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle();
+
+        iterator = tags.iterator();
         while (iterator.hasNext()) {
             if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
                 iterator.remove();
             }
         }
 
-        final Set<Integer> checked = new HashSet<>();
+        checked = new HashSet<>();
 
         final BaseItemLayoutAdapter<Tag> adapter = new BaseItemLayoutAdapter<Tag>(a, R.layout.tag_item, tags) {
 
@@ -829,12 +849,14 @@ public class Dialogs {
 
                 ImageView iv = (ImageView) layout.findViewById(R.id.iconTag);
                 CheckBox text = (CheckBox) layout.findViewById(R.id.tagName);
+
                 text.setText(tagName.getTitle());
                 try {
                     iv.setColorFilter(Color.parseColor(tagName.getColor()));
                 } catch (Exception e) {
                     iv.setColorFilter(R.color.black);
                 }
+                text.setBackgroundColor(tagName.getIsarchive() == 1 ? Color.parseColor("#808080") : Color.parseColor("#FFFFFF"));
                 text.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
@@ -890,6 +912,28 @@ public class Dialogs {
 
             }
         };
+
+        cbWhowArchive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
+
+                } else {
+                    tags = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle();
+
+                }
+                checked = new HashSet<>();
+                iterator = tags.iterator();
+                while (iterator.hasNext()) {
+                    if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
+                        iterator.remove();
+                    }
+                }
+                adapter.setItems(tags);
+                list.setAdapter(adapter);
+
+            }
+        });
 
         /*addtag.setOnClickListener(new View.OnClickListener() {
 
@@ -2381,9 +2425,18 @@ public class Dialogs {
                         callback7.getDateBegin(dayOfMonth + "." + (monthOfYear + 1) + "." + year,
                                 Utils.getDateOfParam(dayOfMonth, monthOfYear, year, 0, 0, 0));
                     }
+
+
+
                 }, mYear, mMonth, mDay);
         datePickerDialog.setButton(DatePickerDialog.BUTTON_POSITIVE, a.getString(R.string.apply), datePickerDialog);
-        datePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, a.getString(R.string.close), datePickerDialog);
+        datePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, a.getString(R.string.close), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                callback7.getDateBegin("", 0L);
+            }
+        });
+
         datePickerDialog.show();
     }
 

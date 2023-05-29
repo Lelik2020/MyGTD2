@@ -3,7 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:style="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal" >
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/cbWhowArchive"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="false"
+            style="@style/MySwitchMaterial2"
+            android:textStyle="bold"
+            android:text="@string/showarchivetag" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <View
         android:id="@+id/divider2"

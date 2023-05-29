@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "8941c61f2d99a8d776b80b0512deddf1",
+    "identityHash": "2c6feb0cafa4a30fff0e47d2252ad7ad",
     "entities": [
       {
         "tableName": "tasks",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `searchtitle` TEXT, `description` TEXT, `info_id` INTEGER NOT NULL, `meeting_id` INTEGER NOT NULL, `project_id` INTEGER NOT NULL, `target_id` INTEGER NOT NULL, `priority_id` INTEGER NOT NULL, `parenttask_id` INTEGER NOT NULL, `isFavourite` INTEGER NOT NULL, `bgColor` TEXT, `previousStatus` INTEGER, `status` INTEGER, `typeOfTask` INTEGER, `dateCreate` INTEGER, `dateBegin` INTEGER, `dateEnd` INTEGER, `dateClose` INTEGER, `dateEdit` INTEGER, `dateCreateStr` TEXT, `dateBeginStr` TEXT, `dateEndStr` TEXT, `dateCloseStr` TEXT, `dateEditStr` TEXT, `guid` TEXT NOT NULL, `deviceguid` TEXT NOT NULL, `category` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `searchtitle` TEXT, `description` TEXT, `info_id` INTEGER NOT NULL, `meeting_id` INTEGER NOT NULL, `project_id` INTEGER NOT NULL, `target_id` INTEGER NOT NULL, `priority_id` INTEGER NOT NULL, `parenttask_id` INTEGER NOT NULL, `isFavourite` INTEGER NOT NULL, `bgColor` TEXT, `previousStatus` INTEGER, `status` INTEGER, `typeoftask` INTEGER, `dateCreate` INTEGER, `dateBegin` INTEGER, `dateEnd` INTEGER, `dateClose` INTEGER, `dateEdit` INTEGER, `dateCreateStr` TEXT, `dateBeginStr` TEXT, `dateEndStr` TEXT, `dateCloseStr` TEXT, `dateEditStr` TEXT, `parenttaskguid` TEXT, `guid` TEXT NOT NULL, `deviceguid` TEXT NOT NULL, `category` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -93,8 +93,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "typeOfTask",
-            "columnName": "typeOfTask",
+            "fieldPath": "typeoftask",
+            "columnName": "typeoftask",
             "affinity": "INTEGER",
             "notNull": false
           },
@@ -159,6 +159,12 @@
             "notNull": false
           },
           {
+            "fieldPath": "parenttaskguid",
+            "columnName": "parenttaskguid",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "guid",
             "columnName": "guid",
             "affinity": "TEXT",
@@ -178,10 +184,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "guid"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -262,10 +268,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "guid"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -340,10 +346,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -397,10 +403,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -445,10 +451,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -493,10 +499,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -513,7 +519,7 @@
       },
       {
         "tableName": "tags",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT, `color` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT, `color` TEXT, `isarchive` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -538,13 +544,19 @@
             "columnName": "color",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "isarchive",
+            "columnName": "isarchive",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -589,10 +601,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -631,11 +643,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "taskguid",
             "idcontext"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -698,11 +710,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "infoguid",
             "idproject"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -773,11 +785,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "taskguid",
             "idtag"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -846,10 +858,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -906,10 +918,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -974,10 +986,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -1012,10 +1024,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1060,10 +1072,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1108,10 +1120,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1156,10 +1168,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1176,7 +1188,7 @@
       },
       {
         "tableName": "devices",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `guid` TEXT NOT NULL, `iscurrent` INTEGER NOT NULL, `devicetype` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `guid` TEXT NOT NULL, `iscurrent` INTEGER NOT NULL, `devicetype` INTEGER NOT NULL, PRIMARY KEY(`guid`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -1210,10 +1222,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
-            "id"
-          ],
-          "autoGenerate": false
+            "guid"
+          ]
         },
         "indices": [
           {
@@ -1252,11 +1264,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "deviceid",
             "key"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -1291,10 +1303,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -1387,10 +1399,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "templateguid"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -1423,11 +1435,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "tasktemplateguid",
             "idcontext"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -1484,11 +1496,11 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "tasktemplateguid",
             "idtag"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -1531,7 +1543,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8941c61f2d99a8d776b80b0512deddf1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2c6feb0cafa4a30fff0e47d2252ad7ad')"
     ]
   }
 }

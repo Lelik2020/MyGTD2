@@ -38,6 +38,10 @@ public class Const {
     static final public int DEFAULT_ICON_HEIGHT = LinearLayoutCompat.LayoutParams.FILL_PARENT; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
     static final public int DEFAULT_ICON_HEIGHT2 = 45;
 
+    static final public int DEFAULT_ICON_WIDTH4 = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.iconsize2); //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
+    static final public int DEFAULT_ICON_HEIGHT4 = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.iconsize2); //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
+    //static final public int DEFAULT_ICON_HEIGHT3 = 45;
+
     static final public int DEFAULT_ICON_MARGIN = MyApplication.getContext().getResources().getDimensionPixelSize(R.dimen.iconmargin);
 
     static final public int DEFAULT_CB_WIDTH = 25;; //ViewGroup.LayoutParams.WRAP_CONTENT;//50;
@@ -67,6 +71,8 @@ public class Const {
     static final public String DEFAULT_TEXT_COLOR = "#000000";
     static final public String DEFAULT_INVERTTEXT_COLOR = "#FFFFFFFF";
     static final public String DEFAULT_CONTEXT_COLOR = "#000000";
+
+    static final public String DEFAULT_TAG_COLOR = "#000000";
 
     static final public int DEFAULT_EXPANDED_ICON = R.drawable.press_down;
     static final public int DEFAULT_COLLAPSE_ICON = R.drawable.not_press;
