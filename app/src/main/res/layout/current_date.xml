@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/taskdetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -26,11 +26,15 @@
             android:id="@+id/outlinedTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
 
-            android:hint="@string/searchline"
+            app:boxStrokeColor="@color/colorPrimary"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:theme="@style/EditTextThemeOverlay"
+            android:hint="@string/currdate"
 
             >
 
@@ -38,11 +42,7 @@
                 android:id="@+id/txtcurrdate"
 
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-
-                android:textColorHighlight="@color/textColorHighlight"
-
+                android:layout_height="100dp"
 
                 />
 
