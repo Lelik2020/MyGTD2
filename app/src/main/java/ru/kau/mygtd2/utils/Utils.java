@@ -2,6 +2,7 @@ package ru.kau.mygtd2.utils;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 import static ru.kau.mygtd2.common.MyApplication.getContext;
+import static ru.kau.mygtd2.enums.TypeSetting.CURRENTDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
@@ -67,11 +68,28 @@ public class Utils {
         return dateToString(null, date);
     }
 
+    // Метод будет вызываться при сохранении задач и пр. для определения  реальной текущей даты и времени
+    public static long getCurrentApplicationDateAndTime(){
+        long ret = 0;
+
+        // Пока делаю заглушку, возвращающую текущую дату и текущее время
+        //ret = new Date().getTime();
+
+        // Определяем реальное текущее время
+        long curtime = new Date().getTime() - getStartOfDay(new Date()).getTime();
+
+        ret = ru.kau.mygtd2.utils.Settings.getLongSetting(CURRENTDATE) + curtime;
+
+        return ret;
+    }
+
     public static long getCurrentApplicationDate(){
         long ret = 0;
 
         // Пока делаю заглушку, возвращающую текущую дату и текущее время
-        ret = new Date().getTime();
+        //ret = new Date().getTime();
+
+        ret = ru.kau.mygtd2.utils.Settings.getLongSetting(CURRENTDATE);
 
         return ret;
     }
