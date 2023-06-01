@@ -3,6 +3,7 @@ package ru.kau.mygtd2.utils;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static ru.kau.mygtd2.common.MyApplication.getContext;
 import static ru.kau.mygtd2.enums.TypeSetting.CURRENTDATE;
+import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
@@ -74,6 +75,9 @@ public class Utils {
 
         // Пока делаю заглушку, возвращающую текущую дату и текущее время
         //ret = new Date().getTime();
+        if (ru.kau.mygtd2.utils.Settings.getBooleanSetting(USECURRENTSYSTEMDATE)){
+            return new Date().getTime();
+        }
 
         // Определяем реальное текущее время
         long curtime = new Date().getTime() - getStartOfDay(new Date()).getTime();
@@ -88,6 +92,9 @@ public class Utils {
 
         // Пока делаю заглушку, возвращающую текущую дату и текущее время
         //ret = new Date().getTime();
+        if (ru.kau.mygtd2.utils.Settings.getBooleanSetting(USECURRENTSYSTEMDATE)){
+            return new Date().getTime();
+        }
 
         ret = ru.kau.mygtd2.utils.Settings.getLongSetting(CURRENTDATE);
 

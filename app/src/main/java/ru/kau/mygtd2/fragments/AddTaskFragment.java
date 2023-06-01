@@ -813,7 +813,7 @@ public class AddTaskFragment extends Fragment
                     taskUpdate.setDeviceguid(deviceID);
                     taskUpdate.setCategory(taskCategoryId);
                     //Date date = new Date();
-                    Date date = new Date(Utils.getCurrentApplicationDate());
+                    Date date = new Date(Utils.getCurrentApplicationDateAndTime());
                     taskUpdate.setDateEdit(date);
                     taskUpdate.setDateEditStr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHSECONDS, date));
                     TaskDaoAbs.updateTask(taskUpdate, lsttags, lstConteksts);
@@ -840,8 +840,11 @@ public class AddTaskFragment extends Fragment
                     task.setDateEndStr(dateEndTitle.getText().toString());
                     task.setTarget_id(targetId);
                     //task.setDateCreate(new Date());
-                    task.setDateCreate(new Date(Utils.getCurrentApplicationDate()));
-                    task.setDateCreateStr(Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), task.getDateCreate()));
+                    //task.setDateCreate(new Date(Utils.getCurrentApplicationDate()));
+                    //task.setDateCreateStr(Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), task.getDateCreate()));
+                    task.setDateCreate(new Date(Utils.getCurrentApplicationDateAndTime()));
+                    task.setDateCreateStr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHSECONDS, task.getDateCreate()));
+
                     task.setDateBegin(dateBegin);
                     task.setDateBeginStr(dateBeginTitle.getText().toString());
                     task.setBgColor(taskBgColor);
