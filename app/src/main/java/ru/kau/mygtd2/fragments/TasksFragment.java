@@ -79,6 +79,8 @@ public class TasksFragment extends Fragment {
     private RecyclerView recyclerView8;
     private RecyclerView recyclerView9;
 
+    private Date currDate = new Date(Utils.getCurrentApplicationDateAndTime());
+
     private ImageView expandedIcon1;
 
     private TextView tv1;
@@ -364,7 +366,8 @@ public class TasksFragment extends Fragment {
 
         List<Task> lstTask;
         if (lstTags == null) {
-            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(new Date()).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
+            //lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(new Date()).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
+            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(currDate).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
         } else {
             /*String sqltext = HIERARCHY_TASKS +
                     " AND (dateEnd < ?) " +
@@ -374,7 +377,8 @@ public class TasksFragment extends Fragment {
                     " AND project_id IN (" + Utils.getStringByArrayInteger(lstProjects) + ") " +
                     " AND target_id IN (" + Utils.getStringByArrayInteger(lstTargets) + ") " +
                     " AND id IN (SELECT idtask FROM tasktags WHERE idtag IN (" + Utils.getStringByArrayInteger(lstTags) + "))";*/
-            Object[] args = new Object[]{Utils.atStartOfDay(new Date()).getTime()};
+            //Object[] args = new Object[]{Utils.atStartOfDay(new Date()).getTime()};
+            Object[] args = new Object[]{Utils.atStartOfDay(currDate).getTime()};
             //args.add(Utils.atStartOfDay(new Date()).getTime());
             //args.add(Utils.getStringByArrayInteger(lstStatus));
             //args.add(Utils.getStringByArrayInteger(favour));
@@ -420,7 +424,8 @@ public class TasksFragment extends Fragment {
         //List<Task> lstTask;
         if (lstTags == null) {
             //lstTask = MyApplication.getDatabase().taskDao().getTasksByDate(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
-            lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(new Date()).getTime(), Utils.getEndOfDay(new Date()).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
+            //lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(new Date()).getTime(), Utils.getEndOfDay(new Date()).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
+            lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(currDate).getTime(), Utils.getEndOfDay(new Date()).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
 
         } else {
             /*String sqltext = HIERARCHY_TASKS +
@@ -431,7 +436,8 @@ public class TasksFragment extends Fragment {
                     " AND project_id IN (" + Utils.getStringByArrayInteger(lstProjects) + ") " +
                     " AND target_id IN (" + Utils.getStringByArrayInteger(lstTargets) + ") " +
                     " AND id IN (SELECT idtask FROM tasktags WHERE idtag IN (" + Utils.getStringByArrayInteger(lstTags) + "))";*/
-            Object[] args = new Object[]{Utils.atEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(new Date()))};
+            //Object[] args = new Object[]{Utils.atEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(new Date()))};
+            Object[] args = new Object[]{Utils.atEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(new Date()))};
             //args.add(Utils.getEndOfDay(new Date()).getTime());
             //args.add(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())));
             //args.add(Utils.getStringByArrayInteger(lstStatus));
@@ -478,7 +484,9 @@ public class TasksFragment extends Fragment {
 
         // ------------------------------------------------------------------------------------
 
-        Calendar calendar = Calendar.getInstance();
+        //Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();//   currDate;
+        calendar.setTime(currDate44);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 1);
