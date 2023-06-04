@@ -1,6 +1,33 @@
 package ru.kau.mygtd2.fragments;
 
 import static android.view.View.GONE;
+import static ru.kau.mygtd2.enums.TypeDateTasks.CLOSED;
+import static ru.kau.mygtd2.enums.TypeDateTasks.OVERDUE;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODOAFTERTWOWEEK;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODOAFTERWEEK;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODOINFUTURE;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODONEXTSEVENDAYS;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODONOENDDATE;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTODAY;
+import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTOMORROW;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON2;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMILSECONDS;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON2;
+import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
+import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
+import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
+import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
+import static ru.kau.mygtd2.utils.Const.lstPROJECTSID;
+import static ru.kau.mygtd2.utils.Const.lstStatus;
+import static ru.kau.mygtd2.utils.Const.lstTARGETSSID;
+import static ru.kau.mygtd2.utils.Const.lstWITHOUTPROJECT;
+import static ru.kau.mygtd2.utils.Const.lstWITHOUTTARGET;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -21,6 +48,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,35 +66,6 @@ import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.utils.Utils;
-
-import static ru.kau.mygtd2.enums.TypeDateTasks.CLOSED;
-import static ru.kau.mygtd2.enums.TypeDateTasks.OVERDUE;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODOAFTERTWOWEEK;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODOAFTERWEEK;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODOINFUTURE;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODONEXTSEVENDAYS;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODONOENDDATE;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTODAY;
-import static ru.kau.mygtd2.enums.TypeDateTasks.TODOTOMORROW;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_COLLAPSE_ICON2;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMILSECONDS;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_EXPANDED_ICON2;
-import static ru.kau.mygtd2.utils.Const.LSTSTATUSCOMPLETED;
-import static ru.kau.mygtd2.utils.Const.lstALLFAVOURITE;
-import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
-import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
-import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
-import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
-import static ru.kau.mygtd2.utils.Const.lstPROJECTSID;
-import static ru.kau.mygtd2.utils.Const.lstStatus;
-import static ru.kau.mygtd2.utils.Const.lstTARGETSSID;
-import static ru.kau.mygtd2.utils.Const.lstWITHOUTPROJECT;
-import static ru.kau.mygtd2.utils.Const.lstWITHOUTTARGET;
 
 public class TasksFragment extends Fragment {
 
@@ -100,6 +100,8 @@ public class TasksFragment extends Fragment {
 
     private SearchView searchView;
 
+    private TextInputEditText txtcurrdate;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -109,6 +111,10 @@ public class TasksFragment extends Fragment {
         toolbar.setTitle("Задачи");
         setHasOptionsMenu(true);
         //toolbar.menu  onCreateOptionsMenu
+
+        txtcurrdate = rootView.findViewById(R.id.txtcurrdate);
+
+        txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
 
         ImageView onSorting = (ImageView) rootView.findViewById(R.id.onSorting);
 
@@ -486,7 +492,7 @@ public class TasksFragment extends Fragment {
 
         //Calendar calendar = Calendar.getInstance();
         Calendar calendar = Calendar.getInstance();//   currDate;
-        calendar.setTime(currDate44);
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 1);
@@ -552,6 +558,7 @@ public class TasksFragment extends Fragment {
         // ------------------------------------------------------------------------------------
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 2);
@@ -612,12 +619,14 @@ public class TasksFragment extends Fragment {
         // ------------------------------------------------------------------------------------
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 8);
         d1 = Utils.atStartOfDay(calendar.getTime());
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 14);
@@ -676,12 +685,14 @@ public class TasksFragment extends Fragment {
         // ------------------------------------------------------------------------------------
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 15);
         d1 = Utils.atStartOfDay(calendar.getTime());
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 30);
@@ -738,6 +749,7 @@ public class TasksFragment extends Fragment {
         // ------------------------------------------------------------------------------------
 
         calendar = Calendar.getInstance();
+        calendar.setTime(currDate);
         //Date today = calendar.getTime();
 
         calendar.add(Calendar.DAY_OF_YEAR, 31);

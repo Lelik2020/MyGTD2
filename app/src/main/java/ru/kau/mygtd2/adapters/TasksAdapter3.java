@@ -15,6 +15,8 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.apg.mobile.roundtextview.RoundTextView;
+
 import java.util.List;
 
 import ru.kau.mygtd2.R;
@@ -32,6 +34,7 @@ public class TasksAdapter3 extends RecyclerView.Adapter<TasksAdapter3.ViewHolder
 
     LinearLayoutCompat.LayoutParams lParamscv;
     LinearLayoutCompat.LayoutParams lParamsiv;
+
 
     private CardView card;
 
@@ -62,6 +65,12 @@ public class TasksAdapter3 extends RecyclerView.Adapter<TasksAdapter3.ViewHolder
         ImageView typeTask;
         TextView taskdetail;
 
+        ImageView priorityicon;
+        TextView priorityName;
+
+
+        RoundTextView statusTask2;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.tasktitle);
@@ -69,6 +78,11 @@ public class TasksAdapter3 extends RecyclerView.Adapter<TasksAdapter3.ViewHolder
             title2 = (TextView) itemView.findViewById(R.id.tasktitle2);
             card = itemView.findViewById(R.id.alltaskinfo);
             taskdetail = itemView.findViewById(R.id.taskdetail);
+            statusTask2 = itemView.findViewById(R.id.statusTask2);
+            priorityicon = itemView.findViewById(R.id.priorityicon);
+            priorityName = itemView.findViewById(R.id.priorityName);
+
+
         }
 
 
@@ -89,8 +103,21 @@ public class TasksAdapter3 extends RecyclerView.Adapter<TasksAdapter3.ViewHolder
         lParamscv = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT);
         lParamscv.setMargins(3, 3, 3, 3);
         card.setLayoutParams(lParamscv);
+        viewHolder.statusTask2.setCorner(20);
+        viewHolder.statusTask2.setPadding(10, 0, 10, 0);
+        //viewHolder.statusTask2.setText(taskStatus.getTitle());
+        //viewHolder.statusTask2.setBgColor(Color.parseColor(taskStatus.getColor()));
 
-        viewHolder.taskdetail.setText(lstTask.get(i).getDateEndStr() + " WWW " + Utils.dateToString(lstTask.get(i).getDateEnd()));
+        viewHolder.priorityicon.setImageResource(Utils.getIconForPriority(MyApplication.getDatabase().priorityDao().getById(lstTask.get(i).getPriority_id())));
+        viewHolder.priorityName.setText(MyApplication.getDatabase().priorityDao().getById(lstTask.get(i).getPriority_id()).getTitle());
+
+
+        viewHolder.statusTask2.setText(MyApplication.getDatabase().taskStatusDao().getById(lstTask.get(i).getStatus().Value).getTitle());
+        viewHolder.statusTask2.setBgColor(Color.parseColor(MyApplication.getDatabase().taskStatusDao().getById(lstTask.get(i).getStatus().Value).getColor()));
+
+
+
+        //viewHolder.taskdetail.setText(lstTask.get(i).getDateEndStr() + " WWW " + Utils.dateToString(lstTask.get(i).getDateEnd()));
 
         GradientDrawable gradientDrawable = new GradientDrawable();
         //gradientDrawable.setColor(Color.GREEN);

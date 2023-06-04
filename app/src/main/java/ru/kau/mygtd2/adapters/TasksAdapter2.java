@@ -20,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
+import com.bumptech.glide.util.Util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -123,7 +124,7 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             super(itemView);
             title = itemView.findViewById(R.id.tasktitle);
             typeTask = itemView.findViewById(R.id.tasktype);
-            statusTask= itemView.findViewById(R.id.statusTask);
+            statusTask = itemView.findViewById(R.id.statusTask);
             title2 = itemView.findViewById(R.id.tasktitle2);
             taskdetail = itemView.findViewById(R.id.taskdetail);
 
@@ -276,7 +277,8 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
                     lstTask.get(i).setStatus(Status.COMPLETED);
                     //lstTask.get(i).setPreviousStatus(Status.from(lstTask.get(i).getStatus()));
                     //lstTask.get(i).setStatus(Status.COMPLETED.Value);
-                    lstTask.get(i).setDateClose(new Date());
+                    //lstTask.get(i).setDateClose(new Date());
+                    lstTask.get(i).setDateClose(new Date(Utils.getCurrentApplicationDateAndTime()));
                     lstTask.get(i).setDateCloseStr(Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy HH:mm:ss"), lstTask.get(i).getDateClose()));
                 } else {
                     lstTask.get(i).setStatus(lstTask.get(i).getPreviousStatus());
@@ -289,7 +291,8 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
                 //viewHolder.statusTask.setChecked((Status.from(lstTask.get(i).getStatus()) != Status.COMPLETED) ? false : true);
                 lParamsiv = new LinearLayoutCompat.LayoutParams((int) c.getResources().getDimension(R.dimen.wh_button_big2), (int) c.getResources().getDimension(R.dimen.wh_button_big2));
                 viewHolder.statusTask.setLayoutParams(lParamsiv);
-                Date date = new Date();
+                //Date date = new Date();
+                Date date = new Date(Utils.getCurrentApplicationDateAndTime());
                 lstTask.get(i).setDateEdit(date);
                 lstTask.get(i).setDateEditStr(Utils.dateToString(DEFAULT_DATEFORMAT_WITHSECONDS, date));
                 MyApplication.getDatabase().taskDao().update(lstTask.get(i));
