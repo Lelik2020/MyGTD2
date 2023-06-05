@@ -63,6 +63,7 @@ import ru.kau.mygtd2.objects.Task;
 
 public class Utils {
 
+    private static Date currDate = new Date(Utils.getCurrentApplicationDateAndTime());
 
     public static String dateToString(Date date) {
 
@@ -331,7 +332,8 @@ public class Utils {
     }
 
     public static int getBackgroundByEndDate(Date date) {
-        long diff = diffInDays(convertToLocalDateViaInstant(getStartOfDay(date)), convertToLocalDateViaInstant(getStartOfDay(new Date())));
+        //long diff = diffInDays(convertToLocalDateViaInstant(getStartOfDay(date)), convertToLocalDateViaInstant(getStartOfDay(new Date())));
+        long diff = diffInDays(convertToLocalDateViaInstant(getStartOfDay(date)), convertToLocalDateViaInstant(getStartOfDay(currDate)));
         if (diff < 0) {
             return R.drawable.roundrect_1;
         } else {
@@ -438,11 +440,13 @@ public class Utils {
                 ret = ret + fr.getResources().getString(R.string.overduetask);
                 break;
             case TODOTODAY:
-                ret = ret + fr.getResources().getString(R.string.maketoday) + " (" + Utils.dateToString(DEFAULT_DATEFORMAT, new Date()) + ")";
+                //ret = ret + fr.getResources().getString(R.string.maketoday) + " (" + Utils.dateToString(DEFAULT_DATEFORMAT, new Date()) + ")";
+                ret = ret + fr.getResources().getString(R.string.maketoday) + " (" + Utils.dateToString(DEFAULT_DATEFORMAT, currDate) + ")";
                 break;
             case TODOTOMORROW:
                 Calendar calendar = Calendar.getInstance();
                 //Date today = calendar.getTime();
+                calendar.setTime(currDate);
 
                 calendar.add(Calendar.DAY_OF_YEAR, 1);
                 Date tomorrow = calendar.getTime();
@@ -450,6 +454,7 @@ public class Utils {
                 break;
             case TODONEXTSEVENDAYS:
                 calendar = Calendar.getInstance();
+                calendar.setTime(currDate);
                 //Date today = calendar.getTime();
 
                 calendar.add(Calendar.DAY_OF_YEAR, 2);
@@ -464,6 +469,7 @@ public class Utils {
                 break;
             case TODOAFTERWEEK:
                 calendar = Calendar.getInstance();
+                calendar.setTime(currDate);
                 //Date today = calendar.getTime();
 
                 calendar.add(Calendar.DAY_OF_YEAR, 8);
@@ -478,6 +484,7 @@ public class Utils {
                 break;
             case TODOAFTERTWOWEEK:
                 calendar = Calendar.getInstance();
+                calendar.setTime(currDate);
                 //Date today = calendar.getTime();
 
                 calendar.add(Calendar.DAY_OF_YEAR, 15);
@@ -492,6 +499,7 @@ public class Utils {
                 break;
             case TODOINFUTURE:
                 calendar = Calendar.getInstance();
+                calendar.setTime(currDate);
                 //Date today = calendar.getTime();
 
                 calendar.add(Calendar.DAY_OF_YEAR, 31);

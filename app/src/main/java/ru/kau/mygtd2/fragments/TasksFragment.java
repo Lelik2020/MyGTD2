@@ -431,7 +431,7 @@ public class TasksFragment extends Fragment {
         if (lstTags == null) {
             //lstTask = MyApplication.getDatabase().taskDao().getTasksByDate(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
             //lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(new Date()).getTime(), Utils.getEndOfDay(new Date()).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
-            lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(currDate).getTime(), Utils.getEndOfDay(new Date()).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
+            lstTask = MyApplication.getDatabase().taskDao().getTasksBetweenDates(Utils.getStartOfDay(currDate).getTime(), Utils.getEndOfDay(currDate).getTime(), LSTSTATUSCOMPLETED, favour, lstPriority, lstProjects, lstTargets);
 
         } else {
             /*String sqltext = HIERARCHY_TASKS +
@@ -443,7 +443,7 @@ public class TasksFragment extends Fragment {
                     " AND target_id IN (" + Utils.getStringByArrayInteger(lstTargets) + ") " +
                     " AND id IN (SELECT idtask FROM tasktags WHERE idtag IN (" + Utils.getStringByArrayInteger(lstTags) + "))";*/
             //Object[] args = new Object[]{Utils.atEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(new Date()))};
-            Object[] args = new Object[]{Utils.atEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(new Date()))};
+            Object[] args = new Object[]{Utils.atEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.atEndOfDay(currDate))};
             //args.add(Utils.getEndOfDay(new Date()).getTime());
             //args.add(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())));
             //args.add(Utils.getStringByArrayInteger(lstStatus));
