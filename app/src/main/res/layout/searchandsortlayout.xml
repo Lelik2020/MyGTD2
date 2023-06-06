@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dip"
+
+        android:orientation="horizontal" >
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:focusableInTouchMode="true"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+
+            >
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/outlinedTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:hint="@string/searchline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/EditTextThemeOverlay"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/filterLine"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:textColorHighlight="@color/textColorHighlight"
+
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/countTasks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="4dip"
+
+                android:text="0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_marginRight="-8dip"
+                android:id="@+id/myAutoCompleteImage"
+                style="@style/buttonClear"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/wh_button_big"
+                android:layout_height="@dimen/wh_button_big"
+                android:layout_toLeftOf="@+id/cleanFilter"
+                android:layout_weight="0"
+                android:src="@drawable/glyphicons_739_check" />
+
+            <ImageView
+                android:id="@+id/cleanFilter"
+                style="@style/buttonClear"
+                android:layout_width="@dimen/wh_button_big"
+                android:layout_height="@dimen/wh_button_big"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/countTasks"
+                android:gravity="bottom"
+                android:layout_weight="0"
+                android:contentDescription="@string/cd_clear_search_reasult"
+                android:src="@drawable/glyphicons_599_menu_close" />
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/secondTopPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_search_second"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:contentDescription="@string/cd_sort_results"
+                android:id="@+id/sortBy"
+                android:layout_width="@dimen/sort_by_size"
+                android:layout_height="45dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dip"
+                android:singleLine="true"
+                android:text="Название книги"
+                android:textColor="@color/white"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:visibility="visible"
+                android:contentDescription="@string/cd_sort_order"
+                android:id="@+id/sortOrder"
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="@dimen/wh_button_small"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="4dip"
+                android:src="@drawable/glyphicons_221_chevron_down"
+                android:tint="@color/white" />
+
+            <View
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="@color/tint_divider" />
+
+            <ImageView
+                android:contentDescription="@string/update_library"
+                android:id="@+id/onRefresh"
+                style="@style/buttonWhite"
+                android:layout_width="@dimen/wh_button"
+                android:layout_height="@dimen/wh_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/glyphicons_82_refresh"
+                android:visibility="gone"
+                />
+
+            <View
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="@color/tint_divider" />
+
+            <ImageView
+                android:contentDescription="@string/cd_view_menu"
+                android:id="@+id/onGridList"
+                style="@style/buttonWhite"
+                android:layout_width="@dimen/wh_button"
+                android:layout_height="@dimen/wh_button"
+                android:src="@drawable/my_glyphicons_114_paragraph_justify"
+                android:visibility="gone"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
