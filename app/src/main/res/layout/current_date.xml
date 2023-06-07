@@ -23,8 +23,8 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            style="@style/MyOutlinedBox"
             android:hint="@string/currdate"
             app:hintTextColor="@color/colorPrimary"
             >
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:inputType="none"
-
+                    android:textStyle="bold"
                     android:cursorVisible="false"
                     android:focusable="false"
 

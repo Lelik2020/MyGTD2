@@ -3,6 +3,8 @@ package ru.kau.mygtd2.fragments;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
 
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
 
@@ -44,6 +47,8 @@ public class MainFragment extends Fragment implements ClickListener {
     private MainAdapter4 mainAdapter4;
 
     private TextInputEditText txtcurrdate;
+
+    private TextInputLayout outlinedTextField;
     //private Toolbar toolbar;
 
 
@@ -55,9 +60,80 @@ public class MainFragment extends Fragment implements ClickListener {
 
         //LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
 
+        outlinedTextField = rootView.findViewById(R.id.outlinedTextField);
+
+        //int color = Color.parseColor("#FF11AA");
+        int color = getResources().getColor(R.color.colorPrimary);
+//Color from hex string
+        int color2 = Color.parseColor("#3F51B5");
+
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_focused}, // focused
+                new int[] { android.R.attr.state_hovered}, // hovered
+                new int[] { android.R.attr.state_enabled}, // enabled
+                new int[] { android.R.attr.hint}, // enabled
+                new int[] { }  //
+        };
+
+        int[] colors = new int[] {
+                color,
+                color,
+                color,
+                color2,
+                color2
+        };
+
+        ColorStateList myColorList = new ColorStateList(states, colors);
+
+        outlinedTextField.setBoxStrokeColorStateList(myColorList);
+        outlinedTextField.setDefaultHintTextColor(myColorList);
+
         txtcurrdate = rootView.findViewById(R.id.txtcurrdate);
 
         txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
+        txtcurrdate.setTextColor(color2);
+
+        if (Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime() < Utils.getStartOfDay(new Date()).getTime()){
+            //outlinedTextField.setBoxStrokeColor(Color.parseColor("#FF0000"));
+            color2 = Color.parseColor("#FF0000");
+            color = getResources().getColor(R.color.green);
+            color2 = getResources().getColor(R.color.green);
+            colors = new int[] {
+                    color,
+                    color,
+                    color,
+                    color2,
+                    color2
+            };
+
+            myColorList = new ColorStateList(states, colors);
+
+
+            outlinedTextField.setBoxStrokeColorStateList(myColorList);
+            outlinedTextField.setDefaultHintTextColor(myColorList);
+            txtcurrdate.setTextColor(color2);
+        }
+        if (Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime() > Utils.getStartOfDay(new Date()).getTime()){
+            //outlinedTextField.setBoxStrokeColor(Color.parseColor("#008000"));
+            color2 = Color.parseColor("#008000");
+            color = getResources().getColor(R.color.red);
+            color2 = getResources().getColor(R.color.red);
+
+            colors = new int[] {
+                    color,
+                    color,
+                    color,
+                    color2,
+                    color2
+            };
+
+            myColorList = new ColorStateList(states, colors);
+
+
+            outlinedTextField.setBoxStrokeColorStateList(myColorList);
+            outlinedTextField.setDefaultHintTextColor(myColorList);
+            txtcurrdate.setTextColor(color2);
+        }
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
 
