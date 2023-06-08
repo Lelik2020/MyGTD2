@@ -29,7 +29,7 @@ android {
     viewBinding true
   }
     namespace 'com.skydoves.colorpickerview'
-    buildToolsVersion '34.0.0-rc4'
+    buildToolsVersion '34.0.0'
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_18

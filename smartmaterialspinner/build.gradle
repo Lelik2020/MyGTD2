@@ -24,7 +24,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '34.0.0-rc4'
+    buildToolsVersion '34.0.0'
     namespace 'com.chivorn.smartmaterialspinner'
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_18
