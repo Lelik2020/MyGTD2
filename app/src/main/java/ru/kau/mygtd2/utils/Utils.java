@@ -63,7 +63,7 @@ import ru.kau.mygtd2.objects.Task;
 
 public class Utils {
 
-    private static Date currDate = new Date(Utils.getCurrentApplicationDateAndTime());
+    static Date currDate = new Date(Utils.getCurrentApplicationDateAndTime());
 
     public static String dateToString(Date date) {
 

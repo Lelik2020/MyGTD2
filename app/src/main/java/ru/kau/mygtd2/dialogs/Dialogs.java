@@ -1059,6 +1059,7 @@ public class Dialogs {
 
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_target, null, false);
 
+        final ListView lstTopTags = inflate.findViewById(R.id.lstTopTags);
         final ListView list = (ListView) inflate.findViewById(R.id.listView1);
         //final TextView addtarget = (TextView) inflate.findViewById(R.id.addTarget);
 

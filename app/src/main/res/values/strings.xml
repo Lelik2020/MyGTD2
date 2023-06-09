@@ -266,6 +266,7 @@
     <string name="isarchivetag">Тэг в архиве</string>
     <string name="isnotclosetasks">Тэг в архиве</string>
     <string name="showarchivetag">Показывать архивные тэги</string>
+    <string name="showlastusedtag">Показывать последние использованные тэги</string>
 
     <string name="more">Подробнее</string>
     <string name="fullread">Читать полностью</string>

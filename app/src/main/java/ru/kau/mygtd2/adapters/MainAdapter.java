@@ -54,7 +54,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     private Context c;
     private List<Category> lstCategories;
 
-
+    private Date currDate = new Date(Utils.getCurrentApplicationDateAndTime());
     private ClickListener clicklistener = null;
 
     public MainAdapter(Context c, List<Category> lstCategories){
@@ -306,7 +306,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 lstStatus.add(1);
                 lstStatus.add(2);
                 lstStatus.add(3);*/
-                count = MyApplication.getDatabase().taskDao().getCountOutstanding(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
+                //count = MyApplication.getDatabase().taskDao().getCountOutstanding(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
+                count = MyApplication.getDatabase().taskDao().getCountOutstanding(Utils.getStartOfDay(currDate).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
 
 
 
@@ -324,7 +325,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 //viewHolder.rtv2.setText(" " + Long.toString(99) + " ");
                 viewHolder.rtv2.setVisibility(View.VISIBLE);
 
-                count = MyApplication.getDatabase().taskDao().getCountByDate( Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLPROJECTSID);
+                //count = MyApplication.getDatabase().taskDao().getCountByDate( Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstALLPROJECTSID);
+                count = MyApplication.getDatabase().taskDao().getCountByDate( Utils.getEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(currDate)), lstStatus, lstALLPROJECTSID);
 
                 viewHolder.rtv3.setCorner(0, 0, 0, 0);
 
@@ -356,7 +358,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             case 3:
 
 
-                count = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstHIPRIORITY, lstALLPROJECTSID);
+                //count = MyApplication.getDatabase().taskDao().getCountOutstanding(new Date().getTime(), lstStatus, lstHIPRIORITY, lstALLPROJECTSID);
+                count = MyApplication.getDatabase().taskDao().getCountOutstanding(currDate.getTime(), lstStatus, lstHIPRIORITY, lstALLPROJECTSID);
+
 
                 //setAllUnvisible(viewHolder);
 
@@ -368,9 +372,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 viewHolder.rtv2.setText(" " + Long.toString(count) + " ");
                 viewHolder.rtv2.setVisibility(View.VISIBLE);
 
+                //count = MyApplication.getDatabase().taskDao().getCountAllTasksOfHotToday(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstHIPRIORITY);
+                count = MyApplication.getDatabase().taskDao().getCountAllTasksOfHotToday(Utils.getEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(currDate)), lstStatus, lstHIPRIORITY);
 
-
-                count = MyApplication.getDatabase().taskDao().getCountAllTasksOfHotToday(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstHIPRIORITY);
                 //setAllUnvisible(viewHolder);
 
                 viewHolder.rtv3.setCorner(0, 0, 0, 0);
@@ -405,7 +409,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             case 4:
 
                 //count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteOutstanding(Utils.getStartOfDay(new Date()).getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), lstStatus, lstONLYFAVOURITE);
-                count = MyApplication.getDatabase().taskDao().getCountOutstandingFavourite(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
+                //count = MyApplication.getDatabase().taskDao().getCountOutstandingFavourite(Utils.getStartOfDay(new Date()).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
+                count = MyApplication.getDatabase().taskDao().getCountOutstandingFavourite(Utils.getStartOfDay(currDate).getTime(), lstStatus, lstALLPRIORITY, lstALLPROJECTSID);
+
+
                 //setAllUnvisible(viewHolder);
 
                 viewHolder.rtv2.setCorner(16, 0, 0, 16);
@@ -416,9 +423,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 viewHolder.rtv2.setText(" " + Long.toString(count) + " ");
                 viewHolder.rtv2.setVisibility(View.VISIBLE);
 
+                //count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteToday(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstONLYFAVOURITE);
+                count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteToday(Utils.getEndOfDay(currDate).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(currDate)), lstStatus, lstONLYFAVOURITE);
 
-
-                count = MyApplication.getDatabase().taskDao().getCountAllTasksOfFavouriteToday(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())), lstStatus, lstONLYFAVOURITE);
                 //setAllUnvisible(viewHolder);
 
                 viewHolder.rtv3.setCorner(0, 0, 0, 0);

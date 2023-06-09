@@ -20,7 +20,42 @@
             style="@style/MySwitchMaterial2"
             android:textStyle="bold"
             android:text="@string/showarchivetag" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal" >
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/cbWhowTop"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="false"
+            style="@style/MySwitchMaterial2"
+            android:textStyle="bold"
+            android:text="@string/showlastusedtag" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+
+        android:background="@color/text_black_100" />
+
+    <ListView
+        android:id="@+id/lstTopTags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="@color/transparent"
+        android:dividerHeight="2sp" >
+    </ListView>
 
     <View
         android:id="@+id/divider2"

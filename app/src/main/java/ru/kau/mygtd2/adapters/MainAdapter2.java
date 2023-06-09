@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
 
+import java.util.Date;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
@@ -25,12 +26,12 @@ import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.objects.Category;
 import ru.kau.mygtd2.utils.Const;
+import ru.kau.mygtd2.utils.Utils;
 
 public class MainAdapter2 extends RecyclerView.Adapter<MainAdapter2.ViewHolder>{
 
     Context c;
     List<Category> lstCategories;
-
 
     private ClickListener clicklistener = null;
 
