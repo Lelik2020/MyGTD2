@@ -62,47 +62,33 @@
         android:layout_below="@+id/action_bar1"
         android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dip">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            >
 
-    <ListView
-        android:id="@+id/lstTopTags"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:divider="@color/transparent"
-        android:dividerHeight="2sp" >
-    </ListView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lstTopTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
+                >
 
-        android:background="@color/text_black_100" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:divider="@color/transparent"
-        android:dividerHeight="2sp" >
-    </ListView>
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
-
-        android:background="@color/text_black_100" />
-
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lstAllTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

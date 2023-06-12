@@ -217,7 +217,7 @@
     <string name="datebegin">Дата начала</string>
 
     <string name="add_tag">Добавить новый тег</string>
-    <string name="edit_tag">Добавить новый тег</string>
+    <string name="edit_tag">Редактирование тега</string>
 
     <string name="add_comment">Добавление комментария</string>
     <string name="edit_comment">Редактирование комментария</string>

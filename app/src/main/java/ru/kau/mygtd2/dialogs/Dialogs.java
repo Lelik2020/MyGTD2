@@ -50,7 +50,9 @@ import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
 import ru.kau.mygtd2.adapters.ProjectTreeAdapter;
+import ru.kau.mygtd2.adapters.TagsAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter4;
+import ru.kau.mygtd2.adapters.dialog.TagAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.enums.DialogType;
 import ru.kau.mygtd2.common.enums.TypeOfInfo;
@@ -133,18 +135,34 @@ public class Dialogs {
     BlockingQueue<Boolean> blockingQueue;
 
     static ListView list;
+    static RecyclerView rvTopTags;
+    static RecyclerView rvAllTags;
+
+    static ListView lvTopTags;
 
     static List<Tag> tags;
 
+    static List<Tag> lstTopTags;
+    static List<Long> lslIdTop = new ArrayList<>();
+
+    static TagAdapter tagsAdapter;
+    static TagAdapter tagsAdapter2;
+
     static Set<Integer> checked;
 
+    static Set<Integer> ch;
+    static Set<Integer> checkedTopTags;
+
     static Iterator<Tag> iterator;
+
+    static Iterator<Tag> iterLstTopTags;
 
     static ImageView iv;
 
     static SwitchMaterial cbIsArchive;
 
     static SwitchMaterial cbWhowArchive;
+    static SwitchMaterial cbWhowTop;
 
     //private ProjectListAdapter adapter;
 
@@ -498,8 +516,6 @@ public class Dialogs {
     public static void addTagsDialog(final Context a, final Runnable onRefresh, Tag tag) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
 
-
-
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_add_tag, null, false);
 
         //RelativeLayout view1 = new RelativeLayout(a);
@@ -589,6 +605,13 @@ public class Dialogs {
                     Tag tag1 = new Tag();
                     //tag1.setTitle(edit.getText().toString());
                     tag1.setTitle(editTagName2.getText().toString());
+                    if (colorChoice == null || colorChoice.equals("")){
+                        try {
+                            colorChoice = iv.getColorFilter().toString();
+                        } catch (Exception e) {
+                            colorChoice = "3F51B5";
+                        }
+                    }
                     tag1.setColor("#" + colorChoice);
                     //tag1.setDescription(edit.getText().toString());
                     tag1.setDescription(editTagName2.getText().toString());
@@ -597,6 +620,9 @@ public class Dialogs {
                 } else {
                     //tag.setTitle(edit.getText().toString());
                     tag.setTitle(editTagName2.getText().toString());
+                    if (colorChoice == null || colorChoice.equals("")){
+                        colorChoice = tag.getColor();
+                    }
                     tag.setColor("#" + colorChoice);
                     //tag.setDescription(edit.getText().toString());
                     tag.setDescription(editTagName2.getText().toString());
@@ -812,6 +838,161 @@ public class Dialogs {
                 .show().getButton(AlertDialog.BUTTON_POSITIVE).setHeight(height);//   setWidth(width);
     }
 
+    @SuppressLint("ResourceAsColor")
+    public static void showTagsDialogn(final Context a, final Runnable refresh) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
+        //final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(a, R.style.YDialog);
+        //setDividerColor("#FF00FF")
+
+        builder.setTitle(R.string.choisetags);
+
+        callback2 = (DialogTagsChoice) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
+
+        View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_tags3, null, false);
+
+        rvTopTags = inflate.findViewById(R.id.lstTopTags);
+        rvTopTags.setLayoutManager(new LinearLayoutManager(a));
+
+
+        rvAllTags = inflate.findViewById(R.id.lstAllTags);
+        rvAllTags.setLayoutManager(new LinearLayoutManager(a));
+
+
+
+        cbWhowArchive = inflate.findViewById(R.id.cbWhowArchive);
+        cbWhowTop = inflate.findViewById(R.id.cbWhowTop);
+
+        rvTopTags.setVisibility(cbWhowTop.isChecked() ? View.VISIBLE : View.GONE);
+
+        cbWhowTop.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                rvTopTags.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+                //rvAllTags.notifyAll();
+                tagsAdapter2 = new TagAdapter(a, tags);
+                rvAllTags.setAdapter(tagsAdapter2);
+            }
+        });
+
+        cbWhowArchive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags = MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+
+                } else {
+                    tags = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+
+                }
+                checked = new HashSet<>();
+                iterator = tags.iterator();
+                while (iterator.hasNext()) {
+                    if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
+                        iterator.remove();
+                    }
+                }
+                //adapter.setItems(tags);
+                //list.setAdapter(adapter);
+                tagsAdapter = new TagAdapter(a, tags);
+                rvAllTags.setAdapter(tagsAdapter);
+                rvAllTags.notify();
+
+
+            }
+        });
+
+        lstTopTags = MyApplication.getDatabase().tagDao().getTopTagsSortByTitle(3);
+        for(Tag t: lstTopTags){
+            lslIdTop.add(t.getId());
+        }
+
+        tagsAdapter = new TagAdapter(a, lstTopTags);
+        rvTopTags.setAdapter(tagsAdapter);
+
+        tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+        tagsAdapter2 = new TagAdapter(a, tags);
+        rvAllTags.setAdapter(tagsAdapter2);
+
+        builder.setView(inflate);
+
+        builder.setNegativeButton(R.string.cancel, new AlertDialog.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setNeutralButton(R.string.add_tag, new AlertDialog.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                addTagsDialog(a, new Runnable() {
+
+                    @Override
+                    public void run() {
+                        //tags.clear();
+                        //tags.addAll(DbItemCreator.getTagDb().getListStringItems());
+                        //adapter.notifyDataSetChanged();
+                        //adapter.notifyAll();
+
+                        tags.clear();
+                        tags.addAll(MyApplication.getDatabase().tagDao().getAll());
+                        //adapter.setItems(tags);
+                        //adapter.notifyDataSetChanged();
+                    }
+                }, null);
+            }
+        });
+
+        builder.setPositiveButton(R.string.choice, new AlertDialog.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                List<Tag> lsttags = new ArrayList<Tag>();
+                ch = tagsAdapter.getChecked();
+
+                int i = 0;
+                for (Tag tag: tags){
+                    //Tag tag1 =
+                    if (ch.contains(i)) {
+                        lsttags.add(tag);
+                    }
+                    i++;
+                }
+
+                ch = tagsAdapter2.getChecked();
+                i = 0;
+                for (Tag tag: tags){
+                    //Tag tag1 =
+                    if (ch.contains(i)) {
+                        lsttags.add(tag);
+                    }
+                    i++;
+                }
+
+                callback2.getTags(lsttags);
+
+            }
+
+        });
+
+        builder.create();
+        builder.setOnDismissListener(new OnDismissListener() {
+
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+
+            }
+        });
+        builder.show();
+
+
+
+    }
+
 
     @SuppressLint("ResourceAsColor")
     public static void showTagsDialog(final Context a, final Runnable refresh) {
@@ -824,22 +1005,109 @@ public class Dialogs {
 
         callback2 = (DialogTagsChoice) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
-        View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_tags, null, false);
+        View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_tags2, null, false);
 
-        list = (ListView) inflate.findViewById(R.id.listView1);
+        lvTopTags = inflate.findViewById(R.id.lstTopTags);
+
+        //list2 = inflate.findViewById(R.id.listView1);
 
         cbWhowArchive = inflate.findViewById(R.id.cbWhowArchive);
 
-        tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle() : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle();
+        lstTopTags = MyApplication.getDatabase().tagDao().getTopTagsSortByTitle(3);
 
-        iterator = tags.iterator();
+        tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+
+        /*iterator = tags.iterator();
         while (iterator.hasNext()) {
             if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
                 iterator.remove();
             }
-        }
+        }*/
+
+        /*iterLstTopTags = lstTopTags.iterator();
+        while (iterLstTopTags.hasNext()) {
+            if (TxtUtils.isEmpty(iterLstTopTags.next().getTitle().trim())) {
+                iterLstTopTags.remove();
+            }
+        }*/
+
+        checkedTopTags = new HashSet<>();
+
+        final BaseItemLayoutAdapter<Tag> adapterTopTags = new BaseItemLayoutAdapter<Tag>(a, R.layout.tag_item, lstTopTags) {
+
+
+            @Override
+            public void populateView(View layout, final int position, final Tag tagName) {
+
+                ImageView iv = (ImageView) layout.findViewById(R.id.iconTag);
+                CheckBox text = (CheckBox) layout.findViewById(R.id.tagName);
+
+                text.setText(tagName.getTitle());
+                try {
+                    iv.setColorFilter(Color.parseColor(tagName.getColor()));
+                } catch (Exception e) {
+                    iv.setColorFilter(R.color.black);
+                }
+                text.setBackgroundColor(tagName.getIsarchive() == 1 ? Color.parseColor("#808080") : Color.parseColor("#FFFFFF"));
+                text.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            checkedTopTags.add(position);
+                        } else {
+                            checkedTopTags.remove(position);
+                        }
+                    }
+                });
+
+                //text.setChecked(StringDB.contains(fileMeta.getTag(), tagName));
+                //text.setChecked(StringDB.contains(book, tagName));
+                //if (fileTags.contains(tagName)) {
+                //text.setChecked(fileTags.contains(tagName));
+                //}
+
+                layout.findViewById(R.id.editTag).setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        addTagsDialog(a, new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        }, tagName);
+                    }
+                });
+
+
+                layout.findViewById(R.id.deleteTag).setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+
+
+                        showDialog(a, DialogType.DELETE_TAG, new Runnable() {
+                            @Override
+                            public void run() {
+                                TagDaoAbs.deleteTag(tagName);
+
+                                tags.clear();
+                                tags.addAll(MyApplication.getDatabase().tagDao().getAll());
+                                notifyDataSetChanged();
+                            }
+                        });
+
+
+                    }
+                });
+
+            }
+        };
+
 
         checked = new HashSet<>();
+        tagsAdapter = new TagAdapter( a, lstTopTags);
 
         final BaseItemLayoutAdapter<Tag> adapter = new BaseItemLayoutAdapter<Tag>(a, R.layout.tag_item, tags) {
 
@@ -916,10 +1184,10 @@ public class Dialogs {
         cbWhowArchive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
+                    tags = MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
 
                 } else {
-                    tags = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle();
+                    tags = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
 
                 }
                 checked = new HashSet<>();
@@ -957,7 +1225,9 @@ public class Dialogs {
             }
         });*/
 
-        list.setAdapter(adapter);
+        lvTopTags.setAdapter(adapterTopTags);
+        //list2.setAdapter(tagsAdapter);
+
 
         builder.setView(inflate);
 
@@ -1059,7 +1329,6 @@ public class Dialogs {
 
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_target, null, false);
 
-        final ListView lstTopTags = inflate.findViewById(R.id.lstTopTags);
         final ListView list = (ListView) inflate.findViewById(R.id.listView1);
         //final TextView addtarget = (TextView) inflate.findViewById(R.id.addTarget);
 

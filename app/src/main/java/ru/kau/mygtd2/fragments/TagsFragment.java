@@ -55,7 +55,8 @@ public class TagsFragment extends Fragment {
         lvCommon.setAdapter(commonAdapter);
 
         RecyclerView lvTags = (RecyclerView) rootView.findViewById(R.id.lvTags);
-        final List<Tag> lstTags = MyApplication.getDatabase().tagDao().getAllSortByTitle();
+        //final List<Tag> lstTags = MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+        final List<Tag> lstTags = MyApplication.getDatabase().tagDao().getAllSortByTitle(new ArrayList<>());
 
 
         drawable = new GradientDrawable();

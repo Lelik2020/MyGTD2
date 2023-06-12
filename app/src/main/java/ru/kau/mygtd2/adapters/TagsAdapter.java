@@ -66,7 +66,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         final Tag tag = getItem(position);
         holder.title.setText(tag.getTitle());
         //holder.title.setTextColor(Color.parseColor(tag.getColor()));
-        holder.tagImage.setColorFilter(Color.parseColor(tag.getColor()));
+        //holder.tagImage.setColorFilter(Color.parseColor(tag.getColor()));
+        holder.tagImage.setColorFilter(Utils.parseColor(tag.getColor()));
         //holder.tagImage.set
 
         long count = 0L;

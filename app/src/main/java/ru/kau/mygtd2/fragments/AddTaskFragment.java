@@ -614,16 +614,20 @@ public class AddTaskFragment extends Fragment
         tagschoise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialogs.showTagsDialog(getActivity(), new Runnable() {
-
+                /*Dialogs.showTagsDialog(getActivity(), new Runnable() {
                     @Override
                     public void run() {
-                        //TagDaoAbs.deleteTag(tagName);
-                        //tagsRunnable.run();
-                        //EventBus.getDefault().post(new NotifyAllFragments());
+
+                    }
+                });*/
+
+                Dialogs.showTagsDialogn(getActivity(), new Runnable() {
+                    @Override
+                    public void run() {
 
                     }
                 });
+
             }
         });
 

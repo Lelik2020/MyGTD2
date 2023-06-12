@@ -2,6 +2,9 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginBottom="1dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="1sp" >
@@ -10,7 +13,7 @@
         android:id="@+id/iconTag"
         android:layout_width="@dimen/wh_button_small"
         android:layout_height="@dimen/wh_button_small"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:padding="1sp"
         android:src="@drawable/glyphicons_66_tag"
 
@@ -28,25 +31,35 @@
         style="@style/textSection2"
         android:theme="@style/MyCheckBox"/>
 
-    <ImageView
-        android:id="@+id/editTag"
-        android:layout_width="@dimen/wh_button_small"
-        android:layout_height="@dimen/wh_button_small"
+    <androidx.appcompat.widget.LinearLayoutCompat
 
-        android:padding="1sp"
-        android:layout_gravity="center"
-        android:src="@drawable/edit"
-        android:tint="@color/lt_grey_dima"
-        android:visibility="visible" />
+        android:id="@+id/lnrLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0"
+        >
 
-    <ImageView
-        android:id="@+id/deleteTag"
-        android:layout_width="@dimen/wh_button_small"
-        android:layout_height="@dimen/wh_button_small"
+        <ImageView
+            android:id="@+id/editTag"
+            android:layout_width="@dimen/wh_button_small"
+            android:layout_height="@dimen/wh_button_small"
 
-        android:padding="1sp"
-        android:src="@drawable/glyphicons_208_remove_2"
-        android:tint="@color/lt_grey_dima"
-        android:visibility="visible" />
+            android:padding="1sp"
+            android:layout_gravity="center"
+            android:src="@drawable/edit"
+            android:tint="@color/lt_grey_dima"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/deleteTag"
+            android:layout_width="@dimen/wh_button_small"
+            android:layout_height="@dimen/wh_button_small"
+
+            android:padding="1sp"
+            android:src="@drawable/glyphicons_208_remove_2"
+            android:tint="@color/lt_grey_dima"
+            android:visibility="visible" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
