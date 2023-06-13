@@ -57,7 +57,7 @@ public interface TagDao {
     int countOfTags();
 
     //@Insert(onConflict = OnConflictStrategy.IGNORE)
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Tag tag);
 
     @Update

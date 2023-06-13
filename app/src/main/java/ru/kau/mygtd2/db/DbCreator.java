@@ -192,21 +192,27 @@ public class DbCreator {
         TaskCategory taskCategory = new TaskCategory();
 
         taskCategory.setId(1);
-        taskCategory.setTitle("Зеленая");
-        taskCategory.setDescription("Зеленая категория");
+        taskCategory.setTitle("Важно и несрочно");
+        taskCategory.setDescription("Важно и несрочно");
         taskCategory.setColor("#3CB371");
-        MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
+        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
 
         taskCategory.setId(2);
-        taskCategory.setTitle("Красная");
-        taskCategory.setDescription("Красная категория");
+        taskCategory.setTitle("Важно и срочно");
+        taskCategory.setDescription("Важно и срочно");
         taskCategory.setColor("#FF0000");
-        MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
+        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
 
         taskCategory.setId(3);
-        taskCategory.setTitle("Коричневая");
-        taskCategory.setDescription("Коричневая категория");
-        taskCategory.setColor("#8B4513");
+        taskCategory.setTitle("Неважно и срочно");
+        taskCategory.setDescription("Неважно и срочно");
+        taskCategory.setColor("#2196F3");
+        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
+
+        taskCategory.setId(4);
+        taskCategory.setTitle("Неважно и несрочно");
+        taskCategory.setDescription("Неважно и несрочно");
+        taskCategory.setColor("#FF686868");
         MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
 
     }
