@@ -11,6 +11,8 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -18,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -253,6 +256,26 @@ public class Dialogs {
             projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
         }
 
+        String[] projectStatus = { "Бразилия", "Аргентина", "Колумбия", "Чили", "Уругвай"};
+        Spinner spinner = inflate.findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter(a, android.R.layout.simple_spinner_item, projectStatus);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                // Получаем выбранный объект
+                String item = (String)parent.getItemAtPosition(position);
+                //selection.setText(item);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        spinner.setOnItemSelectedListener(itemSelectedListener);
 
         projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
         //adapter = new ProjectListAdapter(a, projectList);
