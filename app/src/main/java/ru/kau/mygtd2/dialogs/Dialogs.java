@@ -50,7 +50,6 @@ import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
 import ru.kau.mygtd2.adapters.ProjectTreeAdapter;
-import ru.kau.mygtd2.adapters.TagsAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter4;
 import ru.kau.mygtd2.adapters.dialog.TagAdapter;
 import ru.kau.mygtd2.common.MyApplication;
