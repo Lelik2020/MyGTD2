@@ -12,7 +12,6 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -20,7 +19,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
+import com.guna.libmultispinner.MultiSelectionSpinner;
 import com.multilevel.treelist.Node;
 import com.multilevel.treelist.TreeListViewAdapter;
 import com.skydoves.colorpickerview.ColorEnvelope;
@@ -262,11 +261,30 @@ public class Dialogs {
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spinner.setAdapter(adapter);
 
-        List<ProjectStatus> projectStatus = MyApplication.getDatabase().projectStatusDao().getAll();
+        /*List<ProjectStatus> projectStatus = MyApplication.getDatabase().projectStatusDao().getAll();
         Spinner spinner = inflate.findViewById(R.id.spinner);
         ArrayAdapter<ProjectStatus> adapter = new ArrayAdapter(a, R.layout.target_item, projectStatus);
         adapter.setDropDownViewResource(R.layout.target_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
+
+        MultiSelectionSpinner.OnMultipleItemsSelectedListener selectedListener = new MultiSelectionSpinner.OnMultipleItemsSelectedListener() {
+            @Override
+            public void selectedIndices(List<Integer> indices, MultiSelectionSpinner spinner) {
+
+            }
+
+            @Override
+            public void selectedStrings(List<String> strings, MultiSelectionSpinner spinner) {
+
+            }
+        };
+
+        List<String> projectStatus = MyApplication.getDatabase().projectStatusDao().getAlllstString();
+        int[] projectStatusId = MyApplication.getDatabase().projectStatusDao().getAlllstInt();
+        MultiSelectionSpinner spinner = inflate.findViewById(R.id.spinner);
+        spinner.setItems(projectStatus);
+        spinner.setSelection(projectStatusId);
+        spinner.setListener(selectedListener);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
             @Override
@@ -281,7 +299,7 @@ public class Dialogs {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
-        spinner.setOnItemSelectedListener(itemSelectedListener);
+        //spinner.setOnItemSelectedListener(itemSelectedListener);
 
         projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
         //adapter = new ProjectListAdapter(a, projectList);

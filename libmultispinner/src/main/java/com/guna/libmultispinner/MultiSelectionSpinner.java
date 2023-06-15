@@ -134,6 +134,7 @@ public class MultiSelectionSpinner extends AppCompatSpinner implements
         mSelection[0] = true;
     }
 
+
     public void setSelection(String[] selection) {
         for (int i = 0; i < mSelection.length; i++) {
             mSelection[i] = false;

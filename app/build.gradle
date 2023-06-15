@@ -2,16 +2,14 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10023 * db + 1
+        codeNumber = 10024 * db + 1
 
         major = "00"
-        minor = "24"
+        minor = "25"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
     println "Version: [" + versionNumber + " - " + codeNumber + "]"
-
-
 }
 
 android {
@@ -204,6 +202,7 @@ dependencies {
 
     //implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+    implementation project(path: ':libmultispinner')
 
     //implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 

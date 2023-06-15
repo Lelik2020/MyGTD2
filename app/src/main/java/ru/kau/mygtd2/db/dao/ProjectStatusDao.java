@@ -18,6 +18,12 @@ public interface ProjectStatusDao {
     @Query("SELECT * FROM projectstatus")
     List<ProjectStatus> getAll();
 
+    @Query("SELECT title FROM projectstatus")
+    List<String> getAlllstString();
+
+    @Query("SELECT id FROM projectstatus")
+    int[] getAlllstInt();
+
     @Query("SELECT * FROM projectstatus WHERE id = :idstatus")
     ProjectStatus getById(int idstatus);
 
