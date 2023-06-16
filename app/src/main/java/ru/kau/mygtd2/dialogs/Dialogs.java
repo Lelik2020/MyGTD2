@@ -280,7 +280,11 @@ public class Dialogs {
         };
 
         List<String> projectStatus = MyApplication.getDatabase().projectStatusDao().getAlllstString();
-        int[] projectStatusId = MyApplication.getDatabase().projectStatusDao().getAlllstInt();
+        //int[] projectStatusId = MyApplication.getDatabase().projectStatusDao().getAlllstInt();
+        int[] projectStatusId = new int[projectStatus.size()];
+        for (int i = 0; i < projectStatus.size(); i++){
+            projectStatusId[i] = i;
+        }
         MultiSelectionSpinner spinner = inflate.findViewById(R.id.spinner);
         spinner.setItems(projectStatus);
         spinner.setSelection(projectStatusId);
