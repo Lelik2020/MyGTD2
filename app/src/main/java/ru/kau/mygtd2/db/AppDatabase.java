@@ -79,10 +79,10 @@ import ru.kau.mygtd2.utils.Converters;
                         , TaskTemplateContextJoin.class
                         , TaskTemplateTagJoin.class
                         },
-                        //version = 1,
-                        version = 2,
+                        version = 1,
+                        //version = 2,
                         autoMigrations = {
-                                @AutoMigration(from = 1, to = 2)
+                                //@AutoMigration(from = 1, to = 2)
                                 //@AutoMigration(from = 2, to = 3)
                                 //@AutoMigration(from = 3, to = 4)
                         },

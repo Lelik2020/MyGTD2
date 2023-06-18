@@ -3,6 +3,7 @@ package ru.kau.mygtd2.objects;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -54,4 +55,14 @@ public class ProjectStatus {
     private String description;
     private String color;
 
+    @Ignore
+    private boolean selected;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 }

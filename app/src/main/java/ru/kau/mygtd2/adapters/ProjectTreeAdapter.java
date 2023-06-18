@@ -1,6 +1,7 @@
 package ru.kau.mygtd2.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +17,8 @@ import com.multilevel.treelist.TreeListViewAdapter;
 import java.util.List;
 
 import ru.kau.mygtd2.R;
+import ru.kau.mygtd2.common.MyApplication;
+import ru.kau.mygtd2.objects.Project;
 
 public class ProjectTreeAdapter extends TreeListViewAdapter {
 
@@ -100,6 +103,11 @@ public class ProjectTreeAdapter extends TreeListViewAdapter {
         }
 
         viewHolder.label.setText(node.getName());
+        //viewHolder.label.setBackgroundColor(Color.parseColor("#FF0000"));
+        Project project = MyApplication.getDatabase().projectDao().getProjectById((Long) node.getId());
+        String bgColor = MyApplication.getDatabase().projectStatusDao().getById(project.getPrstatus().Value).getColor();
+
+        viewHolder.label.setBackgroundColor(Color.parseColor(bgColor));
 
         viewHolder.editProject.setOnClickListener(new View.OnClickListener(){
 

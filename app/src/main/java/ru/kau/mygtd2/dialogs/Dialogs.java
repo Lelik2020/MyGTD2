@@ -11,7 +11,6 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -19,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
-import com.guna.libmultispinner.MultiSelectionSpinner;
 import com.multilevel.treelist.Node;
 import com.multilevel.treelist.TreeListViewAdapter;
 import com.skydoves.colorpickerview.ColorEnvelope;
@@ -53,6 +52,7 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
 import ru.kau.mygtd2.adapters.ProjectTreeAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter4;
+import ru.kau.mygtd2.adapters.dialog.ProjectStatusAdapter;
 import ru.kau.mygtd2.adapters.dialog.TagAdapter;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.enums.DialogType;
@@ -249,11 +249,20 @@ public class Dialogs {
 
         ListView list = (ListView) inflate.findViewById(R.id.listView1);
 
+
         final List<Project> projectList = MyApplication.getDatabase().projectDao().getAll();
         projectsList.clear();
         for(Project p: projectList){
             projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
         }
+
+        SwitchMaterial cbWhowActiveProjects = inflate.findViewById(R.id.cbWhowActiveProjects);
+        cbWhowActiveProjects.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
 
         //String[] projectStatus = { "Бразилия", "Аргентина", "Колумбия", "Чили", "Уругвай"};
         //Spinner spinner = inflate.findViewById(R.id.spinner);
@@ -267,6 +276,7 @@ public class Dialogs {
         adapter.setDropDownViewResource(R.layout.target_item);
         spinner.setAdapter(adapter);*/
 
+        /*
         MultiSelectionSpinner.OnMultipleItemsSelectedListener selectedListener = new MultiSelectionSpinner.OnMultipleItemsSelectedListener() {
             @Override
             public void selectedIndices(List<Integer> indices, MultiSelectionSpinner spinner) {
@@ -278,16 +288,18 @@ public class Dialogs {
 
             }
         };
+        */
 
-        List<String> projectStatus = MyApplication.getDatabase().projectStatusDao().getAlllstString();
+        /*List<String> projectStatus = MyApplication.getDatabase().projectStatusDao().getAlllstString();
         //int[] projectStatusId = MyApplication.getDatabase().projectStatusDao().getAlllstInt();
         int[] projectStatusId = new int[projectStatus.size()];
         for (int i = 0; i < projectStatus.size(); i++){
             projectStatusId[i] = i;
-        }
-        MultiSelectionSpinner spinner = inflate.findViewById(R.id.spinner);
+        }*/
+        /*MultiSelectionSpinner spinner = inflate.findViewById(R.id.spinner);
         spinner.setItems(projectStatus);
         spinner.setSelection(projectStatusId);
+
         spinner.setListener(selectedListener);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
@@ -302,8 +314,16 @@ public class Dialogs {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        };
+        };*/
         //spinner.setOnItemSelectedListener(itemSelectedListener);
+
+        Spinner spinner = inflate.findViewById(R.id.spinner);
+        List<ProjectStatus> projectStatus = MyApplication.getDatabase().projectStatusDao().getAll();
+
+        ProjectStatusAdapter psAdapter = new ProjectStatusAdapter(a, 0, projectStatus);
+        spinner.setAdapter(psAdapter);
+
+
 
         projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
         //adapter = new ProjectListAdapter(a, projectList);

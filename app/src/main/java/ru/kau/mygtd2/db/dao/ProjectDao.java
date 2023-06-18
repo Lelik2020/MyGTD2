@@ -29,6 +29,12 @@ public interface ProjectDao {
     @Query("SELECT * FROM projects")
     List<Project> getAll();
 
+    @Query("SELECT * FROM projects WHERE prstatus = 1")
+    List<Project> getAllActiveProjects();
+
+    @Query("SELECT * FROM projects WHERE prstatus IN (:lstStatuses)")
+    List<Project> getAllProjectsByStatuses(List<Integer> lstStatuses);
+
     @Query("SELECT id FROM projects")
     List<Integer> getAllId();
 

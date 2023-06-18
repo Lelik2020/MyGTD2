@@ -1,5 +1,10 @@
 package ru.kau.mygtd2.adapters;
 
+import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
+import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
+import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
+import static ru.kau.mygtd2.utils.Const.lstStatus;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,11 +33,6 @@ import ru.kau.mygtd2.fragments.TasksFragment;
 import ru.kau.mygtd2.interfaces.ResultResponse;
 import ru.kau.mygtd2.objects.Project;
 import ru.kau.mygtd2.utils.Utils;
-
-import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHMINUTES;
-import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
-import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
-import static ru.kau.mygtd2.utils.Const.lstStatus;
 
 public class SprProjectTreeAdapter extends TreeListViewAdapter {
 
@@ -63,6 +63,8 @@ public class SprProjectTreeAdapter extends TreeListViewAdapter {
                     .findViewById(R.id.sprproject_tree_item_text);
             viewHolder.icon = (ImageView) convertView.findViewById(R.id.sprproject_tree_icon);
             viewHolder.itemMenu = (ImageView) convertView.findViewById(R.id.itemProjectMenu);
+
+            viewHolder.rtvStatus = convertView.findViewById(R.id.rtvStatus);
 
             viewHolder.rtv1 = (RoundTextView) convertView.findViewById(R.id.rtv_1);
             viewHolder.rtv2 = (RoundTextView) convertView.findViewById(R.id.rtv_2);
@@ -188,7 +190,15 @@ public class SprProjectTreeAdapter extends TreeListViewAdapter {
 
         //infoStatus = MyApplication.getDatabase().infoStatusDao().getById(1);
         //count = MyApplication.getDatabase().informationDao().getCountByStatus(infoStatus.getId());
+        Project project = MyApplication.getDatabase().projectDao().getProjectById((Long) node.getId());
+        String bgColor = MyApplication.getDatabase().projectStatusDao().getById(project.getPrstatus().Value).getColor();
 
+        viewHolder.rtvStatus.setCorner(16, 0, 0, 16);
+
+        viewHolder.rtvStatus.setBgColor(Color.parseColor(bgColor));
+
+        viewHolder.rtvStatus.setText(MyApplication.getDatabase().projectStatusDao().getById(project.getPrstatus().Value).getTitle());
+        viewHolder.rtvStatus.setVisibility(View.VISIBLE);
 
 
         viewHolder.rtv1.setCorner(16, 0, 0, 16);
@@ -267,6 +277,8 @@ public class SprProjectTreeAdapter extends TreeListViewAdapter {
         TextView label;
         ImageView itemMenu;
         LinearLayoutCompat lnlmain;
+
+        RoundTextView rtvStatus;
 
         RoundTextView rtv1;
         RoundTextView rtv2;

@@ -748,7 +748,7 @@ public class DbCreator {
         project.setTitle("Работа");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Здесь будут находиться все рабочие проекты");
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -756,7 +756,7 @@ public class DbCreator {
         project.setTitle("Личное");
         project.setSearchtitle(project.getTitle());
         project.setDescription("Здесь будут находиться все личные проекты");
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         /*project = new Project();
@@ -795,7 +795,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект MyReader. ");
         project.setParentid(2L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -804,7 +804,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("Проект MyGTD. ");
         project.setParentid(2L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -813,7 +813,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("Потребительское кредитование");
         project.setParentid(1L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -822,7 +822,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("POS-кредитование");
         project.setParentid(1L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -831,7 +831,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("Мониторинг АС трайба CBP");
         project.setParentid(1L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -840,7 +840,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("Лояльность");
         project.setParentid(5L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         project = new Project();
@@ -849,7 +849,7 @@ public class DbCreator {
         project.setSearchtitle(project.getTitle());
         project.setDescription("BNPL");
         project.setParentid(1L);
-        project.setPrStatus(PrStatus.ACTIVE);
+        project.setPrstatus(PrStatus.ACTIVE);
         MyApplication.getDatabase().projectDao().insert(project);
 
         /*project = new Project();

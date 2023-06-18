@@ -53,7 +53,7 @@ public class AddProjectFragment extends Fragment implements DialogProjectChoice,
             editProject = (Project) arguments.getSerializable("editproject");
             txtProjectTitle.setText(editProject.getTitle());
             txtProjectInfoTitle.setText(editProject.getDescription());
-            getProjectStatus(MyApplication.getDatabase().projectStatusDao().getById(editProject.getPrStatus().Value));
+            getProjectStatus(MyApplication.getDatabase().projectStatusDao().getById(editProject.getPrstatus().Value));
             parentProject = MyApplication.getDatabase().projectDao().getProjectById(editProject.getParentid());
             if (parentProject != null) {
                 parentProjectTitle.setText(parentProject.getTitle());
@@ -70,7 +70,7 @@ public class AddProjectFragment extends Fragment implements DialogProjectChoice,
                 txtProjectTitle.setText(parentProject.getTitle());
                 txtProjectInfoTitle.setText(parentProject.getDescription());
                 parentProjectTitle.setText(MyApplication.getDatabase().projectDao().getProjectById(parentProject.getParentid()).getTitle());
-                getProjectStatus(MyApplication.getDatabase().projectStatusDao().getById(parentProject.getPrStatus().Value));
+                getProjectStatus(MyApplication.getDatabase().projectStatusDao().getById(parentProject.getPrstatus().Value));
             }
         }
 
@@ -146,7 +146,8 @@ public class AddProjectFragment extends Fragment implements DialogProjectChoice,
                     editProject.setSearchtitle(editProject.getTitle().toUpperCase());
                     editProject.setDescription(txtProjectInfoTitle.getText().toString());
                     editProject.setParentid(parentProject.getId());
-                    editProject.setPrStatus(PrStatus.ACTIVE);
+                    //editProject.setPrStatus(PrStatus.ACTIVE);
+                    editProject.setPrStatus(projectStatus);
                     try {
                         MyApplication.getDatabase().projectDao().update(editProject);
                         //ViewUtils.viewPositiveToast(getContext(), getLayoutInflater(), String.valueOf(R.string.projectcreated), Toast.LENGTH_SHORT, Gravity.BOTTOM, 0, 0);

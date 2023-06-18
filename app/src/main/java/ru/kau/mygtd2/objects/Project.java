@@ -38,21 +38,23 @@ public class Project implements Serializable {
 
     private String description;
 
-    public PrStatus getPrStatus() {
-        return prStatus;
+
+    public PrStatus getPrstatus() {
+        return prstatus;
     }
 
-    public void setPrStatus(PrStatus prStatus) {
-        this.prStatus = prStatus;
+    public void setPrstatus(PrStatus prstatus) {
+        this.prstatus = prstatus;
     }
 
     public void setPrStatus(ProjectStatus projectStatus){
-        this.prStatus = PrStatus.from(projectStatus.getId());
+        this.prstatus = PrStatus.from(projectStatus.getId());
     }
 
     @JsonAdapter(ProjectStatusConverter.class)
     @TypeConverters(Converters.class)
-    private PrStatus prStatus;
+    private PrStatus prstatus;
+    //private PrStatus prStatus;
 
     private String color;
 

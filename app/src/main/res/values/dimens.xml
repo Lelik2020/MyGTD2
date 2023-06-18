@@ -22,6 +22,7 @@
     <dimen name="wh_toolbar">36dp</dimen>
 
     <dimen name="wh_cb_small">18dp</dimen>
+    <dimen name="wh_cb_middle">27dp</dimen>
 
     <dimen name="wh_cardviewwithtoolbar">38dp</dimen>
     <dimen name="wh_tasks_description_text">2dp</dimen>
