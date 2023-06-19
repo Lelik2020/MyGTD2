@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10026 * db + 1
+        codeNumber = 10027 * db + 1
 
         major = "00"
-        minor = "27"
+        minor = "28"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""

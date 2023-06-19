@@ -38,6 +38,7 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -165,6 +166,8 @@ public class Dialogs {
     static SwitchMaterial cbWhowArchive;
     static SwitchMaterial cbWhowTop;
 
+    private static List<Project> projectList;
+
     //private ProjectListAdapter adapter;
 
     public static void choiseParentTaskDialog(final Context a, final Runnable refresh) {
@@ -250,7 +253,7 @@ public class Dialogs {
         ListView list = (ListView) inflate.findViewById(R.id.listView1);
 
 
-        final List<Project> projectList = MyApplication.getDatabase().projectDao().getAll();
+        projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
         projectsList.clear();
         for(Project p: projectList){
             projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
@@ -260,7 +263,22 @@ public class Dialogs {
         cbWhowActiveProjects.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1)));
+                    projectsList.clear();
+                    for(Project p: projectList){
+                        projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
+                    }
+                } else {
+                    projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+                    projectsList.clear();
+                    for(Project p: projectList){
+                        projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
+                    }
+                }
+                projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
 
+                list.setAdapter(projectsAdapter);
             }
         });
 
