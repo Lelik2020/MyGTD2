@@ -195,19 +195,19 @@ public class DbCreator {
         taskCategory.setTitle("Важно и несрочно");
         taskCategory.setDescription("Важно и несрочно");
         taskCategory.setColor("#3CB371");
-        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
+        MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
 
         taskCategory.setId(2);
         taskCategory.setTitle("Важно и срочно");
         taskCategory.setDescription("Важно и срочно");
         taskCategory.setColor("#FF0000");
-        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
+        MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
 
         taskCategory.setId(3);
         taskCategory.setTitle("Неважно и срочно");
         taskCategory.setDescription("Неважно и срочно");
         taskCategory.setColor("#2196F3");
-        MyApplication.getDatabase().taskCategoryDao().update(taskCategory);
+        MyApplication.getDatabase().taskCategoryDao().insert(taskCategory);
 
         taskCategory.setId(4);
         taskCategory.setTitle("Неважно и несрочно");

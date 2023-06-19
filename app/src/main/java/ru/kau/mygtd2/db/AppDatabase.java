@@ -95,7 +95,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(final SupportSQLiteDatabase database) {
-            database.execSQL("ALTER TABLE tags ADD COLUMN isarchive INTEGER NOT NULL DEFAULT 0");
+            //database.execSQL("ALTER TABLE tags ADD COLUMN isarchive INTEGER NOT NULL DEFAULT 0");
             //database.execSQL("ALTER TABLE tasks ADD COLUMN deviceguid TEXT NOT NULL DEFAULT ''");
             //DbCreator.tasksUpdate();
         }

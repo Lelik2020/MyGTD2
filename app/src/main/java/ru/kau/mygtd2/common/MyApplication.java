@@ -1,7 +1,5 @@
 package ru.kau.mygtd2.common;
 
-import static ru.kau.mygtd2.db.AppDatabase.MIGRATION_1_2;
-
 import android.app.Application;
 import android.content.Context;
 
@@ -28,7 +26,7 @@ public class MyApplication extends Application {
         database = Room.databaseBuilder(this, AppDatabase.class, "MyGTD")
                 //.addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5)
                 //.addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3/*, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5*/)
-                .addMigrations(MIGRATION_1_2)
+                //.addMigrations(MIGRATION_1_2)
                 //.fallbackToDestructiveMigration().addMigrations(MIGRATION_2_3n)
                 //.addMigrations(MIGRATION_3_4)
                 //.addMigrations(MIGRATION_4_5)
