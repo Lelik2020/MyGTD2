@@ -582,6 +582,13 @@ public class DbCreator {
         category.setGrp(2);
         MyApplication.getDatabase().categoryDao().insert(category);
 
+        category = new Category();
+        category.setId(26);
+        category.setTitle("Категории задач");
+        category.setDescription("Категории задач");
+        category.setGrp(2);
+        MyApplication.getDatabase().categoryDao().insert(category);
+
 
         InfoStatus infoStatus = new InfoStatus();
         infoStatus.setId(1L);
