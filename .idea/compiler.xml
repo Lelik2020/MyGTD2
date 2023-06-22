@@ -18,7 +18,20 @@
       <module name="MyGTD.sadlibrary" target="1.7" />
       <module name="MyGTD.smartmaterialspinner" target="1.8" />
       <module name="MyGTD.toasty" target="1.8" />
+      <module name="MyGTD2.app" target="18" />
+      <module name="MyGTD2.bottom-navigation-bar" target="18" />
+      <module name="MyGTD2.cblibrary" target="18" />
+      <module name="MyGTD2.colorpickerview" target="18" />
+      <module name="MyGTD2.custombutton" target="18" />
+      <module name="MyGTD2.libmultispinner" target="18" />
+      <module name="MyGTD2.MaterialDialogLibrary" target="18" />
+      <module name="MyGTD2.MPChartLib" target="18" />
+      <module name="MyGTD2.MultilevelTreeLibrary" target="18" />
+      <module name="MyGTD2.mydynamiccalendar" target="18" />
       <module name="MyGTD2.progresslibrary" target="11" />
+      <module name="MyGTD2.roundtextview" target="18" />
+      <module name="MyGTD2.smartmaterialspinner" target="18" />
+      <module name="MyGTD2.toasty" target="18" />
       <module name="roundtextview" target="1.7" />
       <module name="smartmaterialspinner" target="1.7" />
     </bytecodeTargetLevel>

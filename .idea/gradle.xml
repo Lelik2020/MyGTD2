@@ -4,11 +4,10 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../Gradle8" />
-        <option name="gradleJvm" value="jbr-17" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../Gradle8.1" />
+        <option name="gradleJvm" value="18" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -20,6 +19,7 @@
             <option value="$PROJECT_DIR$/cblibrary" />
             <option value="$PROJECT_DIR$/colorpickerview" />
             <option value="$PROJECT_DIR$/custombutton" />
+            <option value="$PROJECT_DIR$/libmultispinner" />
             <option value="$PROJECT_DIR$/mydynamiccalendar" />
             <option value="$PROJECT_DIR$/roundtextview" />
             <option value="$PROJECT_DIR$/smartmaterialspinner" />

@@ -195,7 +195,7 @@ dependencies {
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
     implementation 'com.burgstaller:okhttp-digest:1.18'
-    implementation 'com.google.http-client:google-http-client-gson:1.43.2'
+    implementation 'com.google.http-client:google-http-client-gson:1.43.3'
     implementation project(path: ':toasty')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
