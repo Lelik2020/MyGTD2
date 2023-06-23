@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alltaskinfo"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="2sp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp"
+    android:animateLayoutChanges="true"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/taskcategoryinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lltitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ltaskcategorytitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/taskcategory_icon"
+                    android:layout_width="@dimen/wh_btn_small"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:src="@drawable/bookmark"
+                    android:scaleType="centerInside"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:id="@+id/contexttitle"
+                    android:paddingLeft="5sp"
+                    style="@style/txtTaskTitle"
+                    />
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:id="@+id/lnrLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:layout_weight="0"
+                    >
+
+
+
+                    <com.apg.mobile.roundtextview.RoundTextView
+                        android:id="@+id/contextcount1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/wh_btn_small"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textSize="12sp"
+
+                        android:textColor="@color/text_black_100"
+                        app:bgColor="@color/active_meeting"
+                        app:topLeftCorner="8sp"
+                        app:bottomLeftCorner="8sp"
+                        app:topRightCorner="0sp"
+                        app:bottomRightCorner="0sp"
+                        android:visibility="invisible"
+                        />
+
+                    <com.apg.mobile.roundtextview.RoundTextView
+                        android:id="@+id/contextcount2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/wh_btn_small"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textSize="12sp"
+                        android:visibility="invisible"
+                        />
+
+                    <com.apg.mobile.roundtextview.RoundTextView
+                        android:id="@+id/contextcount3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/wh_btn_small"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textSize="12sp"
+                        android:visibility="invisible"
+                        />
+                    <com.apg.mobile.roundtextview.RoundTextView
+                        android:id="@+id/contextcount4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/wh_btn_small"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textSize="12sp"
+                        android:visibility="invisible"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

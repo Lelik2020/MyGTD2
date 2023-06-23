@@ -32,7 +32,7 @@ public class TaskCategoryAdapter extends RecyclerView.Adapter<TaskCategoryAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(c).inflate(R.layout.context_cardview, parent,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.taskcategory_cardview, parent,false);
 
         return new TaskCategoryAdapter.ViewHolder(v);
     }

@@ -42,12 +42,12 @@ public class CategoryOfTaskFragment  extends Fragment {
         //drawable.getPaint().setStrokeWidth(5);
 
 
-        lvTaskTypes.setBackground(drawable);
+        lvCategoryTypes.setBackground(drawable);
 
-        lvTaskTypes.setLayoutManager(new LinearLayoutManager(getActivity()));
-        tskTypesAdapter = new TaskTypesAdapter( getActivity(), lstTaskTypes);
+        lvCategoryTypes.setLayoutManager(new LinearLayoutManager(getActivity()));
+        taskCategoryAdapter = new TaskCategoryAdapter( getActivity(), lstTaskCategory);
 
-        lvTaskTypes.setAdapter(tskTypesAdapter);
+        lvCategoryTypes.setAdapter(taskCategoryAdapter);
 
         return rootView;
 
