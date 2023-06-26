@@ -76,8 +76,9 @@ public class TaskCategoryAdapter extends RecyclerView.Adapter<TaskCategoryAdapte
         //count4 = MyApplication.getDatabase().taskDao().getCountOutstandingByContekst(new Date().getTime(), Utils.dateToString(new SimpleDateFormat("dd.MM.yyyy"), new Date()), contekst.getId());
 
         count3 = MyApplication.getDatabase().taskDao().getCountByDateWithCategory(Utils.getEndOfDay(new Date()).getTime(), Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, Utils.getEndOfDay(new Date())),
-                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID, lstALLCONTEXTSID,
-                new ArrayList<Integer>() {
+                lstStatus, lstALLFAVOURITE,  lstALLPRIORITY, lstALLPROJECTSID, lstALLTARGETSID
+                //, lstALLCONTEXTSID,
+                , new ArrayList<Integer>() {
                     {
                         add((int) taskCategory.getId());
                     }

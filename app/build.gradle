@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10100 * db + 1
+        codeNumber = 10101 * db + 1
 
         major = "01"
-        minor = "01"
+        minor = "02"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -13,13 +13,13 @@ ext {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     buildToolsVersion '34.0.0'
 
     defaultConfig {
         applicationId "ru.kau.mygtd4"
         minSdkVersion 26
-        targetSdkVersion 33
+        targetSdkVersion 34
 
         versionCode codeNumber
         versionName versionNumber
@@ -213,7 +213,7 @@ dependencies {
     //def room_version2 = "2.1.0"
     //def room_version = "1.1.1"
     //def room_version2 = '2.4.3'
-    def room_version2 = '2.5.1'
+    def room_version2 = '2.5.2'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -250,7 +250,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 
     // https://mvnrepository.com/artifact/androidx.compose.material3/material3
-    runtimeOnly group: 'androidx.compose.material3', name: 'material3', version: '1.2.0-alpha02'
+    runtimeOnly group: 'androidx.compose.material3', name: 'material3', version: '1.2.0-alpha03'
 
 
 

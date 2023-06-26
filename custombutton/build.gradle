@@ -5,11 +5,11 @@ group='com.github.searchy2'
 version = '1.9.2'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 26
-        targetSdkVersion 33
+        targetSdkVersion 34
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
