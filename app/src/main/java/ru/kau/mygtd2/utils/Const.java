@@ -139,6 +139,22 @@ public class Const {
 
     };
 
+    static final public List<Integer> lstALLTASKTYPESID = new ArrayList<Integer>() {
+        {
+            //add(0);
+            addAll(MyApplication.getDatabase().taskTypesDao().getAllId());
+        }
+
+    };
+
+    static final public List<Integer> lstALLTASKCATEGORIESID = new ArrayList<Integer>() {
+        {
+            //add(0);
+            addAll(MyApplication.getDatabase().taskCategoryDao().getAllId());
+        }
+
+    };
+
     static final public List<Integer> lstTARGETSSID = new ArrayList<Integer>() {
         {
             //add(0);

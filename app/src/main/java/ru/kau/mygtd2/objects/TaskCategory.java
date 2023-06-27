@@ -6,12 +6,14 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 import ru.kau.mygtd2.utils.Const;
 
 @Entity(tableName = "taskcategory", indices = {
         @Index(value = {"title"}, unique = true)
 })
-public class TaskCategory {
+public class TaskCategory implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;

@@ -32,5 +32,8 @@ public interface TaskTypesDao {
     @Query("SELECT count() FROM tasktypes")
     int countOftypetask();
 
+    @Query("SELECT id FROM tasktypes")
+    List<Integer> getAllId();
+
 
 }

@@ -65,6 +65,7 @@ import ru.kau.mygtd2.objects.SQLCondition;
 import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
+import ru.kau.mygtd2.objects.TaskCategory;
 import ru.kau.mygtd2.utils.Utils;
 
 public class TasksFragment extends Fragment {
@@ -273,6 +274,21 @@ public class TasksFragment extends Fragment {
 
         }
 
+        if (arguments != null && arguments.containsKey("taskcategory")) {
+            //TasksAdapter tasksAdapter;
+            TaskCategory taskCategory = (TaskCategory) arguments.getSerializable("taskcategory");
+
+            //tasksAdapter = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOfProject(project.getId()));
+            fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, new ArrayList<Integer>(){
+                {
+                    //add(0);
+                    add((int) target.getId());
+                }
+            }, null);
+
+
+        }
+
         if (arguments != null && arguments.containsKey("target")) {
             //TasksAdapter tasksAdapter;
             Target target = (Target) arguments.getSerializable("target");
@@ -335,7 +351,8 @@ public class TasksFragment extends Fragment {
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
                          List<Integer> lstProjects, List<Integer> listStatus,
-                         List<Integer> lstTargets, List<Integer> lstTags) {
+                         List<Integer> lstTargets, List<Integer> lstTags
+                         , List<TaskCategory> lstTaskCategiries) {
 
         tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
         //tv1.setText(getResources().getString(R.string.overduetask));

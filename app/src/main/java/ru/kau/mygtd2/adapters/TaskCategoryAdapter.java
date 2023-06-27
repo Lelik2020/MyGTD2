@@ -121,7 +121,7 @@ public class TaskCategoryAdapter extends RecyclerView.Adapter<TaskCategoryAdapte
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                //bundle.putSerializable("tag", tag);
+                bundle.putSerializable("taskcategory", taskCategory);
                 TasksFragment tasksFragment = new TasksFragment();
                 tasksFragment.setArguments(bundle);
                 ((MainActivity)c).getSupportFragmentManager().beginTransaction().addToBackStack("TasksFragment").replace(R.id.frame_container, tasksFragment).commit();
