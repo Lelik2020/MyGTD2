@@ -66,6 +66,7 @@ import ru.kau.mygtd2.objects.Tag;
 import ru.kau.mygtd2.objects.Target;
 import ru.kau.mygtd2.objects.Task;
 import ru.kau.mygtd2.objects.TaskCategory;
+import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.Utils;
 
 public class TasksFragment extends Fragment {
@@ -349,10 +350,14 @@ public class TasksFragment extends Fragment {
         fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null);
     }
 
+
+
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
                          List<Integer> lstProjects, List<Integer> listStatus,
                          List<Integer> lstTargets, List<Integer> lstTags
-                         , List<TaskCategory> lstTaskCategiries) {
+                         , List<Integer> lstTaskCategories
+                         , List<Integer> lstTaskTypes
+                         ) {
 
         tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
         //tv1.setText(getResources().getString(R.string.overduetask));
@@ -390,7 +395,8 @@ public class TasksFragment extends Fragment {
         List<Task> lstTask;
         if (lstTags == null) {
             //lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(new Date()).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
-            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(currDate).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
+            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(currDate).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets
+                                                                            , lstTaskCategories, lstTaskTypes);
         } else {
             /*String sqltext = HIERARCHY_TASKS +
                     " AND (dateEnd < ?) " +
@@ -418,6 +424,8 @@ public class TasksFragment extends Fragment {
                     add(new SQLCondition("priority_id", "IN", Utils.getStringByArrayInteger(lstPriority)));
                     add(new SQLCondition("project_id", "IN", Utils.getStringByArrayInteger(lstProjects)));
                     add(new SQLCondition("target_id", "IN", Utils.getStringByArrayInteger(lstTargets)));
+                    add(new SQLCondition("category", "IN", Utils.getStringByArrayInteger(lstTaskCategories)));
+                    add(new SQLCondition("typeoftask", "IN", Utils.getStringByArrayInteger(lstTaskTypes)));
                     add(new SQLCondition("id", "IN", "SELECT idtask FROM tasktags WHERE idtag IN (" + Utils.getStringByArrayInteger(lstTags) + ")"));
                 }
             }, null, args);

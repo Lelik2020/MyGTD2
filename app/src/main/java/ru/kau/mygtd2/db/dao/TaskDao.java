@@ -313,9 +313,11 @@ public interface TaskDao {
     List<Task> getOverdueTasks(long date, List<Integer> lstStatus);*/
 
     @Query(HIERARCHY_TASKS + " AND (dateEnd < :date) AND status IN (:lstStatus) AND isFavourite IN (:lstFavour) " +
-            "AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets)")
+            "AND priority_id IN (:lstPriority) AND project_id IN (:lstProjects) AND target_id IN (:lstTargets) "
+            + "AND category IN (:lstTaskCategories) AND typeoftask IN (:lstTaskTypes)")
     List<Task> getOverdueTasks(long date, List<Integer> lstStatus, List<Integer> lstFavour,
-                               List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> lstTargets);
+                               List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> lstTargets
+                               , List<Integer> lstTaskCategories, List<Integer> lstTaskTypes );
 
     //HIERARCHY_TASKS
 
