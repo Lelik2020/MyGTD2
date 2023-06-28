@@ -325,16 +325,12 @@ public class TasksFragmentN extends Fragment {
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
-        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstALLTASKCATEGORIESID);
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus
             , List<Integer> lstTaskCategories) {
         fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstTaskCategories, lstALLTASKTYPESID);
-    }
-
-    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
-        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null);
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
