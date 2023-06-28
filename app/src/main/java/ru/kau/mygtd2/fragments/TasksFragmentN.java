@@ -20,6 +20,8 @@ import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
 import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
 import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
+import static ru.kau.mygtd2.utils.Const.lstALLTASKCATEGORIESID;
+import static ru.kau.mygtd2.utils.Const.lstALLTASKTYPESID;
 import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstPROJECTSID;
@@ -323,12 +325,24 @@ public class TasksFragmentN extends Fragment {
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
+    }
+
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus
+            , List<Integer> lstTaskCategories) {
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstTaskCategories, lstALLTASKTYPESID);
+    }
+
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
         fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null);
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
                          List<Integer> lstProjects, List<Integer> listStatus,
-                         List<Integer> lstTargets, List<Integer> lstTags) {
+                         List<Integer> lstTargets, List<Integer> lstTags
+                         ,List<Integer> lstTaskCategories
+                         ,List<Integer> lstTaskTypes
+                        ) {
 
         tv1 = (TextView) rootView.findViewById(R.id.tv_overdue_task);
         //tv1.setText(getResources().getString(R.string.overduetask));
@@ -365,7 +379,7 @@ public class TasksFragmentN extends Fragment {
 
         List<Task> lstTask;
         if (lstTags == null) {
-            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(new Date()).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets);
+            lstTask = MyApplication.getDatabase().taskDao().getOverdueTasks(Utils.atStartOfDay(new Date()).getTime(), lstStatus, favour, lstPriority, lstProjects, lstTargets, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
         } else {
             /*String sqltext = HIERARCHY_TASKS +
                     " AND (dateEnd < ?) " +
@@ -392,6 +406,8 @@ public class TasksFragmentN extends Fragment {
                     add(new SQLCondition("priority_id", "IN", Utils.getStringByArrayInteger(lstPriority)));
                     add(new SQLCondition("project_id", "IN", Utils.getStringByArrayInteger(lstProjects)));
                     add(new SQLCondition("target_id", "IN", Utils.getStringByArrayInteger(lstTargets)));
+                    add(new SQLCondition("category", "IN", Utils.getStringByArrayInteger(lstTaskCategories)));
+                    add(new SQLCondition("typeoftask", "IN", Utils.getStringByArrayInteger(lstTaskTypes)));
                     add(new SQLCondition("id", "IN", "SELECT idtask FROM tasktags WHERE idtag IN (" + Utils.getStringByArrayInteger(lstTags) + ")"));
                 }
             }, null, args);

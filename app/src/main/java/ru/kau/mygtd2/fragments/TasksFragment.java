@@ -21,6 +21,8 @@ import static ru.kau.mygtd2.utils.Const.lstALLPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstALLPROJECTSID;
 import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
 import static ru.kau.mygtd2.utils.Const.lstALLTARGETSID;
+import static ru.kau.mygtd2.utils.Const.lstALLTASKCATEGORIESID;
+import static ru.kau.mygtd2.utils.Const.lstALLTASKTYPESID;
 import static ru.kau.mygtd2.utils.Const.lstHIPRIORITY;
 import static ru.kau.mygtd2.utils.Const.lstONLYFAVOURITE;
 import static ru.kau.mygtd2.utils.Const.lstPROJECTSID;
@@ -245,13 +247,14 @@ public class TasksFragment extends Fragment {
 
                 case 2000:
 
-                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null);
+                    //fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null);
 
+                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
                     break;
 
                 case 2001:
 
-                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstWITHOUTTARGET, null);
+                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstWITHOUTTARGET, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
 
                     break;
 
@@ -280,12 +283,15 @@ public class TasksFragment extends Fragment {
             TaskCategory taskCategory = (TaskCategory) arguments.getSerializable("taskcategory");
 
             //tasksAdapter = new TasksAdapter(getActivity(), MyApplication.getDatabase().taskDao().getAllTasksOfProject(project.getId()));
-            fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, new ArrayList<Integer>(){
+            fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstALLTARGETSID,
+                    new ArrayList<Integer>(){
                 {
                     //add(0);
-                    add((int) target.getId());
+                    add((int) taskCategory.getId());
                 }
-            }, null);
+            }, null
+                    , lstALLTASKTYPESID
+            );
 
 
         }
@@ -300,7 +306,8 @@ public class TasksFragment extends Fragment {
                     //add(0);
                     add((int) target.getId());
                 }
-            }, null);
+            }, null
+                    , lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
 
 
         }
@@ -315,7 +322,8 @@ public class TasksFragment extends Fragment {
                     //add(0);
                     add((int) tag.getId());
                 }
-            });
+            }
+                    , lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
 
 
         }
@@ -347,10 +355,13 @@ public class TasksFragment extends Fragment {
     }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
-        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null);
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
     }
 
-
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus
+                        , List<Integer> lstTaskCategories) {
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstTaskCategories, lstALLTASKTYPESID);
+    }
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
                          List<Integer> lstProjects, List<Integer> listStatus,
