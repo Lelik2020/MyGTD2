@@ -233,17 +233,23 @@ public class TasksFragmentN extends Fragment {
 
                     break;
 
+
+
                 case 2000:
 
-                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null);
+                    //fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null);
 
+                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstTARGETSSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
                     break;
 
                 case 2001:
 
-                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstWITHOUTTARGET, null);
+                    //fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstWITHOUTTARGET, null);
+
+                    fullView(rootView, lstALLFAVOURITE, lstALLPRIORITY, lstALLPROJECTSID, lstALLSTATUS, lstWITHOUTTARGET, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
 
                     break;
+
 
             }
 
@@ -275,7 +281,9 @@ public class TasksFragmentN extends Fragment {
                     //add(0);
                     add((int) target.getId());
                 }
-            }, null);
+            }, null
+                    , lstALLTASKCATEGORIESID, lstALLTASKTYPESID
+            );
 
 
         }
@@ -290,7 +298,9 @@ public class TasksFragmentN extends Fragment {
                     //add(0);
                     add((int) tag.getId());
                 }
-            });
+            }
+                    , lstALLTASKCATEGORIESID, lstALLTASKTYPESID
+            );
 
 
         }
@@ -307,6 +317,7 @@ public class TasksFragmentN extends Fragment {
         DefaultListeners.bindAdapter2(getActivity(), tasksAdapter);
     }
 
+    /*
     public void fullView(View rootView) {
 
         fullView(rootView, lstALLFAVOURITE);
@@ -332,6 +343,29 @@ public class TasksFragmentN extends Fragment {
             , List<Integer> lstTaskCategories) {
         fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstTaskCategories, lstALLTASKTYPESID);
     }
+    */
+
+    public void fullView(View rootView) {
+
+        fullView(rootView, lstALLFAVOURITE);
+    }
+
+    public void fullView(View rootView, List<Integer> favour) {
+        fullView(rootView, favour, lstALLPRIORITY);
+    }
+
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority) {
+        fullView(rootView, favour, lstPriority, lstALLPROJECTSID);
+    }
+
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects) {
+        fullView(rootView, favour, lstPriority, lstProjects, lstALLSTATUS);
+    }
+
+    public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority, List<Integer> lstProjects, List<Integer> listStatus) {
+        fullView(rootView, favour, lstPriority, lstProjects, listStatus, lstALLTARGETSID, null, lstALLTASKCATEGORIESID, lstALLTASKTYPESID);
+    }
+
 
     public void fullView(View rootView, List<Integer> favour, List<Integer> lstPriority,
                          List<Integer> lstProjects, List<Integer> listStatus,
