@@ -433,7 +433,8 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
             viewHolder.projecticon.setVisibility(View.INVISIBLE);
             viewHolder.projectName.setVisibility(View.INVISIBLE);
         } else {
-            viewHolder.projectName.setText(project.getTitle());
+            //viewHolder.projectName.setText(project.getTitle());
+            viewHolder.projectName.setText(Utils.getFullProjectName(project.getId()));
             viewHolder.projectName.setVisibility(View.VISIBLE);
             LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_ICON_WIDTH, Const.DEFAULT_ICON_HEIGHT2);
             //viewHolder.targeticon.setLayoutParams(lParams);

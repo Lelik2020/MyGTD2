@@ -868,12 +868,23 @@ public class Utils {
         return null;
     }
 
-    public static String getFullProjectName(int projectID){
+    public static String getFullProjectName(long projectID){
         String fullName = "";
+        List<String> lstTitle = new ArrayList<>();
+        String separator = " \\ ";
+        Project project = MyApplication.getDatabase().projectDao().getProjectById(projectID);
+        lstTitle.add(project.getTitle());
+        while (project.getParentid() > 0) {
+            //long parentID = project.getParentid();
+            //fullName = fullName + separator + project.getTitle();
+            project = MyApplication.getDatabase().projectDao().getProjectById(project.getParentid());
+            lstTitle.add(project.getTitle());
+        }
+        for (int i = lstTitle.size() - 1; i >= 0; i--){
+            fullName = fullName + lstTitle.get(i) + separator;
+        }
 
-        777
-
-        return fullName;
+        return fullName.substring(0, fullName.length() - separator.length()).trim();
     }
 
 }
