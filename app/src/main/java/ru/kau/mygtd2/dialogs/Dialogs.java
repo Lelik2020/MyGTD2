@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.dialogs;
 
+import static ru.kau.mygtd2.enums.TypeSetting.SHOWONLYACTIVEPROJECTS;
+import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
 
 import android.annotation.SuppressLint;
@@ -92,6 +94,7 @@ import ru.kau.mygtd2.objects.TaskStatus;
 import ru.kau.mygtd2.objects.TaskTypes;
 import ru.kau.mygtd2.utils.BubbleFlag;
 import ru.kau.mygtd2.utils.Keyboards;
+import ru.kau.mygtd2.utils.Settings;
 import ru.kau.mygtd2.utils.TxtUtils;
 import ru.kau.mygtd2.utils.Utils;
 
@@ -252,14 +255,18 @@ public class Dialogs {
 
         ListView list = (ListView) inflate.findViewById(R.id.listView1);
 
-
-        projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        if (Settings.getBooleanSetting(SHOWONLYACTIVEPROJECTS)) {
+            projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1)));
+        } else {
+            projectList = MyApplication.getDatabase().projectDao().getAllProjectsByStatuses(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        }
         projectsList.clear();
         for(Project p: projectList){
             projectsList.add(new Node(p.getId(), p.getParentid(), p.getTitle()));
         }
 
         SwitchMaterial cbWhowActiveProjects = inflate.findViewById(R.id.cbWhowActiveProjects);
+        cbWhowActiveProjects.setChecked(Settings.getBooleanSetting(SHOWONLYACTIVEPROJECTS));
         cbWhowActiveProjects.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -279,6 +286,7 @@ public class Dialogs {
                 projectsAdapter = new ProjectTreeAdapter(list, a, projectsList, 3, R.drawable.minus, R.drawable.plus);
 
                 list.setAdapter(projectsAdapter);
+                Settings.setBooleanSettings(SHOWONLYACTIVEPROJECTS, isChecked);
             }
         });
 

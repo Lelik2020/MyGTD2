@@ -63,6 +63,11 @@ public class Settings {
                 ret = settings.getBoolean("usecurrentsystemdate", true);
                 break;
 
+            case SHOWONLYACTIVEPROJECTS:
+                //ret = settings.getLong("currentdate", (new Date()).getTime());
+                ret = settings.getBoolean("showonlyactiveprojects", false);
+                break;
+
         }
 
 
@@ -109,6 +114,11 @@ public class Settings {
         switch (type) {
             case USECURRENTSYSTEMDATE:
                 prefEditor.putBoolean("usecurrentsystemdate", value);
+                break;
+
+            case SHOWONLYACTIVEPROJECTS:
+                //ret = settings.getLong("currentdate", (new Date()).getTime());
+                prefEditor.putBoolean("showonlyactiveprojects", value);
                 break;
         }
         prefEditor.apply();

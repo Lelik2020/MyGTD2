@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 ext {
         db = 1
-        codeNumber = 10200 * db + 1
+        codeNumber = 10202 * db + 1
 
         major = "02"
-        minor = "01"
+        minor = "03"
         versionNumber = "" + db.toString() + "." + major + "." + minor + "-beta"
 
     println ""
@@ -172,7 +172,7 @@ dependencies {
     implementation project(path: ':MaterialDialogLibrary')
     //implementation project(path: ':progresslibrary')
     //implementation project(path: ':sadlibrary')
-    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
     /*implementation ('com.google.apis:google-api-services-youtube:v3-rev204-1.23.0'){
         exclude group:'com.google.guava'
     }*/
