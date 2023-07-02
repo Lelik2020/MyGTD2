@@ -17,14 +17,14 @@
             android:orientation="horizontal" >
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/cbIsArchive"
+                android:id="@+id/cbIsNotClosed"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:useMaterialThemeColors="true"
                 android:checked="false"
                 style="@style/MySwitchMaterial2"
                 android:textStyle="bold"
-                android:text="@string/isarchivetag" />
+                android:text="@string/isnotclosetasks" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat

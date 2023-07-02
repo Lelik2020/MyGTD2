@@ -121,6 +121,9 @@ public interface TaskDao {
     @Query("SELECT count(*) FROM tasks WHERE status in (:idStatus)")
     long getCountByStatus(List<Integer> idStatus);
 
+    @Query("SELECT * FROM tasks WHERE status in (:idStatus)")
+    List<Task> getAllByStatus(List<Integer> idStatus);
+
     @Query("SELECT * FROM tasks WHERE status = :idstatus")
     List<Task> getAllByStatus(long idstatus);
 

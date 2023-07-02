@@ -264,7 +264,7 @@
 
     <string name="choiceColor">Выбрать цвет: </string>
     <string name="isarchivetag">Тэг в архиве</string>
-    <string name="isnotclosetasks">Тэг в архиве</string>
+    <string name="isnotclosetasks">Только незакрытые задачи</string>
     <string name="showarchivetag">Показывать архивные тэги</string>
     <string name="showlastusedtag">Показывать последние использованные тэги</string>
     <string name="showonlyactiveprojects">Показывать только активные проекты</string>

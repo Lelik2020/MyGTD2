@@ -6,11 +6,8 @@ import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT_WITHSECONDS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_ICON_MARGIN;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_INVERTTEXT_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_PROJECT_COLOR;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RADIUS2;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_RTVPAGGING;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_HEIGHT;
-import static ru.kau.mygtd2.utils.Const.DEFAULT_RTV_WIDTH;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKBG_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TASKCATEGORY_COLOR;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TEXT_COLOR;
@@ -38,12 +35,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apg.mobile.roundtextview.RoundTextView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.skydoves.colorpickerview.ColorEnvelope;
 import com.skydoves.colorpickerview.ColorPickerDialog;
 import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -113,6 +110,16 @@ public class AddTaskFragment extends Fragment
 
     private RoundTextView rtvstatusTaskTitle;
 
+    private LinearLayoutCompat parentTaskInfo;
+
+    private ImageView parenttasktype;
+
+    private TextView taskTypeTitle2;
+
+    private TextView parentTaskTypeTitle;
+
+    private ImageView parenttaskchoise2;
+
 
     private long projectId = 0L;
     private long targetId = 0L;
@@ -179,6 +186,11 @@ public class AddTaskFragment extends Fragment
         ltaskpriority = (LinearLayoutCompat) rootView.findViewById(R.id.addtaskpriority);
         ltaskcontext = (LinearLayoutCompat) rootView.findViewById(R.id.addtaskcontexts);
         ltaskcategory = (LinearLayoutCompat) rootView.findViewById(R.id.addtaskcategory);
+        parentTaskInfo = rootView.findViewById(R.id.parentTaskInfo);
+        parenttasktype = rootView.findViewById(R.id.parenttasktype);
+        taskTypeTitle2 = rootView.findViewById(R.id.taskTypeTitle2);
+        parentTaskTypeTitle = rootView.findViewById(R.id.parentTaskTypeTitle);
+        parenttaskchoise2 = rootView.findViewById(R.id.parenttaskchoise2);
 
         //assert getArguments() != null;
         Bundle arguments = getArguments();
@@ -533,9 +545,22 @@ public class AddTaskFragment extends Fragment
             }
         });
 
+        parenttaskchoise2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Dialogs.choiseParentTaskDialog(getActivity(), new Runnable() {
+
+                    @Override
+                    public void run() {
+                        //tagsRunnable.run();
+                        //EventBus.getDefault().post(new NotifyAllFragments());
+                    }
+                });
+            }
+        });
+
         final ImageView projectchoise = (ImageView) rootView.findViewById(R.id.projectchoise);
-
-
 
         projectchoise.setOnClickListener(new View.OnClickListener(){
 
@@ -1582,6 +1607,19 @@ public class AddTaskFragment extends Fragment
 
             parentTaskId = task.getId();
             parentTaskGuid = task.getGuid();
+
+
+            //------------ 999999 ---------------------------------------------------
+
+            parentTaskInfo.setVisibility(View.VISIBLE);
+            parenttasktype.setImageResource(getImageResourceTaskType(TypeOfTask.from(tasktype.getId())));
+
+            taskTypeTitle2.setTextColor(Color.parseColor(tasktype.getColor()));
+            taskTypeTitle2.setText(task.getTypeoftask().name() + " - " + task.getId());
+            TxtUtils.underlineTextView(taskTypeTitle2);
+            parentTaskTypeTitle.setText(task.getTitle());
+
+            // ----------------------------------------------------------------------
         }
 
         //taskTypeTitle.setText(tasktype.getTitle());

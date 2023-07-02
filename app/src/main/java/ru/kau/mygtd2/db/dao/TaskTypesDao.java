@@ -35,5 +35,8 @@ public interface TaskTypesDao {
     @Query("SELECT id FROM tasktypes")
     List<Integer> getAllId();
 
+    @Query("SELECT id FROM tasktypes WHERE id <> 6")
+    List<Integer> getNotClosed();
+
 
 }

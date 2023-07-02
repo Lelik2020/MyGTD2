@@ -147,6 +147,14 @@ public class Const {
 
     };
 
+    static final public List<Integer> lstALLNOTCLOSEDSTATUS = new ArrayList<Integer>() {
+        {
+            //add(0);
+            addAll(MyApplication.getDatabase().taskTypesDao().getNotClosed());
+        }
+
+    };
+
     static final public List<Integer> lstALLTASKCATEGORIESID = new ArrayList<Integer>() {
         {
             //add(0);

@@ -3,6 +3,7 @@ package ru.kau.mygtd2.dialogs;
 import static ru.kau.mygtd2.enums.TypeSetting.SHOWONLYACTIVEPROJECTS;
 import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
+import static ru.kau.mygtd2.utils.Const.lstALLNOTCLOSEDSTATUS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -171,6 +172,8 @@ public class Dialogs {
 
     private static List<Project> projectList;
 
+    private static List<Task> lstParentTask;
+
     //private ProjectListAdapter adapter;
 
     public static void choiseParentTaskDialog(final Context a, final Runnable refresh) {
@@ -184,11 +187,31 @@ public class Dialogs {
 
         RecyclerView recyclerView = (RecyclerView) inflate.findViewById(R.id.parentTasks);
 
+        SwitchMaterial cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(a));
 
-        List<Task> lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
+
+
+        lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
         TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
         recyclerView.setAdapter(tasksAdapterall);
+
+        cbIsNotClosed.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    lstParentTask = MyApplication.getDatabase().taskDao().getAllByStatus(lstALLNOTCLOSEDSTATUS);
+                    TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
+                    recyclerView.setAdapter(tasksAdapterall);
+                } else {
+                    lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
+                    TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
+                    recyclerView.setAdapter(tasksAdapterall);
+                }
+            }
+        });
+
         /*
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
