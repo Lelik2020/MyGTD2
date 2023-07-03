@@ -259,8 +259,16 @@ public class ExportConverter {
         InputStream isTargets = new ByteArrayInputStream(jsonTargets.getBytes(StandardCharsets.UTF_8));
         zipFile.addStream(isTargets, parameters);
 
+        // Справочник проектов (projects)
+        parameters.setFileNameInZip("5projects.json");
+        List<Project> lstProjects = MyApplication.getDatabase().projectDao().getAll();
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonProjects = gson.toJson(lstProjects);
+        InputStream isProjects = new ByteArrayInputStream(jsonProjects.getBytes(StandardCharsets.UTF_8));
+        zipFile.addStream(isProjects, parameters);
+
         // Бэкапируем задачи (tasks)
-        parameters.setFileNameInZip("5tasks.json");
+        parameters.setFileNameInZip("6tasks.json");
         List<Task> lstTasks = MyApplication.getDatabase().taskDao().getAll();
         gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -273,7 +281,7 @@ public class ExportConverter {
         zipFile.addStream(isTasks, parameters);
 
         // Бэкапируем свякзу задач и контекстов (taskcontexts)
-        parameters.setFileNameInZip("6taskcontexts.json");
+        parameters.setFileNameInZip("7taskcontexts.json");
         List<TaskContextJoin> lstTaskContextJoins = MyApplication.getDatabase().taskContextJoinDao().getAll();
         gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonTaskContextJoin = gson.toJson(lstTaskContextJoins);
@@ -281,7 +289,7 @@ public class ExportConverter {
         zipFile.addStream(isTaskContextJoins, parameters);
 
         // Бэкапируем свякзу задач и тэгов (tasktags)
-        parameters.setFileNameInZip("7tasktags.json");
+        parameters.setFileNameInZip("8tasktags.json");
         List<TaskTagJoin> lstTaskTagJoins = MyApplication.getDatabase().taskTagJoinDao().getAll();
         gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonTaskTagJoin = gson.toJson(lstTaskTagJoins);
@@ -289,7 +297,7 @@ public class ExportConverter {
         zipFile.addStream(isTaskTagJoins, parameters);
 
         // Бэкапируем информацию (informations)
-        parameters.setFileNameInZip("8informations.json");
+        parameters.setFileNameInZip("9informations.json");
         List<Information> lstInformations = MyApplication.getDatabase().informationDao().getAll();
         gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonInformations = gson.toJson(lstInformations);
@@ -465,7 +473,21 @@ public class ExportConverter {
                             }
                             break;
 
-                        case "6taskcontexts.json":
+                        case "5projects.json":
+                            //List<Contekst> lstContext = new ArrayList<>();
+                            for (int i = 0; i < ((JSONArray)obj).size(); i++){
+                                Gson gson = new GsonBuilder().create();
+                                Project project = gson.fromJson(((JSONArray)obj).get(i).toString(), Project.class);
+                                // Обновляем в базе данных
+                                //Device currentDevice = MyApplication.getDatabase().deviceDao().getCurrentDevice();
+                                //currentDevice.setGuid(device.getGuid());
+                                // Обновляем в базе данных
+                                MyApplication.getDatabase().projectDao().insert(project);
+                                // --------------------------------------------------
+                            }
+                            break;
+
+                        case "7taskcontexts.json":
                             //List<Contekst> lstContext = new ArrayList<>();
                             for (int i = 0; i < ((JSONArray)obj).size(); i++){
                                 Gson gson = new GsonBuilder().create();
@@ -479,7 +501,7 @@ public class ExportConverter {
                             }
                             break;
 
-                        case "7tasktags.json":
+                        case "8tasktags.json":
                             //List<Contekst> lstContext = new ArrayList<>();
                             for (int i = 0; i < ((JSONArray)obj).size(); i++){
                                 Gson gson = new GsonBuilder().create();
@@ -493,7 +515,7 @@ public class ExportConverter {
                             }
                             break;
 
-                        case "5tasks.json":
+                        case "6tasks.json":
                             //List<Contekst> lstContext = new ArrayList<>();
                             for (int i = 0; i < ((JSONArray)obj).size(); i++){
                                 Gson gson = new GsonBuilder()
