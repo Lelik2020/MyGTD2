@@ -23,7 +23,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
-import java.util.IdentityHashMap;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
@@ -104,7 +103,9 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
 
         txtcurrdate = rootView.findViewById(R.id.txtcurrdate);
 
-        txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
+        getDateBegin(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())), Utils.getCurrentApplicationDate());
+
+        /*txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
         txtcurrdate.setTextColor(color2);
 
         if (Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime() < Utils.getStartOfDay(new Date()).getTime()){
@@ -147,7 +148,7 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
             outlinedTextField.setBoxStrokeColorStateList(myColorList);
             outlinedTextField.setDefaultHintTextColor(myColorList);
             txtcurrdate.setTextColor(color2);
-        }
+        }*/
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerview);
 
@@ -461,6 +462,69 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
 
     @Override
     public void getDateBegin(String date, long datemls) {
-        77
+        int color = getResources().getColor(R.color.colorPrimary);
+        int color2 = Color.parseColor("#3F51B5");
+        txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
+        txtcurrdate.setTextColor(color2);
+
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_focused}, // focused
+                new int[] { android.R.attr.state_hovered}, // hovered
+                new int[] { android.R.attr.state_enabled}, // enabled
+                new int[] { android.R.attr.hint}, // enabled
+                new int[] { }  //
+        };
+
+        int[] colors = new int[] {
+                color,
+                color,
+                color,
+                color2,
+                color2
+        };
+
+        ColorStateList myColorList = new ColorStateList(states, colors);
+
+        if (Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime() < Utils.getStartOfDay(new Date()).getTime()) {
+            //outlinedTextField.setBoxStrokeColor(Color.parseColor("#FF0000"));
+            color2 = Color.parseColor("#FF0000");
+            color = getResources().getColor(R.color.green);
+            color2 = getResources().getColor(R.color.green);
+            colors = new int[]{
+                    color,
+                    color,
+                    color,
+                    color2,
+                    color2
+            };
+
+            myColorList = new ColorStateList(states, colors);
+
+
+            outlinedTextField.setBoxStrokeColorStateList(myColorList);
+            outlinedTextField.setDefaultHintTextColor(myColorList);
+            txtcurrdate.setTextColor(color2);
+        }
+        if (Utils.getStartOfDay(new Date(Utils.getCurrentApplicationDate())).getTime() > Utils.getStartOfDay(new Date()).getTime()) {
+            //outlinedTextField.setBoxStrokeColor(Color.parseColor("#008000"));
+            color2 = Color.parseColor("#008000");
+            color = getResources().getColor(R.color.red);
+            color2 = getResources().getColor(R.color.red);
+
+            colors = new int[]{
+                    color,
+                    color,
+                    color,
+                    color2,
+                    color2
+            };
+
+            myColorList = new ColorStateList(states, colors);
+
+
+            outlinedTextField.setBoxStrokeColorStateList(myColorList);
+            outlinedTextField.setDefaultHintTextColor(myColorList);
+            txtcurrdate.setTextColor(color2);
+        }
     }
 }
