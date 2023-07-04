@@ -13,6 +13,7 @@
     <dimen name="wh_button_small3">16dp</dimen>
     <dimen name="wh_button">18dp</dimen>
     <dimen name="wh_button2">36dp</dimen>
+    <dimen name="wh_button3">54dp</dimen>
     <dimen name="wh_btn_small">18sp</dimen>
     <dimen name="wh_button_big2">30dp</dimen>
     <dimen name="wh_layout_big2">30dp</dimen>

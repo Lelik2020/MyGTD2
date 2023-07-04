@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
+import java.util.IdentityHashMap;
 
 import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
@@ -31,11 +33,12 @@ import ru.kau.mygtd2.adapters.MainAdapter3;
 import ru.kau.mygtd2.adapters.MainAdapter4;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
+import ru.kau.mygtd2.interfaces.DialogDateBeginChoice;
 import ru.kau.mygtd2.utils.Utils;
 
 // https://caster.io/lessons/adding-a-new-fragment-with-a-recyclerview
 
-public class MainFragment extends Fragment implements ClickListener {
+public class MainFragment extends Fragment implements ClickListener, DialogDateBeginChoice {
 
     private RecyclerView recyclerView;
     private RecyclerView recyclerView2;
@@ -51,6 +54,8 @@ public class MainFragment extends Fragment implements ClickListener {
     private TextInputLayout outlinedTextField;
     //private Toolbar toolbar;
 
+    private ImageView btnSetCurrDate;
+
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -59,6 +64,15 @@ public class MainFragment extends Fragment implements ClickListener {
         View rootView = inflater.inflate(R.layout.main_fragment, null);
 
         //LOG.d("BuildConfig.BUILD_TYPE", BuildConfig.BUILD_TYPE);
+
+        btnSetCurrDate = rootView.findViewById(R.id.btnSetCurrDate);
+
+        btnSetCurrDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         outlinedTextField = rootView.findViewById(R.id.outlinedTextField);
 
@@ -443,5 +457,10 @@ public class MainFragment extends Fragment implements ClickListener {
     @Override
     public void itemClicked(View view, int position) {
 
+    }
+
+    @Override
+    public void getDateBegin(String date, long datemls) {
+        77
     }
 }
