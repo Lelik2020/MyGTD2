@@ -1,5 +1,7 @@
 package ru.kau.mygtd2.fragments;
 
+import static ru.kau.mygtd2.enums.TypeSetting.CURRENTDATE;
+import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_DATEFORMAT;
 
 import android.annotation.SuppressLint;
@@ -33,6 +35,7 @@ import ru.kau.mygtd2.adapters.MainAdapter4;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
 import ru.kau.mygtd2.interfaces.DialogDateBeginChoice;
+import ru.kau.mygtd2.utils.Settings;
 import ru.kau.mygtd2.utils.Utils;
 
 // https://caster.io/lessons/adding-a-new-fragment-with-a-recyclerview
@@ -464,8 +467,20 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
     public void getDateBegin(String date, long datemls) {
         int color = getResources().getColor(R.color.colorPrimary);
         int color2 = Color.parseColor("#3F51B5");
+
+        // Устанавливаем текущую дату
+        Settings.setLongSettings(CURRENTDATE, datemls);
+        if (Utils.getStartOfDay(new Date(datemls)).getTime() == Utils.getStartOfDay(new Date()).getTime()){
+            Settings.setBooleanSettings(USECURRENTSYSTEMDATE, true);
+        } else {
+            Settings.setBooleanSettings(USECURRENTSYSTEMDATE, false);
+        }
+
+        77
+
         txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
         txtcurrdate.setTextColor(color2);
+        //if ()
 
         int[][] states = new int[][] {
                 new int[] { android.R.attr.state_focused}, // focused
