@@ -75,9 +75,9 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
 
         outlinedTextField = rootView.findViewById(R.id.outlinedTextField);
 
-        //int color = Color.parseColor("#FF11AA");
-        int color = getResources().getColor(R.color.colorPrimary);
-//Color from hex string
+
+        /*int color = getResources().getColor(R.color.colorPrimary);
+
         int color2 = Color.parseColor("#3F51B5");
 
         int[][] states = new int[][] {
@@ -94,12 +94,12 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
                 color,
                 color2,
                 color2
-        };
+        };*/
 
-        ColorStateList myColorList = new ColorStateList(states, colors);
+        //ColorStateList myColorList = new ColorStateList(states, colors);
 
-        outlinedTextField.setBoxStrokeColorStateList(myColorList);
-        outlinedTextField.setDefaultHintTextColor(myColorList);
+        //outlinedTextField.setBoxStrokeColorStateList(myColorList);
+        //outlinedTextField.setDefaultHintTextColor(myColorList);
 
         txtcurrdate = rootView.findViewById(R.id.txtcurrdate);
 
