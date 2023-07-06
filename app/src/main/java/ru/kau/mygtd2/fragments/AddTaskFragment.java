@@ -163,6 +163,8 @@ public class AddTaskFragment extends Fragment
 
     private Task parentTask = null;
 
+    private ImageView copydescription;
+
 
 
 
@@ -191,6 +193,7 @@ public class AddTaskFragment extends Fragment
         taskTypeTitle2 = rootView.findViewById(R.id.taskTypeTitle2);
         parentTaskTypeTitle = rootView.findViewById(R.id.parentTaskTypeTitle);
         parenttaskchoise2 = rootView.findViewById(R.id.parenttaskchoise2);
+        copydescription = rootView.findViewById(R.id.copydescription);
 
         //assert getArguments() != null;
         Bundle arguments = getArguments();
@@ -229,6 +232,13 @@ public class AddTaskFragment extends Fragment
         detodotomorrow = (ImageView) rootView.findViewById(R.id.detodotomorrow);
 
         rtvstatusTaskTitle = (RoundTextView) rootView.findViewById(R.id.rtvstatusTaskTitle);
+
+        copydescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtTaskInfoTitle.setText(txtTaskTitle.getText());
+            }
+        });
 
         dbtodotoday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1386,6 +1396,14 @@ public class AddTaskFragment extends Fragment
         dateEndTitle.setText(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, dateEnd));
         dateEndTitle.setTypeface(Typeface.DEFAULT_BOLD);
         dateEndTitle.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+
+        // Устанавливаем заодно и дату начала
+
+        dateBegin = Utils.getStartOfDay(new Date(datemls));
+        dateBeginTitle.setText(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, dateBegin));
+        dateBeginTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        dateBeginTitle.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+
     }
 
     @Override
@@ -1394,6 +1412,14 @@ public class AddTaskFragment extends Fragment
         dateBeginTitle.setText(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, dateBegin));
         dateBeginTitle.setTypeface(Typeface.DEFAULT_BOLD);
         dateBeginTitle.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+
+        // Устанавливаем заодно и дату окончания
+        dateEnd = Utils.getEndOfDay(new Date(datemls));
+        dateEndTitle.setText(Utils.dateToString(DEFAULT_DATEFORMAT_WITHMINUTES, dateEnd));
+        dateEndTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        dateEndTitle.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
+
+
     }
 
     @SuppressLint("ResourceAsColor")
