@@ -742,7 +742,7 @@ public class Dialogs {
                     if (colorChoice == null || colorChoice.equals("")){
                         colorChoice = tag.getColor();
                     }
-                    tag.setColor(colorChoice);
+                    tag.setColor("#" + colorChoice);
                     //tag.setDescription(edit.getText().toString());
                     tag.setDescription(editTagName2.getText().toString());
                     tag.setIsarchive(cbIsArchive.isChecked() ? 1 : 0);

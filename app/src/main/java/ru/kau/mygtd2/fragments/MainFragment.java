@@ -34,6 +34,7 @@ import ru.kau.mygtd2.adapters.MainAdapter3;
 import ru.kau.mygtd2.adapters.MainAdapter4;
 import ru.kau.mygtd2.common.MyApplication;
 import ru.kau.mygtd2.common.interfaces.ClickListener;
+import ru.kau.mygtd2.dialogs.Dialogs;
 import ru.kau.mygtd2.interfaces.DialogDateBeginChoice;
 import ru.kau.mygtd2.utils.Settings;
 import ru.kau.mygtd2.utils.Utils;
@@ -72,7 +73,14 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
         btnSetCurrDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Dialogs.showDateBeginDialog(getActivity(), new Runnable() {
 
+                    @Override
+                    public void run() {
+                        //tagsRunnable.run();
+                        //EventBus.getDefault().post(new NotifyAllFragments());
+                    }
+                });
             }
         });
 
@@ -471,12 +479,12 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
         // Устанавливаем текущую дату
         Settings.setLongSettings(CURRENTDATE, datemls);
         if (Utils.getStartOfDay(new Date(datemls)).getTime() == Utils.getStartOfDay(new Date()).getTime()){
+            Settings.setLongSettings(CURRENTDATE, 0L);
             Settings.setBooleanSettings(USECURRENTSYSTEMDATE, true);
         } else {
             Settings.setBooleanSettings(USECURRENTSYSTEMDATE, false);
         }
 
-        77
 
         txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
         txtcurrdate.setTextColor(color2);
