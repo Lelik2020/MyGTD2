@@ -56,6 +56,7 @@ import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
 import ru.kau.mygtd2.adapters.ProjectTreeAdapter;
 import ru.kau.mygtd2.adapters.TasksAdapter4;
+import ru.kau.mygtd2.adapters.TasksAdapter5;
 import ru.kau.mygtd2.adapters.dialog.ProjectStatusAdapter;
 import ru.kau.mygtd2.adapters.dialog.TagAdapter;
 import ru.kau.mygtd2.common.MyApplication;
@@ -194,7 +195,7 @@ public class Dialogs {
 
 
         lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
-        TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
+        TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
         recyclerView.setAdapter(tasksAdapterall);
 
         cbIsNotClosed.setOnCheckedChangeListener(new OnCheckedChangeListener() {
