@@ -91,8 +91,8 @@ import ru.kau.mygtd2.utils.Utils;
 public class AddTaskFragment extends Fragment
         implements DialogProjectChoice, DialogTagsChoice, DialogTargetChoice,
         DialogPriorityChoice, DialogContextsChoice, DialogDateEndChoice,
-        DialogDateBeginChoice, DialogTypeOfTaskChoice, DialogParentTaskChoice,
-        DialogStatusTaskChoice, DialogCategoryOfTaskChoice {
+        DialogDateBeginChoice, DialogTypeOfTaskChoice,
+        DialogStatusTaskChoice, DialogCategoryOfTaskChoice, DialogParentTaskChoice {
 
     private TextView projectTitle;
     private TextView typeOfTaskTitle;
@@ -152,7 +152,7 @@ public class AddTaskFragment extends Fragment
 
     private LinearLayoutCompat ltasktags;
     private LinearLayoutCompat ltaskproject;
-    private LinearLayoutCompat lparenttasktype;
+    //private LinearLayoutCompat lparenttasktype;
     private LinearLayoutCompat ltasktype;
     private LinearLayoutCompat ltasktarget;
     private LinearLayoutCompat ltaskpriority;
@@ -182,7 +182,7 @@ public class AddTaskFragment extends Fragment
 
         ltasktags = (LinearLayoutCompat) rootView.findViewById(R.id.addtasktags);
         ltaskproject = (LinearLayoutCompat) rootView.findViewById(R.id.addtaskproject);
-        lparenttasktype = (LinearLayoutCompat) rootView.findViewById(R.id.addparenttasktype);
+        //lparenttasktype = (LinearLayoutCompat) rootView.findViewById(R.id.addparenttasktype);
         ltasktype = (LinearLayoutCompat) rootView.findViewById(R.id.addtasktype);
         ltasktarget = (LinearLayoutCompat) rootView.findViewById(R.id.addtasktarget);
         ltaskpriority = (LinearLayoutCompat) rootView.findViewById(R.id.addtaskpriority);
@@ -539,21 +539,8 @@ public class AddTaskFragment extends Fragment
         getPriority(priority);
 
 
-        final ImageView parenttaskchoise = (ImageView) rootView.findViewById(R.id.parenttaskchoise);
-        parenttaskchoise.setOnClickListener(new View.OnClickListener(){
+        //final ImageView parenttaskchoise = (ImageView) rootView.findViewById(R.id.parenttaskchoise);
 
-            @Override
-            public void onClick(View view) {
-                Dialogs.choiseParentTaskDialog(getActivity(), new Runnable() {
-
-                    @Override
-                    public void run() {
-                        //tagsRunnable.run();
-                        //EventBus.getDefault().post(new NotifyAllFragments());
-                    }
-                });
-            }
-        });
 
         parenttaskchoise2.setOnClickListener(new View.OnClickListener(){
 
@@ -1576,12 +1563,12 @@ public class AddTaskFragment extends Fragment
 
             TaskTypes tasktype = MyApplication.getDatabase().taskTypesDao().getById(task.getTypeoftask().Value);
 
-            lparenttasktype.removeAllViews();
+            //lparenttasktype.removeAllViews();
 
 
             LinearLayoutCompat.LayoutParams lParams = new LinearLayoutCompat.LayoutParams(Const.DEFAULT_LAYOUT_WIDTH, Const.DEFAULT_LAYOUT_HEIGHT);
 
-            lparenttasktype.setLayoutParams(lParams);
+            //lparenttasktype.setLayoutParams(lParams);
             //ltasktype.setGravity(Gravity.CENTER | Gravity.BOTTOM);
 
             ImageView iv = new ImageView(getActivity());
@@ -1607,7 +1594,7 @@ public class AddTaskFragment extends Fragment
             iv.setLayoutParams(lParams);
             //iv.setForegroundGravity(Gravity.FILL);
             //iv.setGravity(Gravity.CENTER | Gravity.BOTTOM);
-            lparenttasktype.addView(iv);
+            //lparenttasktype.addView(iv);
 
             TextView tv1 = new TextView(getActivity());
             tv1.setText(task.getTypeoftask().name() + " - " + task.getId());
@@ -1617,7 +1604,7 @@ public class AddTaskFragment extends Fragment
             tv1.setTypeface(Typeface.DEFAULT_BOLD);
             tv1.setPadding(15, 0, 0, 0);
             tv1.setTextSize(18.5f);
-            lparenttasktype.addView(tv1);
+            //lparenttasktype.addView(tv1);
 
             TextView tv2 = new TextView(getActivity());
             tv2.setText(task.getTitle());
@@ -1629,7 +1616,7 @@ public class AddTaskFragment extends Fragment
             //tv2.setTypeface(Typeface.DEFAULT_BOLD);
 
 
-            lparenttasktype.addView(tv2);
+            //lparenttasktype.addView(tv2);
 
             parentTaskId = task.getId();
             parentTaskGuid = task.getGuid();

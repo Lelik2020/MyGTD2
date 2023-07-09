@@ -203,11 +203,11 @@ public class Dialogs {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     lstParentTask = MyApplication.getDatabase().taskDao().getAllByStatus(lstALLNOTCLOSEDSTATUS);
-                    TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
+                    TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
                 } else {
                     lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
-                    TasksAdapter4 tasksAdapterall = new TasksAdapter4(a, lstParentTask);
+                    TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
                 }
             }
@@ -251,7 +251,7 @@ public class Dialogs {
                         callback.getProject(project);
                     }
                 }*/
-                callback10.getParentTask(MyApplication.getDatabase().taskDao().getById(TasksAdapter4.checkedID));
+                callback10.getParentTask(MyApplication.getDatabase().taskDao().getById(TasksAdapter5.checkedID));
             }
 
         });

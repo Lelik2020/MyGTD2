@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+
         android:orientation="vertical" >
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+
+            android:background="@color/text_black_100" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbIsNotClosed"
@@ -25,12 +35,34 @@
                 style="@style/MySwitchMaterial2"
                 android:textStyle="bold"
                 android:text="@string/isnotclosetasks" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/isTaskOnlyProject"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:useMaterialThemeColors="true"
+                android:checked="false"
+                style="@style/MySwitchMaterial2"
+                android:textStyle="bold"
+                android:text="@string/isTaskOnlyProject" />
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+
+            android:background="@color/text_black_100" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal" >
 
             <androidx.recyclerview.widget.RecyclerView

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/alltaskinfo"
+    android:layout_margin="3dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+
+    >
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+
+        android:background="@drawable/selector_nn"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -58,8 +62,8 @@
                 <TextView
                     android:id="@+id/tasktitle"
                     style="@style/textLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
                     android:layout_marginLeft="5dp"
 
@@ -69,13 +73,14 @@
 
             <TextView
                 android:id="@+id/tasktitle2"
-                style="@style/txtTaskTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
                 android:paddingLeft="5sp"
                 android:text="Name"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -14,31 +14,35 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <TextView
-                    style="@style/textSection"
-                    android:hint="@string/taskTitle"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/taskTitle"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="horizontal" >
 
-                <ImageView
-                    android:id="@+id/copydescription"
-                    android:layout_width="@dimen/wh_button_verysmall"
-                    android:layout_height="match_parent"
-                    style="@style/textSection"
+                    <TextView
+                        style="@style/textSection"
+                        android:hint="@string/taskTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/taskTitle"
+                        android:textStyle="bold"
+                        />
 
-
-                    android:src="@drawable/copy1" />
+                    <ImageView
+                        android:id="@+id/copydescription"
+                        android:layout_width="@dimen/wh_button_small2"
+                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/copy1" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -122,72 +126,6 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <TextView
-                android:id="@+id/taskTitle"
-                style="@style/textSection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/parentTask"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:orientation="horizontal" >
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:orientation="horizontal" >
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/lparenttasktype"
-                        android:layout_width="1sp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:visibility="invisible"
-
-                        >
-                        <TextView
-                            style="@style/textSection"
-                            android:id="@+id/typeOfParentTaskTitle"
-                            android:layout_width="1sp"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-
-                            android:textStyle="bold"
-                            android:visibility="invisible"
-
-                            />
-
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/addparenttasktype"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:orientation="horizontal"
-
-                        >
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <ImageView
-                        android:id="@+id/parenttaskchoise"
-                        android:layout_width="@dimen/wh_button_verysmall"
-                        android:layout_height="fill_parent"
-                        android:layout_marginLeft="5dp"
-                        style="@style/btnChoice"
-
-                        android:src="@drawable/choice2" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <TextView
                 android:id="@+id/taskTitle2"
                 style="@style/textSection"
                 android:layout_width="match_parent"
@@ -230,8 +168,8 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:textSize="18dp"
-                            android:gravity=""
+                            android:textSize="14dp"
+                            android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:textStyle="bold" />
 
@@ -240,6 +178,7 @@
                             android:layout_width="@dimen/wh_button_verysmall"
                             android:layout_height="@dimen/wh_button_verysmall"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
                             style="@style/btnChoice2"
 
                             android:src="@drawable/choice2" />
