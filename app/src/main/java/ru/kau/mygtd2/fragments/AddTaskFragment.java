@@ -1493,7 +1493,9 @@ public class AddTaskFragment extends Fragment
             //rtv1.setCorner(2, 2, 2, 2);
             //rtv1.setCorner(5);
 
-            rtv1.setText(project.getTitle());
+            //rtv1.setText(project.getTitle());
+            rtv1.setText(Utils.getFullProjectName(project.getId()));
+
             rtv1.setTypeface(Typeface.DEFAULT_BOLD);
             rtv1.setTextColor(Color.parseColor(DEFAULT_TEXT_COLOR));
 

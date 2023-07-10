@@ -148,6 +148,7 @@ public class Dialogs {
     static ListView lvTopTags;
 
     static List<Tag> tags;
+    static List<Tag> tags2;
 
     static List<Tag> lstTopTags;
     static List<Long> lslIdTop = new ArrayList<>();
@@ -999,14 +1000,14 @@ public class Dialogs {
         cbWhowArchive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tags = MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+                    tags2 = MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
 
                 } else {
-                    tags = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
+                    tags2 = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
 
                 }
                 checked = new HashSet<>();
-                iterator = tags.iterator();
+                iterator = tags2.iterator();
                 while (iterator.hasNext()) {
                     if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
                         iterator.remove();
@@ -1014,7 +1015,7 @@ public class Dialogs {
                 }
                 //adapter.setItems(tags);
                 //list.setAdapter(adapter);
-                tagsAdapter = new TagAdapter(a, tags);
+                tagsAdapter = new TagAdapter(a, tags2);
                 rvAllTags.setAdapter(tagsAdapter);
                 //rvAllTags.notify();
 
@@ -1031,7 +1032,7 @@ public class Dialogs {
         rvTopTags.setAdapter(tagsAdapter);
 
         tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
-        tagsAdapter2 = new TagAdapter(a, tags);
+        tagsAdapter2 = new TagAdapter(a, tags2);
         rvAllTags.setAdapter(tagsAdapter2);
 
         builder.setView(inflate);
