@@ -314,11 +314,11 @@ public class TasksAdapter2 extends RecyclerView.Adapter<TasksAdapter2.ViewHolder
 
                 if (lstTask.get(i).getIsFavourite() <= 0) {
                     lstTask.get(i).setIsFavourite(1);
-                    viewHolder.starIcon.setImageResource(R.drawable.star55);
+                    viewHolder.starIcon.setImageResource(R.drawable.star55press);
                     //viewHolder.starIcon.setColorFilter(R.color.bugcolor);
                 } else {
                     lstTask.get(i).setIsFavourite(0);
-                    viewHolder.starIcon.setImageResource(R.drawable.star55press);
+                    viewHolder.starIcon.setImageResource(R.drawable.star55);
                 }
                 viewHolder.starIcon.setColorFilter(R.color.colorPrimary);
                 //viewHolder.starIcon.setLayoutParams(lParamsiv);
