@@ -157,6 +157,7 @@ public class Dialogs {
     static TagAdapter tagsAdapter2;
 
     static Set<Integer> checked;
+    static Set<Integer> checked2;
 
     static Set<Integer> ch;
     static Set<Integer> checkedTopTags;
@@ -971,6 +972,8 @@ public class Dialogs {
         callback2 = (DialogTagsChoice) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
         View inflate = LayoutInflater.from(a).inflate(R.layout.dialog_tags3, null, false);
+        //checked = new HashSet<>();
+        //checked2 = new HashSet<>();
 
         rvTopTags = inflate.findViewById(R.id.lstTopTags);
         rvTopTags.setLayoutManager(new LinearLayoutManager(a));
@@ -989,6 +992,7 @@ public class Dialogs {
         cbWhowTop.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checked = new HashSet<>();
                 rvTopTags.setVisibility(isChecked ? View.VISIBLE : View.GONE);
                 tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
                 //rvAllTags.notifyAll();
@@ -1006,7 +1010,8 @@ public class Dialogs {
                     tags2 = MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
 
                 }
-                checked = new HashSet<>();
+                //checked = new HashSet<>();
+                //checked2 = new HashSet<>();
                 iterator = tags2.iterator();
                 while (iterator.hasNext()) {
                     if (TxtUtils.isEmpty(iterator.next().getTitle().trim())) {
@@ -1032,7 +1037,7 @@ public class Dialogs {
         rvTopTags.setAdapter(tagsAdapter);
 
         tags = cbWhowArchive.isChecked() ? MyApplication.getDatabase().tagDao().getAllSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>()) : MyApplication.getDatabase().tagDao().getNoArchiveSortByTitle(cbWhowTop.isChecked() ? lslIdTop : new ArrayList<>());
-        tagsAdapter2 = new TagAdapter(a, tags2);
+        tagsAdapter2 = new TagAdapter(a, tags);
         rvAllTags.setAdapter(tagsAdapter2);
 
         builder.setView(inflate);
@@ -1076,13 +1081,16 @@ public class Dialogs {
                 ch = tagsAdapter.getChecked();
 
                 int i = 0;
-                for (Tag tag: tags){
-                    //Tag tag1 =
-                    if (ch.contains(i)) {
-                        lsttags.add(tag);
+                if (ch != null) {
+                    for (Tag tag : tags) {
+                        //Tag tag1 =
+                        if (ch.contains(i)) {
+                            lsttags.add(tag);
+                        }
+                        i++;
                     }
-                    i++;
                 }
+
 
                 ch = tagsAdapter2.getChecked();
                 i = 0;

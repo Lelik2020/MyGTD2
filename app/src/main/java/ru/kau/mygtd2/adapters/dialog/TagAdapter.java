@@ -28,14 +28,14 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.ViewHolder>{
     private Context c;
     private List<Tag> lstTag;
 
-    static Set<Integer> checked;
+    private Set<Integer> checked;
 
     public TagAdapter(Context c, List<Tag> lstTag) {
         this.c = c;
         this.lstTag = lstTag;
     }
 
-    public static Set<Integer> getChecked() {
+    public Set<Integer> getChecked() {
         return checked;
     }
 

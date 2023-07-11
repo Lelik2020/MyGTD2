@@ -456,7 +456,7 @@
                     android:id="@+id/tagschoise"
                     android:layout_width="@dimen/wh_button_verysmall"
                     android:layout_height="fill_parent"
-
+                    android:layout_marginLeft="10dp"
 
                     android:src="@drawable/choice2" />
 
