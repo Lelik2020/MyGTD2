@@ -469,10 +469,11 @@ public class AddTaskFragment extends Fragment
             parentTaskGuid = parentTask.getParenttaskguid();
             taskCategoryId = parentTask.getCategory();
             parentProject = MyApplication.getDatabase().projectDao().getProjectById(parentTask.getProject_id());
+
             getParentTask(parentTask);
             // Получаем тэги из parentTask
             getTags(MyApplication.getDatabase().tagDao().getAllByTaskGuid(parentTask.getGuid()));
-
+            getTarget(MyApplication.getDatabase().targetDao().getById(parentTask.getTarget_id()));
 
 
         }
