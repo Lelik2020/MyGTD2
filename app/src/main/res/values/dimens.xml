@@ -18,6 +18,8 @@
     <dimen name="wh_button_big2">30dp</dimen>
     <dimen name="wh_layout_big2">30dp</dimen>
 
+    <dimen name="wh_button_middle2">25dp</dimen>
+
     <dimen name="wh_button_big3">20dp</dimen>
 
     <dimen name="wh_toolbar">36dp</dimen>

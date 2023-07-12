@@ -46,24 +46,15 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_recyclerview3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_margin="5dp"
+                android:background="@drawable/selector_nn"
                 >
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/main_recyclerview3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/selector_nn"
-                    >
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_recyclerview4"

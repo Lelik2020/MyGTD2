@@ -38,8 +38,8 @@
 
                     <ImageView
                         android:id="@+id/copydescription"
-                        android:layout_width="@dimen/wh_button_small2"
-                        android:layout_height="@dimen/wh_button_small2"
+                        android:layout_width="@dimen/wh_button_middle2"
+                        android:layout_height="@dimen/wh_button_middle2"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/copy1" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
