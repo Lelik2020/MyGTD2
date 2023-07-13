@@ -477,16 +477,23 @@ public class MainFragment extends Fragment implements ClickListener, DialogDateB
         int color2 = Color.parseColor("#3F51B5");
 
         // Устанавливаем текущую дату
-        Settings.setLongSettings(CURRENTDATE, datemls);
-        if (Utils.getStartOfDay(new Date(datemls)).getTime() == Utils.getStartOfDay(new Date()).getTime()){
+        //Settings.setLongSettings(CURRENTDATE, datemls);
+        if (Utils.getStartOfDay(new Date(datemls)).getTime() == Utils.getStartOfDay(new Date()).getTime() && (datemls > 0L)) {
             Settings.setLongSettings(CURRENTDATE, 0L);
             Settings.setBooleanSettings(USECURRENTSYSTEMDATE, true);
         } else {
-            Settings.setBooleanSettings(USECURRENTSYSTEMDATE, false);
+            if (datemls > 0L ) {
+                Settings.setLongSettings(CURRENTDATE, datemls);
+                Settings.setBooleanSettings(USECURRENTSYSTEMDATE, false);
+            } else {
+                Settings.setBooleanSettings(USECURRENTSYSTEMDATE, true);
+            }
         }
 
 
-        txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
+        //txtcurrdate.setText(Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Utils.getCurrentApplicationDate())));
+        //txtcurrdate.setText(Settings.getLongSetting(CURRENTDATE) == 0 ? "Не установлена" : Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Settings.getLongSetting(CURRENTDATE))));
+        txtcurrdate.setText(Settings.getBooleanSetting(USECURRENTSYSTEMDATE) ? Utils.dateToString(DEFAULT_DATEFORMAT, new Date()) : Utils.dateToString(DEFAULT_DATEFORMAT, new Date(Settings.getLongSetting(CURRENTDATE))));
         txtcurrdate.setTextColor(color2);
         //if ()
 
