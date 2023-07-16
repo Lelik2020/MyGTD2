@@ -18,6 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.apg.mobile.roundtextview.RoundTextView;
+
 import java.util.List;
 
 import ru.kau.mygtd2.R;
@@ -68,6 +70,8 @@ public class TasksAdapter5 extends RecyclerView.Adapter<TasksAdapter5.ViewHolder
 
         TextView title;
         TextView title2;
+
+        RoundTextView statusTask2;
         CheckBox checkBoxTask;
         ImageView typeTask;
         CardView card;
@@ -80,6 +84,7 @@ public class TasksAdapter5 extends RecyclerView.Adapter<TasksAdapter5.ViewHolder
             title2 = (TextView) itemView.findViewById(R.id.tasktitle2);
             checkBoxTask = (CheckBox) itemView.findViewById(R.id.checkBoxTask);
             card = itemView.findViewById(R.id.alltaskinfo);
+            statusTask2 = itemView.findViewById(R.id.statusTask2);
             itemView.setOnClickListener(this);
         }
 
@@ -118,6 +123,12 @@ public class TasksAdapter5 extends RecyclerView.Adapter<TasksAdapter5.ViewHolder
         TaskTypes taskTypes = MyApplication.getDatabase().taskTypesDao().getById(lstTask.get(i).getTypeoftask().Value);
         viewHolder.typeTask.setImageResource(Utils.getImageResourceTaskType(lstTask.get(i).getTypeoftask()));
         //viewHolder.typeTask.setLayoutParams(lParamsiv);
+
+        viewHolder.statusTask2.setCorner(20);
+        viewHolder.statusTask2.setPadding(10, 0, 10, 0);
+        viewHolder.statusTask2.setText(MyApplication.getDatabase().taskStatusDao().getById(lstTask.get(i).getStatus().Value).getTitle());
+        viewHolder.statusTask2.setBgColor(Color.parseColor(MyApplication.getDatabase().taskStatusDao().getById(lstTask.get(i).getStatus().Value).getColor()));
+
 
         //Drawable d = viewHolder.checkBoxTask.getCompoundDrawables()[0];
         Drawable d = ContextCompat.getDrawable(c, R.drawable.toggle);
