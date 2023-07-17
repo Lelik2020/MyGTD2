@@ -554,7 +554,10 @@ public class AddTaskFragment extends Fragment
                         //tagsRunnable.run();
                         //EventBus.getDefault().post(new NotifyAllFragments());
                     }
-                }, MyApplication.getDatabase().projectDao().getProjectById(projectId));   999
+                }
+                , MyApplication.getDatabase().projectDao().getProjectById(projectId)
+                , taskUpdate == null ? "0" : taskUpdate.getGuid()
+                );
             }
         });
 

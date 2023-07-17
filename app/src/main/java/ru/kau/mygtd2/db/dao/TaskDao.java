@@ -121,8 +121,12 @@ public interface TaskDao {
     @Query("SELECT count(*) FROM tasks WHERE status in (:idStatus)")
     long getCountByStatus(List<Integer> idStatus);
 
-    @Query("SELECT * FROM tasks WHERE status in (:idStatus)")
+    @Query("SELECT * FROM tasks WHERE status IN (:idStatus)")
     List<Task> getAllByStatus(List<Integer> idStatus);
+
+    @Query("SELECT * FROM tasks WHERE status IN (:idStatus) "
+            + "AND project_id IN (:isProjects) AND guid != :taskGuid")
+    List<Task> getTasksForParent(List<Integer> idStatus, List<Integer> isProjects, String taskGuid);
 
     @Query("SELECT * FROM tasks WHERE status = :idstatus")
     List<Task> getAllByStatus(long idstatus);

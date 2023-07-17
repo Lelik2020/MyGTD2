@@ -4,6 +4,8 @@ import static ru.kau.mygtd2.enums.TypeSetting.SHOWONLYACTIVEPROJECTS;
 import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
 import static ru.kau.mygtd2.utils.Const.lstALLNOTCLOSEDSTATUS;
+import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
+import static ru.kau.mygtd2.utils.Const.lstPROJECTSID;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -179,7 +181,7 @@ public class Dialogs {
 
     //private ProjectListAdapter adapter;
 
-    public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project) {
+    public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project, String taskGuid) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
         builder.setTitle(R.string.choiseparenttask);
@@ -191,12 +193,26 @@ public class Dialogs {
         RecyclerView recyclerView = (RecyclerView) inflate.findViewById(R.id.parentTasks);
 
         SwitchMaterial cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
+        SwitchMaterial isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(a));
 
 
+        List<Integer> currProject = new ArrayList<Integer>() {
+            {
+                //add(0);
+                add((int) project.getId());
+            }
+        };
+        //lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
+        lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
+                cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
+                isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
+                    taskGuid
+        );
 
-        lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
+
+
         TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
         recyclerView.setAdapter(tasksAdapterall);
 
@@ -204,14 +220,35 @@ public class Dialogs {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    lstParentTask = MyApplication.getDatabase().taskDao().getAllByStatus(lstALLNOTCLOSEDSTATUS);
+                    lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
+                            cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
+                            isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
+                            taskGuid
+                    );
                     TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
                 } else {
-                    lstParentTask = MyApplication.getDatabase().taskDao().getAllTasks();
+                    lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
+                            cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
+                            isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
+                            taskGuid
+                    );
                     TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
                 }
+            }
+        });
+
+        isTaskOnlyProject.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
+                        cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
+                        isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
+                        taskGuid
+                );
+                TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
+                recyclerView.setAdapter(tasksAdapterall);
             }
         });
 
