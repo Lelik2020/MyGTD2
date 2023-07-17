@@ -46,6 +46,13 @@
                 android:textStyle="bold"
                 android:text="@string/isTaskOnlyProject" />
 
+            <include
+                layout="@layout/searchandsortlayout"
+                android:id="@+id/searchandsort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                />
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

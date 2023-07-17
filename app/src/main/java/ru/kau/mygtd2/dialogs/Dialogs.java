@@ -179,7 +179,7 @@ public class Dialogs {
 
     //private ProjectListAdapter adapter;
 
-    public static void choiseParentTaskDialog(final Context a, final Runnable refresh) {
+    public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
         builder.setTitle(R.string.choiseparenttask);
