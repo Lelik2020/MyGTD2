@@ -195,6 +195,10 @@ public class Dialogs {
         SwitchMaterial cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
         SwitchMaterial isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
 
+        TextInputEditText filterLine = inflate.findViewById(R.id.filterLine);
+        TextView countTasks = inflate.findViewById(R.id.countTasks);   999
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(a));
 
 
