@@ -14,6 +14,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -181,6 +183,45 @@ public class Dialogs {
 
     //private ProjectListAdapter adapter;
 
+    private final TextWatcher filterTextWatcher = new TextWatcher() {
+
+        @Override
+        public void afterTextChanged(final Editable s) {
+            //AppState.get().searchQuery = s.toString();
+
+        }
+
+        @Override
+        public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+        }
+
+        @Override
+        public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+
+            //handler.removeCallbacks(sortAndSeach);
+            txt = "%" + searchEditText.getText().toString().trim() + "%";
+
+
+
+            handler.removeCallbacks(sortAndSeach);
+            handler.removeCallbacks(hideKeyboard);
+            if (s.toString().trim().length() == 0) {
+                //handler.postDelayed(sortAndSeach, 750);
+                handler.postDelayed(sortAndSeach, 1000);
+                handler.postDelayed(hideKeyboard, 1000);
+            } else {
+                //handler.postDelayed(sortAndSeach, 2000);
+                handler.postDelayed(sortAndSeach, 1000);
+            }
+
+
+            //recyclerView.scrollToPosition(0);
+            searchAndOrderAsync();
+
+        }
+
+    };
+
     public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project, String taskGuid) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(a, R.style.YDialog);
@@ -196,7 +237,7 @@ public class Dialogs {
         SwitchMaterial isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
 
         TextInputEditText filterLine = inflate.findViewById(R.id.filterLine);
-        TextView countTasks = inflate.findViewById(R.id.countTasks);   999
+        TextView countTasks = inflate.findViewById(R.id.countTasks);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(a));
@@ -219,6 +260,7 @@ public class Dialogs {
 
         TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
         recyclerView.setAdapter(tasksAdapterall);
+        countTasks.setText("" + lstParentTask.size());
 
         cbIsNotClosed.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
@@ -240,6 +282,7 @@ public class Dialogs {
                     TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
                 }
+                countTasks.setText("" + lstParentTask.size());
             }
         });
 
@@ -253,8 +296,11 @@ public class Dialogs {
                 );
                 TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                 recyclerView.setAdapter(tasksAdapterall);
+                countTasks.setText("" + lstParentTask.size());
             }
         });
+
+        filterLine.addTextChangedListener(filterTextWatcher);
 
         /*
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
