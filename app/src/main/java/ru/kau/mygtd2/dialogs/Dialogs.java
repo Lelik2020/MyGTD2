@@ -187,6 +187,8 @@ public class Dialogs {
     private static String txt = "";
     private static Handler handler;
 
+    private static TextInputEditText filterLine;
+
     private static final TextWatcher filterTextWatcher = new TextWatcher() {
 
         @Override
@@ -207,7 +209,7 @@ public class Dialogs {
 
 
 
-            handler.removeCallbacks(sortAndSeach);
+            /*handler.removeCallbacks(sortAndSeach);
             handler.removeCallbacks(hideKeyboard);
             if (s.toString().trim().length() == 0) {
                 //handler.postDelayed(sortAndSeach, 750);
@@ -216,7 +218,7 @@ public class Dialogs {
             } else {
                 //handler.postDelayed(sortAndSeach, 2000);
                 handler.postDelayed(sortAndSeach, 1000);
-            }
+            }*/
 
 
             //recyclerView.scrollToPosition(0);
@@ -225,6 +227,10 @@ public class Dialogs {
         }
 
     };
+
+    public static void searchAndOrderAsync() {
+
+    }
 
     public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project, String taskGuid) {
 
@@ -240,7 +246,7 @@ public class Dialogs {
         SwitchMaterial cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
         SwitchMaterial isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
 
-        TextInputEditText filterLine = inflate.findViewById(R.id.filterLine);
+        filterLine = inflate.findViewById(R.id.filterLine);
         TextView countTasks = inflate.findViewById(R.id.countTasks);
 
 
