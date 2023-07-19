@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -183,7 +184,10 @@ public class Dialogs {
 
     //private ProjectListAdapter adapter;
 
-    private final TextWatcher filterTextWatcher = new TextWatcher() {
+    private static String txt = "";
+    private static Handler handler;
+
+    private static final TextWatcher filterTextWatcher = new TextWatcher() {
 
         @Override
         public void afterTextChanged(final Editable s) {
@@ -199,7 +203,7 @@ public class Dialogs {
         public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
 
             //handler.removeCallbacks(sortAndSeach);
-            txt = "%" + searchEditText.getText().toString().trim() + "%";
+            txt = "%" + filterLine.getText().toString().trim() + "%";
 
 
 
