@@ -126,7 +126,9 @@ public interface TaskDao {
 
     @Query("SELECT * FROM tasks WHERE status IN (:idStatus) "
             + "AND project_id IN (:isProjects) AND guid != :taskGuid "
-            + "") 99
+            + "AND title LIKE :txt OR searchtitle LIKE UPPER(:txt) "
+            + "OR (cast(id as text) LIKE :txt) "
+            + "ORDER BY id")
     List<Task> getTasksForParent(List<Integer> idStatus, List<Integer> isProjects, String taskGuid, String txt);
 
     @Query("SELECT * FROM tasks WHERE status = :idstatus")
