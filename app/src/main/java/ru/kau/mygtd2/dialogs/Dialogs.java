@@ -263,7 +263,8 @@ public class Dialogs {
         lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
                 cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
                 isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                    taskGuid
+                    taskGuid,
+                txt
         );
 
 
@@ -279,7 +280,7 @@ public class Dialogs {
                     lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
                             cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
                             isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                            taskGuid
+                            taskGuid, txt
                     );
                     TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
@@ -287,7 +288,7 @@ public class Dialogs {
                     lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
                             cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
                             isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                            taskGuid
+                            taskGuid, txt
                     );
                     TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                     recyclerView.setAdapter(tasksAdapterall);
@@ -302,7 +303,7 @@ public class Dialogs {
                 lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
                         cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
                         isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                        taskGuid
+                        taskGuid, txt
                 );
                 TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
                 recyclerView.setAdapter(tasksAdapterall);
