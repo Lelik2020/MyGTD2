@@ -1,7 +1,6 @@
 package ru.kau.mygtd2.dialogs;
 
 import static ru.kau.mygtd2.enums.TypeSetting.SHOWONLYACTIVEPROJECTS;
-import static ru.kau.mygtd2.enums.TypeSetting.USECURRENTSYSTEMDATE;
 import static ru.kau.mygtd2.utils.Const.DEFAULT_TAG_COLOR;
 import static ru.kau.mygtd2.utils.Const.lstALLNOTCLOSEDSTATUS;
 import static ru.kau.mygtd2.utils.Const.lstALLSTATUS;
@@ -17,6 +16,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -60,7 +60,6 @@ import ru.kau.mygtd2.R;
 import ru.kau.mygtd2.activities.MainActivity;
 import ru.kau.mygtd2.adapters.BaseItemLayoutAdapter;
 import ru.kau.mygtd2.adapters.ProjectTreeAdapter;
-import ru.kau.mygtd2.adapters.TasksAdapter4;
 import ru.kau.mygtd2.adapters.TasksAdapter5;
 import ru.kau.mygtd2.adapters.dialog.ProjectStatusAdapter;
 import ru.kau.mygtd2.adapters.dialog.TagAdapter;
@@ -184,10 +183,20 @@ public class Dialogs {
 
     //private ProjectListAdapter adapter;
 
-    private static String txt = "";
+    private static String txt = "%%";
     private static Handler handler;
 
     private static TextInputEditText filterLine;
+
+    static TasksAdapter5 tasksAdapterall;
+    static RecyclerView recyclerView;
+    static TextView countTasks;
+
+    static SwitchMaterial cbIsNotClosed;
+    static SwitchMaterial isTaskOnlyProject;
+
+    static List<Integer> currProject;
+    static String taskGuid2;
 
     private static final TextWatcher filterTextWatcher = new TextWatcher() {
 
@@ -230,6 +239,16 @@ public class Dialogs {
 
     public static void searchAndOrderAsync() {
 
+        Log.e("888888", "9999999");
+        lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
+                cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
+                isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
+                taskGuid2, txt
+        );
+        tasksAdapterall = new TasksAdapter5(MyApplication.getContext(), lstParentTask);
+        recyclerView.setAdapter(tasksAdapterall);
+        countTasks.setText("" + lstParentTask.size());
+
     }
 
     public static void choiseParentTaskDialog(final Context a, final Runnable refresh, Project project, String taskGuid) {
@@ -241,19 +260,19 @@ public class Dialogs {
         callback10 = (DialogParentTaskChoice) ((MainActivity) a).getSupportFragmentManager().findFragmentById(R.id.frame_container);
 
 
-        RecyclerView recyclerView = (RecyclerView) inflate.findViewById(R.id.parentTasks);
+        recyclerView = (RecyclerView) inflate.findViewById(R.id.parentTasks);
 
-        SwitchMaterial cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
-        SwitchMaterial isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
+        cbIsNotClosed = inflate.findViewById(R.id.cbIsNotClosed);
+        isTaskOnlyProject = inflate.findViewById(R.id.isTaskOnlyProject);
 
         filterLine = inflate.findViewById(R.id.filterLine);
-        TextView countTasks = inflate.findViewById(R.id.countTasks);
+        countTasks = inflate.findViewById(R.id.countTasks);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(a));
+        taskGuid2 = taskGuid;
 
-
-        List<Integer> currProject = new ArrayList<Integer>() {
+        currProject = new ArrayList<Integer>() {
             {
                 //add(0);
                 add((int) project.getId());
@@ -268,46 +287,20 @@ public class Dialogs {
         );
 
 
-
-        TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
-        recyclerView.setAdapter(tasksAdapterall);
-        countTasks.setText("" + lstParentTask.size());
+        txt = "%%";
+        searchAndOrderAsync();
 
         cbIsNotClosed.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
-                            cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
-                            isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                            taskGuid, txt
-                    );
-                    TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
-                    recyclerView.setAdapter(tasksAdapterall);
-                } else {
-                    lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
-                            cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
-                            isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                            taskGuid, txt
-                    );
-                    TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
-                    recyclerView.setAdapter(tasksAdapterall);
-                }
-                countTasks.setText("" + lstParentTask.size());
+                searchAndOrderAsync();
             }
         });
 
         isTaskOnlyProject.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                lstParentTask = MyApplication.getDatabase().taskDao().getTasksForParent(
-                        cbIsNotClosed.isChecked() ? lstALLNOTCLOSEDSTATUS : lstALLSTATUS,
-                        isTaskOnlyProject.isChecked() ? currProject : lstPROJECTSID,
-                        taskGuid, txt
-                );
-                TasksAdapter5 tasksAdapterall = new TasksAdapter5(a, lstParentTask);
-                recyclerView.setAdapter(tasksAdapterall);
-                countTasks.setText("" + lstParentTask.size());
+                searchAndOrderAsync();
             }
         });
 
